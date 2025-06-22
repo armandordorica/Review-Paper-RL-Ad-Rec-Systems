@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: paper.aux
+The style file: plainnat.bst
+Database file #1: bibliography.bib
+Warning--to sort, need author or key in FrozenLakeGymnasium2023
+Warning--empty journal in bennett2007netflix
+Warning--can't use both volume and number fields in Pascanu2013
+Warning--can't use both volume and number fields in tavakoli2018action
+Warning--can't use both volume and number fields in zhao2021dear
+Warning--can't use both volume and number fields in zhou2019deep
+You've used 151 entries,
+            2773 wiz_defined-function locations,
+            1413 strings with 38316 characters,
+and the built_in function-call counts, 91285 in all, are:
+= -- 8032
+> -- 6402
+< -- 118
++ -- 2154
+- -- 1998
+* -- 7533
+:= -- 13612
+add.period$ -- 509
+call.type$ -- 151
+change.case$ -- 1103
+chr.to.int$ -- 146
+cite$ -- 309
+duplicate$ -- 3935
+empty$ -- 6583
+format.name$ -- 2202
+if$ -- 19458
+int.to.chr$ -- 6
+int.to.str$ -- 1
+missing$ -- 150
+newline$ -- 805
+num.names$ -- 600
+pop$ -- 2355
+preamble$ -- 1
+purify$ -- 956
+quote$ -- 0
+skip$ -- 3462
+stack$ -- 0
+substring$ -- 3334
+swap$ -- 909
+text.length$ -- 76
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1636
+warning$ -- 6
+while$ -- 713
+width$ -- 0
+write$ -- 2030
+(There were 6 warnings)
