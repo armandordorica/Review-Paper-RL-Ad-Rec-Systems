@@ -1,5 +1,4 @@
 # Build artifacts (keep repo clean)
-paper_*.pdf
 ._build_*
 
 # Common LaTeX intermediates
