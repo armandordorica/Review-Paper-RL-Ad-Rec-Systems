@@ -15,6 +15,7 @@
 \usepackage{makecell}
 % \usepackage{multirow}
 \usepackage{float}
+\usepackage{datetime}
 % \usepackage{url}
 % \usepackage{cite}
 
@@ -81,10 +82,15 @@
 
 \setstretch{2.0}
 
+% Build timestamp shown in the PDF (override at compile-time via: \def\BuildTimestamp{...})
+\providecommand{\BuildTimestamp}{\today\ at \currenttime}
+
 \begin{document}
 
 
 \maketitle
+{\small\noindent Compiled: \BuildTimestamp\par}
+\vspace{0.75em}
 % \doublespacing
 
 \begin{abstract}
