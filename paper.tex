@@ -1,16 +1,17 @@
-% THIS IS A LATEX TEMPLATE FILE FOR PAPERS INCLUDED IN THE
-% *Anthology of Computers and the Humanities*. ADD THE OPTION
-% 'final' WHEN CREATING THE FINAL VERSION OF THE PAPER. 
-% DO NOT change the documentclass
-%\documentclass[final]{anthology-ch} % for the final version
-\documentclass[final]{anthology-ch}         % for the submission
+\documentclass[acmsmall]{acmart}
+
+% CSUR (journal) topmatter
+\acmJournal{CSUR}
+\acmYear{2025}
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\citestyle{acmauthoryear}
 
 % LOAD LaTeX PACKAGES
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{adjustbox}  % lets us make the table wider than \textwidth
-\usepackage{setspace}
 \usepackage{enumitem}
 \usepackage{makecell}
 % \usepackage{multirow}
@@ -19,23 +20,12 @@
 % \usepackage{url}
 % \usepackage{cite}
 
-% \usepackage[table,xcdraw]{xcolor} % Allows the use of HTML colors
-% \usepackage{biblatex}
-% \addbibresource{bibliography.bib}
-\usepackage[numbers]{natbib}
-\bibliographystyle{plainnat} % or choose another like IEEEtran, ACM-Reference-Format, etc.
+% Bibliography (BibTeX)
+\bibliographystyle{ACM-Reference-Format}
 
 
 % \PassOptionsToPackage{table,xcdraw}{xcolor}
 
-
-\geometry{
-  a4paper,
-  top=2cm,
-  bottom=2cm,
-  left=2cm,
-  right=2cm
-}
 
 % ADD your own packages using \usepackage{}
 
@@ -43,61 +33,36 @@
 % Change this to the name of your submission
 \title{A Review of Reinforcement Learning Applications in Ad Policy Optimization for Large-Scale Recommender Systems}
 
-% AUTHOR AND AFFILIATION INFORMATION
-% For each author, include a new call to the \author command, with
-% the numbers in brackets indicating the associated affiliations 
-% (next section) and ORCID-ID for each author.  
+% AUTHORS
 \author{Armando Ordorica}
+\affiliation{%
+    \institution{University of Toronto}
+    \city{Toronto}
+    \country{Canada}
+}
 
 \author{Yuri Lawryshyn}
-
-% While we encourage including ORCID-IDs for all authors, you can
-% include authors that do not have one by definining an empty ID.
-
-
-% There should be one call to \affiliation for each affiliation of
-% the authors. Multiple affiliations can be given to each author
-% and an affiliation can be given to multiple authors. 
-\affiliation{University of Toronto, Toronto, Canada}
-
-% KEYWORDS
-% Provide one or more keywords or key phrases seperated by commas
-% using the following command
-
-\keywords{Reinforcement Learning, Ad Policy Optimization, Contextual Bandits, Recommendation Systems,  Off-Policy Learning, Online Advertising, Deep Reinforcement Learning,  Multi-Objective Optimization}
-
-% METADATA FOR THE PUBLICATION
-% This will be filled in when the document is published; the values can
-% be kept as their defaults when the file is submitted
-\pubyear{2025}
-\pubvolume{1}
-\pagestart{1}
-\pageend{1}
-\conferencename{Proceedings of Conference XXX}
-\conferenceeditors{Editor1 Editor2}
-\doi{00000/00000}  
-
-% \addbibresource{bibliography.bib}
-
-
-\setstretch{2.0}
+\affiliation{%
+    \institution{University of Toronto}
+    \city{Toronto}
+    \country{Canada}
+}
 
 % Build timestamp shown in the PDF (override at compile-time via: \def\BuildTimestamp{...})
 \providecommand{\BuildTimestamp}{\today\ at \currenttime}
 
 \begin{document}
-
-
-\maketitle
-{\small\noindent Compiled: \BuildTimestamp\par}
-\vspace{0.75em}
-% \doublespacing
-
 \begin{abstract}
 Balancing advertisements with organic content in large-scale recommendation engines is a well-known challenge in the industry. While ads are essential for revenue generation in platforms that integrate them alongside organic content, they often underperform in user engagement compared to organic content \cite{hochstein2023toward}. The key challenges in achieving this balance include ad selection, ranking, and integration with organic content. These involve decisions about whether to insert an ad, which ad to select, and where to place it \cite{zhao2020jointly}. Traditional methods optimize for the highest probability of ad clickthrough with fixed placements and are typically solved as supervised Machine Learning (ML) problems \cite{covington2016deep}. However, these approaches focus on optimizing single actions, overlooking the downstream impact of sequential user behavior and underutilizing valuable contextual signals. A more dynamic approach that accounts for context and optimizes the long-term value of action sequences, balancing both engagement and revenue, remains an open research area \cite{lin2023survey}.\\
 
 Reinforcement Learning (RL) offers a promising framework to address the need for dynamic, context-aware optimization by formalizing the process of finding the best policy in sequential decision-making under uncertainty \cite{dimitrakakis2018decision}. However, implementing RL in large-scale recommendation systems faces challenges such as vast state and action spaces, the risk of poorly chosen reward functions, high computational costs \cite{pancha2022pinnerformer}, and the difficulty of interpreting online policy learning \cite{van2024practical}. This paper surveys existing methodologies and frameworks that utilize RL to enhance recommendation strategies, aiming to guide practitioners and researchers in navigating these challenges. Our analysis reveals that while fully online RL is powerful in theory, in practice, techniques like contextual bandits, offline replay, and surrogate reward modeling often yield more scalable and interpretable solutions for large-scale ad-serving.
 \end{abstract}
+
+\keywords{Reinforcement Learning, Ad Policy Optimization, Contextual Bandits, Recommendation Systems, Off-Policy Learning, Online Advertising, Deep Reinforcement Learning, Multi-Objective Optimization}
+
+\maketitle
+{\small\noindent Compiled: \BuildTimestamp\par}
+\vspace{0.75em}
 
 % \tableofcontents
 
@@ -905,8 +870,9 @@ Future research may focus on enhancing interpretability, refining reward functio
 
 
 
-\section*{Acknowledgements}
+\begin{acks}
 I would like to thank my advisor, Yuri Lawryshyn, for his valuable guidance and direction throughout this work. I also extend my gratitude to Adam Obeng, Bee-Chung Chen, and Jay Adams for their critical coaching and insights, which have significantly shaped my approach and understanding of industry practices. Their expertise has been key in aligning academic research with practical applications.
+\end{acks}
 
 % This unnumbered section should be blank when submitting your paper. After review, you may include lists of people and organizations who supported the work.
 
