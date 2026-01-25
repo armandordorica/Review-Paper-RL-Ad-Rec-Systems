@@ -36,13 +36,21 @@ conda create -y -n texbuild -c conda-forge tectonic
 This command:
 - embeds a timestamp in the PDF via `\\BuildTimestamp`
 - writes an output file named `paper_YYYY-MM-DD_HHMM.pdf`
+- uses US/Eastern time (shows `EST` or `EDT`, depending on the date)
+
+```bash
+./build_timestamped_pdf.sh
+```
+
+If you prefer not to use the script, set the timezone explicitly:
 
 ```bash
 ENV_BIN="$HOME/miniconda3/envs/texbuild/bin"
 export PATH="$ENV_BIN:$PATH"
 
-TS_FILE=$(date +"%Y-%m-%d_%H%M")
-TS_DISPLAY=$(date +"%Y-%m-%d %H:%M")
+TZ=America/New_York
+TS_FILE=$(TZ=$TZ date +"%Y-%m-%d_%H%M")
+TS_DISPLAY=$(TZ=$TZ date +"%Y-%m-%d %H:%M %Z")
 JOB="._build_${TS_FILE}"  # temporary wrapper base name
 
 # Create a tiny wrapper so we can inject the timestamp without editing paper.tex
@@ -53,11 +61,7 @@ WRAPPER="${JOB}.tex"
 } > "$WRAPPER"
 
 tectonic -X compile "$WRAPPER" --outdir .
-
-# Rename output to the desired artifact name
 mv "${JOB}.pdf" "paper_${TS_FILE}.pdf"
-
-# Optional: clean wrapper/intermediates (keep the timestamped PDF)
 rm -f "$WRAPPER" "${JOB}.aux" "${JOB}.log" "${JOB}.out" "${JOB}.toc" "${JOB}.xdv" "${JOB}.bbl" "${JOB}.blg"
 
 ls -lh "paper_${TS_FILE}.pdf"
