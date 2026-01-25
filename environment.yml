@@ -1,0 +1,5 @@
+name: texbuild
+channels:
+  - conda-forge
+dependencies:
+  - tectonic

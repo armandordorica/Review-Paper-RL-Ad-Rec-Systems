@@ -22,6 +22,12 @@ cd Review-Paper-RL-Ad-Rec-Systems
 Requires: `conda` (Miniconda/Anaconda).
 
 ```bash
+conda env create -f environment.yml
+```
+
+If you prefer the explicit one-liner instead of `environment.yml`:
+
+```bash
 conda create -y -n texbuild -c conda-forge tectonic
 ```
 
