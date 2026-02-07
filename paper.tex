@@ -272,7 +272,7 @@ While toy examples like GridWorld \cite{Sutton1998}  and Frozen Lake \cite{froze
 
 The use of a \textbf{reward signal} to formalize the idea of a goal is a distinctive feature of RL \cite{Sutton1998}. In an MDP, the reward is a scalar value the agent receives after taking an action in a given state and transitioning to a new state, serving as immediate feedback on the benefit or cost of the action \cite{kaelbling1996reinforcement}. This feedback allows the agent to learn a policy that maximizes the cumulative reward over time \cite{kaelbling1996reinforcement}. In simple RL scenarios, rewards are typically straightforward. For instance, the agent might receive -1 per move (to encourage shorter paths), +100 for reaching the goal (G), and -100 if it falls into a hole (H), ending the episode. \textbf{However, in real-world recommendation systems, reward structures can be far more nuanced.  It is often unclear which user behaviors warrant the highest reward or how to weigh different signals} \cite{mcdonald2023spotify}. In online advertising, for example, low-intent actions such as clicks may be valued less than high-intent actions like saves or purchases. Moreover, deciding how to balance these varied signals in a single reward function can be both subjective and complex, especially when multiple objectives (e.g., revenue, user satisfaction, and content diversity) must be optimized \cite{mcdonald2023spotify}.\\
 
-Ad recommendation engines often need to \textbf{balance multiple objectives}, such as maximizing user engagement while also ensuring ad revenue \cite{zhang2018whole, yan2020ads, sagtani2024ad}. Long-term engagement and revenue are metrics that are particularly difficult to measure directly, especially in randomized controlled experiments that typically span only a couple of weeks \cite{mcdonald2023spotify}. The delay in outcomes (e.g., retention signals may take months to manifest) and the often subtle impact of a single intervention can make it nearly impossible to detect meaningful changes within such short time frames \cite{mcdonald2023spotify}.  As a result, proxy metrics are commonly used. For instance, click-through rate (CTR) and ad impressions serve as approximate measures of revenue, while session duration, saves, and shares act as proxies for longer-term engagement \cite{wang2022surrogate}. However, these simpler proxies can fail to capture the system’s true long-term objectives, occasionally leading to suboptimal policies \cite{mazoure2021improving}. A high CTR may reflect short-term engagement, yet it can ultimately induce ad fatigue or frustrate users if the ads are misaligned with their actual interests \cite{hohnhold2015focusing, sagtani2024ad}. Table \ref{fig:proxy-metrics} summarizes some of the most commonly used proxies in the industry across dimensions of revenue, engagement, and ad fatigue. 
+Ad recommendation engines often need to \textbf{balance multiple objectives}, such as maximizing user engagement while also ensuring ad revenue \cite{zhang2018whole, yan2020ads, sagtani2024ad}. Long-term engagement and revenue are metrics that are particularly difficult to measure directly, especially in randomized controlled experiments that typically span only a couple of weeks \cite{mcdonald2023spotify}. The delay in outcomes (e.g., retention signals may take months to manifest) and the often subtle impact of a single intervention can make it nearly impossible to detect meaningful changes within such short time frames \cite{mcdonald2023spotify}.  As a result, proxy metrics are commonly used. For instance, click-through rate (CTR) and ad impressions serve as approximate measures of revenue, while session duration, saves, and shares act as proxies for longer-term engagement \cite{wang2022surrogate}. However, these simpler proxies can fail to capture the system’s true long-term objectives, occasionally leading to suboptimal policies \cite{mazoure2021improving}. A high CTR may reflect short-term engagement, yet it can ultimately induce ad fatigue or frustrate users if the ads are misaligned with their actual interests \cite{hohnhold2015focusing, sagtani2024ad}. Table \ref{tab:proxy-metrics} summarizes some of the most commonly used proxies in the industry across dimensions of revenue, engagement, and ad fatigue. 
 
 
 % \begin{figure}[H]
@@ -282,12 +282,12 @@ Ad recommendation engines often need to \textbf{balance multiple objectives}, su
 % \label{fig:proxy-metrics}
 % \end{figure}
 
-\begin{figure}[ht]
+\begin{table}[ht]
   \centering
   \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{proxy-metrics-table.png}
   \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
-  \label{fig:proxy-metrics}
-\end{figure}
+  \label{tab:proxy-metrics}
+\end{table}
 
 
 % \begin{table}[H]
@@ -370,16 +370,16 @@ A \textbf{canonical utility function} at the policy layer to \textit{blend} ads 
     \begin{equation}
         U(x) = \alpha \times \text{Revenue} + \beta \times \text{Engagement} - \gamma \times \text{Ad Fatigue}
     \end{equation}
-    where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of "Revenue", "Engagement", and "Ad Fatigue", typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Table \ref{fig:proxy-metrics}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
+    where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of "Revenue", "Engagement", and "Ad Fatigue", typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Table \ref{tab:proxy-metrics}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
     
-In some cases, a very simple unified function can suffice over a complex utility function. Researchers at Alibaba introduced the concept of Click Yield, which is defined as the ratio of the total number of clicks on all items (ads + organic results) to the total number of impressions on a page \cite{zhang2018whole}. Click Yield provides a holistic evaluation of page performance, accounting for the interactive effects between ads and organic content, and helping to mitigate the bias that arises from examining CTR in isolation. Their optimization task maximizes total revenue while ensuring that the Click Yield does not fall below a certain threshold (T)  \cite{zhang2018whole}. A comparison of utility function formulations is shown in Table \ref{fig:utility-comparison}.
+In some cases, a very simple unified function can suffice over a complex utility function. Researchers at Alibaba introduced the concept of Click Yield, which is defined as the ratio of the total number of clicks on all items (ads + organic results) to the total number of impressions on a page \cite{zhang2018whole}. Click Yield provides a holistic evaluation of page performance, accounting for the interactive effects between ads and organic content, and helping to mitigate the bias that arises from examining CTR in isolation. Their optimization task maximizes total revenue while ensuring that the Click Yield does not fall below a certain threshold (T)  \cite{zhang2018whole}. A comparison of utility function formulations is shown in Table \ref{tab:utility-comparison}.
 
-\begin{figure}[ht]
+\begin{table}[ht]
 \centering
 \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{utility-comparison-table.png}
 \caption{Comparison of Utility/Reward Formulation Approaches across Different Companies}
-\label{fig:utility-comparison}
-\end{figure}
+\label{tab:utility-comparison}
+\end{table}
 
 
 
