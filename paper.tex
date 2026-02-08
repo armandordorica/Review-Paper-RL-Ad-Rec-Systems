@@ -118,7 +118,50 @@ In total, 153 papers were selected and reviewed. Papers were ranked according to
 
 While recent and highly cited work was prioritized, papers introducing novel methodologies were also included regardless of citation count. To contextualize the selected works, this survey builds from the ground up. Each component of the Markov Decision Process, including states, actions, rewards, and policies, is defined and illustrated using a toy example such as the Frozen Lake. This foundation is then extended to practice through a review of how each component is operationalized in industry, along with a discussion of the limitations of those approaches. Drawing on existing methods and lessons from industry, the resulting framework is intended to inform practitioners exploring how RL can be applied in their organizations to develop ad policies that balance monetization with organic engagement. A comparison between the toy example and real-world implementation parallels can be found in Table \ref{tab:comparison}.
 
-
+\begin{table*}[ht]
+    \centering
+    \small
+    \begin{tabular}{|>{\centering\arraybackslash}p{3cm}|p{3.5cm}|p{9cm}|}
+        \hline
+        \textbf{Component of Markov Decision Process Formulation} & \textbf{Frozen Lake Example} & \textbf{Large Scale Recommendation Systems for Ad Policy Optimization} \\ 
+        \hline
+        \textbf{Environment} & The frozen lake. & The users. \\ 
+        \hline
+        \textbf{Goal} & Reach the goal (G) from the start position (S) while avoiding holes (H). The agent must avoid falling into a hole, and reaching the goal faster is rewarded. & Maximize revenue without compromising user experience. \\ 
+         \hline
+          \textbf{Episode} & A game. & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
+        \hline
+        \textbf{Rewards} & Rewarded for reaching the goal (i.e., +100), but penalized for delays (i.e., -1 per step). & 
+        The reward is typically represented by a utility function, which could be a weighted sum of metrics like user engagement (clicks, time spent) and revenue generated (ad clicks, conversions). The challenge lies in balancing short-term revenue with long-term user retention. \\ 
+        \hline
+        \textbf{Agent} & The learner. & The Recommendation System. \\ 
+        \hline
+        \textbf{Actions} & Up, down, left and right. & 
+        Basically infinite. But when it comes to ad recommendations specifically, some typical actions are the following: 
+        \begin{itemize}
+            \item Reserve Price Floor: The minimum price at which an ad impression is sold.
+            \item Displacement Cost Threshold: A measure of the opportunity cost for showing an ad.
+            \item Max Ad Load: The maximum number of ads that can be shown without reducing user satisfaction.
+            \item Ad Quality Thresholds: Standards used to ensure ads meet a quality bar before being shown.
+            \item Ad Placement: The specific position of ads within the user feed (e.g., first, third, or fifth position).
+        \end{itemize} \\
+        \hline
+        \textbf{States} & All possible grid positions the agent can occupy, representing the state space of the environment. & 
+        \textbf{Signals}:
+        \begin{itemize}
+            \item User Context: Demographics, user profile
+            \item Interaction Data: Previous interactions with ads, organic content
+            \item Contextual Features: Time of day, browsing context
+            \item Embeddings: Latent feature representations of user interests or ad features
+        \end{itemize} \\
+        \hline
+        \textbf{Policy} & A mapping of grid positions to optimal action to take for a maximum reward. & 
+        A mapping of user segments to ad treatments to maximize both revenue and user experience. This policy can be dynamically adjusted based on real-time feedback or offline simulations. \\ 
+        \hline
+    \end{tabular}
+    \caption{Comparison of Frozen Lake Example and Large-Scale Recommendation Systems for Ad Policy Optimization}
+    \label{tab:comparison}
+\end{table*}
 
 \section{A Brief History of Ad Selection and Ranking in Recommendation Systems}
 
@@ -165,7 +208,7 @@ While embedding-based models greatly enhanced the predictive power of recommenda
 
 To address training inefficiencies in RNNs and the difficulty of capturing long-term dependencies, attention mechanisms allow direct access to any position in the sequence, enabling the model to focus on relevant features in the sequence regardless of their temporal distance \cite{vaswani2017attention}. By computing pairwise interactions across all positions in the sequence, Transformers overcome the sequential bottlenecks of RNNs and enable parallel computation \cite{vaswani2017attention}.  This mechanism also allows the model to incorporate contextual signals, such as user demographics, session-level metadata, or item attributes, at any point in the sequence, rather than strictly depending on a running hidden state \cite{kang2018sasrec}. The ability to attend to any part of the input at any time allows Transformers to model long-range dependencies with far greater efficiency and accuracy than RNN-based architectures \cite{vaswani2017attention}. This paradigm shift led to the development of the Transformer architecture, which entirely replaces recurrence with self-attention, fundamentally redefining sequence modeling \cite{vaswani2017attention}.
 
-\textbf{The Transformer’s parallel attention architecture is a natural fit for modern hardware.} Since self-attention and feed-forward layers are implemented with large matrix operations, the model makes efficient use of Graphics Processing Units (GPUs) and Tensor Processing Units (TPUs), which excel at parallel computation \cite{vaswani2017attention}. Unlike RNNs that left many GPU cores underutilized due to their step-by-step nature, Transformers keep the hardware busy by processing many elements concurrently. This yields significantly shorter training times compared to earlier recurrent models. Moreover, Transformers scale up seamlessly: training can be distributed across multiple GPUs, and larger batches or longer sequences can be handled without a drop in throughput \cite{shim2022comparison}. Engineers can simply add more GPU workers to accommodate bigger models or more data, achieving near-linear speedups in many cases \cite{brown2020language}. The ability to train deep models efficiently at scale has unlocked previously impractical projects, and Transformer-based architectures (e.g. BERT, GPT) are now standard building blocks in modern AI systems \cite{brown2020language} \cite{kaplan2020scaling}. One of the key innovations of the Transformer architecture is its multi-head attention mechanism \cite{vaswani2017attention}. Instead of relying on a single attention distribution, multiple attention “heads” are trained in parallel, each with its own set of learned parameters. This design allows the model to capture a range of relationships or patterns within the same sequence \cite{vaswani2017attention}.In practice, each head can focus on different aspects. One head might emphasize local dependencies in the user’s interaction history, while another one might highlight more global, long-range correlations \cite{vaswani2017attention}.
+The Transformer’s parallel attention architecture is a natural fit for modern hardware. Since self-attention and feed-forward layers are implemented with large matrix operations, the model makes efficient use of Graphics Processing Units (GPUs) and Tensor Processing Units (TPUs), which excel at parallel computation \cite{vaswani2017attention}. Unlike RNNs that left many GPU cores underutilized due to their step-by-step nature, Transformers keep the hardware busy by processing many elements concurrently. This yields significantly shorter training times compared to earlier recurrent models. Moreover, Transformers scale up seamlessly: training can be distributed across multiple GPUs, and larger batches or longer sequences can be handled without a drop in throughput \cite{shim2022comparison}. Engineers can simply add more GPU workers to accommodate bigger models or more data, achieving near-linear speedups in many cases \cite{brown2020language}. The ability to train deep models efficiently at scale has unlocked previously impractical projects, and Transformer-based architectures (e.g. BERT, GPT) are now standard building blocks in modern AI systems \cite{brown2020language} \cite{kaplan2020scaling}. One of the key innovations of the Transformer architecture is its multi-head attention mechanism \cite{vaswani2017attention}. Instead of relying on a single attention distribution, multiple attention “heads” are trained in parallel, each with its own set of learned parameters. This design allows the model to capture a range of relationships or patterns within the same sequence \cite{vaswani2017attention}.In practice, each head can focus on different aspects. One head might emphasize local dependencies in the user’s interaction history, while another one might highlight more global, long-range correlations \cite{vaswani2017attention}.
 
 
 In an advertising context, multi-head attention naturally accommodates multi-objective learning \cite{ma2018modeling}. For example, one head could be tuned to prioritize short-term engagement metrics (e.g., click-through rate or CTR) by attending to recent user activities and relevant ad features, while another head could emphasize longer-term outcomes, such as mitigating ad fatigue or preserving user satisfaction \cite{zhao2019recommending} \cite{ma2018modeling}. Each head learns a distinct set of attention weights, enabling the model to isolate and capture unique signals that serve different goals \cite{an2024tmh}. The outputs from these multiple heads are then aggregated, typically concatenated and linearly transformed, into a single representation or score, providing a unified but multi-faceted embedding of user–ad interactions \cite{vaswani2017attention} \cite{lyu2023entire}. However, determining the appropriate attention heads and their optimal weighting remains a complex challenge \cite{vaswani2017attention}\cite{Kang2018} \cite{Voita2019}. The optimal weights may vary not only across different users and content types but also over time \cite{Zhou2018} \cite{Zhou2019}. Additionally, shifting business objectives, engineering constraints, and competing optimization objectives further complicate the design process \cite{Mehrotra2018} \cite{Mehrotra2020} \cite{Jannach2023}. 
@@ -191,7 +234,7 @@ Despite the practical advantages that contextual bandits offer for real-time exp
 
 \section{The RL Formulation of Jointly Optimizing Ads and Content}
 
-In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Decision Process (MDP), where an \textbf{agent} interacts with a \textbf{deterministic environment} by performing \textbf{discrete actions}, such as moving up, down, left, or right, to navigate through a grid with the objective of reaching a goal, while potentially avoiding obstacles or hazards. A more complex variant is the \textbf{FrozenLake problem}, which features a \textbf{stochastic environment} where movements are uncertain due to a slippery surface (\textcolor[HTML]{1E90FF}{F}) as shown in Figure~\ref{tab:frozen_lake} \cite{FrozenLakeGymnasium2023}. Here, \textbf{actions do not always lead to the intended next state}, adding complexity by requiring policies that effectively manage uncertainty. In this paper, \textbf{we use the FrozenLake problem as a representative framework for stochastic environments and leverage this template to describe the ad optimization problem as an RL task}. Specifically, we will explore components of the underlying MDP, such as states, actions, and rewards, and investigate key RL concepts including policy evaluation, value iteration, and policy iteration. The grid is typically represented as shown in Figure~\ref{tab:frozen_lake}:
+In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Decision Process (MDP), where an \textbf{agent} interacts with a \textbf{deterministic environment} by performing \textbf{discrete actions}, such as moving up, down, left, or right, to navigate through a grid with the objective of reaching a goal, while potentially avoiding obstacles or hazards. A more complex variant is the \textbf{FrozenLake problem}, which features a \textbf{stochastic environment} where movements are uncertain due to a slippery surface (\textcolor[HTML]{1E90FF}{F}) as shown in Figure~\ref{tab:frozen_lake} \cite{FrozenLakeGymnasium2023}. Here, actions do not always lead to the intended next state, adding complexity by requiring policies that effectively manage uncertainty. In this paper, we use the FrozenLake problem as a representative framework for stochastic environments and leverage this template to describe the ad optimization problem as an RL task. Specifically, we will explore components of the underlying MDP, such as states, actions, and rewards, and investigate key RL concepts including policy evaluation, value iteration, and policy iteration. The grid is typically represented as shown in Figure~\ref{tab:frozen_lake}:
 
 
 \label{frozen_lake}
@@ -220,52 +263,6 @@ In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Deci
 %     \caption{Frozen Lake Environment Grid}
 %     \label{tab:frozen_lake} % This label is used to reference the table
 % \end{table}
-
-
-\begin{table*}[ht]
-    \centering
-    \small
-    \begin{tabular}{|>{\centering\arraybackslash}p{3cm}|p{3.5cm}|p{9cm}|}
-        \hline
-        \textbf{Component of Markov Decision Process Formulation} & \textbf{Frozen Lake Example} & \textbf{Large Scale Recommendation Systems for Ad Policy Optimization} \\ 
-        \hline
-        \textbf{Environment} & The frozen lake. & The users. \\ 
-        \hline
-        \textbf{Goal} & Reach the goal (G) from the start position (S) while avoiding holes (H). The agent must avoid falling into a hole, and reaching the goal faster is rewarded. & Maximize revenue without compromising user experience. \\ 
-         \hline
-          \textbf{Episode} & A game. & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
-        \hline
-        \textbf{Rewards} & Rewarded for reaching the goal (i.e., +100), but penalized for delays (i.e., -1 per step). & 
-        The reward is typically represented by a utility function, which could be a weighted sum of metrics like user engagement (clicks, time spent) and revenue generated (ad clicks, conversions). The challenge lies in balancing short-term revenue with long-term user retention. \\ 
-        \hline
-        \textbf{Agent} & The learner. & The Recommendation System. \\ 
-        \hline
-        \textbf{Actions} & Up, down, left and right. & 
-        Basically infinite. But when it comes to ad recommendations specifically, some typical actions are the following: 
-        \begin{itemize}
-            \item Reserve Price Floor: The minimum price at which an ad impression is sold.
-            \item Displacement Cost Threshold: A measure of the opportunity cost for showing an ad.
-            \item Max Ad Load: The maximum number of ads that can be shown without reducing user satisfaction.
-            \item Ad Quality Thresholds: Standards used to ensure ads meet a quality bar before being shown.
-            \item Ad Placement: The specific position of ads within the user feed (e.g., first, third, or fifth position).
-        \end{itemize} \\
-        \hline
-        \textbf{States} & All possible grid positions the agent can occupy, representing the state space of the environment. & 
-        \textbf{Signals}:
-        \begin{itemize}
-            \item User Context: Demographics, user profile
-            \item Interaction Data: Previous interactions with ads, organic content
-            \item Contextual Features: Time of day, browsing context
-            \item Embeddings: Latent feature representations of user interests or ad features
-        \end{itemize} \\
-        \hline
-        \textbf{Policy} & A mapping of grid positions to optimal action to take for a maximum reward. & 
-        A mapping of user segments to ad treatments to maximize both revenue and user experience. This policy can be dynamically adjusted based on real-time feedback or offline simulations. \\ 
-        \hline
-    \end{tabular}
-    \caption{Comparison of Frozen Lake Example and Large-Scale Recommendation Systems for Ad Policy Optimization}
-    \label{tab:comparison}
-\end{table*}
 
 \subsection{The Agent and its Objective}
 While toy examples like GridWorld \cite{Sutton1998}  and Frozen Lake \cite{frozenlake} provide well-defined, relatively simple environments where RL algorithms can be easily tested, transitioning these insights to real-world recommendation systems is far more complex due to factors like vast state–action spaces and delayed rewards, and environment observability \cite{dulac2019challenges, kaelbling1996reinforcement}. Observability refers to the degree to which an agent can directly perceive the complete state of the environment \cite{kaelbling1998planning}. In fully observable settings (such as the FrozenLake), the agent sees the true state at every step, enabling straightforward decision-making \cite{kaelbling1998planning}. However, real-world environments, including recommendation systems, are often partially observable \cite{lu2016partially}; the agent must infer the underlying state from incomplete or noisy signals, increasing both the computational complexity of learning and the uncertainty of policy outcomes \cite{wu2021partially}. In the FrozenLake environment, the agent is a decision-maker that observes its surroundings and chooses actions. It learns to navigate the grid to reach the goal (\textcolor[HTML]{FF4500}{G}) from the start position (\textcolor[HTML]{228B22}{S}) while avoiding holes (\textcolor[HTML]{FF0000}{H}) and navigating slippery surfaces (\textcolor[HTML]{1E90FF}{F}). By analogy, in monetization-aware ranking, the agent is the unified ranking engine responsible for constructing the entire feed, which must jointly optimize two primary objectives: maximizing revenue while maintaining (or ideally enhancing) user engagement \cite{Theocharous-2015, zou2019reinforcement}. Ultimately, both the FrozenLake agent and the unified ranking engine share the same high-level goal: to maximize long-term rewards through strategic actions grounded in observed states.
@@ -582,9 +579,9 @@ A policy is a core component of any RL system \cite{Sutton1998}. It encodes not 
 
 Formally, a policy is denoted as $\pi(a|s)$, representing the probability of selecting action $a$ given state $s$ \cite{Sutton1998, russell2016artificial}. In the context of the FrozenLake example, a policy is the mapping of grid positions (e.g. the states) to the optimal moves {\textit{up, down, left, right}} (e.g the actions) in order to maximize cumulative reward \cite{frozenlake}. The FrozenLake setting also provides intuition for the explore–exploit tradeoff \cite{frozenlake}. If the agent only explores, it never settles on a reliable strategy and may keep falling into holes \cite{Sutton1998}. If it only exploits, it might stick to a suboptimal path and miss shorter or safer routes \cite{russo2018tutorial}. Balancing both is essential to finding the optimal policy \cite{auer2002finite}.
 
-\textbf{The degree of randomness in a policy is an important consideration \cite{Sutton1998}.} A policy can be either stochastic or deterministic \cite{Sutton1998}. In a \textbf{\textit{stochastic} policy}, $\pi(a|s)$ defines a probability distribution over the action space: $\sum_a \pi(a|s) = 1$ and $0 \leq \pi(a|s) \leq 1$ for all $a$ \cite{Sutton1998}. In a \textbf{\textit{deterministic} policy}, the agent always selects the same action in a given state, with $\pi(a|s) = 1$ for exactly one action and $0$ for all others \cite{puterman2014markov}. A deterministic policy can be expressed as $\pi(s) = a$, where, in the context of the FrozenLake example, $s$ is the agent’s current position in the grid and $a$ is the action selected from the set \{\textit{up}, \textit{down}, \textit{left}, \textit{right}\} \cite{frozenlake}. For example, if $\pi((2,1)) = \textit{down}$, it means that when the agent is in row 2, column 1 of the grid, it should move down to maximize the expected return \cite{FrozenLakeGymnasium2023}.
+The degree of randomness in a policy is an important consideration \cite{Sutton1998}. A policy can be either stochastic or deterministic \cite{Sutton1998}. In a \textbf{\textit{stochastic} policy}, $\pi(a|s)$ defines a probability distribution over the action space: $\sum_a \pi(a|s) = 1$ and $0 \leq \pi(a|s) \leq 1$ for all $a$ \cite{Sutton1998}. In a \textbf{\textit{deterministic} policy}, the agent always selects the same action in a given state, with $\pi(a|s) = 1$ for exactly one action and $0$ for all others \cite{puterman2014markov}. A deterministic policy can be expressed as $\pi(s) = a$, where, in the context of the FrozenLake example, $s$ is the agent’s current position in the grid and $a$ is the action selected from the set \{\textit{up}, \textit{down}, \textit{left}, \textit{right}\} \cite{frozenlake}. For example, if $\pi((2,1)) = \textit{down}$, it means that when the agent is in row 2, column 1 of the grid, it should move down to maximize the expected return \cite{FrozenLakeGymnasium2023}.
 
-\textbf{It is important to distinguish between the stochasticity of the \textit{policy} and that of the \textit{environment}} \cite{Sutton1998}. A policy determines which action the agent selects in a given state \cite{Sutton1998, russell2016artificial}. The environment, by contrast, is modeled by transition dynamics that specify a probability distribution over the next state and reward, given the current state and action \cite{puterman2014markov}. This is typically denoted as \( P(s', r \mid s, a) \), where \( s \) is the current state, \( a \) is the selected action, and \( (s', r) \) is the resulting next state and reward \cite{Sutton1998, puterman2014markov}. However, while the decision of choosing the action of \textit{moving right} given a state may be deterministic, what happens next is subject to the degree of stochasticity present in the environment \cite{Sutton1998, FrozenLakeGymnasium2023}. Due to slipperiness, taking the action to move  'right' from that cell may result in the agent actually moving in a different direction, such as \textit{up} or \textit{down}, each with some probability \cite{frozenlake}. Thus, an agent can act deterministically in an environment where the outcomes of its actions are probabilistic \cite{Sutton1998, kaelbling1996reinforcement}.
+It is important to distinguish between the stochasticity of the \textit{policy} and that of the \textit{environment} \cite{Sutton1998}. A policy determines which action the agent selects in a given state \cite{Sutton1998, russell2016artificial}. The environment, by contrast, is modeled by transition dynamics that specify a probability distribution over the next state and reward, given the current state and action \cite{puterman2014markov}. This is typically denoted as \( P(s', r \mid s, a) \), where \( s \) is the current state, \( a \) is the selected action, and \( (s', r) \) is the resulting next state and reward \cite{Sutton1998, puterman2014markov}. However, while the decision of choosing the action of \textit{moving right} given a state may be deterministic, what happens next is subject to the degree of stochasticity present in the environment \cite{Sutton1998, FrozenLakeGymnasium2023}. Due to slipperiness, taking the action to move  'right' from that cell may result in the agent actually moving in a different direction, such as \textit{up} or \textit{down}, each with some probability \cite{frozenlake}. Thus, an agent can act deterministically in an environment where the outcomes of its actions are probabilistic \cite{Sutton1998, kaelbling1996reinforcement}.
 
 The \textbf{optimal policy $\pi^*$} is the one that maximizes the expected cumulative return from any given state \cite{Sutton1998, puterman2014markov}. In Markov Decision Processes (MDPs), this is often expressed as 
 \begin{equation}
@@ -880,7 +877,6 @@ I would like to thank Adam Obeng, Bee-Chung Chen, and Jay Adams for their valuab
 
 % \printbibliography
 \bibliography{bibliography}
-
 
 % \input{generated_bibitems}
 
