@@ -121,22 +121,22 @@ While recent and highly cited work was prioritized, papers introducing novel met
 \begin{table*}[ht]
     \centering
     \small
-    \begin{tabular}{|>{\centering\arraybackslash}p{3cm}|p{3.5cm}|p{9cm}|}
+    \begin{tabular}{|>{\centering\arraybackslash}p{2.5cm}|p{3cm}|p{8cm}|}
         \hline
-        \textbf{Component of Markov Decision Process Formulation} & \textbf{Frozen Lake Example} & \textbf{Large Scale Recommendation Systems for Ad Policy Optimization} \\ 
+        MDP Component & FrozenLake Example & Ad Recommendations \\ 
         \hline
-        \textbf{Environment} & The frozen lake. & The users. \\ 
+        Environment & The frozen lake. & The users. \\ 
         \hline
-        \textbf{Goal} & Reach the goal (G) from the start position (S) while avoiding holes (H). The agent must avoid falling into a hole, and reaching the goal faster is rewarded. & Maximize revenue without compromising user experience. \\ 
+        Goal & Reach the goal (G) from the start position (S) while avoiding holes (H). The agent must avoid falling into a hole, and reaching the goal faster is rewarded. & Maximize revenue without compromising user experience. \\ 
          \hline
-          \textbf{Episode} & A game. & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
+          Episode & A game. & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
         \hline
-        \textbf{Rewards} & Rewarded for reaching the goal (i.e., +100), but penalized for delays (i.e., -1 per step). & 
+        Rewards & Rewarded for reaching the goal (i.e., +100), but penalized for delays (i.e., -1 per step). & 
         The reward is typically represented by a utility function, which could be a weighted sum of metrics like user engagement (clicks, time spent) and revenue generated (ad clicks, conversions). The challenge lies in balancing short-term revenue with long-term user retention. \\ 
         \hline
-        \textbf{Agent} & The learner. & The Recommendation System. \\ 
+        Agent & The learner. & The Recommendation System. \\ 
         \hline
-        \textbf{Actions} & Up, down, left and right. & 
+        Actions & Up, down, left and right. & 
         Basically infinite. But when it comes to ad recommendations specifically, some typical actions are the following: 
         \begin{itemize}
             \item Reserve Price Floor: The minimum price at which an ad impression is sold.
@@ -146,8 +146,8 @@ While recent and highly cited work was prioritized, papers introducing novel met
             \item Ad Placement: The specific position of ads within the user feed (e.g., first, third, or fifth position).
         \end{itemize} \\
         \hline
-        \textbf{States} & All possible grid positions the agent can occupy, representing the state space of the environment. & 
-        \textbf{Signals}:
+        States & All possible grid positions the agent can occupy, representing the state space of the environment. & 
+        Signals:
         \begin{itemize}
             \item User Context: Demographics, user profile
             \item Interaction Data: Previous interactions with ads, organic content
@@ -155,7 +155,7 @@ While recent and highly cited work was prioritized, papers introducing novel met
             \item Embeddings: Latent feature representations of user interests or ad features
         \end{itemize} \\
         \hline
-        \textbf{Policy} & A mapping of grid positions to optimal action to take for a maximum reward. & 
+        Policy & A mapping of grid positions to optimal action to take for a maximum reward. & 
         A mapping of user segments to ad treatments to maximize both revenue and user experience. This policy can be dynamically adjusted based on real-time feedback or offline simulations. \\ 
         \hline
     \end{tabular}
