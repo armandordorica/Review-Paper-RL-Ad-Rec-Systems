@@ -9,11 +9,17 @@ TZ_NAME="America/New_York"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$REPO_ROOT"
 
-# Prefer an active env, but also work with a default conda install layout.
+# Prefer an active env, but also work with common conda install layouts.
 if command -v tectonic >/dev/null 2>&1; then
   :
 elif [[ -x "$HOME/miniconda3/envs/texbuild/bin/tectonic" ]]; then
   export PATH="$HOME/miniconda3/envs/texbuild/bin:$PATH"
+elif [[ -x "$HOME/anaconda3/envs/texbuild/bin/tectonic" ]]; then
+  export PATH="$HOME/anaconda3/envs/texbuild/bin:$PATH"
+elif [[ -x "$HOME/miniforge3/envs/texbuild/bin/tectonic" ]]; then
+  export PATH="$HOME/miniforge3/envs/texbuild/bin:$PATH"
+elif [[ -x "$HOME/mambaforge/envs/texbuild/bin/tectonic" ]]; then
+  export PATH="$HOME/mambaforge/envs/texbuild/bin:$PATH"
 fi
 
 if ! command -v tectonic >/dev/null 2>&1; then

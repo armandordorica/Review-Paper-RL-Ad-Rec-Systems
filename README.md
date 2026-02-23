@@ -39,14 +39,16 @@ This command:
 - uses US/Eastern time (shows `EST` or `EDT`, depending on the date)
 
 ```bash
+conda activate texbuild
 ./build_timestamped_pdf.sh
 ```
+
+> **Note:** The script tries to auto-detect common conda install paths (`miniconda3`, `anaconda3`, `miniforge3`, `mambaforge`). If tectonic is not found, activate the environment first with `conda activate texbuild`.
 
 If you prefer not to use the script, set the timezone explicitly:
 
 ```bash
-ENV_BIN="$HOME/miniconda3/envs/texbuild/bin"
-export PATH="$ENV_BIN:$PATH"
+conda activate texbuild
 
 TZ=America/New_York
 TS_FILE=$(TZ=$TZ date +"%Y-%m-%d_%H%M")
