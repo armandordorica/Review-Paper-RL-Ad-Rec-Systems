@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{148}
+\begin{thebibliography}{149}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -1121,6 +1121,13 @@
         {yi2023progressive}
 \bibfield{author}{\bibinfo{person}{Congrui Yi}, \bibinfo{person}{David Zumwalt}, \bibinfo{person}{Zijian Ni}, {and} \bibinfo{person}{Shreya Chakrabarti}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{Progressive horizon learning: Adaptive long term optimization for personalized recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM Conference on Recommender Systems}}. \bibinfo{pages}{940--946}.
+\newblock
+
+
+\bibitem[Yi et~al\mbox{.}(2014)]%
+        {yi2014beyond}
+\bibfield{author}{\bibinfo{person}{Xing Yi}, \bibinfo{person}{Liangjie Hong}, \bibinfo{person}{Erheng Zhong}, \bibinfo{person}{Nanthan~Nan Liu}, {and} \bibinfo{person}{Suju Rajan}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Beyond clicks: dwell time for personalization}. In \bibinfo{booktitle}{\emph{Proceedings of the 8th ACM Conference on Recommender systems}}. \bibinfo{pages}{113--120}.
 \newblock
 
 
