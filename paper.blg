@@ -1,53 +1,281 @@
 This is BibTeX, Version 0.99d (TeX Live 2025)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: paper.aux
-The style file: plainnat.bst
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated field_info (elt_size=4) to 11956 items from 5000.
 Database file #1: bibliography.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no key, author in FrozenLakeGymnasium2023
 Warning--to sort, need author or key in FrozenLakeGymnasium2023
-Warning--empty journal in bennett2007netflix
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Warning--no key, author in FrozenLakeGymnasium2023
+Warning--no key, author in FrozenLakeGymnasium2023
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Warning--no key, author in FrozenLakeGymnasium2023
+Warning--empty author in FrozenLakeGymnasium2023
+Warning--empty publisher in abrams2007personalized
+Warning--empty address in abrams2007personalized
+Warning--empty publisher in agarwal2014taming
+Warning--empty address in agarwal2014taming
+Warning--empty publisher in agarwal2019online
+Warning--empty address in agarwal2019online
+Warning--empty address in agarwal2016statistical
+Warning--empty publisher in agarwal2020optimistic
+Warning--empty address in agarwal2020optimistic
+Warning--empty publisher in barajas2022online
+Warning--empty address in barajas2022online
+Warning--empty publisher in barkan2016item2vec
+Warning--empty address in barkan2016item2vec
+Warning--no journal in bennett2007netflix
+Warning--no number and no volume in bennett2007netflix
+Warning--page numbers missing in both pages and numpages fields in bennett2007netflix
+Warning--no number and no volume in brockman2016openai
+Warning--page numbers missing in both pages and numpages fields in brockman2016openai
+Warning--empty publisher in burtini2015improving
+Warning--empty address in burtini2015improving
+Warning--empty publisher in cai2023two
+Warning--empty address in cai2023two
+Warning--no number and no volume in carrion2021blending
+Warning--page numbers missing in both pages and numpages fields in carrion2021blending
+Warning--empty publisher in chakrabarti2008contextual
+Warning--empty address in chakrabarti2008contextual
+Warning--page numbers missing in both pages and numpages fields in chapelle2011empirical
+Warning--empty publisher in chen2009large
+Warning--empty address in chen2009large
+Warning--empty publisher in chen2022off
+Warning--empty address in chen2022off
+Warning--empty publisher in cheng2016wide
+Warning--empty address in cheng2016wide
+Warning--empty publisher in covington2016deep
+Warning--empty address in covington2016deep
+Warning--empty publisher in danescu2010competing
+Warning--empty address in danescu2010competing
+Warning--no number and no volume in dimitrakakis2018decision
+Warning--page numbers missing in both pages and numpages fields in dimitrakakis2018decision
+Warning--no number and no volume in dudik2011doubly
+Warning--page numbers missing in both pages and numpages fields in dudik2011doubly
+Warning--no number and no volume in dulac2019challenges
+Warning--page numbers missing in both pages and numpages fields in dulac2019challenges
+Warning--no number and no volume in ellam2003overture
+Warning--page numbers missing in both pages and numpages fields in ellam2003overture
+Warning--empty publisher in engel2008incorporating
+Warning--empty address in engel2008incorporating
+Warning--no number and no volume in gao2024mamba
+Warning--page numbers missing in both pages and numpages fields in gao2024mamba
+Warning--no number and no volume in gauci2018horizon
+Warning--page numbers missing in both pages and numpages fields in gauci2018horizon
+Warning--no number and no volume in glanois2024survey
+Warning--empty publisher in grbovic2018real
+Warning--empty address in grbovic2018real
+Warning--empty publisher in he2017neural
+Warning--empty address in he2017neural
+Warning--empty publisher in he2014practical
+Warning--empty address in he2014practical
+Warning--empty publisher in hohnhold2015focusing
+Warning--empty address in hohnhold2015focusing
+Warning--no number and no volume in hu2004performance
+Warning--page numbers missing in both pages and numpages fields in hu2004performance
+Warning--no number and no volume in ie2019recsim
+Warning--page numbers missing in both pages and numpages fields in ie2019recsim
+Warning--empty publisher in ie2019slateq
+Warning--empty address in ie2019slateq
+Warning--no number and no volume in ie2019reinforcement
+Warning--page numbers missing in both pages and numpages fields in ie2019reinforcement
+Warning--page numbers missing in both pages and numpages fields in Jannach2023
+Warning--empty publisher in kang2018sasrec
+Warning--empty address in kang2018sasrec
+Warning--empty publisher in Kang2018
+Warning--empty address in Kang2018
+Warning--no number and no volume in kant2021history
+Warning--page numbers missing in both pages and numpages fields in kant2021history
+Warning--no number and no volume in kaplan2020scaling
+Warning--page numbers missing in both pages and numpages fields in kaplan2020scaling
+Warning--empty publisher in koren2008factorization
+Warning--empty address in koren2008factorization
+Warning--empty publisher in koutsopoulos2016native
+Warning--empty address in koutsopoulos2016native
+Warning--page numbers missing in both pages and numpages fields in krizhevsky2012imagenet
+Warning--no number and no volume in kuleshov2014algorithms
+Warning--page numbers missing in both pages and numpages fields in kuleshov2014algorithms
+Warning--no number and no volume in lambert2023entangled
+Warning--page numbers missing in both pages and numpages fields in lambert2023entangled
+Warning--no number and no volume in levine2020offline
+Warning--page numbers missing in both pages and numpages fields in levine2020offline
+Warning--empty publisher in li2010contextual
+Warning--empty address in li2010contextual
+Warning--no number and no volume in lin2023survey
+Warning--page numbers missing in both pages and numpages fields in lin2023survey
+Warning--no number and no volume in liu2025reducing
+Warning--page numbers missing in both pages and numpages fields in liu2025reducing
+Warning--no number and no volume in liu2022monolith
+Warning--page numbers missing in both pages and numpages fields in liu2022monolith
+Warning--no number and no volume in lu2016partially
+Warning--page numbers missing in both pages and numpages fields in lu2016partially
+Warning--no number and no volume in lyu2023entire
+Warning--page numbers missing in both pages and numpages fields in lyu2023entire
+Warning--empty publisher in ma2018modeling
+Warning--empty address in ma2018modeling
+Warning--no number and no volume in mazoure2021improving
+Warning--page numbers missing in both pages and numpages fields in mazoure2021improving
+Warning--empty publisher in mcdonald2023impatient
+Warning--empty address in mcdonald2023impatient
+Warning--empty publisher in mcmahan2013ad
+Warning--empty address in mcmahan2013ad
+Warning--empty publisher in Mehrotra2018
+Warning--empty address in Mehrotra2018
+Warning--page numbers missing in both pages and numpages fields in Mehrotra2018
+Warning--empty publisher in Mehrotra2020
+Warning--empty address in Mehrotra2020
+Warning--empty publisher in Michel2019
+Warning--empty address in Michel2019
+Warning--page numbers missing in both pages and numpages fields in mikolov2013distributed
+Warning--empty publisher in mnih2016asynchronous
+Warning--empty address in mnih2016asynchronous
+Warning--no number and no volume in naumov2019deep
+Warning--page numbers missing in both pages and numpages fields in naumov2019deep
+Warning--empty publisher in pancha2022pinnerformer
+Warning--empty address in pancha2022pinnerformer
 Warning--can't use both volume and number fields in Pascanu2013
+Warning--empty address in Pascanu2013
+Warning--empty publisher in puiutta2020explainable
+Warning--empty address in puiutta2020explainable
+Warning--empty address in puterman2014markov
+Warning--empty address in russell2016artificial
+Warning--empty publisher in sagtani2023quantifying
+Warning--empty address in sagtani2023quantifying
+Warning--empty publisher in sagtani2024ad
+Warning--empty address in sagtani2024ad
+Warning--empty publisher in saha2021advertiming
+Warning--empty address in saha2021advertiming
+Warning--empty publisher in Schein2002
+Warning--empty address in Schein2002
+Warning--empty publisher in schulman2015trust
+Warning--empty address in schulman2015trust
+Warning--no number and no volume in schulman2017proximal
+Warning--page numbers missing in both pages and numpages fields in schulman2017proximal
+Warning--no number and no volume in sharma2017learning
+Warning--page numbers missing in both pages and numpages fields in sharma2017learning
+Warning--no number and no volume in shim2022comparison
+Warning--page numbers missing in both pages and numpages fields in shim2022comparison
+Warning--empty publisher in silberstein2023combating
+Warning--empty address in silberstein2023combating
+Warning--no number and no volume in wsj2003yahoooverture
+Warning--page numbers missing in both pages and numpages fields in wsj2003yahoooverture
+Warning--empty publisher in sun2019bert4rec
+Warning--empty address in sun2019bert4rec
+Warning--empty publisher in Sutskever2014
+Warning--empty address in Sutskever2014
+Warning--empty address in Sutton1998
+Warning--empty publisher in swaminathan2015counterfactual
+Warning--empty address in swaminathan2015counterfactual
 Warning--can't use both volume and number fields in tavakoli2018action
+Warning--empty publisher in tavakoli2018action
+Warning--empty address in tavakoli2018action
+Warning--page numbers missing in both pages and numpages fields in tavakoli2018action
+Warning--empty publisher in Theocharous-2015
+Warning--empty address in Theocharous-2015
+Warning--empty publisher in van2024practical
+Warning--empty address in van2024practical
+Warning--page numbers missing in both pages and numpages fields in van2013deep
+Warning--no number and no volume in vaswani2017attention
+Warning--page numbers missing in both pages and numpages fields in vaswani2017attention
+Warning--empty publisher in verma2018programmatically
+Warning--empty address in verma2018programmatically
+Warning--empty publisher in Voita2019
+Warning--empty address in Voita2019
+Warning--no number and no volume in vorotilov2023scaling
+Warning--page numbers missing in both pages and numpages fields in vorotilov2023scaling
+Warning--empty publisher in wang2022surrogate
+Warning--empty address in wang2022surrogate
+Warning--empty publisher in wen2019learning
+Warning--empty address in wen2019learning
+Warning--empty publisher in wu2017returning
+Warning--empty address in wu2017returning
+Warning--empty publisher in wu2021partially
+Warning--empty address in wu2021partially
+Warning--empty publisher in xia2023transact
+Warning--empty address in xia2023transact
+Warning--empty publisher in yan2009much
+Warning--empty address in yan2009much
+Warning--empty publisher in yan2020ads
+Warning--empty address in yan2020ads
+Warning--empty publisher in yi2023progressive
+Warning--empty address in yi2023progressive
+Warning--empty publisher in yuan2020unbiased
+Warning--empty address in yuan2020unbiased
+Warning--empty publisher in zhang2018whole
+Warning--empty address in zhang2018whole
+Warning--empty publisher in zhao2018deep
+Warning--empty address in zhao2018deep
 Warning--can't use both volume and number fields in zhao2021dear
+Warning--empty publisher in zhao2021dear
+Warning--empty address in zhao2021dear
+Warning--no number and no volume in zhao2023embedding
+Warning--page numbers missing in both pages and numpages fields in zhao2023embedding
+Warning--no number and no volume in zhao2024survey
+Warning--page numbers missing in both pages and numpages fields in zhao2024survey
+Warning--empty publisher in zhao2019recommending
+Warning--empty address in zhao2019recommending
+Warning--empty publisher in Zhou2019
+Warning--empty address in Zhou2019
 Warning--can't use both volume and number fields in zhou2019deep
-You've used 151 entries,
-            2773 wiz_defined-function locations,
-            1413 strings with 38316 characters,
-and the built_in function-call counts, 91285 in all, are:
-= -- 8032
-> -- 6402
-< -- 118
-+ -- 2154
-- -- 1998
-* -- 7533
-:= -- 13612
-add.period$ -- 509
-call.type$ -- 151
-change.case$ -- 1103
-chr.to.int$ -- 146
-cite$ -- 309
-duplicate$ -- 3935
-empty$ -- 6583
-format.name$ -- 2202
-if$ -- 19458
-int.to.chr$ -- 6
+Warning--empty publisher in zhou2019deep
+Warning--empty address in zhou2019deep
+Warning--empty publisher in Zhou2018
+Warning--empty address in Zhou2018
+Warning--no number and no volume in zhou2016latent
+Warning--page numbers missing in both pages and numpages fields in zhou2016latent
+Warning--empty publisher in zhu2021overview
+Warning--empty address in zhu2021overview
+Warning--no number and no volume in zhu2024discretizing
+Warning--page numbers missing in both pages and numpages fields in zhu2024discretizing
+Warning--empty publisher in zou2019reinforcement
+Warning--empty address in zou2019reinforcement
+You've used 148 entries,
+            6056 wiz_defined-function locations,
+            2280 strings with 50492 characters,
+and the built_in function-call counts, 179542 in all, are:
+= -- 22759
+> -- 6506
+< -- 0
++ -- 2259
+- -- 2235
+* -- 13070
+:= -- 17311
+add.period$ -- 747
+call.type$ -- 148
+change.case$ -- 1236
+chr.to.int$ -- 143
+cite$ -- 376
+duplicate$ -- 15655
+empty$ -- 11011
+format.name$ -- 2762
+if$ -- 44298
+int.to.chr$ -- 7
 int.to.str$ -- 1
-missing$ -- 150
-newline$ -- 805
-num.names$ -- 600
-pop$ -- 2355
+missing$ -- 630
+newline$ -- 1239
+num.names$ -- 1024
+pop$ -- 6774
 preamble$ -- 1
-purify$ -- 956
+purify$ -- 2409
 quote$ -- 0
-skip$ -- 3462
+skip$ -- 5571
 stack$ -- 0
-substring$ -- 3334
-swap$ -- 909
-text.length$ -- 76
+substring$ -- 12579
+swap$ -- 1479
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1636
-warning$ -- 6
-while$ -- 713
+type$ -- 3358
+warning$ -- 224
+while$ -- 889
 width$ -- 0
-write$ -- 2030
-(There were 6 warnings)
+write$ -- 2841
+(There were 224 warnings)
