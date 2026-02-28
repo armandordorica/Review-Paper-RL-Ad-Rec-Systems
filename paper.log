@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 22:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 FEB 2026 16:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -929,142 +929,127 @@ Package caption Info: End \AtBeginDocument code.
 File: fc-english.def 2016/01/12
 )
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 65.
-LaTeX Font Info:    Trying to load font information for T1+LinuxBiolinumT-TLF on input line 65.
+(Font)              scaled to size 14.4pt on input line 68.
+LaTeX Font Info:    Trying to load font information for T1+LinuxBiolinumT-TLF on input line 68.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
 File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/LinuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 65.
+(Font)              scaled to size 14.4pt on input line 68.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 65.
+(Font)              scaled to size 14.4pt on input line 68.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 65.
+(Font)              scaled to size 10.95pt on input line 68.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 65.
+(Font)              scaled to size 10.95pt on input line 68.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 65.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 65.
+(Font)              scaled to size 9.0pt on input line 68.
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--65
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
 
  []
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 9.0pt on input line 66.
+(Font)              scaled to size 9.0pt on input line 69.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 66.
+(Font)              scaled to size 6.6pt on input line 69.
 
 
-Class acmart Warning: \vspace should only be used to provide space above/below surrounding objects on input line 67.
+Class acmart Warning: \vspace should only be used to provide space above/below surrounding objects on input line 70.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 71.
+(Font)              scaled to size 10.0pt on input line 74.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 71.
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--76
-
- []
-
+(Font)              scaled to size 10.0pt on input line 74.
 
 
 [1.1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 88.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
-
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
-
- []
-
+(Font)              scaled to size 7.3pt on input line 88.
 
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 92.
+(Font)              scaled to size 8.0pt on input line 97.
 [2.2]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 94.
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
-
- []
-
+(Font)              scaled to size 10.0pt on input line 99.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 105.
+(Font)              scaled to size 10.0pt on input line 110.
 
 
 
@@ -1075,70 +1060,70 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [3.3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}]
-Underfull \hbox (badness 2426) in paragraph at lines 123--123
+Underfull \hbox (badness 2426) in paragraph at lines 128--128
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) the start po-si-tion (S)
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 123--123
+Underfull \hbox (badness 4846) in paragraph at lines 128--128
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) while avoid-ing holes
  []
 
 
-Underfull \hbox (badness 3260) in paragraph at lines 123--123
+Underfull \hbox (badness 3260) in paragraph at lines 128--128
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) (H). The agent must
  []
 
 
-Underfull \hbox (badness 6995) in paragraph at lines 127--127
+Underfull \hbox (badness 6995) in paragraph at lines 132--132
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) the goal (i.e., +100),
  []
 
 
-Overfull \hbox (19.88966pt too wide) in paragraph at lines 117--155
+Overfull \hbox (19.88966pt too wide) in paragraph at lines 122--160
  [][] 
  []
 
-<history_timeline_figure.png, id=187, 1282.7925pt x 519.9425pt>
+<history_timeline_figure.png, id=243, 1282.7925pt x 519.9425pt>
 File: history_timeline_figure.png Graphic file (type png)
 <use history_timeline_figure.png>
-Package pdftex.def Info: history_timeline_figure.png  used on input line 163.
+Package pdftex.def Info: history_timeline_figure.png  used on input line 168.
 (pdftex.def)             Requested size: 395.8225pt x 160.43474pt.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 168.
+(Font)              scaled to size 8.0pt on input line 173.
 
-Class acmart Warning: A possible image without description on input line 170.
+Class acmart Warning: A possible image without description on input line 175.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
-
- []
-
-
-
-[4.4]
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 178.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/inconsolata/t1zi4.fd
-File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
-)
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 178.
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `zi4' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 
 Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
+
+ []
+
+
+Underfull \vbox (badness 6396) has occurred while \output is active []
+
+
+
+[4.4]
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 183.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 10.0pt on input line 183.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `zi4' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+
+ []
 
 
 
@@ -1177,14 +1162,14 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [9.9]
 
 [10.10]
-<frozenlake-table.png, id=529, 245.91875pt x 162.6075pt>
+<frozenlake-table.png, id=582, 245.91875pt x 162.6075pt>
 File: frozenlake-table.png Graphic file (type png)
 <use frozenlake-table.png>
-Package pdftex.def Info: frozenlake-table.png  used on input line 238.
+Package pdftex.def Info: frozenlake-table.png  used on input line 243.
 (pdftex.def)             Requested size: 138.54028pt x 91.6104pt.
 
 
-Class acmart Warning: A possible image without description on input line 241.
+Class acmart Warning: A possible image without description on input line 246.
 
 
 
@@ -1196,19 +1181,19 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [11.11 <./frozenlake-table.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
-<proxy-metrics-table.png, id=593, 595.22375pt x 701.62125pt>
+<proxy-metrics-table.png, id=645, 595.22375pt x 701.62125pt>
 File: proxy-metrics-table.png Graphic file (type png)
 <use proxy-metrics-table.png>
-Package pdftex.def Info: proxy-metrics-table.png  used on input line 277.
+Package pdftex.def Info: proxy-metrics-table.png  used on input line 282.
 (pdftex.def)             Requested size: 395.81883pt x 466.57227pt.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 361.
+(Font)              scaled to size 7.3pt on input line 366.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 361.
+(Font)              scaled to size 5.5pt on input line 366.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1224,10 +1209,10 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [13.13 <./proxy-metrics-table.png>]
-<utility-comparison-table.png, id=637, 578.16pt x 862.22125pt>
+<utility-comparison-table.png, id=690, 578.16pt x 862.22125pt>
 File: utility-comparison-table.png Graphic file (type png)
 <use utility-comparison-table.png>
-Package pdftex.def Info: utility-comparison-table.png  used on input line 369.
+Package pdftex.def Info: utility-comparison-table.png  used on input line 374.
 (pdftex.def)             Requested size: 327.15503pt x 487.89267pt.
 
 
@@ -1246,7 +1231,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [16.16]
-Underfull \hbox (badness 10000) in paragraph at lines 529--530
+Underfull \hbox (badness 10000) in paragraph at lines 534--535
 
  []
 
@@ -1275,7 +1260,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [19.19]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 575.
+(Font)              scaled to size 10.0pt on input line 580.
 
 Underfull \vbox (badness 6396) has occurred while \output is active []
 
@@ -1292,7 +1277,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [21.21]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 593.
+(Font)              scaled to size 10.0pt on input line 598.
 
 
 [22.22]
@@ -1319,11 +1304,11 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [26.26]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/it' in size <10> not available
-(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on input line 670.
+(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on input line 675.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sl' will be
-(Font)              scaled to size 10.0pt on input line 670.
+(Font)              scaled to size 10.0pt on input line 675.
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--673
+Underfull \hbox (badness 10000) in paragraph at lines 677--678
 
  []
 
@@ -1339,7 +1324,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [27.27]
 
 [28.28]
-Underfull \hbox (badness 10000) in paragraph at lines 704--705
+Underfull \hbox (badness 10000) in paragraph at lines 709--710
 
  []
 
@@ -1354,19 +1339,19 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [29.29]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 728.
+(Font)              scaled to size 9.0pt on input line 733.
 
-Overfull \hbox (71.98784pt too wide) in paragraph at lines 726--840
+Overfull \hbox (71.98784pt too wide) in paragraph at lines 731--845
  [][] 
  []
 
-<detailed_ad_policy.png, id=1747, 1552.80125pt x 840.13875pt>
+<detailed_ad_policy.png, id=1796, 1552.80125pt x 840.13875pt>
 File: detailed_ad_policy.png Graphic file (type png)
 <use detailed_ad_policy.png>
-Package pdftex.def Info: detailed_ad_policy.png  used on input line 849.
+Package pdftex.def Info: detailed_ad_policy.png  used on input line 854.
 (pdftex.def)             Requested size: 395.8225pt x 214.14922pt.
 
-Class acmart Warning: A possible image without description on input line 852.
+Class acmart Warning: A possible image without description on input line 857.
 
 
 
@@ -1453,7 +1438,7 @@ Underfull \vbox (badness 6396) has occurred while \output is active []
 [36.36]
 LaTeX Info: Redefining \tempurl on input line 1069.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6396) has occurred while \output is active []
 
 
 
@@ -1492,18 +1477,18 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: DC74A16F179B9EA3F87E304E1D6EB2B7;3635.
  ) 
 Here is how much of TeX's memory you used:
- 24450 strings out of 473190
- 405485 string characters out of 5715801
- 874775 words of memory out of 5000000
- 46184 multiletter control sequences out of 15000+600000
- 790412 words of font info for 588 fonts, out of 8000000 for 9000
+ 24466 strings out of 473190
+ 405865 string characters out of 5715801
+ 874875 words of memory out of 5000000
+ 46187 multiletter control sequences out of 15000+600000
+ 791504 words of font info for 596 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,14n,131p,3015b,987s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTBO.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on paper.pdf (38 pages, 1889392 bytes).
+Output written on paper.pdf (38 pages, 1891816 bytes).
 PDF statistics:
- 1971 PDF objects out of 2073 (max. 8388607)
- 1865 compressed objects within 19 object streams
- 226 named destinations out of 1000 (max. 500000)
+ 2020 PDF objects out of 2073 (max. 8388607)
+ 1913 compressed objects within 20 object streams
+ 227 named destinations out of 1000 (max. 500000)
  107170 words of extra memory for PDF output out of 128383 (max. 10000000)
 

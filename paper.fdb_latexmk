@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper"] 1771990188.4108 "paper.aux" "paper.bbl" "paper" 1771990190.74147 0
+["bibtex paper"] 1772312412.01378 "paper.aux" "paper.bbl" "paper" 1772312414.15211 0
   "./bibliography.bib" 1750556307.13436 94278 885cc31e7714ff9aeca791d4dfd19dff ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/acmart/ACM-Reference-Format.bst" 1735764768 90749 48abc1cbed6fafc6fc31528e3aa606ca ""
-  "paper.aux" 1771990190.39714 32558 edc400b417ed3308c948bbc8a69f828e "pdflatex"
+  "paper.aux" 1772312413.86689 33076 dddfd4e2f761cd707d53c2caf96f7944 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1771990188.51563 "/Users/armandoordoricadelatorre/Documents/U of T/PhD/PhD Research/Review-Paper-RL-Ad-Rec-Systems/paper.tex" "paper.pdf" "paper" 1771990190.74162 0
-  "/Users/armandoordoricadelatorre/Documents/U of T/PhD/PhD Research/Review-Paper-RL-Ad-Rec-Systems/paper.tex" 1771990172.71814 143436 1dce9c434dd432d1cf04e6ccfc428181 ""
+["pdflatex"] 1772312412.10458 "/Users/armandoordoricadelatorre/Documents/U of T/PhD/PhD Research/Review-Paper-RL-Ad-Rec-Systems/paper.tex" "paper.pdf" "paper" 1772312414.15224 0
+  "/Users/armandoordoricadelatorre/Documents/U of T/PhD/PhD Research/Review-Paper-RL-Ad-Rec-Systems/paper.tex" 1772312409.85887 143574 b9b12d53df4615c62ee5c694753c64c8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1558214095 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc" 1490131464 2921 8ca0eb0831f9bc5da080d3697cfe67bf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc" 1490131464 2933 9ad527ce78d7c5fa0a642dead095f172 ""
@@ -238,14 +238,14 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1750557128 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "comment.cut" 1771990190.28765 308 d8eacb813dd4017a31427367139a7e3e "pdflatex"
+  "comment.cut" 1772312413.76862 308 d8eacb813dd4017a31427367139a7e3e "pdflatex"
   "detailed_ad_policy.png" 1750556307.1419 714425 495ab3d4ef522d11df49b70cecac6813 ""
   "frozenlake-table.png" 1750556307.14255 17729 1720c8e9af70dcf81ab6868e49c3bb82 ""
   "history_timeline_figure.png" 1750556307.14315 121010 13f9e9729be38d76bf4ec9ecf9577bb9 ""
-  "paper.aux" 1771990190.39714 32558 edc400b417ed3308c948bbc8a69f828e "pdflatex"
-  "paper.bbl" 1771990188.51298 78574 b1f94d363e52c15b24682684757dc314 "bibtex paper"
-  "paper.out" 1771990190.39869 3635 dc74a16f179b9ea3f87e304e1d6eb2b7 "pdflatex"
-  "paper.tex" 1771990172.71814 143436 1dce9c434dd432d1cf04e6ccfc428181 ""
+  "paper.aux" 1772312413.86689 33076 dddfd4e2f761cd707d53c2caf96f7944 "pdflatex"
+  "paper.bbl" 1772312412.10196 79054 9f016cf990c2ee4ff128bcbd37856c58 "bibtex paper"
+  "paper.out" 1772312413.86831 3635 dc74a16f179b9ea3f87e304e1d6eb2b7 "pdflatex"
+  "paper.tex" 1772312409.85887 143574 b9b12d53df4615c62ee5c694753c64c8 ""
   "proxy-metrics-table.png" 1750556307.14617 359441 7e77450cc8e394840b80eb1fb1de2908 ""
   "utility-comparison-table.png" 1750556307.15371 410554 f16c012f8c310f154c9805c83d13663d ""
   (generated)
