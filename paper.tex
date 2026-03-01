@@ -14,7 +14,8 @@
 \usepackage{adjustbox}  % lets us make the table wider than \textwidth
 \usepackage{enumitem}
 \usepackage{makecell}
-% \usepackage{multirow}
+\usepackage{multirow}
+\usepackage{setspace}
 \usepackage{float}
 \usepackage{datetime}
 % \usepackage{url}
@@ -268,86 +269,83 @@ Ad recommendation engines often need to balance multiple objectives, such as max
 % \label{fig:proxy-metrics}
 % \end{figure}
 
-\begin{table}[ht]
-  \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{proxy-metrics-table.png}
-  \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
-  \label{tab:proxy-metrics}
-\end{table}
-
-
-% \begin{table}[H]
-% \setstretch{1} % Ensure normal spacing within table. Separation between lines of the same cell. 
-% \centering
-% \small
-% \renewcommand{\arraystretch}{1.2}  % Tweak if needed
-% \setlength{\tabcolsep}{2pt} % separation between columns 
-% \begin{tabularx}{\linewidth}{p{0.15\linewidth} p{0.25\linewidth} p{0.57\linewidth}}
-% % the decimal points allow to control the size of the table, not of the text.
-% \toprule
-% {\bfseries \Large Objective} & {\bfseries \Large Proxy Metric} & {\bfseries \Large Short Description} \\
-%   % \textbf{Objective} & \textbf{Proxy Metric} & \textbf{Short Description} \\
-% \midrule
-%     \multirow{\textbf{Revenue}} 
-%        & \textbf{CTR (Click-Through Rate)} 
-%            &  Approximates revenue potential; higher CTR often correlates with higher ad clicks \cite{zhang2018whole, yan2020ads, zhao2020jointly}. \\
-%        & \textbf{Ad Impressions} 
-%            & Number of times an ad is displayed to users. \\
-%        & \textbf{pCTR (Predicted CTR)} 
-%            & Model-estimated probability that a user will click on an ad. \\
-%        & \textbf{Predicted Revenue} 
-%            & Often a function of bids and pCTR to estimate expected revenue  \cite{yan2020ads, zhang2018whole}. \\
-%        & \textbf{Click Yield} 
-%            & Ratio of total clicks (ads + organic) to total impressions on a page. Helps avoid bias of optimizing CTR alone \cite{zhang2018whole}. \\
-%     \midrule
-%     \multirow{\textbf{Engagement}} 
-%        & \textbf{Session Duration} 
-%            & Tracks how long users stay engaged per session (proxy for longer-term engagement). \\
-%         & \textbf{30-day Total Sessions} 
-%        & Aggregated count of user sessions or interactions over a 30-day window, proxy for habit or stickiness 
-%        \cite{xu2023optimizing}. \\
-%        & \textbf{Likes / Adds to Library} 
-%        & High-intent actions indicating deeper user satisfaction and potential long-term retention \cite{mcdonald2023spotify}. \\
-%           & \textbf{Dwell Time} 
-%        & Actual time spent viewing/reading an item, capturing depth of engagement  \cite{yi2014beyond}. \\
-%        & \textbf{Shares} 
-%            & Another high-intent action reflecting strong user engagement. \\
-%     & \textbf{Ratio-based Diversity}  
-%            & Proportion of unique topic clusters in consumption history (indicates breadth of user interest) \cite{wang2022surrogate}. \\
-%        & \textbf{High-quality Consumption} 
-%            & Tracks consumption of content with high engagement (e.g., full video views, long reads) \cite{wang2022surrogate}. \\
-%      & \textbf{Repeated Consumption}  
-%            & Monitors how often users revisit similar content, reflecting satisfaction \cite{wang2022surrogate}. \\
-%               & \textbf{Time to Revisit} 
-%            & Interval between consecutive visits; shorter intervals suggest higher retention \cite{wang2022surrogate}. \\
-%      & \textbf{Distribution-based Diversity}  
-%            & Uses entropy to measure spread of topics consumed (gauges exploration vs. narrow focus) \cite{wang2022surrogate}. \\
-%     & \textbf{User Return Rate (URR)} 
-%        & Fraction of users who revisit the platform after a set interval, reflecting long-term retention  \cite{wu2017returning} \\
-%      & \textbf{Relative Watch Time} 
-%        & Percentage of a video watched, normalized by video length (better gauge of true engagement than raw views) 
-%       \cite{wu2018beyond}. \\
-%     \midrule
-%     \multirow{\textbf{Ad Fatigue}} 
-%        & \textbf{Depth} 
-%            & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}. \\
-%        & \textbf{Length} 
-%            & Decrease in time spent per session \cite{sagtani2023quantifying}. \\
-%        & \textbf{Frequency} 
-%            & Decrease in number of sessions per week \cite{sagtani2023quantifying}. \\
-%        & \textbf{Ad Load (Sessions)} 
-%            & Number of sessions that end (or quit) during an ad, indicating ad overload \cite{sagtani2023quantifying}. \\
-%        & \textbf{Ad Load (Absolute)} 
-%            & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}. \\
-%        & \textbf{Click Entropy} 
-%            & Measures uncertainty/diversity in ad clicks for a query; high entropy may imply users find ads less relevant \cite{sagtani2023quantifying}. \\
-% \bottomrule
-% \end{tabularx}
-% \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
-% \label{tab:proxy-metrics}
+% IMAGE-BASED TABLE (kept for fallback)
+% \begin{table}[ht]
+%   \centering
+%   \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{proxy-metrics-table.png}
+%   \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
+%   \label{tab:proxy-metrics-img}
 % \end{table}
 
-
+\begin{table}[ht]
+\setstretch{1} % Ensure normal spacing within table. Separation between lines of the same cell. 
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.2}  % Tweak if needed
+\setlength{\tabcolsep}{4pt} % separation between columns 
+\begin{tabularx}{\linewidth}{p{0.13\linewidth} p{0.27\linewidth} p{0.54\linewidth}}
+% the decimal points allow to control the size of the table, not of the text.
+\toprule
+{\bfseries Objective} & {\bfseries Proxy Metric} & {\bfseries Short Description} \\
+\midrule
+    \multirow{5}{*}{\textbf{Revenue}} 
+       & \textbf{CTR (Click-Through Rate)} 
+           &  Approximates revenue potential; higher CTR often correlates with higher ad clicks \cite{zhang2018whole, yan2020ads, zhao2020jointly}. \\
+       & \textbf{Ad Impressions} 
+           & Number of times an ad is displayed to users. \\
+       & \textbf{pCTR (Predicted CTR)} 
+           & Model-estimated probability that a user will click on an ad. \\
+       & \textbf{Predicted Revenue} 
+           & Often a function of bids and pCTR to estimate expected revenue  \cite{yan2020ads, zhang2018whole}. \\
+       & \textbf{Click Yield} 
+           & Ratio of total clicks (ads + organic) to total impressions on a page. Helps avoid bias of optimizing CTR alone \cite{zhang2018whole}. \\
+    \midrule
+    \multirow{11}{*}{\textbf{Engagement}} 
+       & \textbf{Session Duration} 
+           & Tracks how long users stay engaged per session (proxy for longer-term engagement). \\
+        & \textbf{30-day Total Sessions} 
+       & Aggregated count of user sessions or interactions over a 30-day window, proxy for habit or stickiness 
+       \cite{xu2023optimizing}. \\
+       & \textbf{Likes / Adds to Library} 
+       & High-intent actions indicating deeper user satisfaction and potential long-term retention \cite{mcdonald2023spotify}. \\
+          & \textbf{Dwell Time} 
+       & Actual time spent viewing/reading an item, capturing depth of engagement  \cite{yi2014beyond}. \\
+       & \textbf{Shares} 
+           & Another high-intent action reflecting strong user engagement. \\
+    & \textbf{Ratio-based Diversity}  
+           & Proportion of unique topic clusters in consumption history (indicates breadth of user interest) \cite{wang2022surrogate}. \\
+       & \textbf{High-quality Consumption} 
+           & Tracks consumption of content with high engagement (e.g., full video views, long reads) \cite{wang2022surrogate}. \\
+     & \textbf{Repeated Consumption}  
+           & Monitors how often users revisit similar content, reflecting satisfaction \cite{wang2022surrogate}. \\
+              & \textbf{Time to Revisit} 
+           & Interval between consecutive visits; shorter intervals suggest higher retention \cite{wang2022surrogate}. \\
+     & \textbf{Distribution-based Diversity}  
+           & Uses entropy to measure spread of topics consumed (gauges exploration vs. narrow focus) \cite{wang2022surrogate}. \\
+    & \textbf{User Return Rate (URR)} 
+       & Fraction of users who revisit the platform after a set interval, reflecting long-term retention  \cite{wu2017returning}. \\
+     & \textbf{Relative Watch Time} 
+       & Percentage of a video watched, normalized by video length (better gauge of true engagement than raw views) 
+      \cite{wu2018beyond}. \\
+    \midrule
+    \multirow{6}{*}{\textbf{Ad Fatigue}} 
+       & \textbf{Depth} 
+           & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}. \\
+       & \textbf{Length} 
+           & Decrease in time spent per session \cite{sagtani2023quantifying}. \\
+       & \textbf{Frequency} 
+           & Decrease in number of sessions per week \cite{sagtani2023quantifying}. \\
+       & \textbf{Ad Load (Sessions)} 
+           & Number of sessions that end (or quit) during an ad, indicating ad overload \cite{sagtani2023quantifying}. \\
+       & \textbf{Ad Load (Absolute)} 
+           & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}. \\
+       & \textbf{Click Entropy} 
+           & Measures uncertainty/diversity in ad clicks for a query; high entropy may imply users find ads less relevant \cite{sagtani2023quantifying}. \\
+\bottomrule
+\end{tabularx}
+\caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
+\label{tab:proxy-metrics}
+\end{table}
 
 
 \textbf{Utility functions are mathematical constructs used to estimate the net value of conflicting objectives \cite{Stigler1950}.} A utility function is a \textbf{composite reward function} that allows the agent to integrate various rewards or metrics from multiple objectives using a unified currency, facilitating more nuanced decision-making across competing priorities \cite{Stigler1950}. The ability to compare two utilities, like those of revenue and engagement normalized to a common scale, is critical for any principled blending of organic items and ads \cite{yan2020ads}.  Most utility functions are linear though this linearity is not a requirement for how the individual utility of each component is calculated \cite{wen2019learning, zhao2020jointly}. 
@@ -361,144 +359,134 @@ A \textbf{canonical utility function} at the policy layer to \textit{blend} ads 
 In some cases, a very simple unified function can suffice over a complex utility function. Researchers at Alibaba introduced the concept of Click Yield, which is defined as the ratio of the total number of clicks on all items (ads + organic results) to the total number of impressions on a page \cite{zhang2018whole}. Click Yield provides a holistic evaluation of page performance, accounting for the interactive effects between ads and organic content, and helping to mitigate the bias that arises from examining CTR in isolation. Their optimization task maximizes total revenue while ensuring that the Click Yield does not fall below a certain threshold (T)  \cite{zhang2018whole}. A comparison of utility function formulations is shown in Table \ref{tab:utility-comparison}.
 
 \begin{table}[ht]
-\centering
-\includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{utility-comparison-table.png}
+    \centering
+    % \renewcommand{\arraystretch}{1.3}  % Adjust row height spacing
+    \begin{adjustbox}{max width=\textwidth}
+    \small % Decrease font size for the table
+    % \setlength{\tabcolsep}{6t} % Increase spacing between text and vertical lines
+    \renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|p{1.5 cm}|p{1 cm}|p{4.5 cm}|p{4.5 cm}|p{4.5 cm}|}
+    \hline
+    \textbf{Company} & \textbf{Paper} & \textbf{Organic Content Reward/Utility} & \textbf{Ads Reward/Utility} & \textbf{Blended Reward/Utility} \\ 
+    \hline
+    TikTok & \cite{zhao2021dear} & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        User Experience \((r_t^{ex})\): Measures the negative impact of displaying an ad on the user's experience, with a binary outcome. A positive reward (1) is given if the user continues browsing after seeing the ad, while a negative reward (-1) is given if the user leaves the platform after seeing the ad.
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        Ad Income \((r_t^{ad})\): Represents the immediate revenue generated from displaying an ad. It provides a positive value if an ad is displayed, contributing to maximizing advertising income.
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        \[
+        r_t(s_t, a_t) = r_t^{ad} + \alpha \cdot r_t^{ex}
+        \]
+        Here, \(\alpha\) is a hyperparameter that controls the trade-off between maximizing ad revenue and minimizing negative user experience.
+        \vspace{4pt}
+    \end{minipage} \\
+    \hline
+    TikTok & \cite{zhao2020jointly} & 
+    $R_{\text{rec}}(s_t, a_t)$ Engagement metric (e.g., dwell time, clicks, purchases)  
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt} 
+    \( R_{\text{ad}}(s_t, a_t) = 
+    \begin{cases} 
+        1 & \text{if user stays after ad} \\
+        0 & \text{if user leaves after ad} 
+    \end{cases} \) 
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+    \( R_{\text{total}}(s_t, a_t) = \alpha \cdot R_{\text{rec}}(s_t, a_t) + \beta \cdot R_{\text{ad}}(s_t, a_t) \)
+        \vspace{4pt}
+    \end{minipage} \\
+    \hline
+    Alibaba & \cite{zhang2018whole} & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        Click Yield (CY): Measures the overall performance of the entire page, considering both ads and organic content. It is defined as the ratio of total clicks on all items (both ads and organic) over the total number of impressions.
+        \[
+        CY_{ij} = \frac{\sum_{n=1}^{N} Click(i, j, n)}{Imp(i, j)}
+        \]
+        Where \(Click(i, j, n)\) is the click for item \(n\) in list \(j\), and \(Imp(i, j)\) is the number of impressions.
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        Revenue (REV): For sponsored content, revenue is computed based on the click-through rate (CTR) and cost per click (CPC).
+        \[
+\begin{aligned}
+REV_{ij} = \sum_{n=1}^{N} & \, CTR(i, j, n) \\
+& \times CPC(i, j, n)
+\end{aligned}
+\]
+        The CPC is determined by the auction mechanism (usually Generalized Second Price Auction).
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        The system optimizes the trade-off between revenue (REV) and Click Yield (CY). The optimization problem is defined as:
+        \[
+        \max \sum_{i,j} REV_{ij} \cdot x_{ij}
+        \]
+        Subject to the constraint:
+        \[
+        \frac{\sum_{i,j} CY_{ij} \cdot x_{ij}}{\sum_{i,j} x_{ij}} \geq T
+        \]
+        Where \(T\) is a threshold for the average Click Yield, ensuring user satisfaction.
+        \vspace{4pt}
+    \end{minipage} \\
+    \hline
+    LinkedIn & \cite{yan2020ads} & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        Expected Engagement Utility: Measures user actions like clicks, comments, shares, or time spent on organic content. The goal is to maximize engagement with organic content.
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        Expected Revenue Utility (for ads): Evaluates the revenue generated from ads, typically calculated as the product of the bid amount and the predicted click-through rate (pCTR).
+        \vspace{4pt}
+    \end{minipage}
+    & 
+    \begin{minipage}{4.5cm}
+    \vspace{4pt}
+        The utility function for ads and organic content is formulated as:
+        \[
+        \max \sum_i x_i r_i - \frac{w}{2} \| x \|^2
+        \]
+        Subject to the engagement constraint:
+        \[
+        \sum_i x_i u_{ai} + (1 - x_i) u_{oi} \geq C
+        \]
+        Where:
+        \begin{itemize}
+            \item \(x_i\) is a decision variable determining whether to place an ad in position \(i\),
+            \item \(r_i\) represents the revenue utility for ad \(i\),
+            \item \(u_{ai}\) and \(u_{oi}\) represent the engagement utilities for ads and organic content, respectively,
+            \item \(C\) is the engagement threshold.
+        \end{itemize}
+        The shadow bid \(\alpha\) acts as a conversion factor to blend the two objectives by equating engagement utility and revenue in a comparable manner.
+        \vspace{4pt}
+    \end{minipage} \\
+    \hline
+\end{tabular}
+\end{adjustbox}
 \caption{Comparison of Utility/Reward Formulation Approaches across Different Companies}
 \label{tab:utility-comparison}
 \end{table}
-
-
-
-% Adjusted table with better column width control and proper spacing
-% \begin{table}[ht]
-%     \centering
-%     % \renewcommand{\arraystretch}{1.3}  % Adjust row height spacing
-%     \begin{adjustbox}{max width=\textwidth}
-%     \small % Decrease font size for the table
-%     % \setlength{\tabcolsep}{6t} % Increase spacing between text and vertical lines
-%     \renewcommand{\arraystretch}{1.15}
-% \begin{tabular}{|p{1.5 cm}|p{1 cm}|p{4.5 cm}|p{4.5 cm}|p{4.5 cm}|}
-%     \hline
-%     \textbf{Company} & \textbf{Paper} & \textbf{Organic Content Reward/Utility} & \textbf{Ads Reward/Utility} & \textbf{Blended Reward/Utility} \\ 
-%     \hline
-%     TikTok & \cite{zhao2021dear} & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         User Experience \((r_t^{ex})\): Measures the negative impact of displaying an ad on the user's experience, with a binary outcome. A positive reward (1) is given if the user continues browsing after seeing the ad, while a negative reward (-1) is given if the user leaves the platform after seeing the ad.
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         Ad Income \((r_t^{ad})\): Represents the immediate revenue generated from displaying an ad. It provides a positive value if an ad is displayed, contributing to maximizing advertising income.
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         \[
-%         r_t(s_t, a_t) = r_t^{ad} + \alpha \cdot r_t^{ex}
-%         \]
-%         Here, \(\alpha\) is a hyperparameter that controls the trade-off between maximizing ad revenue and minimizing negative user experience.
-%         \vspace{4pt}
-%     \end{minipage} \\
-%     \hline
-%     TikTok & \cite{zhao2020jointly} & 
-%     $R_{\text{rec}}(s_t, a_t)$ Engagement metric (e.g., dwell time, clicks, purchases)  
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt} 
-%     \( R_{\text{ad}}(s_t, a_t) = 
-%     \begin{cases} 
-%         1 & \text{if user stays after ad} \\
-%         0 & \text{if user leaves after ad} 
-%     \end{cases} \) 
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%     \( R_{\text{total}}(s_t, a_t) = \alpha \cdot R_{\text{rec}}(s_t, a_t) + \beta \cdot R_{\text{ad}}(s_t, a_t) \)
-%         \vspace{4pt}
-%     \end{minipage} \\
-%     \hline
-%     Alibaba & \cite{zhang2018whole} & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         Click Yield (CY): Measures the overall performance of the entire page, considering both ads and organic content. It is defined as the ratio of total clicks on all items (both ads and organic) over the total number of impressions.
-%         \[
-%         CY_{ij} = \frac{\sum_{n=1}^{N} Click(i, j, n)}{Imp(i, j)}
-%         \]
-%         Where \(Click(i, j, n)\) is the click for item \(n\) in list \(j\), and \(Imp(i, j)\) is the number of impressions.
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         Revenue (REV): For sponsored content, revenue is computed based on the click-through rate (CTR) and cost per click (CPC).
-%         \[
-% \begin{aligned}
-% REV_{ij} = \sum_{n=1}^{N} & \, CTR(i, j, n) \\
-% & \times CPC(i, j, n)
-% \end{aligned}
-% \]
-%         The CPC is determined by the auction mechanism (usually Generalized Second Price Auction).
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         The system optimizes the trade-off between revenue (REV) and Click Yield (CY). The optimization problem is defined as:
-%         \[
-%         \max \sum_{i,j} REV_{ij} \cdot x_{ij}
-%         \]
-%         Subject to the constraint:
-%         \[
-%         \frac{\sum_{i,j} CY_{ij} \cdot x_{ij}}{\sum_{i,j} x_{ij}} \geq T
-%         \]
-%         Where \(T\) is a threshold for the average Click Yield, ensuring user satisfaction.
-%         \vspace{4pt}
-%     \end{minipage} \\
-%     \hline
-%     LinkedIn & \cite{yan2020ads} & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         Expected Engagement Utility: Measures user actions like clicks, comments, shares, or time spent on organic content. The goal is to maximize engagement with organic content.
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         Expected Revenue Utility (for ads): Evaluates the revenue generated from ads, typically calculated as the product of the bid amount and the predicted click-through rate (pCTR).
-%         \vspace{4pt}
-%     \end{minipage}
-%     & 
-%     \begin{minipage}{4.5cm}
-%     \vspace{4pt}
-%         The utility function for ads and organic content is formulated as:
-%         \[
-%         \max \sum_i x_i r_i - \frac{w}{2} \| x \|^2
-%         \]
-%         Subject to the engagement constraint:
-%         \[
-%         \sum_i x_i u_{ai} + (1 - x_i) u_{oi} \geq C
-%         \]
-%         Where:
-%         \begin{itemize}
-%             \item \(x_i\) is a decision variable determining whether to place an ad in position \(i\),
-%             \item \(r_i\) represents the revenue utility for ad \(i\),
-%             \item \(u_{ai}\) and \(u_{oi}\) represent the engagement utilities for ads and organic content, respectively,
-%             \item \(C\) is the engagement threshold.
-%         \end{itemize}
-%         The shadow bid \(\alpha\) acts as a conversion factor to blend the two objectives by equating engagement utility and revenue in a comparable manner.
-%         \vspace{4pt}
-%     \end{minipage} \\
-%     \hline
-% \end{tabular}
-% \end{adjustbox}
-% \caption{Comparison of Utility/Reward Formulation Approaches across Different Companies}
-% \label{tab:utility-comparison}
-% \end{table}
 
 
 \subsection{Action Space Representation}
