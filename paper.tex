@@ -680,11 +680,9 @@ While the previous discussion focused on canonical exploration strategies that a
 
 \begin{table*}[ht]
     \centering
-    \renewcommand{\arraystretch}{1.15}
-    \small
-    \hspace*{-1.5cm}
-
-    \begin{tabular}{|>{\raggedright\arraybackslash}p{1.4cm}|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{3.0cm}|}
+    \renewcommand{\arraystretch}{1.05}
+    \footnotesize
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{1.3cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{2.7cm}|}
         \hline
         \textbf{Method} & \textbf{How It Works} & \textbf{Pros} & \textbf{Cons} & \textbf{Best Use Cases} \\ 
         \hline
@@ -692,7 +690,7 @@ While the previous discussion focused on canonical exploration strategies that a
         Selects the best-known action with probability \(1 - \epsilon\) and explores randomly with probability \(\epsilon\). & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Simple to implement
                 \item Low computational cost
                 \item Easy to understand
@@ -701,7 +699,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Fixed exploration rate
                 \item Might miss better actions
                 \item Not adaptive to context
@@ -710,7 +708,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Simple, static environments
                 \item Prioritize computational efficiency
             \end{itemize}
@@ -720,7 +718,7 @@ While the previous discussion focused on canonical exploration strategies that a
         Selects actions based on confidence intervals combining reward estimates and uncertainty. & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Systematic exploration
                 \item Minimizes long-term regret
                 \item Strong theoretical foundations
@@ -729,7 +727,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item May overexplore uncertain actions
                 \item Higher computational complexity
             \end{itemize}
@@ -737,7 +735,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Real-time ad placement
                 \item Long-term optimization
             \end{itemize}
@@ -747,7 +745,7 @@ While the previous discussion focused on canonical exploration strategies that a
         Extends UCB by using regression oracles to compute confidence intervals based on contextual features. & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Handles high-dimensional, sparse data
                 \item More accurate reward estimates
                 \item Well-suited for complex environments
@@ -756,7 +754,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item High computational cost
                 \item Difficult to scale
             \end{itemize}
@@ -764,7 +762,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item High-dimensional environments
                 \item Needs precise reward prediction
             \end{itemize}
@@ -774,7 +772,7 @@ While the previous discussion focused on canonical exploration strategies that a
         Uses Bayesian sampling from posterior distributions to estimate optimal actions. & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Adapts quickly to new data
                 \item Naturally balances exploration
                 \item Effective for cold-start problems
@@ -783,7 +781,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Can exhibit high variance
                 \item Moderate computational complexity
             \end{itemize}
@@ -791,7 +789,7 @@ While the previous discussion focused on canonical exploration strategies that a
         & 
         \begin{minipage}[t]{\linewidth}
             \raggedright
-            \begin{itemize}[leftmargin=*, itemsep=1pt]
+            \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt]
                 \item Cold-start and sparse data
                 \item Dynamic, shifting environments
             \end{itemize}
