@@ -177,6 +177,81 @@ While recent and highly cited work was prioritized, papers introducing novel met
 
 This section traces the evolution of advertising recommendation algorithms, culminating in the adoption of RL to overcome the limitations of earlier approaches. It begins by outlining how early online advertising primarily mirrored offline methods through banner ads and other static formats. It continues by explaining how static online advertising evolved over time to incorporate rule-based models and more sophisticated heuristic techniques. The discussion then transitions to the integration of machine learning methods, including regression-based models, tree-based algorithms, and collaborative filtering, followed by the emergence of deep learning and embedding-based approaches that effectively capture the nonlinear interactions between users and content. Finally, RL is introduced as a promising solution to address the shortcomings of preceding methodologies. This evolution is visually represented in Figure \ref{fig:ad_timeline}, which shows the initial adoption and popularization of techniques and methodologies in online advertising. \\
 
+Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evolutionary tracks in ad optimization: (1) pricing and objectives, (2) representation, and (3) sequential horizon of decision-making. These dimensions evolved somewhat in parallel rather than strictly sequentially, and modern systems typically combine advances from all three tracks. This framework helps practitioners identify which dimension requires improvement for their specific business context. Additionally, Table~\ref{tab:evaluation-methods} describes complementary evaluation methods used to validate and infer policy performance.
+
+\begin{table*}[ht]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{3pt}
+
+% Track 1: Pricing & Objectives
+\textbf{Track 1: Evolution of Pricing \& Objectives}\\[0.3em]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth}}
+\toprule
+\textbf{Stage} & \textbf{What It Optimizes} & \textbf{Shortcomings} & \textbf{When Sufficient} \\
+\midrule
+\textbf{CPM} (Cost per Mille) & Impressions; brand exposure & No incentive for relevance; misaligned with user value & Brand awareness; guaranteed reach campaigns \\
+\textbf{CPC} (Cost per Click) & Clicks; measurable engagement & Incentivizes clickbait; ignores post-click behavior & Direct response; traffic-focused goals \\
+\textbf{CPA} (Cost per Action) & Conversions; purchases, sign-ups & Sparse signal; attribution challenges & E-commerce; clear conversion funnels \\
+\textbf{Utility Functions} & Multi-objective (revenue + engagement + fatigue) & Weight tuning is subjective; hard to validate offline & When explicit trade-offs between objectives are required \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1em}
+
+% Track 2: Representation
+\textbf{Track 2: Evolution of Representation}\\[0.3em]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth}}
+\toprule
+\textbf{Stage} & \textbf{How Users/Items Are Encoded} & \textbf{Shortcomings} & \textbf{When Sufficient} \\
+\midrule
+\textbf{Demographics / Rules} & Hand-crafted segments (age, gender, location) & Coarse; no personalization; ad fatigue & Small catalogs; regulatory constraints on data use \\
+\textbf{Tabular Features} & Engineered features (click history, session stats) & Manual feature engineering; misses nonlinear patterns & Interpretable models required; limited compute \\
+\textbf{Embeddings} (Two-tower) & Dense vectors capturing user-item similarity & Pointwise; doesn't model sequences or context shifts & Large-scale retrieval; content with rich metadata \\
+\textbf{Attention / Transformers} & Contextual, sequential representations; multi-head & Complex tuning; heads vary across users/time & Sequential sessions; long-range dependencies matter \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1em}
+
+% Track 3: Sequential Horizon
+\textbf{Track 3: Evolution of Sequential Decision-Making}\\[0.3em]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth}}
+\toprule
+\textbf{Stage} & \textbf{Sequence Consideration} & \textbf{Shortcomings} & \textbf{When Sufficient} \\
+\midrule
+\textbf{Rule-based} & None; static if-then logic & No learning; manual updates; ignores user behavior & Low traffic; strict compliance; simple business rules \\
+\textbf{Supervised ML} (LR, GBM, DL) & Pointwise; each decision independent & Ignores sequential dependencies; no exploration & When decisions are approximately independent \\
+\textbf{Multi-Armed Bandits} & One-step; no context & No personalization; same arm for all users & Few discrete treatments; homogeneous user base \\
+\textbf{Contextual Bandits} & One-step with context; special case of RL & Actions don't influence future states; fixed action set & Real-time personalization; immediate rewards suffice \\
+\textbf{Full RL} & Multi-step; actions shape future states & Sample inefficiency; reward design; safety/interpretability & Extended sessions; ad fatigue; long-horizon objectives \\
+\bottomrule
+\end{tabularx}
+
+\caption{Three Evolutionary Tracks in Ad Optimization. Modern systems combine advances from all three tracks. Practitioners should identify which dimension is the bottleneck: Are objectives misaligned (Track 1)? Are representations too coarse (Track 2)? Or is the decision horizon too myopic (Track 3)?}
+\label{tab:evolution-tracks}
+\end{table*}
+
+\begin{table}[ht]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.30\linewidth} >{\raggedright\arraybackslash}p{0.44\linewidth}}
+\toprule
+\textbf{Method} & \textbf{Objective} & \textbf{Use Case} \\
+\midrule
+\textbf{A/B Testing} & Validate experiments; causal attribution & New model launches; feature comparisons; statistical significance required \\
+\textbf{Offline Replay} & Infer policy performance from logs; counterfactual estimation & Policy evaluation before deployment; large parameter search; risk-averse exploration \\
+\bottomrule
+\end{tabularx}
+\caption{Complementary Evaluation Methods. A/B testing validates experiments online, while Offline Replay enables inference on logged data. Both can be used alongside any decision-making approach in Track 3.}
+\label{tab:evaluation-methods}
+\end{table}
+
 \subsection{From Rule-Based Advertising to Traditional Machine Learning}
 Around the early 2000s, online advertising largely mirrored offline practices, heavily relying on non-targeted formats such as banner ads \cite{kant2021history}. These generic advertising methods conflicted with the objective of search engines of efficiently directing users to relevant content \cite{fain2006sponsored}. As a marginal improvement on nontargeted ad formats like banner ads, advertisers began to utilize simple \texttt{if-then} logic with predefined rules to select and display ads based on basic criteria like user demographics. While rule-based systems were straightforward to implement, their lack of flexibility and personalization became evident as ad fatigue, defined as reduced user engagement due to repeated exposure to the same advertisement, persisted \cite{abrams2007personalized}. This issue underscored the necessity of not only leveraging user signals but also optimizing ad load tuning parameters, such as frequency and placement, to maintain user interest and maximize click-through rates \cite{abrams2007personalized}. For instance, researchers at LinkedIn introduced concepts like top slot - highest eligible position for an ad within the feed -  and minimum gap - the required distance between consecutive ads to prevent oversaturation - as ad load tuning parameters \cite{yan2020ads}. Their research indicated that users are more likely to click on ads that are spaced farther apart \cite{yan2020ads}. \\
 
@@ -186,7 +261,6 @@ The evolution of ad pricing, from paying for impressions to paying for user acti
 
 The next set of innovations following heuristics and performance-based targeting was led by machine learning (ML) and A/B testing \cite{barajas2022online}. From 2010 to 2015, ad selection techniques evolved significantly with the adoption of machine learning models such as Logistic Regression, Decision Trees, and Gradient Boosting Machines \cite{cui2015global}. By leveraging historical data and diverse user behavior signals, these models enabled more accurate predictions of user engagement \cite{cui2015global}. In parallel, A/B testing allowed practitioners to systematically compare models and features, ensuring that any new implementation delivered measurable performance gains \cite{barajas2022online}.
 Despite these successes, traditional tabular models struggled to capture nuanced user intent, particularly when processing more complex data such as images or text. In the early 2010s, deep learning gained momentum with breakthroughs like AlexNet \cite{krizhevsky2012imagenet}, which demonstrated the power of neural networks to handle unstructured high-dimensional data. This ability to capture complex, nonlinear interactions dramatically improved ad recommendations, especially through the use of embeddings, which are dense vector representations that map words or images into high-dimensional spaces. Metrics like cosine similarity further refined personalization by aligning recommendations with user interests \cite{covington2016deep}. Embedding-based models, particularly two-tower architectures, presented a major leap forward in ad recommendation systems by effectively capturing intricate relationships between users and ads. These models utilize two neural networks: one dedicated to encoding user information and the other to encoding ad (item) information. The outputs from these networks are then combined to predict user engagement with ads \cite{vorotilov2023scaling}. This approach not only boosted accuracy but also scaled effectively. Despite the significant improvements that embedding-based models introduced in terms of predictive accuracy and scalability of ad recommendation systems, the practical challenges of balancing multiple objectives, such as maximizing revenue, mitigating ad fatigue, and sustaining long-term user engagement remained unresolved.  
-
 
 \textbf{Multi-Armed Bandits (MABs)} emerged as a powerful method for online advertising around the 2010s to tackle the explore–exploit tradeoff, which consists of finding the optimal balance between choosing new ad policies with unknown performance and showing older ad policies with known positive performance \cite{schwartz2017customer, burtini2015improving}. MABs are a class of algorithms for dynamic decision-making under uncertainty, originally developed in mid-20th-century probability theory \cite{robbins1952sequential}. While MABs had been widely applied in areas such as clinical trials \cite{villar2015multi, thompson1933likelihood}, they were adopted in large-scale web and advertising platforms during the early 2010s \cite{li2010contextual,chapelle2011empirical, schwartz2017customer}.  
 
@@ -200,11 +274,15 @@ Although utility-weighted bandits can encode long-term targets via proxy rewards
 
 \subsection{Advances in Deep Learning: Attention Models, Transformers, and Contextual Bandits}
 
-While embedding-based models greatly enhanced the predictive power of recommendation systems, capturing the full complexity of user sequences, especially over long time spans, remained a challenge for sequential deep learning methods such as  Long Short-Term Memory networks (LSTMs) and Gated Recurrent Units (GRUs) \cite{vaswani2017attention, gao2024mamba}. Traditional recurrent networks (e.g., LSTMs or GRUs) process sequences step by step, typically encoding an entire sequence into a single fixed-size vector \cite{Sutskever2014}. This design poses several challenges. Because Recurrent Neural Networks (RNNs) operate strictly in a sequential manner, they cannot process multiple parts of the sequence in parallel, creating bottlenecks and risking the loss or blurring of details, especially those from earlier steps in long sequences \cite{vaswani2017attention}.  Moreover, standard RNNs inherently prioritize recent inputs as information is passed along, which attenuates earlier signals and leads to the well-known vanishing gradient problem in lengthy sequences and fails to effectively capture long-term dependencies \cite{Bengio1994, Pascanu2013}. 
+%% Goal: optimize for long term engagement in revenue
 
-To address training inefficiencies in RNNs and the difficulty of capturing long-term dependencies, attention mechanisms allow direct access to any position in the sequence, enabling the model to focus on relevant features in the sequence regardless of their temporal distance \cite{vaswani2017attention}. By computing pairwise interactions across all positions in the sequence, Transformers overcome the sequential bottlenecks of RNNs and enable parallel computation \cite{vaswani2017attention}. The ability to attend to any part of the input at any time allows Transformers to model long-range dependencies with far greater efficiency and accuracy than RNN-based architectures \cite{vaswani2017attention}. This paradigm shift led to the development of the Transformer architecture, which entirely replaces recurrence with self-attention, fundamentally redefining sequence modeling \cite{vaswani2017attention}.
+%% missing: what happens if you only optimize pointwise. why is getting sequences right a problem 
 
-The ability to train deep models efficiently at scale has unlocked previously impractical projects, and Transformer-based architectures (e.g. BERT, GPT) are now standard building blocks in modern AI systems \cite{brown2020language, kaplan2020scaling}. One of the key innovations of the Transformer architecture is its multi-head attention mechanism \cite{vaswani2017attention}. In an advertising context, multi-head attention naturally accommodates multi-objective learning \cite{ma2018modeling}. For example, one head could be tuned to prioritize short-term engagement metrics (e.g., click-through rate or CTR) by attending to recent user activities and relevant ad features, while another head could emphasize longer-term outcomes, such as mitigating ad fatigue or preserving user satisfaction \cite{zhao2019recommending, ma2018modeling}. Each head learns a distinct set of attention weights, enabling the model to isolate and capture unique signals that serve different goals \cite{an2024tmh}. The outputs from these multiple heads are then aggregated, typically concatenated and linearly transformed, into a single representation or score, providing a unified but multi-faceted embedding of user–ad interactions \cite{vaswani2017attention, lyu2023entire}. However, determining the appropriate attention heads and their optimal weighting remains a complex challenge \cite{vaswani2017attention, Kang2018, Voita2019}. The optimal weights may vary not only across different users and content types but also over time \cite{Zhou2018, Zhou2019}. Additionally, shifting business objectives, engineering constraints, and competing optimization objectives further complicate the design process \cite{Mehrotra2018, Mehrotra2020, Jannach2023}. 
+Recommendation systems typically optimize short-term observable signals (e.g., clicks or engagement) that act as proxies for longer-term objectives such as long term revenue and engagement. While embedding-based models greatly improved the ability to encode non-linear representations of users, items, and their interactions, using these signals to optimize for pointwise independent interactions may lead to a suboptimal optimization over the length of the horizon of optimization. The true goal is to jointly optimize for sum of engagement and monetization rewards over the long term. 
+
+The nature of the problem calls for sequential modelling. The ability to attend to any part of the input at any time allows Transformers to model long-range dependencies with far greater efficiency and accuracy than RNN-based architectures \cite{vaswani2017attention}. 
+
+One of the key innovations of the Transformer architecture is its multi-head attention mechanism \cite{vaswani2017attention}. In an advertising context, multi-head attention naturally accommodates multi-objective learning \cite{ma2018modeling}. For example, one head could be tuned to prioritize short-term engagement metrics (e.g., click-through rate or CTR) by attending to recent user activities and relevant ad features, while another head could emphasize longer-term outcomes, such as mitigating ad fatigue or preserving user satisfaction \cite{zhao2019recommending, ma2018modeling}. Each head learns a distinct set of attention weights, enabling the model to isolate and capture unique signals that serve different goals \cite{an2024tmh}. The outputs from these multiple heads are then aggregated into a single representation or score, providing a unified but multi-faceted embedding of user–ad interactions \cite{vaswani2017attention, lyu2023entire}. However, determining the appropriate attention heads and their optimal weighting remains a complex challenge \cite{vaswani2017attention, Kang2018, Voita2019}. The optimal weights may vary not only across different users and content types but also over time \cite{Zhou2018, Zhou2019}. Additionally, shifting business objectives, engineering constraints, and competing optimization objectives further complicate the design process \cite{Mehrotra2018, Mehrotra2020, Jannach2023}. 
 
 %How is head selection and weighing typically done 
 Selecting the right heads in Multi-Task Attention Models and determining their optimal weighting is not a deterministic process \cite{Michel2019, Voita2019}. It typically requires iterative experimentation, involving both offline analysis (e.g., hyperparameter tuning, head ablation studies) and online testing (A/B experiments) \cite{Michel2019, kang2018sasrec}. This process is particularly challenging for new users and new content, where slow adaptation can result in suboptimal personalization and early churn \cite{Schein2002, Bobadilla2013}. 
@@ -212,16 +290,14 @@ Selecting the right heads in Multi-Task Attention Models and determining their o
 %tie this up to Offline Replay 
 To address difficulties related to policy optimization, like weight tuning and head selection,  \textit{Offline Replay} is often employed to find optimal policies in large parameter search spaces  \cite{agarwal2016statistical, levine2020offline, agarwal2020optimistic}. This technique typically begins with data collection via A/B/n experiments, where different policies are randomly assigned to users \cite{agarwal2019online, chen2009large}. Afterward, Offline Replay simulates the effects of various ad policies across different user segments and estimates the potential rewards based on logged interactions \cite{agarwal2016statistical}. In this context, ``reward'' refers to the performance metric we aim to maximize (i.e. clicks, likes, shares, revenue) \cite{wu2017returning}. However, in many cases, the true optimal treatment is not explicitly tested \cite{agarwal2019online}. Here, importance sampling corrects for differences between the observed behavior policy and the target policy, improving estimation accuracy \cite{Sutton1998, dudik2011doubly}.  Based on the collected data on random assignments between policies and users typically involved in Offline Replay, one can use different policy learning methods to map the optimal policies from user ids, content types, and other contextual signals for the optimal weights at any point in time \cite{swaminathan2015counterfactual}. 
 
-
-%  As a form of counterfactual learning, it estimates potential rewards under different policies by simulating outcomes based on logged interactions. This enables the system to learn from sparse or delayed feedback and serves as a critical tool for safely testing new policies offline \cite{sagtani2024ad}.\\
-
-% In this context, ``reward'' refers to the performance metric we aim to maximize. For example, a click or any other positive action on an item is considered a reward. Sometimes, a positive action like a click can be weighted by a downstream utility, such as advertising revenue or time spent on a landing page (the page displayed after a user clicks on a recommended item), to derive a weighted reward. Our goal is to estimate the expected reward of a new ad policy using data collected in the past \cite{agarwal2016statistical}.\\
-
 Offline replay often assumes that user preferences and item availability do not change significantly during data collection. However, in real ad systems, these factors can shift, causing offline data to become stale or biased \cite{levine2020offline, agarwal2014taming}. Contextual bandits address this limitation by leveraging continuous feedback from live user interactions, preventing the policy from being locked into a static offline dataset \cite{li2010contextual}. Contextual bandits can be thought of as a special case of RL, where an action selection does not influence future states \cite{bubeck2012regret, Sutton1998}. Unlike full RL, which models long-term state transitions, contextual bandits assume that each decision is independent, optimizing for immediate rewards rather than a multi-step trajectory \cite{bubeck2012regret, Sutton1998}. This makes them particularly well-suited for recommender systems, where ranking decisions can be treated as independent events \cite{afsar2022reinforcement, zhou2016latent}. Additionally, contextual bandits naturally balance exploration and exploitation, allowing them to adapt dynamically to user behavior in real time \cite{li2010contextual}. However, a practical limitation of contextual bandits is that they select actions from a fixed set defined at deployment time, such as preconfigured ad policies or treatment arms \cite{bietti2021contextual}. As a result, the policy’s performance is inherently constrained by the quality and granularity of the available states and actions at the time of inference \cite{dimitrakakis2018decision}.
 
 Although contextual bandits inherently focus on short-term rewards, they can be tuned to approximate long-term objectives by encoding historical or delayed outcomes into the feature space or the immediate reward function \cite{mcdonald2023impatient, wu2017returning}. For instance, if an attention head emphasizing ad engagement indirectly correlates with better retention, a contextual bandit can increase its weight over time, provided that retention signals are reflected in the contextual features or the reward proxy \cite{yi2023progressive}. However, full RL remains more appropriate for scenarios demanding explicit multi-step optimization, where actions taken now significantly shape future user states \cite{gauci2018horizon}. Contextual bandits thus offer a practical trade-off, providing continuous adaptation and efficient online learning without the computational complexity of fully modeling multi-step state transitions \cite{gauci2018horizon, levine2020offline}.
 
 Despite the practical advantages that contextual bandits offer for real-time experimentation and short-horizon reward maximization, they remain limited in scenarios where user states evolve over repeated interactions \cite{Sutton1998}. Modern advertising platforms often contend with extended user sessions and multiple recurring visits, demanding an approach capable of modeling multi-step feedback loops. RL naturally extends these capabilities by incorporating stateful dynamics and cumulative rewards, capturing phenomena like ad fatigue \cite{ccelik2023ad} and long-term retention \cite{wu2017returning}. Recent industrial deployments underscore RL’s growing importance in ads: ByteDance uses RL-based systems \cite{zhao2020jointly,zhao2021dear} to balance immediate revenue with session-level engagement in short-video feeds, Meta (Facebook) has leveraged policy-gradient methods for sequencing notifications and ad placements over evolving user states \cite{gauci2018horizon}, and companies like Google are experimenting with RL-driven ad scheduling that accounts for shifting user contexts at scale \cite{zhao2024survey}. These efforts demonstrate how RL can transcend the myopic focus of bandits to address long-horizon outcomes, multi-objective trade-offs, and dynamic user behaviors. In the sections that follow, we explore how these RL paradigms are integrated into large-scale advertising stacks, focusing on core algorithms, design decisions, and lessons learned from real-world implementations.
+
+
+
 
 
 \section{The RL Formulation of Jointly Optimizing Ads and Content}
