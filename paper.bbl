@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{149}
+\begin{thebibliography}{146}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -172,14 +172,6 @@
 \shownote{Accessed: 2025-03-28}.
 
 
-\bibitem[Brown et~al\mbox{.}(2020)]%
-        {brown2020language}
-\bibfield{author}{\bibinfo{person}{Tom Brown}, \bibinfo{person}{Benjamin Mann}, \bibinfo{person}{Nick Ryder}, \bibinfo{person}{Melanie Subbiah}, \bibinfo{person}{Jared~D Kaplan}, \bibinfo{person}{Prafulla Dhariwal}, \bibinfo{person}{Arvind Neelakantan}, \bibinfo{person}{Pranav Shyam}, \bibinfo{person}{Girish Sastry}, \bibinfo{person}{Amanda Askell}, {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Language models are few-shot learners}.
-\newblock \bibinfo{journal}{\emph{Advances in neural information processing systems}}  \bibinfo{volume}{33} (\bibinfo{year}{2020}), \bibinfo{pages}{1877--1901}.
-\newblock
-
-
 \bibitem[Bubeck et~al\mbox{.}(2012)]%
         {bubeck2012regret}
 \bibfield{author}{\bibinfo{person}{S{\'e}bastien Bubeck}, \bibinfo{person}{Nicolo Cesa-Bianchi}, {et~al\mbox{.}}} \bibinfo{year}{2012}\natexlab{}.
@@ -347,14 +339,6 @@
 \newblock
 
 
-\bibitem[Gao et~al\mbox{.}(2024)]%
-        {gao2024mamba}
-\bibfield{author}{\bibinfo{person}{Anningzhe Gao}, \bibinfo{person}{Shan Dai}, {and} \bibinfo{person}{Yan Hu}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{Mamba hawkes process}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2407.05302}} (\bibinfo{year}{2024}).
-\newblock
-
-
 \bibitem[Gauci et~al\mbox{.}(2018)]%
         {gauci2018horizon}
 \bibfield{author}{\bibinfo{person}{Jason Gauci}, \bibinfo{person}{Edoardo Conti}, \bibinfo{person}{Yitao Liang}, \bibinfo{person}{Kittipat Virochsiri}, \bibinfo{person}{Yuchen He}, \bibinfo{person}{Zachary Kaden}, \bibinfo{person}{Vivek Narayanan}, \bibinfo{person}{Xiaohui Ye}, \bibinfo{person}{Zhengxing Chen}, {and} \bibinfo{person}{Scott Fujimoto}.} \bibinfo{year}{2018}\natexlab{}.
@@ -474,17 +458,17 @@
 
 
 \bibitem[Kang and McAuley(2018a)]%
-        {kang2018sasrec}
+        {Kang2018}
 \bibfield{author}{\bibinfo{person}{Wang-Cheng Kang} {and} \bibinfo{person}{Julian McAuley}.} \bibinfo{year}{2018}\natexlab{a}.
-\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 2018 IEEE International Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
+\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In \bibinfo{booktitle}{\emph{2018 IEEE International Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
 \newblock
 \href{https://doi.org/10.1109/ICDM.2018.00035}{doi:\nolinkurl{10.1109/ICDM.2018.00035}}
 
 
 \bibitem[Kang and McAuley(2018b)]%
-        {Kang2018}
+        {kang2018sasrec}
 \bibfield{author}{\bibinfo{person}{Wang-Cheng Kang} {and} \bibinfo{person}{Julian McAuley}.} \bibinfo{year}{2018}\natexlab{b}.
-\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In \bibinfo{booktitle}{\emph{2018 IEEE International Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
+\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 2018 IEEE International Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
 \newblock
 \href{https://doi.org/10.1109/ICDM.2018.00035}{doi:\nolinkurl{10.1109/ICDM.2018.00035}}
 
@@ -499,14 +483,6 @@
 \url{https://thereader.mitpress.mit.edu/a-history-of-the-data-tracked-user/}
 \showURL{%
 \tempurl}
-
-
-\bibitem[Kaplan et~al\mbox{.}(2020)]%
-        {kaplan2020scaling}
-\bibfield{author}{\bibinfo{person}{Jared Kaplan}, \bibinfo{person}{Sam McCandlish}, \bibinfo{person}{Tom Henighan}, \bibinfo{person}{Tom~B Brown}, \bibinfo{person}{Benjamin Chess}, \bibinfo{person}{Rewon Child}, \bibinfo{person}{Scott Gray}, \bibinfo{person}{Alec Radford}, \bibinfo{person}{Jeffrey Wu}, {and} \bibinfo{person}{Dario Amodei}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Scaling laws for neural language models}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2001.08361}} (\bibinfo{year}{2020}).
-\newblock
 
 
 \bibitem[Koren(2008)]%
@@ -919,17 +895,6 @@
 \newblock
 
 
-\bibitem[Sutskever et~al\mbox{.}(2014)]%
-        {Sutskever2014}
-\bibfield{author}{\bibinfo{person}{Ilya Sutskever}, \bibinfo{person}{Oriol Vinyals}, {and} \bibinfo{person}{Quoc~V Le}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Sequence to sequence learning with neural networks}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems (NeurIPS)}}, Vol.~\bibinfo{volume}{27}. \bibinfo{pages}{3104--3112}.
-\newblock
-\urldef\tempurl%
-\url{https://papers.nips.cc/paper_files/paper/2014/file/a14ac55a4f27472c5d894ec1c3c743d2-Paper.pdf}
-\showURL{%
-\tempurl}
-
-
 \bibitem[Sutton and Barto(2018)]%
         {Sutton1998}
 \bibfield{author}{\bibinfo{person}{Richard~S. Sutton} {and} \bibinfo{person}{Andrew~G. Barto}.} \bibinfo{year}{2018}\natexlab{}.
@@ -1017,14 +982,6 @@
 \newblock
 
 
-\bibitem[von Neumann and Morgenstern(1944)]%
-        {vonNeumannMorgenstern1944}
-\bibfield{author}{\bibinfo{person}{John von Neumann} {and} \bibinfo{person}{Oskar Morgenstern}.} \bibinfo{year}{1944}\natexlab{}.
-\newblock \bibinfo{booktitle}{\emph{Theory of Games and Economic Behavior}}.
-\newblock \bibinfo{publisher}{Princeton University Press}, \bibinfo{address}{Princeton, NJ}.
-\newblock
-
-
 \bibitem[Vorotilov and Shugaepov(2023)]%
         {vorotilov2023scaling}
 \bibfield{author}{\bibinfo{person}{Vladislav Vorotilov} {and} \bibinfo{person}{Ilnur Shugaepov}.} \bibinfo{year}{2023}\natexlab{}.
@@ -1089,6 +1046,13 @@
 \newblock
 
 
+\bibitem[Wu et~al\mbox{.}(2018)]%
+        {wu2018beyond}
+\bibfield{author}{\bibinfo{person}{Siqi Wu}, \bibinfo{person}{Marian-Andrei Rizoiu}, {and} \bibinfo{person}{Lexing Xie}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Beyond views: Measuring and predicting engagement in online videos}. In \bibinfo{booktitle}{\emph{Proceedings of the International AAAI Conference on Web and Social Media}}, Vol.~\bibinfo{volume}{12}.
+\newblock
+
+
 \bibitem[Wu et~al\mbox{.}(2021)]%
         {wu2021partially}
 \bibfield{author}{\bibinfo{person}{Yaxiong Wu}, \bibinfo{person}{Craig Macdonald}, {and} \bibinfo{person}{Iadh Ounis}.} \bibinfo{year}{2021}\natexlab{}.
@@ -1100,6 +1064,13 @@
         {xia2023transact}
 \bibfield{author}{\bibinfo{person}{Xue Xia}, \bibinfo{person}{Pong Eksombatchai}, \bibinfo{person}{Nikil Pancha}, \bibinfo{person}{Dhruvil~Deven Badani}, \bibinfo{person}{Po-Wei Wang}, \bibinfo{person}{Neng Gu}, \bibinfo{person}{Saurabh~Vishwas Joshi}, \bibinfo{person}{Nazanin Farahpour}, \bibinfo{person}{Zhiyuan Zhang}, {and} \bibinfo{person}{Andrew Zhai}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{Transact: Transformer-based realtime user action model for recommendation at pinterest}. In \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining}}. \bibinfo{pages}{5249--5259}.
+\newblock
+
+
+\bibitem[Xu et~al\mbox{.}(2023)]%
+        {xu2023optimizing}
+\bibfield{author}{\bibinfo{person}{Ruiyang Xu}, \bibinfo{person}{Jalaj Bhandari}, \bibinfo{person}{Dmytro Korenkevych}, \bibinfo{person}{Fan Liu}, \bibinfo{person}{Yuchen He}, \bibinfo{person}{Alex Nikulkov}, {and} \bibinfo{person}{Zheqing Zhu}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Optimizing long-term value for auction-based recommender systems via on-policy reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM Conference on Recommender Systems}}. \bibinfo{pages}{955--962}.
 \newblock
 
 
