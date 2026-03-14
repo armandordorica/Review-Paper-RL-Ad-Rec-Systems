@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 MAR 2026 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 MAR 2026 18:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1303,6 +1303,9 @@ Underfull \hbox (badness 1603) in paragraph at lines 610--611
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [14.14]
 
@@ -1319,6 +1322,9 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 Underfull \hbox (badness 10000) in paragraph at lines 643--644
 
  []
+
+
+Underfull \vbox (badness 7907) has occurred while \output is active []
 
 
 
@@ -1341,9 +1347,6 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [19.19]
-Underfull \vbox (badness 6396) has occurred while \output is active []
-
-
 
 [20.20]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
@@ -1371,9 +1374,6 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [23.23]
 
 [24.24]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1393,13 +1393,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 753--754
  []
 
 
+Underfull \vbox (badness 4660) has occurred while \output is active []
+
+
 
 [26.26]
-Underfull \hbox (badness 10000) in paragraph at lines 785--786
-
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1409,9 +1407,14 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [27.27]
+Underfull \hbox (badness 10000) in paragraph at lines 785--786
+
+ []
+
+
 
 [28.28]
-<detailed_ad_policy.png, id=1780, 1552.80125pt x 840.13875pt>
+<detailed_ad_policy.png, id=1779, 1552.80125pt x 840.13875pt>
 File: detailed_ad_policy.png Graphic file (type png)
 <use detailed_ad_policy.png>
 Package pdftex.def Info: detailed_ad_policy.png  used on input line 954.
@@ -1420,7 +1423,7 @@ Package pdftex.def Info: detailed_ad_policy.png  used on input line 954.
 
 Class acmart Warning: A possible image without description on input line 957.
 
-Processing 'acks' comment.
+
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1429,7 +1432,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
-[29.29]
+[29.29] Processing 'acks' comment.
 \openout3 = `comment.cut'.
 
  Comment 'acks' writing to comment.cut. Straight input of comment.cut. (./comment.cut) (./paper.bbl
@@ -1460,15 +1463,14 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [31.31{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_u7qtuy.enc}]
 LaTeX Info: Redefining \tempurl on input line 483.
-LaTeX Info: Redefining \tempurl on input line 526.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [32.32]
+LaTeX Info: Redefining \tempurl on input line 526.
 LaTeX Info: Redefining \tempurl on input line 623.
-LaTeX Info: Redefining \tempurl on input line 696.
 
 Underfull \vbox (badness 6396) has occurred while \output is active []
 
@@ -1482,17 +1484,18 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [33.33]
+LaTeX Info: Redefining \tempurl on input line 696.
 LaTeX Info: Redefining \tempurl on input line 723.
 LaTeX Info: Redefining \tempurl on input line 813.
 LaTeX Info: Redefining \tempurl on input line 857.
 LaTeX Info: Redefining \tempurl on input line 876.
-LaTeX Info: Redefining \tempurl on input line 895.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [34.34]
+LaTeX Info: Redefining \tempurl on input line 895.
 LaTeX Info: Redefining \tempurl on input line 982.
 LaTeX Info: Redefining \tempurl on input line 1016.
 
@@ -1537,13 +1540,13 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 Here is how much of TeX's memory you used:
  24583 strings out of 473190
  408038 string characters out of 5715801
- 906468 words of memory out of 5000000
+ 907539 words of memory out of 5000000
  46270 multiletter control sequences out of 15000+600000
  787243 words of font info for 625 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 90i,23n,131p,2985b,962s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,23n,131p,2985b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTBO.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on paper.pdf (36 pages, 1342254 bytes).
+Output written on paper.pdf (36 pages, 1341693 bytes).
 PDF statistics:
  1989 PDF objects out of 2073 (max. 8388607)
  1786 compressed objects within 18 object streams
