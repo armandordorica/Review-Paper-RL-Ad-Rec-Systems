@@ -234,7 +234,7 @@ Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evol
 \label{tab:evolution-tracks}
 \end{table*}
 
-\begin{table}[ht]
+\begin{table}[H]
 \setstretch{1}
 \centering
 \footnotesize
@@ -334,7 +334,7 @@ In the FrozenLake environment, the agent is a decision-maker that observes its s
 
 The use of a \textbf{reward signal} to formalize the idea of a goal is a distinctive feature of RL \cite{Sutton1998}. In an MDP, the reward is a scalar value the agent receives after taking an action in a given state and transitioning to a new state, serving as immediate feedback on the benefit or cost of the action \cite{kaelbling1996reinforcement}. This feedback allows the agent to learn a policy that maximizes the cumulative reward over time \cite{kaelbling1996reinforcement}. In simple RL scenarios, rewards are typically straightforward. For instance, the agent might receive -1 per move (to encourage shorter paths), +100 for reaching the goal (G), and -100 if it falls into a hole (H), ending the episode. However, in real-world recommendation systems, reward structures can be far more nuanced.  It is often unclear which user behaviors warrant the highest reward or how to weigh different signals \cite{mcdonald2023spotify}. In online advertising, for example, low-intent actions such as clicks may be valued less than high-intent actions like saves or purchases.
 
-Ad recommendation engines often need to balance multiple objectives, such as maximizing user engagement while also ensuring ad revenue \cite{zhang2018whole, yan2020ads, sagtani2024ad}. Long-term engagement and revenue are metrics that are particularly difficult to measure directly, especially in randomized controlled experiments that typically span only a couple of weeks \cite{mcdonald2023spotify}. The delay in outcomes (e.g., retention signals may take months to manifest) and the often subtle impact of a single intervention can make it nearly impossible to detect meaningful changes within such short time frames \cite{mcdonald2023spotify}.  As a result, proxy metrics are commonly used. For instance, click-through rate (CTR) and ad impressions serve as approximate measures of revenue, while session duration, saves, and shares act as proxies for longer-term engagement \cite{wang2022surrogate}. However, these simpler proxies can fail to capture the system’s true long-term objectives, occasionally leading to suboptimal policies \cite{mazoure2021improving}. A high CTR may reflect short-term engagement, yet it can ultimately induce ad fatigue or frustrate users if the ads are misaligned with their actual interests \cite{hohnhold2015focusing, sagtani2024ad}. Table \ref{tab:proxy-metrics} summarizes some of the most commonly used proxies in the industry across dimensions of revenue, engagement, and ad fatigue. 
+Ad recommendation engines often need to balance multiple objectives, such as maximizing user engagement while also ensuring ad revenue \cite{zhang2018whole, yan2020ads, sagtani2024ad}. Long-term engagement and revenue are metrics that are particularly difficult to measure directly, especially in randomized controlled experiments that typically span only a couple of weeks \cite{mcdonald2023spotify}. The delay in outcomes (e.g., retention signals may take months to manifest) and the often subtle impact of a single intervention can make it nearly impossible to detect meaningful changes within such short time frames \cite{mcdonald2023spotify}.  As a result, proxy metrics are commonly used. For instance, click-through rate (CTR) and ad impressions serve as approximate measures of revenue, while session duration, saves, and shares act as proxies for longer-term engagement \cite{wang2022surrogate}. However, these simpler proxies can fail to capture the system’s true long-term objectives, occasionally leading to suboptimal policies \cite{mazoure2021improving}. A high CTR may reflect short-term engagement, yet it can ultimately induce ad fatigue or frustrate users if the ads are misaligned with their actual interests \cite{hohnhold2015focusing, sagtani2024ad}. Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue} summarize commonly used proxies in the industry for revenue, engagement, and ad fatigue. 
 
 
 % \begin{figure}[H]
@@ -353,96 +353,132 @@ Ad recommendation engines often need to balance multiple objectives, such as max
 % \end{table}
 
 \begin{table}[ht]
-\setstretch{1} % Ensure normal spacing within table. Separation between lines of the same cell. 
+\setstretch{1}
 \centering
 \footnotesize
-\renewcommand{\arraystretch}{1.2}  % Tweak if needed
-\setlength{\tabcolsep}{4pt} % separation between columns 
-\begin{tabularx}{\linewidth}{p{0.12\linewidth} p{0.23\linewidth} p{0.42\linewidth} p{0.17\linewidth}}
-% the decimal points allow to control the size of the table, not of the text.
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.49\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
 \toprule
-{\bfseries Objective} & {\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
+{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
 \midrule
-    \multirow{5}{*}{\textbf{Revenue}} 
-       & \textbf{CTR (Click-Through Rate)} 
-           &  Approximates revenue potential; higher CTR often correlates with higher ad clicks \cite{zhang2018whole, yan2020ads, zhao2020jointly}. 
-           & \textbf{Positive} (higher better) \\
-       & \textbf{Ad Impressions} 
-           & Number of times an ad is displayed to users. 
-           & \textbf{Mixed} (depends on user tolerance and ad load) \\
-       & \textbf{pCTR (Predicted CTR)} 
-           & Model-estimated probability that a user will click on an ad. 
-           & \textbf{Positive} (higher better) \\
-       & \textbf{Predicted Revenue} 
-           & Often a function of bids and pCTR to estimate expected revenue  \cite{yan2020ads, zhang2018whole}. 
-           & \textbf{Positive} (higher better) \\
-       & \textbf{Click Yield} 
-           & Ratio of total clicks (ads + organic) to total impressions on a page. Helps avoid bias of optimizing CTR alone \cite{zhang2018whole}. 
-           & \textbf{Positive} (higher better) \\
-    \midrule
-    \multirow{12}{*}{\textbf{Engagement}} 
-       & \textbf{Session Duration} 
-           & Tracks how long users stay engaged per session (proxy for longer-term engagement). 
-           & \textbf{Positive} (higher better) \\
-        & \textbf{30-day Total Sessions} 
-       & Aggregated count of user sessions or interactions over a 30-day window, proxy for habit or stickiness 
-       \cite{xu2023optimizing}. 
-       & \textbf{Positive} (higher better) \\
-       & \textbf{Likes / Adds to Library} 
-       & High-intent actions indicating deeper user satisfaction and potential long-term retention \cite{mcdonald2023spotify}. 
-       & \textbf{Positive} (higher better) \\
-          & \textbf{Dwell Time} 
-       & Actual time spent viewing/reading an item, capturing depth of engagement  \cite{yi2014beyond}. 
-       & \textbf{Mixed threshold}: short clicks/views ($<5$s) negative; long clicks/views ($\geq10$s) positive \\
-       & \textbf{Shares} 
-           & Another high-intent action reflecting strong user engagement. 
-           & \textbf{Positive} (higher better) \\
-    & \textbf{Ratio-based Diversity}  
-           & Proportion of unique topic clusters in consumption history (indicates breadth of user interest) \cite{wang2022surrogate}. 
-           & \textbf{Mixed} (too low or too high can be harmful) \\
-       & \textbf{High-quality Consumption} 
-           & Tracks consumption of content with high engagement (e.g., full video views, long reads) \cite{wang2022surrogate}. 
-           & \textbf{Positive} (higher better) \\
-     & \textbf{Repeated Consumption}  
-           & Monitors how often users revisit similar content, reflecting satisfaction \cite{wang2022surrogate}. 
-           & \textbf{Mixed} (moderate repetition good; excessive repetition may reduce novelty) \\
-              & \textbf{Time to Revisit} 
-           & Interval between consecutive visits; shorter intervals suggest higher retention \cite{wang2022surrogate}. 
-           & \textbf{Negative} (lower is better) \\
-     & \textbf{Distribution-based Diversity}  
-           & Uses entropy to measure spread of topics consumed (gauges exploration vs. narrow focus) \cite{wang2022surrogate}. 
-           & \textbf{Mixed} (target range, not monotonic) \\
-    & \textbf{User Return Rate (URR)} 
-       & Fraction of users who revisit the platform after a set interval, reflecting long-term retention  \cite{wu2017returning}. 
-       & \textbf{Positive} (higher better) \\
-     & \textbf{Relative Watch Time} 
-       & Percentage of a video watched, normalized by video length (better gauge of true engagement than raw views) 
-      \cite{wu2018beyond}. 
-      & \textbf{Positive} (higher better) \\
-    \midrule
-    \multirow{6}{*}{\textbf{Ad Fatigue}} 
-       & \textbf{Depth} 
-           & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}. 
-           & \textbf{Negative} (higher is worse) \\
-       & \textbf{Length} 
-           & Decrease in time spent per session \cite{sagtani2023quantifying}. 
-           & \textbf{Negative} (higher is worse) \\
-       & \textbf{Frequency} 
-           & Decrease in number of sessions per week \cite{sagtani2023quantifying}. 
-           & \textbf{Negative} (higher is worse) \\
-       & \textbf{Ad Load (Sessions)} 
-           & Number of sessions that end (or quit) during an ad, indicating ad overload \cite{sagtani2023quantifying}. 
-           & \textbf{Negative} (higher is worse) \\
-       & \textbf{Ad Load (Absolute)} 
-           & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}. 
-           & \textbf{Negative} (higher is usually worse) \\
-       & \textbf{Click Entropy} 
-           & Measures uncertainty/diversity in ad clicks for a query; high entropy may imply users find ads less relevant \cite{sagtani2023quantifying}. 
-           & \textbf{Negative} (higher often worse relevance) \\
+\textbf{CTR (Click-Through Rate)}
+    & Approximates revenue potential; higher CTR often correlates with higher ad clicks \cite{zhang2018whole, yan2020ads, zhao2020jointly}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{pCTR (Predicted CTR)}
+    & Model-estimated probability that a user will click on an ad.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Predicted Revenue}
+    & Often a function of bids and pCTR to estimate expected revenue \cite{yan2020ads, zhang2018whole}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Click Yield}
+    & Ratio of total clicks (ads + organic) to total impressions on a page; helps avoid optimizing CTR in isolation \cite{zhang2018whole}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Ad Impressions}
+    & Number of times an ad is displayed to users.
+    & \textbf{Mixed} (context-dependent) \\
 \bottomrule
 \end{tabularx}
-\caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
-\label{tab:proxy-metrics}
+\caption{Revenue proxy metrics and their polarity.}
+\label{tab:proxy-metrics-revenue}
+\end{table}
+
+\begin{table}[ht]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.28\linewidth} >{\raggedright\arraybackslash}p{0.50\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
+\toprule
+{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
+\midrule
+\textbf{Session Duration}
+    & Tracks how long users stay engaged per session (proxy for longer-term engagement).
+    & \textbf{Positive} (higher is better) \\
+\textbf{30-day Total Sessions}
+    & Aggregated count of user sessions over a 30-day window, proxy for habit or stickiness \cite{xu2023optimizing}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Likes / Adds to Library}
+    & High-intent actions indicating deeper user satisfaction and long-term retention \cite{mcdonald2023spotify}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Shares}
+    & High-intent action reflecting strong engagement.
+    & \textbf{Positive} (higher is better) \\
+\textbf{High-quality Consumption}
+    & Consumption of content with high engagement (e.g., full video views, long reads) \cite{wang2022surrogate}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{User Return Rate (URR)}
+    & Fraction of users who revisit the platform after a fixed interval \cite{wu2017returning}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Relative Watch Time}
+    & Percentage of a video watched, normalized by video length \cite{wu2018beyond}.
+    & \textbf{Positive} (higher is better) \\
+\textbf{Dwell Time}
+    & Actual time spent viewing/reading an item, capturing depth of engagement \cite{yi2014beyond}.
+    & \textbf{Mixed} (threshold-dependent: $<5$s negative; $\geq10$s positive) \\
+\textbf{Ratio-based Diversity}
+    & Proportion of unique topic clusters in consumption history \cite{wang2022surrogate}.
+    & \textbf{Mixed} (context-dependent) \\
+\textbf{Repeated Consumption}
+    & How often users revisit similar content, reflecting satisfaction \cite{wang2022surrogate}.
+    & \textbf{Mixed} (context-dependent) \\
+\textbf{Distribution-based Diversity}
+    & Entropy-based spread of consumed topics \cite{wang2022surrogate}.
+    & \textbf{Mixed} (context-dependent) \\
+\textbf{Short-view Rate (SVR)}
+    & Fraction of impressions where watch time is below a low threshold (e.g., $<5$s) \cite{pan2023learning}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Early-skip Rate}
+    & Fraction of videos skipped or swiped away within the first few seconds (e.g., $<2$ to $3$s) \cite{pan2023learning}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Skip / Not-click Rate}
+    & Fraction of impressions with explicit negative feedback signals (e.g., skips or non-clicks), indicating low relevance \cite{zhao2018recommendations}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Non-completion Rate}
+    & Fraction of plays that end before a minimum completion threshold (e.g., $<20\%$ watched) \cite{pan2023learning}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Time to Revisit}
+    & Interval between consecutive visits; shorter intervals suggest higher retention \cite{wang2022surrogate}.
+    & \textbf{Negative} (higher is worse) \\
+\bottomrule
+\end{tabularx}
+\caption{Engagement proxy metrics and their polarity.}
+\label{tab:proxy-metrics-engagement}
+\end{table}
+
+\begin{table}[H]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.49\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
+\toprule
+{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
+\midrule
+\textbf{Depth}
+    & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Length}
+    & Decrease in time spent per session \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Frequency}
+    & Decrease in number of sessions per week \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Ad Load (Sessions)}
+    & Number of sessions that end (or quit) during an ad \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Ad Load (Absolute)}
+    & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Click Entropy}
+    & Uncertainty/diversity in ad clicks for a query; high values can indicate lower relevance \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\bottomrule
+\end{tabularx}
+\caption{Ad fatigue proxy metrics and their polarity.}
+\label{tab:proxy-metrics-fatigue}
 \end{table}
 
 
@@ -450,7 +486,7 @@ A \textbf{canonical utility function} at the policy layer to \textit{blend} ads 
     \begin{equation}
         U(x) = \alpha \times \text{Revenue} + \beta \times \text{Engagement} - \gamma \times \text{Ad Fatigue}
     \end{equation}
-    where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of ``Revenue'', ``Engagement'', and ``Ad Fatigue'', typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Table \ref{tab:proxy-metrics}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
+    where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of ``Revenue'', ``Engagement'', and ``Ad Fatigue'', typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
     
 In some cases, a very simple unified function can suffice over a complex utility function. Researchers at Alibaba introduced the concept of Click Yield, which is defined as the ratio of the total number of clicks on all items (ads + organic results) to the total number of impressions on a page \cite{zhang2018whole}. Click Yield provides a holistic evaluation of page performance, accounting for the interactive effects between ads and organic content, and helping to mitigate the bias that arises from examining CTR in isolation. Their optimization task maximizes total revenue while ensuring that the Click Yield does not fall below a certain threshold (T)  \cite{zhang2018whole}. A comparison of utility function formulations is shown in Table \ref{tab:utility-comparison}.
 

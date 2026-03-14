@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{143}
+\begin{thebibliography}{145}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -40,8 +40,7 @@
         {FrozenLakeGymnasium2023}
  \bibinfo{year}{2023}\natexlab{}.
 \newblock \bibinfo{title}{Frozen Lake Tutorial}.
-\newblock
-  \bibinfo{howpublished}{\url{https://gymnasium.farama.org/tutorials/training_agents/FrozenLake_tuto/}}.
+\newblock \bibinfo{howpublished}{\url{https://gymnasium.farama.org/tutorials/training_agents/FrozenLake_tuto/}}.
 \newblock
 \newblock
 \shownote{Accessed: 2023-03-05}.
@@ -49,132 +48,83 @@
 
 \bibitem[Abrams and Vee(2007)]%
         {abrams2007personalized}
-\bibfield{author}{\bibinfo{person}{Zo{\"e} Abrams} {and} \bibinfo{person}{Erik
-  Vee}.} \bibinfo{year}{2007}\natexlab{}.
-\newblock \showarticletitle{Personalized ad delivery when ads fatigue: An
-  approximation algorithm}. In \bibinfo{booktitle}{\emph{International Workshop
-  on Web and Internet Economics}}. Springer, \bibinfo{pages}{535--540}.
+\bibfield{author}{\bibinfo{person}{Zo{\"e} Abrams} {and} \bibinfo{person}{Erik Vee}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Personalized ad delivery when ads fatigue: An approximation algorithm}. In \bibinfo{booktitle}{\emph{International Workshop on Web and Internet Economics}}. Springer, \bibinfo{pages}{535--540}.
 \newblock
 
 
 \bibitem[Afsar et~al\mbox{.}(2022)]%
         {afsar2022reinforcement}
-\bibfield{author}{\bibinfo{person}{M~Mehdi Afsar}, \bibinfo{person}{Trafford
-  Crump}, {and} \bibinfo{person}{Behrouz Far}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Reinforcement learning based recommender systems: A
-  survey}.
-\newblock \bibinfo{journal}{\emph{Comput. Surveys}} \bibinfo{volume}{55},
-  \bibinfo{number}{7} (\bibinfo{year}{2022}), \bibinfo{pages}{1--38}.
+\bibfield{author}{\bibinfo{person}{M~Mehdi Afsar}, \bibinfo{person}{Trafford Crump}, {and} \bibinfo{person}{Behrouz Far}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Reinforcement learning based recommender systems: A survey}.
+\newblock \bibinfo{journal}{\emph{Comput. Surveys}} \bibinfo{volume}{55}, \bibinfo{number}{7} (\bibinfo{year}{2022}), \bibinfo{pages}{1--38}.
 \newblock
 
 
 \bibitem[Agarwal et~al\mbox{.}(2014)]%
         {agarwal2014taming}
-\bibfield{author}{\bibinfo{person}{Alekh Agarwal}, \bibinfo{person}{Daniel
-  Hsu}, \bibinfo{person}{Satyen Kale}, \bibinfo{person}{John Langford},
-  \bibinfo{person}{Lihong Li}, {and} \bibinfo{person}{Robert Schapire}.}
-  \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Taming the monster: A fast and simple algorithm for
-  contextual bandits}. In \bibinfo{booktitle}{\emph{International conference on
-  machine learning}}. PMLR, \bibinfo{pages}{1638--1646}.
+\bibfield{author}{\bibinfo{person}{Alekh Agarwal}, \bibinfo{person}{Daniel Hsu}, \bibinfo{person}{Satyen Kale}, \bibinfo{person}{John Langford}, \bibinfo{person}{Lihong Li}, {and} \bibinfo{person}{Robert Schapire}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Taming the monster: A fast and simple algorithm for contextual bandits}. In \bibinfo{booktitle}{\emph{International conference on machine learning}}. PMLR, \bibinfo{pages}{1638--1646}.
 \newblock
 
 
 \bibitem[Agarwal et~al\mbox{.}(2019)]%
         {agarwal2019online}
-\bibfield{author}{\bibinfo{person}{Deepak Agarwal}, \bibinfo{person}{David
-  Cornell}, \bibinfo{person}{Bin Huang}, \bibinfo{person}{Bee-Chung~Chen Lee},
-  \bibinfo{person}{Ruoxi Tang}, \bibinfo{person}{Le Zhang},
-  \bibinfo{person}{Avery Wolf}, \bibinfo{person}{Yuchen Shi},
-  \bibinfo{person}{Ye Wang}, \bibinfo{person}{Yin Guo},
-  \bibinfo{person}{Srijan~Kumar Garimella}, \bibinfo{person}{Nikita Korolko},
-  {and} \bibinfo{person}{Sandeep Muthukrishnan}.}
-  \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Online Parameter Selection for Web-based Services}.
-  In \bibinfo{booktitle}{\emph{Proceedings of the 25th ACM SIGKDD International
-  Conference on Knowledge Discovery \& Data Mining (KDD '19)}}.
-  \bibinfo{pages}{1645--1653}.
+\bibfield{author}{\bibinfo{person}{Deepak Agarwal}, \bibinfo{person}{David Cornell}, \bibinfo{person}{Bin Huang}, \bibinfo{person}{Bee-Chung~Chen Lee}, \bibinfo{person}{Ruoxi Tang}, \bibinfo{person}{Le Zhang}, \bibinfo{person}{Avery Wolf}, \bibinfo{person}{Yuchen Shi}, \bibinfo{person}{Ye Wang}, \bibinfo{person}{Yin Guo}, \bibinfo{person}{Srijan~Kumar Garimella}, \bibinfo{person}{Nikita Korolko}, {and} \bibinfo{person}{Sandeep Muthukrishnan}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Online Parameter Selection for Web-based Services}. In \bibinfo{booktitle}{\emph{Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining (KDD '19)}}. \bibinfo{pages}{1645--1653}.
 \newblock
 
 
 \bibitem[Agarwal and Chen(2016)]%
         {agarwal2016statistical}
-\bibfield{author}{\bibinfo{person}{Deepak~K Agarwal} {and}
-  \bibinfo{person}{Bee-Chung Chen}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \bibinfo{booktitle}{\emph{Statistical methods for recommender
-  systems}}.
+\bibfield{author}{\bibinfo{person}{Deepak~K Agarwal} {and} \bibinfo{person}{Bee-Chung Chen}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Statistical methods for recommender systems}}.
 \newblock \bibinfo{publisher}{Cambridge University Press}.
 \newblock
 
 
 \bibitem[Agarwal et~al\mbox{.}(2020)]%
         {agarwal2020optimistic}
-\bibfield{author}{\bibinfo{person}{Rishabh Agarwal}, \bibinfo{person}{Dale
-  Schuurmans}, {and} \bibinfo{person}{Mohammad Norouzi}.}
-  \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{An Optimistic Perspective on Offline Reinforcement
-  Learning}. In \bibinfo{booktitle}{\emph{International Conference on Machine
-  Learning (ICML)}}. \bibinfo{pages}{104–114}.
+\bibfield{author}{\bibinfo{person}{Rishabh Agarwal}, \bibinfo{person}{Dale Schuurmans}, {and} \bibinfo{person}{Mohammad Norouzi}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{An Optimistic Perspective on Offline Reinforcement Learning}. In \bibinfo{booktitle}{\emph{International Conference on Machine Learning (ICML)}}. \bibinfo{pages}{104–114}.
 \newblock
 
 
 \bibitem[An and Joe(2024)]%
         {an2024tmh}
-\bibfield{author}{\bibinfo{person}{Zijian An} {and} \bibinfo{person}{Inwhee
-  Joe}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{TMH: Two-Tower Multi-Head Attention neural network
-  for CTR prediction}.
-\newblock \bibinfo{journal}{\emph{Plos one}} \bibinfo{volume}{19},
-  \bibinfo{number}{3} (\bibinfo{year}{2024}), \bibinfo{pages}{e0295440}.
+\bibfield{author}{\bibinfo{person}{Zijian An} {and} \bibinfo{person}{Inwhee Joe}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{TMH: Two-Tower Multi-Head Attention neural network for CTR prediction}.
+\newblock \bibinfo{journal}{\emph{Plos one}} \bibinfo{volume}{19}, \bibinfo{number}{3} (\bibinfo{year}{2024}), \bibinfo{pages}{e0295440}.
 \newblock
 
 
 \bibitem[Auer et~al\mbox{.}(2002)]%
         {auer2002finite}
-\bibfield{author}{\bibinfo{person}{Peter Auer}, \bibinfo{person}{Nicolo
-  Cesa-Bianchi}, {and} \bibinfo{person}{Paul Fischer}.}
-  \bibinfo{year}{2002}\natexlab{}.
-\newblock \showarticletitle{Finite-Time Analysis of the Multiarmed Bandit
-  Problem}.
-\newblock \bibinfo{journal}{\emph{Machine learning}}  \bibinfo{volume}{47}
-  (\bibinfo{year}{2002}), \bibinfo{pages}{235--256}.
+\bibfield{author}{\bibinfo{person}{Peter Auer}, \bibinfo{person}{Nicolo Cesa-Bianchi}, {and} \bibinfo{person}{Paul Fischer}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Finite-Time Analysis of the Multiarmed Bandit Problem}.
+\newblock \bibinfo{journal}{\emph{Machine learning}}  \bibinfo{volume}{47} (\bibinfo{year}{2002}), \bibinfo{pages}{235--256}.
 \newblock
 
 
 \bibitem[Barajas et~al\mbox{.}(2022)]%
         {barajas2022online}
-\bibfield{author}{\bibinfo{person}{Joel Barajas}, \bibinfo{person}{Narayan
-  Bhamidipati}, {and} \bibinfo{person}{James~G Shanahan}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Online advertising incrementality testing:
-  Practical lessons, paid search and Emerging challenges}. In
-  \bibinfo{booktitle}{\emph{European Conference on Information Retrieval}}.
-  Springer, \bibinfo{pages}{575--581}.
+\bibfield{author}{\bibinfo{person}{Joel Barajas}, \bibinfo{person}{Narayan Bhamidipati}, {and} \bibinfo{person}{James~G Shanahan}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Online advertising incrementality testing: Practical lessons, paid search and Emerging challenges}. In \bibinfo{booktitle}{\emph{European Conference on Information Retrieval}}. Springer, \bibinfo{pages}{575--581}.
 \newblock
 
 
 \bibitem[Barkan and Koenigstein(2016)]%
         {barkan2016item2vec}
-\bibfield{author}{\bibinfo{person}{Oren Barkan} {and} \bibinfo{person}{Noam
-  Koenigstein}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Item2vec: neural item embedding for collaborative
-  filtering}. In \bibinfo{booktitle}{\emph{2016 IEEE 26th international
-  workshop on machine learning for signal processing (MLSP)}}. IEEE,
-  \bibinfo{pages}{1--6}.
+\bibfield{author}{\bibinfo{person}{Oren Barkan} {and} \bibinfo{person}{Noam Koenigstein}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Item2vec: neural item embedding for collaborative filtering}. In \bibinfo{booktitle}{\emph{2016 IEEE 26th international workshop on machine learning for signal processing (MLSP)}}. IEEE, \bibinfo{pages}{1--6}.
 \newblock
 
 
 \bibitem[Bengio et~al\mbox{.}(1994)]%
         {Bengio1994}
-\bibfield{author}{\bibinfo{person}{Yoshua Bengio}, \bibinfo{person}{Patrice
-  Simard}, {and} \bibinfo{person}{Paolo Frasconi}.}
-  \bibinfo{year}{1994}\natexlab{}.
-\newblock \showarticletitle{Learning Long-Term Dependencies with Gradient
-  Descent is Difficult}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks}}
-  \bibinfo{volume}{5}, \bibinfo{number}{2} (\bibinfo{year}{1994}),
-  \bibinfo{pages}{157--166}.
+\bibfield{author}{\bibinfo{person}{Yoshua Bengio}, \bibinfo{person}{Patrice Simard}, {and} \bibinfo{person}{Paolo Frasconi}.} \bibinfo{year}{1994}\natexlab{}.
+\newblock \showarticletitle{Learning Long-Term Dependencies with Gradient Descent is Difficult}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks}} \bibinfo{volume}{5}, \bibinfo{number}{2} (\bibinfo{year}{1994}), \bibinfo{pages}{157--166}.
 \newblock
 \urldef\tempurl%
 \url{https://www.cs.toronto.edu/~hinton/absps/bengio+al94.pdf}
@@ -184,8 +134,7 @@
 
 \bibitem[Bennett and Lanning(2007)]%
         {bennett2007netflix}
-\bibfield{author}{\bibinfo{person}{James Bennett} {and} \bibinfo{person}{Stan
-  Lanning}.} \bibinfo{year}{2007}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{James Bennett} {and} \bibinfo{person}{Stan Lanning}.} \bibinfo{year}{2007}\natexlab{}.
 \newblock \showarticletitle{The netflix prize}.
 \newblock  (\bibinfo{year}{2007}).
 \newblock
@@ -193,24 +142,17 @@
 
 \bibitem[Bietti et~al\mbox{.}(2021)]%
         {bietti2021contextual}
-\bibfield{author}{\bibinfo{person}{Alberto Bietti}, \bibinfo{person}{Alekh
-  Agarwal}, {and} \bibinfo{person}{John Langford}.}
-  \bibinfo{year}{2021}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Alberto Bietti}, \bibinfo{person}{Alekh Agarwal}, {and} \bibinfo{person}{John Langford}.} \bibinfo{year}{2021}\natexlab{}.
 \newblock \showarticletitle{A contextual bandit bake-off}.
-\newblock \bibinfo{journal}{\emph{Journal of Machine Learning Research}}
-  \bibinfo{volume}{22}, \bibinfo{number}{133} (\bibinfo{year}{2021}),
-  \bibinfo{pages}{1--49}.
+\newblock \bibinfo{journal}{\emph{Journal of Machine Learning Research}} \bibinfo{volume}{22}, \bibinfo{number}{133} (\bibinfo{year}{2021}), \bibinfo{pages}{1--49}.
 \newblock
 
 
 \bibitem[Bobadilla et~al\mbox{.}(2013)]%
         {Bobadilla2013}
-\bibfield{author}{\bibinfo{person}{Jesus Bobadilla}, \bibinfo{person}{Fernando
-  Ortega}, \bibinfo{person}{Antonio Hernando}, {and} \bibinfo{person}{Arturo
-  Guti{\\'e}rrez}.} \bibinfo{year}{2013}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Jesus Bobadilla}, \bibinfo{person}{Fernando Ortega}, \bibinfo{person}{Antonio Hernando}, {and} \bibinfo{person}{Arturo Guti{\\'e}rrez}.} \bibinfo{year}{2013}\natexlab{}.
 \newblock \showarticletitle{Recommender systems survey}.
-\newblock \bibinfo{journal}{\emph{Knowledge-Based Systems}}
-  \bibinfo{volume}{46} (\bibinfo{year}{2013}), \bibinfo{pages}{109--132}.
+\newblock \bibinfo{journal}{\emph{Knowledge-Based Systems}}  \bibinfo{volume}{46} (\bibinfo{year}{2013}), \bibinfo{pages}{109--132}.
 \newblock
 \showISSN{0950-7051}
 \href{https://doi.org/10.1016/j.knosys.2013.03.012}{doi:\nolinkurl{10.1016/j.knosys.2013.03.012}}
@@ -218,13 +160,9 @@
 
 \bibitem[Brockman et~al\mbox{.}(2016)]%
         {brockman2016openai}
-\bibfield{author}{\bibinfo{person}{Greg Brockman}, \bibinfo{person}{Vicki
-  Cheung}, \bibinfo{person}{Ludwig Pettersson}, \bibinfo{person}{Jonas
-  Schneider}, \bibinfo{person}{John Schulman}, \bibinfo{person}{Jie Tang},
-  {and} \bibinfo{person}{Wojciech Zaremba}.} \bibinfo{year}{2016}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Greg Brockman}, \bibinfo{person}{Vicki Cheung}, \bibinfo{person}{Ludwig Pettersson}, \bibinfo{person}{Jonas Schneider}, \bibinfo{person}{John Schulman}, \bibinfo{person}{Jie Tang}, {and} \bibinfo{person}{Wojciech Zaremba}.} \bibinfo{year}{2016}\natexlab{}.
 \newblock \showarticletitle{OpenAI Gym}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1606.01540}}
-  (\bibinfo{year}{2016}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1606.01540}} (\bibinfo{year}{2016}).
 \newblock
 \urldef\tempurl%
 \url{https://arxiv.org/abs/1606.01540}
@@ -236,328 +174,207 @@
 
 \bibitem[Bubeck et~al\mbox{.}(2012)]%
         {bubeck2012regret}
-\bibfield{author}{\bibinfo{person}{S{\'e}bastien Bubeck},
-  \bibinfo{person}{Nicolo Cesa-Bianchi}, {et~al\mbox{.}}}
-  \bibinfo{year}{2012}\natexlab{}.
-\newblock \showarticletitle{Regret analysis of stochastic and nonstochastic
-  multi-armed bandit problems}.
-\newblock \bibinfo{journal}{\emph{Foundations and Trends{\textregistered} in
-  Machine Learning}} \bibinfo{volume}{5}, \bibinfo{number}{1}
-  (\bibinfo{year}{2012}), \bibinfo{pages}{1--122}.
+\bibfield{author}{\bibinfo{person}{S{\'e}bastien Bubeck}, \bibinfo{person}{Nicolo Cesa-Bianchi}, {et~al\mbox{.}}} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Regret analysis of stochastic and nonstochastic multi-armed bandit problems}.
+\newblock \bibinfo{journal}{\emph{Foundations and Trends{\textregistered} in Machine Learning}} \bibinfo{volume}{5}, \bibinfo{number}{1} (\bibinfo{year}{2012}), \bibinfo{pages}{1--122}.
 \newblock
 
 
 \bibitem[Burtini et~al\mbox{.}(2015)]%
         {burtini2015improving}
-\bibfield{author}{\bibinfo{person}{Giuseppe Burtini}, \bibinfo{person}{Jason~L.
-  Loeppky}, {and} \bibinfo{person}{Ramon Lawrence}.}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Improving Online Marketing Experiments with
-  Drifting Multi-armed Bandits}. In \bibinfo{booktitle}{\emph{Proceedings of
-  the 7th International Conference on Agents and Artificial Intelligence
-  (ICAART)}}, Vol.~\bibinfo{volume}{1}. SCITEPRESS, \bibinfo{pages}{135--146}.
+\bibfield{author}{\bibinfo{person}{Giuseppe Burtini}, \bibinfo{person}{Jason~L. Loeppky}, {and} \bibinfo{person}{Ramon Lawrence}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Improving Online Marketing Experiments with Drifting Multi-armed Bandits}. In \bibinfo{booktitle}{\emph{Proceedings of the 7th International Conference on Agents and Artificial Intelligence (ICAART)}}, Vol.~\bibinfo{volume}{1}. SCITEPRESS, \bibinfo{pages}{135--146}.
 \newblock
 
 
 \bibitem[Cai et~al\mbox{.}(2023)]%
         {cai2023two}
-\bibfield{author}{\bibinfo{person}{Qingpeng Cai}, \bibinfo{person}{Zhenghai
-  Xue}, \bibinfo{person}{Chi Zhang}, \bibinfo{person}{Wanqi Xue},
-  \bibinfo{person}{Shuchang Liu}, \bibinfo{person}{Ruohan Zhan},
-  \bibinfo{person}{Xueliang Wang}, \bibinfo{person}{Tianyou Zuo},
-  \bibinfo{person}{Wentao Xie}, \bibinfo{person}{Dong Zheng}, {et~al\mbox{.}}}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Two-stage constrained actor-critic for short video
-  recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the ACM Web
-  Conference 2023}}. \bibinfo{pages}{865--875}.
+\bibfield{author}{\bibinfo{person}{Qingpeng Cai}, \bibinfo{person}{Zhenghai Xue}, \bibinfo{person}{Chi Zhang}, \bibinfo{person}{Wanqi Xue}, \bibinfo{person}{Shuchang Liu}, \bibinfo{person}{Ruohan Zhan}, \bibinfo{person}{Xueliang Wang}, \bibinfo{person}{Tianyou Zuo}, \bibinfo{person}{Wentao Xie}, \bibinfo{person}{Dong Zheng}, {et~al\mbox{.}}} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Two-stage constrained actor-critic for short video recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the ACM Web Conference 2023}}. \bibinfo{pages}{865--875}.
 \newblock
 
 
 \bibitem[Carrion et~al\mbox{.}(2021)]%
         {carrion2021blending}
-\bibfield{author}{\bibinfo{person}{Carlos Carrion}, \bibinfo{person}{Zenan
-  Wang}, \bibinfo{person}{Harikesh Nair}, \bibinfo{person}{Xianghong Luo},
-  \bibinfo{person}{Yulin Lei}, \bibinfo{person}{Xiliang Lin},
-  \bibinfo{person}{Wenlong Chen}, \bibinfo{person}{Qiyu Hu},
-  \bibinfo{person}{Changping Peng}, \bibinfo{person}{Yongjun Bao},
-  {et~al\mbox{.}}} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Blending advertising with organic content in
-  e-commerce: A virtual bids optimization approach}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2105.13556}}
-  (\bibinfo{year}{2021}).
+\bibfield{author}{\bibinfo{person}{Carlos Carrion}, \bibinfo{person}{Zenan Wang}, \bibinfo{person}{Harikesh Nair}, \bibinfo{person}{Xianghong Luo}, \bibinfo{person}{Yulin Lei}, \bibinfo{person}{Xiliang Lin}, \bibinfo{person}{Wenlong Chen}, \bibinfo{person}{Qiyu Hu}, \bibinfo{person}{Changping Peng}, \bibinfo{person}{Yongjun Bao}, {et~al\mbox{.}}} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Blending advertising with organic content in e-commerce: A virtual bids optimization approach}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2105.13556}} (\bibinfo{year}{2021}).
 \newblock
 
 
 \bibitem[{\c{C}}elik et~al\mbox{.}(2023)]%
         {ccelik2023ad}
-\bibfield{author}{\bibinfo{person}{Fatih {\c{C}}elik},
-  \bibinfo{person}{Mehmet~Safa {\c{C}}am}, {and} \bibinfo{person}{Mehmet~Ali
-  Koseoglu}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Ad avoidance in the digital context: A systematic
-  literature review and research agenda}.
-\newblock \bibinfo{journal}{\emph{International Journal of Consumer Studies}}
-  \bibinfo{volume}{47}, \bibinfo{number}{6} (\bibinfo{year}{2023}),
-  \bibinfo{pages}{2071--2105}.
+\bibfield{author}{\bibinfo{person}{Fatih {\c{C}}elik}, \bibinfo{person}{Mehmet~Safa {\c{C}}am}, {and} \bibinfo{person}{Mehmet~Ali Koseoglu}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Ad avoidance in the digital context: A systematic literature review and research agenda}.
+\newblock \bibinfo{journal}{\emph{International Journal of Consumer Studies}} \bibinfo{volume}{47}, \bibinfo{number}{6} (\bibinfo{year}{2023}), \bibinfo{pages}{2071--2105}.
 \newblock
 
 
 \bibitem[Chakrabarti et~al\mbox{.}(2008)]%
         {chakrabarti2008contextual}
-\bibfield{author}{\bibinfo{person}{Deepayan Chakrabarti},
-  \bibinfo{person}{Deepak Agarwal}, {and} \bibinfo{person}{Vanja Josifovski}.}
-  \bibinfo{year}{2008}\natexlab{}.
-\newblock \showarticletitle{Contextual advertising by combining relevance with
-  click feedback}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th
-  international conference on World Wide Web}}. \bibinfo{pages}{417--426}.
+\bibfield{author}{\bibinfo{person}{Deepayan Chakrabarti}, \bibinfo{person}{Deepak Agarwal}, {and} \bibinfo{person}{Vanja Josifovski}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Contextual advertising by combining relevance with click feedback}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th international conference on World Wide Web}}. \bibinfo{pages}{417--426}.
 \newblock
 
 
 \bibitem[Chapelle and Li(2011)]%
         {chapelle2011empirical}
-\bibfield{author}{\bibinfo{person}{Olivier Chapelle} {and}
-  \bibinfo{person}{Lihong Li}.} \bibinfo{year}{2011}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Olivier Chapelle} {and} \bibinfo{person}{Lihong Li}.} \bibinfo{year}{2011}\natexlab{}.
 \newblock \showarticletitle{An empirical evaluation of thompson sampling}.
-\newblock \bibinfo{journal}{\emph{Advances in neural information processing
-  systems}}  \bibinfo{volume}{24} (\bibinfo{year}{2011}).
+\newblock \bibinfo{journal}{\emph{Advances in neural information processing systems}}  \bibinfo{volume}{24} (\bibinfo{year}{2011}).
 \newblock
 
 
 \bibitem[Chen et~al\mbox{.}(2009)]%
         {chen2009large}
-\bibfield{author}{\bibinfo{person}{Bee-Chung Chen}, \bibinfo{person}{Dmitry
-  Pavlov}, \bibinfo{person}{John~F Canny}, {and} \bibinfo{person}{Lodewijk
-  Rijckaert}.} \bibinfo{year}{2009}\natexlab{}.
-\newblock \showarticletitle{Large-scale Behavioral Targeting}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 15th ACM SIGKDD International
-  Conference on Knowledge Discovery \& Data Mining (KDD '09)}}.
-  \bibinfo{pages}{209--218}.
+\bibfield{author}{\bibinfo{person}{Bee-Chung Chen}, \bibinfo{person}{Dmitry Pavlov}, \bibinfo{person}{John~F Canny}, {and} \bibinfo{person}{Lodewijk Rijckaert}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Large-scale Behavioral Targeting}. In \bibinfo{booktitle}{\emph{Proceedings of the 15th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining (KDD '09)}}. \bibinfo{pages}{209--218}.
 \newblock
 
 
 \bibitem[Chen et~al\mbox{.}(2022)]%
         {chen2022off}
-\bibfield{author}{\bibinfo{person}{Minmin Chen}, \bibinfo{person}{Can Xu},
-  \bibinfo{person}{Vince Gatto}, \bibinfo{person}{Devanshu Jain},
-  \bibinfo{person}{Aviral Kumar}, {and} \bibinfo{person}{Ed Chi}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Off-policy actor-critic for recommender systems}.
-  In \bibinfo{booktitle}{\emph{Proceedings of the 16th ACM Conference on
-  Recommender Systems}}. \bibinfo{pages}{338--349}.
+\bibfield{author}{\bibinfo{person}{Minmin Chen}, \bibinfo{person}{Can Xu}, \bibinfo{person}{Vince Gatto}, \bibinfo{person}{Devanshu Jain}, \bibinfo{person}{Aviral Kumar}, {and} \bibinfo{person}{Ed Chi}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Off-policy actor-critic for recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 16th ACM Conference on Recommender Systems}}. \bibinfo{pages}{338--349}.
 \newblock
 
 
 \bibitem[Cheng et~al\mbox{.}(2016)]%
         {cheng2016wide}
-\bibfield{author}{\bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Levent
-  Koc}, \bibinfo{person}{Jeremiah Harmsen}, \bibinfo{person}{Tal Shaked},
-  \bibinfo{person}{Tushar Chandra}, \bibinfo{person}{Hrishi Aradhye},
-  \bibinfo{person}{Glen Anderson}, \bibinfo{person}{Greg Corrado},
-  \bibinfo{person}{Wei Chai}, \bibinfo{person}{Mustafa Ispir}, {et~al\mbox{.}}}
-  \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Wide \& deep learning for recommender systems}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 1st workshop on deep learning
-  for recommender systems}}. \bibinfo{pages}{7--10}.
+\bibfield{author}{\bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Levent Koc}, \bibinfo{person}{Jeremiah Harmsen}, \bibinfo{person}{Tal Shaked}, \bibinfo{person}{Tushar Chandra}, \bibinfo{person}{Hrishi Aradhye}, \bibinfo{person}{Glen Anderson}, \bibinfo{person}{Greg Corrado}, \bibinfo{person}{Wei Chai}, \bibinfo{person}{Mustafa Ispir}, {et~al\mbox{.}}} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Wide \& deep learning for recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 1st workshop on deep learning for recommender systems}}. \bibinfo{pages}{7--10}.
 \newblock
 
 
 \bibitem[Covington et~al\mbox{.}(2016)]%
         {covington2016deep}
-\bibfield{author}{\bibinfo{person}{Paul Covington}, \bibinfo{person}{Jay
-  Adams}, {and} \bibinfo{person}{Emre Sargin}.}
-  \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Deep neural networks for youtube recommendations}.
-  In \bibinfo{booktitle}{\emph{Proceedings of the 10th ACM conference on
-  recommender systems}}. \bibinfo{pages}{191--198}.
+\bibfield{author}{\bibinfo{person}{Paul Covington}, \bibinfo{person}{Jay Adams}, {and} \bibinfo{person}{Emre Sargin}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Deep neural networks for youtube recommendations}. In \bibinfo{booktitle}{\emph{Proceedings of the 10th ACM conference on recommender systems}}. \bibinfo{pages}{191--198}.
 \newblock
 
 
 \bibitem[Cui et~al\mbox{.}(2015)]%
         {cui2015global}
-\bibfield{author}{\bibinfo{person}{Qing Cui}, \bibinfo{person}{Feng-Shan Bai},
-  \bibinfo{person}{Bin Gao}, {and} \bibinfo{person}{Tie-Yan Liu}.}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Global optimization for advertisement selection in
-  sponsored search}.
-\newblock \bibinfo{journal}{\emph{Journal of Computer Science and Technology}}
-  \bibinfo{volume}{30} (\bibinfo{year}{2015}), \bibinfo{pages}{295--310}.
+\bibfield{author}{\bibinfo{person}{Qing Cui}, \bibinfo{person}{Feng-Shan Bai}, \bibinfo{person}{Bin Gao}, {and} \bibinfo{person}{Tie-Yan Liu}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Global optimization for advertisement selection in sponsored search}.
+\newblock \bibinfo{journal}{\emph{Journal of Computer Science and Technology}}  \bibinfo{volume}{30} (\bibinfo{year}{2015}), \bibinfo{pages}{295--310}.
 \newblock
 
 
 \bibitem[Danescu-Niculescu-Mizil et~al\mbox{.}(2010)]%
         {danescu2010competing}
-\bibfield{author}{\bibinfo{person}{Cristian Danescu-Niculescu-Mizil},
-  \bibinfo{person}{Andrei~Z Broder}, \bibinfo{person}{Evgeniy Gabrilovich},
-  \bibinfo{person}{Vanja Josifovski}, {and} \bibinfo{person}{Bo Pang}.}
-  \bibinfo{year}{2010}\natexlab{}.
-\newblock \showarticletitle{Competing for users' attention: on the interplay
-  between organic and sponsored search results}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 19th international conference on
-  World wide web}}. \bibinfo{pages}{291--300}.
+\bibfield{author}{\bibinfo{person}{Cristian Danescu-Niculescu-Mizil}, \bibinfo{person}{Andrei~Z Broder}, \bibinfo{person}{Evgeniy Gabrilovich}, \bibinfo{person}{Vanja Josifovski}, {and} \bibinfo{person}{Bo Pang}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Competing for users' attention: on the interplay between organic and sponsored search results}. In \bibinfo{booktitle}{\emph{Proceedings of the 19th international conference on World wide web}}. \bibinfo{pages}{291--300}.
 \newblock
 
 
 \bibitem[Dimitrakakis and Ortner(2018)]%
         {dimitrakakis2018decision}
-\bibfield{author}{\bibinfo{person}{Christos Dimitrakakis} {and}
-  \bibinfo{person}{Ronald Ortner}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Decision making under uncertainty and reinforcement
-  learning}.
-\newblock \bibinfo{journal}{\emph{Book available at http://www. cse. chalmers.
-  se}} (\bibinfo{year}{2018}).
+\bibfield{author}{\bibinfo{person}{Christos Dimitrakakis} {and} \bibinfo{person}{Ronald Ortner}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Decision making under uncertainty and reinforcement learning}.
+\newblock \bibinfo{journal}{\emph{Book available at http://www. cse. chalmers. se}} (\bibinfo{year}{2018}).
 \newblock
 
 
 \bibitem[Dud{\'\i}k et~al\mbox{.}(2011)]%
         {dudik2011doubly}
-\bibfield{author}{\bibinfo{person}{Miroslav Dud{\'\i}k}, \bibinfo{person}{John
-  Langford}, {and} \bibinfo{person}{Lihong Li}.}
-  \bibinfo{year}{2011}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Miroslav Dud{\'\i}k}, \bibinfo{person}{John Langford}, {and} \bibinfo{person}{Lihong Li}.} \bibinfo{year}{2011}\natexlab{}.
 \newblock \showarticletitle{Doubly robust policy evaluation and learning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1103.4601}}
-  (\bibinfo{year}{2011}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1103.4601}} (\bibinfo{year}{2011}).
 \newblock
 
 
 \bibitem[Dulac-Arnold et~al\mbox{.}(2021)]%
         {dulac2021challenges}
-\bibfield{author}{\bibinfo{person}{Gabriel Dulac-Arnold}, \bibinfo{person}{Nir
-  Levine}, \bibinfo{person}{Daniel~J Mankowitz}, \bibinfo{person}{Jerry Li},
-  \bibinfo{person}{Cosmin Paduraru}, \bibinfo{person}{Sven Gowal}, {and}
-  \bibinfo{person}{Todd Hester}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Challenges of real-world reinforcement learning:
-  definitions, benchmarks and analysis}.
-\newblock \bibinfo{journal}{\emph{Machine Learning}} \bibinfo{volume}{110},
-  \bibinfo{number}{9} (\bibinfo{year}{2021}), \bibinfo{pages}{2419--2468}.
+\bibfield{author}{\bibinfo{person}{Gabriel Dulac-Arnold}, \bibinfo{person}{Nir Levine}, \bibinfo{person}{Daniel~J Mankowitz}, \bibinfo{person}{Jerry Li}, \bibinfo{person}{Cosmin Paduraru}, \bibinfo{person}{Sven Gowal}, {and} \bibinfo{person}{Todd Hester}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Challenges of real-world reinforcement learning: definitions, benchmarks and analysis}.
+\newblock \bibinfo{journal}{\emph{Machine Learning}} \bibinfo{volume}{110}, \bibinfo{number}{9} (\bibinfo{year}{2021}), \bibinfo{pages}{2419--2468}.
 \newblock
 
 
 \bibitem[Dulac-Arnold et~al\mbox{.}(2019)]%
         {dulac2019challenges}
-\bibfield{author}{\bibinfo{person}{Gabriel Dulac-Arnold},
-  \bibinfo{person}{Daniel Mankowitz}, {and} \bibinfo{person}{Todd Hester}.}
-  \bibinfo{year}{2019}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Gabriel Dulac-Arnold}, \bibinfo{person}{Daniel Mankowitz}, {and} \bibinfo{person}{Todd Hester}.} \bibinfo{year}{2019}\natexlab{}.
 \newblock \showarticletitle{Challenges of real-world reinforcement learning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1904.12901}}
-  (\bibinfo{year}{2019}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1904.12901}} (\bibinfo{year}{2019}).
 \newblock
 
 
 \bibitem[Ellam and Ottaviani(2003)]%
         {ellam2003overture}
-\bibfield{author}{\bibinfo{person}{Andrew Ellam} {and} \bibinfo{person}{Marco
-  Ottaviani}.} \bibinfo{year}{2003}\natexlab{}.
-\newblock \showarticletitle{Overture and Google: Internet Pay-Per-Click (PPC)
-  Advertising Auctions}.
-\newblock \bibinfo{journal}{\emph{London Business School Case Study CS-03-022}}
-  (\bibinfo{year}{2003}).
+\bibfield{author}{\bibinfo{person}{Andrew Ellam} {and} \bibinfo{person}{Marco Ottaviani}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Overture and Google: Internet Pay-Per-Click (PPC) Advertising Auctions}.
+\newblock \bibinfo{journal}{\emph{London Business School Case Study CS-03-022}} (\bibinfo{year}{2003}).
 \newblock
 
 
 \bibitem[Engel and Chickering(2008)]%
         {engel2008incorporating}
-\bibfield{author}{\bibinfo{person}{Yagil Engel} {and}
-  \bibinfo{person}{David~Maxwell Chickering}.} \bibinfo{year}{2008}\natexlab{}.
-\newblock \showarticletitle{Incorporating user utility into sponsored-search
-  auctions}. In \bibinfo{booktitle}{\emph{Proceedings of the 7th international
-  joint conference on Autonomous agents and multiagent systems-Volume 3}}.
-  \bibinfo{pages}{1565--1568}.
+\bibfield{author}{\bibinfo{person}{Yagil Engel} {and} \bibinfo{person}{David~Maxwell Chickering}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Incorporating user utility into sponsored-search auctions}. In \bibinfo{booktitle}{\emph{Proceedings of the 7th international joint conference on Autonomous agents and multiagent systems-Volume 3}}. \bibinfo{pages}{1565--1568}.
 \newblock
 
 
 \bibitem[Everitt et~al\mbox{.}(2021)]%
         {everitt2021reward}
-\bibfield{author}{\bibinfo{person}{Tom Everitt}, \bibinfo{person}{Marcus
-  Hutter}, \bibinfo{person}{Ramana Kumar}, {and} \bibinfo{person}{Victoria
-  Krakovna}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Reward tampering problems and solutions in
-  reinforcement learning: A causal influence diagram perspective}.
-\newblock \bibinfo{journal}{\emph{Synthese}} \bibinfo{volume}{198},
-  \bibinfo{number}{Suppl 27} (\bibinfo{year}{2021}),
-  \bibinfo{pages}{6435--6467}.
+\bibfield{author}{\bibinfo{person}{Tom Everitt}, \bibinfo{person}{Marcus Hutter}, \bibinfo{person}{Ramana Kumar}, {and} \bibinfo{person}{Victoria Krakovna}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Reward tampering problems and solutions in reinforcement learning: A causal influence diagram perspective}.
+\newblock \bibinfo{journal}{\emph{Synthese}} \bibinfo{volume}{198}, \bibinfo{number}{Suppl 27} (\bibinfo{year}{2021}), \bibinfo{pages}{6435--6467}.
 \newblock
 
 
 \bibitem[Fain and Pedersen(2006)]%
         {fain2006sponsored}
-\bibfield{author}{\bibinfo{person}{Daniel~C Fain} {and} \bibinfo{person}{Jan~O
-  Pedersen}.} \bibinfo{year}{2006}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Daniel~C Fain} {and} \bibinfo{person}{Jan~O Pedersen}.} \bibinfo{year}{2006}\natexlab{}.
 \newblock \showarticletitle{Sponsored search: A brief history}.
-\newblock \bibinfo{journal}{\emph{Bulletin-American Society For Information
-  Science And Technology}} \bibinfo{volume}{32}, \bibinfo{number}{2}
-  (\bibinfo{year}{2006}), \bibinfo{pages}{12}.
+\newblock \bibinfo{journal}{\emph{Bulletin-American Society For Information Science And Technology}} \bibinfo{volume}{32}, \bibinfo{number}{2} (\bibinfo{year}{2006}), \bibinfo{pages}{12}.
 \newblock
 
 
 \bibitem[Gama et~al\mbox{.}(2014)]%
         {gama2014survey}
-\bibfield{author}{\bibinfo{person}{Jo{\~a}o Gama}, \bibinfo{person}{Indr{\.e}
-  {\v{Z}}liobait{\.e}}, \bibinfo{person}{Albert Bifet}, \bibinfo{person}{Mykola
-  Pechenizkiy}, {and} \bibinfo{person}{Abdelhamid Bouchachia}.}
-  \bibinfo{year}{2014}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Jo{\~a}o Gama}, \bibinfo{person}{Indr{\.e} {\v{Z}}liobait{\.e}}, \bibinfo{person}{Albert Bifet}, \bibinfo{person}{Mykola Pechenizkiy}, {and} \bibinfo{person}{Abdelhamid Bouchachia}.} \bibinfo{year}{2014}\natexlab{}.
 \newblock \showarticletitle{A survey on concept drift adaptation}.
-\newblock \bibinfo{journal}{\emph{ACM computing surveys (CSUR)}}
-  \bibinfo{volume}{46}, \bibinfo{number}{4} (\bibinfo{year}{2014}),
-  \bibinfo{pages}{1--37}.
+\newblock \bibinfo{journal}{\emph{ACM computing surveys (CSUR)}} \bibinfo{volume}{46}, \bibinfo{number}{4} (\bibinfo{year}{2014}), \bibinfo{pages}{1--37}.
 \newblock
 
 
 \bibitem[Gauci et~al\mbox{.}(2018)]%
         {gauci2018horizon}
-\bibfield{author}{\bibinfo{person}{Jason Gauci}, \bibinfo{person}{Edoardo
-  Conti}, \bibinfo{person}{Yitao Liang}, \bibinfo{person}{Kittipat Virochsiri},
-  \bibinfo{person}{Yuchen He}, \bibinfo{person}{Zachary Kaden},
-  \bibinfo{person}{Vivek Narayanan}, \bibinfo{person}{Xiaohui Ye},
-  \bibinfo{person}{Zhengxing Chen}, {and} \bibinfo{person}{Scott Fujimoto}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Horizon: Facebook's open source applied
-  reinforcement learning platform}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.00260}}
-  (\bibinfo{year}{2018}).
+\bibfield{author}{\bibinfo{person}{Jason Gauci}, \bibinfo{person}{Edoardo Conti}, \bibinfo{person}{Yitao Liang}, \bibinfo{person}{Kittipat Virochsiri}, \bibinfo{person}{Yuchen He}, \bibinfo{person}{Zachary Kaden}, \bibinfo{person}{Vivek Narayanan}, \bibinfo{person}{Xiaohui Ye}, \bibinfo{person}{Zhengxing Chen}, {and} \bibinfo{person}{Scott Fujimoto}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Horizon: Facebook's open source applied reinforcement learning platform}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.00260}} (\bibinfo{year}{2018}).
 \newblock
 
 
 \bibitem[Glanois et~al\mbox{.}(2024)]%
         {glanois2024survey}
-\bibfield{author}{\bibinfo{person}{Claire Glanois}, \bibinfo{person}{Paul
-  Weng}, \bibinfo{person}{Matthieu Zimmer}, \bibinfo{person}{Dong Li},
-  \bibinfo{person}{Tianpei Yang}, \bibinfo{person}{Jianye Hao}, {and}
-  \bibinfo{person}{Wulong Liu}.} \bibinfo{year}{2024}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Claire Glanois}, \bibinfo{person}{Paul Weng}, \bibinfo{person}{Matthieu Zimmer}, \bibinfo{person}{Dong Li}, \bibinfo{person}{Tianpei Yang}, \bibinfo{person}{Jianye Hao}, {and} \bibinfo{person}{Wulong Liu}.} \bibinfo{year}{2024}\natexlab{}.
 \newblock \showarticletitle{A survey on interpretable reinforcement learning}.
-\newblock \bibinfo{journal}{\emph{Machine Learning}} (\bibinfo{year}{2024}),
-  \bibinfo{pages}{1--44}.
+\newblock \bibinfo{journal}{\emph{Machine Learning}} (\bibinfo{year}{2024}), \bibinfo{pages}{1--44}.
 \newblock
 
 
 \bibitem[Gomez-Uribe and Hunt(2015)]%
         {gomez2015netflix}
-\bibfield{author}{\bibinfo{person}{Carlos~A Gomez-Uribe} {and}
-  \bibinfo{person}{Neil Hunt}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{The netflix recommender system: Algorithms,
-  business value, and innovation}.
-\newblock \bibinfo{journal}{\emph{ACM Transactions on Management Information
-  Systems (TMIS)}} \bibinfo{volume}{6}, \bibinfo{number}{4}
-  (\bibinfo{year}{2015}), \bibinfo{pages}{1--19}.
+\bibfield{author}{\bibinfo{person}{Carlos~A Gomez-Uribe} {and} \bibinfo{person}{Neil Hunt}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{The netflix recommender system: Algorithms, business value, and innovation}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Management Information Systems (TMIS)}} \bibinfo{volume}{6}, \bibinfo{number}{4} (\bibinfo{year}{2015}), \bibinfo{pages}{1--19}.
 \newblock
 
 
 \bibitem[Grbovic and Cheng(2018)]%
         {grbovic2018real}
-\bibfield{author}{\bibinfo{person}{Mihajlo Grbovic} {and}
-  \bibinfo{person}{Haibin Cheng}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Real-time personalization using embeddings for
-  search ranking at airbnb}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  24th ACM SIGKDD international conference on knowledge discovery \& data
-  mining}}. \bibinfo{pages}{311--320}.
+\bibfield{author}{\bibinfo{person}{Mihajlo Grbovic} {and} \bibinfo{person}{Haibin Cheng}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Real-time personalization using embeddings for search ranking at airbnb}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD international conference on knowledge discovery \& data mining}}. \bibinfo{pages}{311--320}.
 \newblock
 
 
 \bibitem[{Gym Documentation Team}(2024)]%
         {frozenlake}
-\bibfield{author}{\bibinfo{person}{{Gym Documentation Team}}.}
-  \bibinfo{year}{2024}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{{Gym Documentation Team}}.} \bibinfo{year}{2024}\natexlab{}.
 \newblock \bibinfo{title}{{Frozen Lake Environment in OpenAI Gym}}.
-\newblock
-  \bibinfo{howpublished}{\url{https://www.gymlibrary.dev/environments/toy_text/frozen_lake/}}.
+\newblock \bibinfo{howpublished}{\url{https://www.gymlibrary.dev/environments/toy_text/frozen_lake/}}.
 \newblock
 \newblock
 \shownote{Accessed: 23 August 2024}.
@@ -565,160 +382,102 @@
 
 \bibitem[He et~al\mbox{.}(2017)]%
         {he2017neural}
-\bibfield{author}{\bibinfo{person}{Xiangnan He}, \bibinfo{person}{Lizi Liao},
-  \bibinfo{person}{Hanwang Zhang}, \bibinfo{person}{Liqiang Nie},
-  \bibinfo{person}{Xia Hu}, {and} \bibinfo{person}{Tat-Seng Chua}.}
-  \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Neural collaborative filtering}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 26th international conference on
-  world wide web}}. \bibinfo{pages}{173--182}.
+\bibfield{author}{\bibinfo{person}{Xiangnan He}, \bibinfo{person}{Lizi Liao}, \bibinfo{person}{Hanwang Zhang}, \bibinfo{person}{Liqiang Nie}, \bibinfo{person}{Xia Hu}, {and} \bibinfo{person}{Tat-Seng Chua}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Neural collaborative filtering}. In \bibinfo{booktitle}{\emph{Proceedings of the 26th international conference on world wide web}}. \bibinfo{pages}{173--182}.
 \newblock
 
 
 \bibitem[He et~al\mbox{.}(2014)]%
         {he2014practical}
-\bibfield{author}{\bibinfo{person}{Xinran He}, \bibinfo{person}{Junfeng Pan},
-  \bibinfo{person}{Ou Jin}, \bibinfo{person}{Tianbing Xu}, \bibinfo{person}{Bo
-  Liu}, \bibinfo{person}{Tao Xu}, \bibinfo{person}{Yanxin Shi},
-  \bibinfo{person}{Antoine Atallah}, \bibinfo{person}{Ralf Herbrich},
-  \bibinfo{person}{Stuart Bowers}, {et~al\mbox{.}}}
-  \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Practical lessons from predicting clicks on ads at
-  facebook}. In \bibinfo{booktitle}{\emph{Proceedings of the eighth
-  international workshop on data mining for online advertising}}.
-  \bibinfo{pages}{1--9}.
+\bibfield{author}{\bibinfo{person}{Xinran He}, \bibinfo{person}{Junfeng Pan}, \bibinfo{person}{Ou Jin}, \bibinfo{person}{Tianbing Xu}, \bibinfo{person}{Bo Liu}, \bibinfo{person}{Tao Xu}, \bibinfo{person}{Yanxin Shi}, \bibinfo{person}{Antoine Atallah}, \bibinfo{person}{Ralf Herbrich}, \bibinfo{person}{Stuart Bowers}, {et~al\mbox{.}}} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Practical lessons from predicting clicks on ads at facebook}. In \bibinfo{booktitle}{\emph{Proceedings of the eighth international workshop on data mining for online advertising}}. \bibinfo{pages}{1--9}.
 \newblock
 
 
 \bibitem[Hohnhold et~al\mbox{.}(2015)]%
         {hohnhold2015focusing}
-\bibfield{author}{\bibinfo{person}{Henning Hohnhold}, \bibinfo{person}{Deirdre
-  O'Brien}, {and} \bibinfo{person}{Diane Tang}.}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Focusing on the long-term: It's good for users and
-  business}. In \bibinfo{booktitle}{\emph{Proceedings of the 21th ACM SIGKDD
-  International Conference on Knowledge Discovery and Data Mining}}.
-  \bibinfo{pages}{1849--1858}.
+\bibfield{author}{\bibinfo{person}{Henning Hohnhold}, \bibinfo{person}{Deirdre O'Brien}, {and} \bibinfo{person}{Diane Tang}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Focusing on the long-term: It's good for users and business}. In \bibinfo{booktitle}{\emph{Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}}. \bibinfo{pages}{1849--1858}.
 \newblock
 
 
 \bibitem[Hu(2004)]%
         {hu2004performance}
-\bibfield{author}{\bibinfo{person}{Yu~Jeffrey Hu}.}
-  \bibinfo{year}{2004}\natexlab{}.
-\newblock \showarticletitle{Performance-based pricing models in online
-  advertising}.
-\newblock \bibinfo{journal}{\emph{Available at SSRN 501082}}
-  (\bibinfo{year}{2004}).
+\bibfield{author}{\bibinfo{person}{Yu~Jeffrey Hu}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Performance-based pricing models in online advertising}.
+\newblock \bibinfo{journal}{\emph{Available at SSRN 501082}} (\bibinfo{year}{2004}).
 \newblock
 
 
 \bibitem[Ie et~al\mbox{.}(2019a)]%
         {ie2019recsim}
-\bibfield{author}{\bibinfo{person}{Eugene Ie}, \bibinfo{person}{Chih-wei Hsu},
-  \bibinfo{person}{Martin Mladenov}, \bibinfo{person}{Vihan Jain},
-  \bibinfo{person}{Sanmit Narvekar}, \bibinfo{person}{Jing Wang},
-  \bibinfo{person}{Rui Wu}, {and} \bibinfo{person}{Craig Boutilier}.}
-  \bibinfo{year}{2019}\natexlab{a}.
-\newblock \showarticletitle{Recsim: A configurable simulation platform for
-  recommender systems}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1909.04847}}
-  (\bibinfo{year}{2019}).
+\bibfield{author}{\bibinfo{person}{Eugene Ie}, \bibinfo{person}{Chih-wei Hsu}, \bibinfo{person}{Martin Mladenov}, \bibinfo{person}{Vihan Jain}, \bibinfo{person}{Sanmit Narvekar}, \bibinfo{person}{Jing Wang}, \bibinfo{person}{Rui Wu}, {and} \bibinfo{person}{Craig Boutilier}.} \bibinfo{year}{2019}\natexlab{a}.
+\newblock \showarticletitle{Recsim: A configurable simulation platform for recommender systems}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1909.04847}} (\bibinfo{year}{2019}).
 \newblock
 
 
 \bibitem[Ie et~al\mbox{.}(2019b)]%
         {ie2019slateq}
-\bibfield{author}{\bibinfo{person}{Eugene Ie}, \bibinfo{person}{Vihan Jain},
-  \bibinfo{person}{Jing Wang}, \bibinfo{person}{Sanmit Narvekar},
-  \bibinfo{person}{Ritesh Agarwal}, \bibinfo{person}{Rui Wu},
-  \bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Tushar Chandra}, {and}
-  \bibinfo{person}{Craig Boutilier}.} \bibinfo{year}{2019}\natexlab{b}.
-\newblock \showarticletitle{SlateQ: A Tractable Decomposition for Reinforcement
-  Learning with Recommendation Sets.}. In \bibinfo{booktitle}{\emph{IJCAI}},
-  Vol.~\bibinfo{volume}{19}. \bibinfo{pages}{2592--2599}.
+\bibfield{author}{\bibinfo{person}{Eugene Ie}, \bibinfo{person}{Vihan Jain}, \bibinfo{person}{Jing Wang}, \bibinfo{person}{Sanmit Narvekar}, \bibinfo{person}{Ritesh Agarwal}, \bibinfo{person}{Rui Wu}, \bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Tushar Chandra}, {and} \bibinfo{person}{Craig Boutilier}.} \bibinfo{year}{2019}\natexlab{b}.
+\newblock \showarticletitle{SlateQ: A Tractable Decomposition for Reinforcement Learning with Recommendation Sets.}. In \bibinfo{booktitle}{\emph{IJCAI}}, Vol.~\bibinfo{volume}{19}. \bibinfo{pages}{2592--2599}.
 \newblock
 
 
 \bibitem[Ie et~al\mbox{.}(2019c)]%
         {ie2019reinforcement}
-\bibfield{author}{\bibinfo{person}{Eugene Ie}, \bibinfo{person}{Vihan Jain},
-  \bibinfo{person}{Jing Wang}, \bibinfo{person}{Sanmit Narvekar},
-  \bibinfo{person}{Ritesh Agarwal}, \bibinfo{person}{Rui Wu},
-  \bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Morgane Lustman},
-  \bibinfo{person}{Vince Gatto}, \bibinfo{person}{Paul Covington},
-  {et~al\mbox{.}}} \bibinfo{year}{2019}\natexlab{c}.
-\newblock \showarticletitle{Reinforcement learning for slate-based recommender
-  systems: A tractable decomposition and practical methodology}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1905.12767}}
-  (\bibinfo{year}{2019}).
+\bibfield{author}{\bibinfo{person}{Eugene Ie}, \bibinfo{person}{Vihan Jain}, \bibinfo{person}{Jing Wang}, \bibinfo{person}{Sanmit Narvekar}, \bibinfo{person}{Ritesh Agarwal}, \bibinfo{person}{Rui Wu}, \bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Morgane Lustman}, \bibinfo{person}{Vince Gatto}, \bibinfo{person}{Paul Covington}, {et~al\mbox{.}}} \bibinfo{year}{2019}\natexlab{c}.
+\newblock \showarticletitle{Reinforcement learning for slate-based recommender systems: A tractable decomposition and practical methodology}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1905.12767}} (\bibinfo{year}{2019}).
 \newblock
 
 
 \bibitem[Jannach and Abdollahpouri(2023)]%
         {Jannach2023}
-\bibfield{author}{\bibinfo{person}{Dietmar Jannach} {and}
-  \bibinfo{person}{Himan Abdollahpouri}.} \bibinfo{year}{2023}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Dietmar Jannach} {and} \bibinfo{person}{Himan Abdollahpouri}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{A Survey on Multi-Objective Recommender Systems}.
-\newblock \bibinfo{journal}{\emph{Frontiers in Big Data}}  \bibinfo{volume}{6}
-  (\bibinfo{year}{2023}).
+\newblock \bibinfo{journal}{\emph{Frontiers in Big Data}}  \bibinfo{volume}{6} (\bibinfo{year}{2023}).
 \newblock
 \href{https://doi.org/10.3389/fdata.2023.1157899}{doi:\nolinkurl{10.3389/fdata.2023.1157899}}
 
 
 \bibitem[Kaelbling et~al\mbox{.}(1998)]%
         {kaelbling1998planning}
-\bibfield{author}{\bibinfo{person}{Leslie~Pack Kaelbling},
-  \bibinfo{person}{Michael~L Littman}, {and} \bibinfo{person}{Anthony~R
-  Cassandra}.} \bibinfo{year}{1998}\natexlab{}.
-\newblock \showarticletitle{Planning and acting in partially observable
-  stochastic domains}.
-\newblock \bibinfo{journal}{\emph{Artificial intelligence}}
-  \bibinfo{volume}{101}, \bibinfo{number}{1-2} (\bibinfo{year}{1998}),
-  \bibinfo{pages}{99--134}.
+\bibfield{author}{\bibinfo{person}{Leslie~Pack Kaelbling}, \bibinfo{person}{Michael~L Littman}, {and} \bibinfo{person}{Anthony~R Cassandra}.} \bibinfo{year}{1998}\natexlab{}.
+\newblock \showarticletitle{Planning and acting in partially observable stochastic domains}.
+\newblock \bibinfo{journal}{\emph{Artificial intelligence}} \bibinfo{volume}{101}, \bibinfo{number}{1-2} (\bibinfo{year}{1998}), \bibinfo{pages}{99--134}.
 \newblock
 
 
 \bibitem[Kaelbling et~al\mbox{.}(1996)]%
         {kaelbling1996reinforcement}
-\bibfield{author}{\bibinfo{person}{Leslie~Pack Kaelbling},
-  \bibinfo{person}{Michael~L Littman}, {and} \bibinfo{person}{Andrew~W Moore}.}
-  \bibinfo{year}{1996}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Leslie~Pack Kaelbling}, \bibinfo{person}{Michael~L Littman}, {and} \bibinfo{person}{Andrew~W Moore}.} \bibinfo{year}{1996}\natexlab{}.
 \newblock \showarticletitle{Reinforcement learning: A survey}.
-\newblock \bibinfo{journal}{\emph{Journal of artificial intelligence research}}
-   \bibinfo{volume}{4} (\bibinfo{year}{1996}), \bibinfo{pages}{237--285}.
+\newblock \bibinfo{journal}{\emph{Journal of artificial intelligence research}}  \bibinfo{volume}{4} (\bibinfo{year}{1996}), \bibinfo{pages}{237--285}.
 \newblock
 
 
 \bibitem[Kang and McAuley(2018a)]%
         {Kang2018}
-\bibfield{author}{\bibinfo{person}{Wang-Cheng Kang} {and}
-  \bibinfo{person}{Julian McAuley}.} \bibinfo{year}{2018}\natexlab{a}.
-\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In
-  \bibinfo{booktitle}{\emph{2018 IEEE International Conference on Data Mining
-  (ICDM)}}. \bibinfo{pages}{197--206}.
+\bibfield{author}{\bibinfo{person}{Wang-Cheng Kang} {and} \bibinfo{person}{Julian McAuley}.} \bibinfo{year}{2018}\natexlab{a}.
+\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In \bibinfo{booktitle}{\emph{2018 IEEE International Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
 \newblock
 \href{https://doi.org/10.1109/ICDM.2018.00035}{doi:\nolinkurl{10.1109/ICDM.2018.00035}}
 
 
 \bibitem[Kang and McAuley(2018b)]%
         {kang2018sasrec}
-\bibfield{author}{\bibinfo{person}{Wang-Cheng Kang} {and}
-  \bibinfo{person}{Julian McAuley}.} \bibinfo{year}{2018}\natexlab{b}.
-\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 2018 IEEE International
-  Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
+\bibfield{author}{\bibinfo{person}{Wang-Cheng Kang} {and} \bibinfo{person}{Julian McAuley}.} \bibinfo{year}{2018}\natexlab{b}.
+\newblock \showarticletitle{Self-Attentive Sequential Recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 2018 IEEE International Conference on Data Mining (ICDM)}}. \bibinfo{pages}{197--206}.
 \newblock
 \href{https://doi.org/10.1109/ICDM.2018.00035}{doi:\nolinkurl{10.1109/ICDM.2018.00035}}
 
 
 \bibitem[Kant(2021)]%
         {kant2021history}
-\bibfield{author}{\bibinfo{person}{Tanya Kant}.}
-  \bibinfo{year}{2021}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Tanya Kant}.} \bibinfo{year}{2021}\natexlab{}.
 \newblock \showarticletitle{A History of the Data-Tracked User}.
-\newblock \bibinfo{journal}{\emph{The MIT Press Reader}}
-  (\bibinfo{year}{2021}).
+\newblock \bibinfo{journal}{\emph{The MIT Press Reader}} (\bibinfo{year}{2021}).
 \newblock
 \urldef\tempurl%
 \url{https://thereader.mitpress.mit.edu/a-history-of-the-data-tracked-user/}
@@ -728,60 +487,40 @@
 
 \bibitem[Koren(2008)]%
         {koren2008factorization}
-\bibfield{author}{\bibinfo{person}{Yehuda Koren}.}
-  \bibinfo{year}{2008}\natexlab{}.
-\newblock \showarticletitle{Factorization meets the neighborhood: a
-  multifaceted collaborative filtering model}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 14th ACM SIGKDD international
-  conference on Knowledge discovery and data mining}}.
-  \bibinfo{pages}{426--434}.
+\bibfield{author}{\bibinfo{person}{Yehuda Koren}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Factorization meets the neighborhood: a multifaceted collaborative filtering model}. In \bibinfo{booktitle}{\emph{Proceedings of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining}}. \bibinfo{pages}{426--434}.
 \newblock
 
 
 \bibitem[Koren et~al\mbox{.}(2009)]%
         {koren2009matrix}
-\bibfield{author}{\bibinfo{person}{Yehuda Koren}, \bibinfo{person}{Robert
-  Bell}, {and} \bibinfo{person}{Chris Volinsky}.}
-  \bibinfo{year}{2009}\natexlab{}.
-\newblock \showarticletitle{Matrix factorization techniques for recommender
-  systems}.
-\newblock \bibinfo{journal}{\emph{Computer}} \bibinfo{volume}{42},
-  \bibinfo{number}{8} (\bibinfo{year}{2009}), \bibinfo{pages}{30--37}.
+\bibfield{author}{\bibinfo{person}{Yehuda Koren}, \bibinfo{person}{Robert Bell}, {and} \bibinfo{person}{Chris Volinsky}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Matrix factorization techniques for recommender systems}.
+\newblock \bibinfo{journal}{\emph{Computer}} \bibinfo{volume}{42}, \bibinfo{number}{8} (\bibinfo{year}{2009}), \bibinfo{pages}{30--37}.
 \newblock
 \href{https://doi.org/10.1109/MC.2009.263}{doi:\nolinkurl{10.1109/MC.2009.263}}
 
 
 \bibitem[Koutsopoulos and Spentzouris(2016)]%
         {koutsopoulos2016native}
-\bibfield{author}{\bibinfo{person}{Iordanis Koutsopoulos} {and}
-  \bibinfo{person}{Panagiotis Spentzouris}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Native advertisement selection and allocation in
-  social media post feeds}. In \bibinfo{booktitle}{\emph{Machine Learning and
-  Knowledge Discovery in Databases: European Conference, ECML PKDD 2016, Riva
-  del Garda, Italy, September 19-23, 2016, Proceedings, Part I 16}}. Springer,
-  \bibinfo{pages}{588--603}.
+\bibfield{author}{\bibinfo{person}{Iordanis Koutsopoulos} {and} \bibinfo{person}{Panagiotis Spentzouris}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Native advertisement selection and allocation in social media post feeds}. In \bibinfo{booktitle}{\emph{Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2016, Riva del Garda, Italy, September 19-23, 2016, Proceedings, Part I 16}}. Springer, \bibinfo{pages}{588--603}.
 \newblock
 
 
 \bibitem[Krizhevsky et~al\mbox{.}(2012)]%
         {krizhevsky2012imagenet}
-\bibfield{author}{\bibinfo{person}{Alex Krizhevsky}, \bibinfo{person}{Ilya
-  Sutskever}, {and} \bibinfo{person}{Geoffrey~E Hinton}.}
-  \bibinfo{year}{2012}\natexlab{}.
-\newblock \showarticletitle{Imagenet classification with deep convolutional
-  neural networks}.
-\newblock \bibinfo{journal}{\emph{Advances in neural information processing
-  systems}}  \bibinfo{volume}{25} (\bibinfo{year}{2012}).
+\bibfield{author}{\bibinfo{person}{Alex Krizhevsky}, \bibinfo{person}{Ilya Sutskever}, {and} \bibinfo{person}{Geoffrey~E Hinton}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Imagenet classification with deep convolutional neural networks}.
+\newblock \bibinfo{journal}{\emph{Advances in neural information processing systems}}  \bibinfo{volume}{25} (\bibinfo{year}{2012}).
 \newblock
 
 
 \bibitem[Kuleshov and Precup(2014)]%
         {kuleshov2014algorithms}
-\bibfield{author}{\bibinfo{person}{Volodymyr Kuleshov} {and}
-  \bibinfo{person}{Doina Precup}.} \bibinfo{year}{2014}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Volodymyr Kuleshov} {and} \bibinfo{person}{Doina Precup}.} \bibinfo{year}{2014}\natexlab{}.
 \newblock \showarticletitle{Algorithms for Multi-Armed Bandit Problems}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1402.6028}}
-  (\bibinfo{year}{2014}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1402.6028}} (\bibinfo{year}{2014}).
 \newblock
 \urldef\tempurl%
 \url{https://arxiv.org/abs/1402.6028}
@@ -791,147 +530,92 @@
 
 \bibitem[Lambert et~al\mbox{.}(2023)]%
         {lambert2023entangled}
-\bibfield{author}{\bibinfo{person}{Nathan Lambert},
-  \bibinfo{person}{Thomas~Krendl Gilbert}, {and} \bibinfo{person}{Tom Zick}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Entangled preferences: The history and risks of
-  reinforcement learning and human feedback}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.13595}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Nathan Lambert}, \bibinfo{person}{Thomas~Krendl Gilbert}, {and} \bibinfo{person}{Tom Zick}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Entangled preferences: The history and risks of reinforcement learning and human feedback}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.13595}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Levine et~al\mbox{.}(2020)]%
         {levine2020offline}
-\bibfield{author}{\bibinfo{person}{Sergey Levine}, \bibinfo{person}{Aviral
-  Kumar}, \bibinfo{person}{George Tucker}, {and} \bibinfo{person}{Justin Fu}.}
-  \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Offline reinforcement learning: Tutorial, review,
-  and perspectives on open problems}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2005.01643}}
-  (\bibinfo{year}{2020}).
+\bibfield{author}{\bibinfo{person}{Sergey Levine}, \bibinfo{person}{Aviral Kumar}, \bibinfo{person}{George Tucker}, {and} \bibinfo{person}{Justin Fu}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Offline reinforcement learning: Tutorial, review, and perspectives on open problems}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2005.01643}} (\bibinfo{year}{2020}).
 \newblock
 
 
 \bibitem[Li et~al\mbox{.}(2010)]%
         {li2010contextual}
-\bibfield{author}{\bibinfo{person}{Lihong Li}, \bibinfo{person}{Wei Chu},
-  \bibinfo{person}{John Langford}, {and} \bibinfo{person}{Robert~E Schapire}.}
-  \bibinfo{year}{2010}\natexlab{}.
-\newblock \showarticletitle{A contextual-bandit approach to personalized news
-  article recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 19th
-  international conference on World wide web}}. \bibinfo{pages}{661--670}.
+\bibfield{author}{\bibinfo{person}{Lihong Li}, \bibinfo{person}{Wei Chu}, \bibinfo{person}{John Langford}, {and} \bibinfo{person}{Robert~E Schapire}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{A contextual-bandit approach to personalized news article recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 19th international conference on World wide web}}. \bibinfo{pages}{661--670}.
 \newblock
 
 
 \bibitem[Lin et~al\mbox{.}(2023)]%
         {lin2023survey}
-\bibfield{author}{\bibinfo{person}{Yuanguo Lin}, \bibinfo{person}{Yong Liu},
-  \bibinfo{person}{Fan Lin}, \bibinfo{person}{Lixin Zou},
-  \bibinfo{person}{Pengcheng Wu}, \bibinfo{person}{Wenhua Zeng},
-  \bibinfo{person}{Huanhuan Chen}, {and} \bibinfo{person}{Chunyan Miao}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{A survey on reinforcement learning for recommender
-  systems}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks and
-  Learning Systems}} (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Yuanguo Lin}, \bibinfo{person}{Yong Liu}, \bibinfo{person}{Fan Lin}, \bibinfo{person}{Lixin Zou}, \bibinfo{person}{Pengcheng Wu}, \bibinfo{person}{Wenhua Zeng}, \bibinfo{person}{Huanhuan Chen}, {and} \bibinfo{person}{Chunyan Miao}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A survey on reinforcement learning for recommender systems}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks and Learning Systems}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Linden et~al\mbox{.}(2003)]%
         {linden2003amazon}
-\bibfield{author}{\bibinfo{person}{Greg Linden}, \bibinfo{person}{Brent Smith},
-  {and} \bibinfo{person}{Jeremy York}.} \bibinfo{year}{2003}\natexlab{}.
-\newblock \showarticletitle{Amazon. com recommendations: Item-to-item
-  collaborative filtering}.
-\newblock \bibinfo{journal}{\emph{IEEE Internet computing}}
-  \bibinfo{volume}{7}, \bibinfo{number}{1} (\bibinfo{year}{2003}),
-  \bibinfo{pages}{76--80}.
+\bibfield{author}{\bibinfo{person}{Greg Linden}, \bibinfo{person}{Brent Smith}, {and} \bibinfo{person}{Jeremy York}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Amazon. com recommendations: Item-to-item collaborative filtering}.
+\newblock \bibinfo{journal}{\emph{IEEE Internet computing}} \bibinfo{volume}{7}, \bibinfo{number}{1} (\bibinfo{year}{2003}), \bibinfo{pages}{76--80}.
 \newblock
 
 
 \bibitem[Liu et~al\mbox{.}(2025)]%
         {liu2025reducing}
-\bibfield{author}{\bibinfo{person}{Wenzhang Liu}, \bibinfo{person}{Lianjun
-  Jin}, \bibinfo{person}{Lu Ren}, \bibinfo{person}{Chaoxu Mu}, {and}
-  \bibinfo{person}{Changyin Sun}.} \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{Reducing Action Space for Deep Reinforcement
-  Learning via Causal Effect Estimation}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2501.14543}}
-  (\bibinfo{year}{2025}).
+\bibfield{author}{\bibinfo{person}{Wenzhang Liu}, \bibinfo{person}{Lianjun Jin}, \bibinfo{person}{Lu Ren}, \bibinfo{person}{Chaoxu Mu}, {and} \bibinfo{person}{Changyin Sun}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Reducing Action Space for Deep Reinforcement Learning via Causal Effect Estimation}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2501.14543}} (\bibinfo{year}{2025}).
 \newblock
 
 
 \bibitem[Liu et~al\mbox{.}(2022)]%
         {liu2022monolith}
-\bibfield{author}{\bibinfo{person}{Zhuoran Liu}, \bibinfo{person}{Leqi Zou},
-  \bibinfo{person}{Xuan Zou}, \bibinfo{person}{Caihua Wang},
-  \bibinfo{person}{Biao Zhang}, \bibinfo{person}{Da Tang},
-  \bibinfo{person}{Bolin Zhu}, \bibinfo{person}{Yijie Zhu},
-  \bibinfo{person}{Peng Wu}, \bibinfo{person}{Ke Wang}, {et~al\mbox{.}}}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Monolith: real time recommendation system with
-  collisionless embedding table}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2209.07663}}
-  (\bibinfo{year}{2022}).
+\bibfield{author}{\bibinfo{person}{Zhuoran Liu}, \bibinfo{person}{Leqi Zou}, \bibinfo{person}{Xuan Zou}, \bibinfo{person}{Caihua Wang}, \bibinfo{person}{Biao Zhang}, \bibinfo{person}{Da Tang}, \bibinfo{person}{Bolin Zhu}, \bibinfo{person}{Yijie Zhu}, \bibinfo{person}{Peng Wu}, \bibinfo{person}{Ke Wang}, {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Monolith: real time recommendation system with collisionless embedding table}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2209.07663}} (\bibinfo{year}{2022}).
 \newblock
 
 
 \bibitem[Lyu et~al\mbox{.}(2023)]%
         {lyu2023entire}
-\bibfield{author}{\bibinfo{person}{Shanshan Lyu}, \bibinfo{person}{Qiwei Chen},
-  \bibinfo{person}{Tao Zhuang}, {and} \bibinfo{person}{Junfeng Ge}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Entire Space Learning Framework: Unbias Conversion
-  Rate Prediction in Full Stages of Recommender System}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.00276}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Shanshan Lyu}, \bibinfo{person}{Qiwei Chen}, \bibinfo{person}{Tao Zhuang}, {and} \bibinfo{person}{Junfeng Ge}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Entire Space Learning Framework: Unbias Conversion Rate Prediction in Full Stages of Recommender System}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.00276}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Ma et~al\mbox{.}(2018)]%
         {ma2018modeling}
-\bibfield{author}{\bibinfo{person}{Jiaqi Ma}, \bibinfo{person}{Zhe Zhao},
-  \bibinfo{person}{Xinyang Yi}, \bibinfo{person}{Jilin Chen},
-  \bibinfo{person}{Lichan Hong}, {and} \bibinfo{person}{Ed~H Chi}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Modeling task relationships in multi-task learning
-  with multi-gate mixture-of-experts}. In \bibinfo{booktitle}{\emph{Proceedings
-  of the 24th ACM SIGKDD international conference on knowledge discovery \&
-  data mining}}. \bibinfo{pages}{1930--1939}.
+\bibfield{author}{\bibinfo{person}{Jiaqi Ma}, \bibinfo{person}{Zhe Zhao}, \bibinfo{person}{Xinyang Yi}, \bibinfo{person}{Jilin Chen}, \bibinfo{person}{Lichan Hong}, {and} \bibinfo{person}{Ed~H Chi}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Modeling task relationships in multi-task learning with multi-gate mixture-of-experts}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD international conference on knowledge discovery \& data mining}}. \bibinfo{pages}{1930--1939}.
 \newblock
 
 
 \bibitem[Mazoure et~al\mbox{.}(2021)]%
         {mazoure2021improving}
-\bibfield{author}{\bibinfo{person}{Bogdan Mazoure}, \bibinfo{person}{Paul
-  Mineiro}, \bibinfo{person}{Pavithra Srinath}, \bibinfo{person}{Reza~Sharifi
-  Sedeh}, \bibinfo{person}{Doina Precup}, {and} \bibinfo{person}{Adith
-  Swaminathan}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Improving long-term metrics in recommendation
-  systems using short-horizon reinforcement learning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2106.00589}}
-  (\bibinfo{year}{2021}).
+\bibfield{author}{\bibinfo{person}{Bogdan Mazoure}, \bibinfo{person}{Paul Mineiro}, \bibinfo{person}{Pavithra Srinath}, \bibinfo{person}{Reza~Sharifi Sedeh}, \bibinfo{person}{Doina Precup}, {and} \bibinfo{person}{Adith Swaminathan}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Improving long-term metrics in recommendation systems using short-horizon reinforcement learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2106.00589}} (\bibinfo{year}{2021}).
 \newblock
 
 
 \bibitem[McDonald et~al\mbox{.}(2023a)]%
         {mcdonald2023impatient}
-\bibfield{author}{\bibinfo{person}{Thomas~M McDonald}, \bibinfo{person}{Lucas
-  Maystre}, \bibinfo{person}{Mounia Lalmas}, \bibinfo{person}{Daniel Russo},
-  {and} \bibinfo{person}{Kamil Ciosek}.} \bibinfo{year}{2023}\natexlab{a}.
-\newblock \showarticletitle{Impatient bandits: Optimizing recommendations for
-  the long-term without delay}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining}}.
-  \bibinfo{pages}{1687--1697}.
+\bibfield{author}{\bibinfo{person}{Thomas~M McDonald}, \bibinfo{person}{Lucas Maystre}, \bibinfo{person}{Mounia Lalmas}, \bibinfo{person}{Daniel Russo}, {and} \bibinfo{person}{Kamil Ciosek}.} \bibinfo{year}{2023}\natexlab{a}.
+\newblock \showarticletitle{Impatient bandits: Optimizing recommendations for the long-term without delay}. In \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining}}. \bibinfo{pages}{1687--1697}.
 \newblock
 
 
 \bibitem[McDonald et~al\mbox{.}(2023b)]%
         {mcdonald2023spotify}
-\bibfield{author}{\bibinfo{person}{Thomas~M. McDonald}, \bibinfo{person}{Lucas
-  Maystre}, \bibinfo{person}{Mounia Lalmas}, \bibinfo{person}{Daniel Russo},
-  {and} \bibinfo{person}{Kamil Ciosek}.} \bibinfo{year}{2023}\natexlab{b}.
+\bibfield{author}{\bibinfo{person}{Thomas~M. McDonald}, \bibinfo{person}{Lucas Maystre}, \bibinfo{person}{Mounia Lalmas}, \bibinfo{person}{Daniel Russo}, {and} \bibinfo{person}{Kamil Ciosek}.} \bibinfo{year}{2023}\natexlab{b}.
 \newblock \bibinfo{title}{Optimizing for the Long-Term Without Delay}.
 \newblock \bibinfo{howpublished}{Spotify Research Blog}.
 \newblock
@@ -943,118 +627,69 @@
 
 \bibitem[McMahan et~al\mbox{.}(2013)]%
         {mcmahan2013ad}
-\bibfield{author}{\bibinfo{person}{H~Brendan McMahan}, \bibinfo{person}{Gary
-  Holt}, \bibinfo{person}{David Sculley}, \bibinfo{person}{Michael Young},
-  \bibinfo{person}{Dietmar Ebner}, \bibinfo{person}{Julian Grady},
-  \bibinfo{person}{Lan Nie}, \bibinfo{person}{Todd Phillips},
-  \bibinfo{person}{Eugene Davydov}, \bibinfo{person}{Daniel Golovin},
-  {et~al\mbox{.}}} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Ad click prediction: a view from the trenches}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 19th ACM SIGKDD international
-  conference on Knowledge discovery and data mining}}.
-  \bibinfo{pages}{1222--1230}.
+\bibfield{author}{\bibinfo{person}{H~Brendan McMahan}, \bibinfo{person}{Gary Holt}, \bibinfo{person}{David Sculley}, \bibinfo{person}{Michael Young}, \bibinfo{person}{Dietmar Ebner}, \bibinfo{person}{Julian Grady}, \bibinfo{person}{Lan Nie}, \bibinfo{person}{Todd Phillips}, \bibinfo{person}{Eugene Davydov}, \bibinfo{person}{Daniel Golovin}, {et~al\mbox{.}}} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Ad click prediction: a view from the trenches}. In \bibinfo{booktitle}{\emph{Proceedings of the 19th ACM SIGKDD international conference on Knowledge discovery and data mining}}. \bibinfo{pages}{1222--1230}.
 \newblock
 
 
 \bibitem[Mehrotra et~al\mbox{.}(2018)]%
         {Mehrotra2018}
-\bibfield{author}{\bibinfo{person}{Rishabh Mehrotra}, \bibinfo{person}{James
-  McInerney}, \bibinfo{person}{Hugues Bouchard}, \bibinfo{person}{Mounia
-  Lalmas}, {and} \bibinfo{person}{Fernando Diaz}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Towards a Fair Marketplace: Counterfactual
-  Evaluation of the Trade-off between Relevance, Fairness \& Satisfaction in
-  Recommendation Systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 27th
-  ACM International Conference on Information and Knowledge Management (CIKM
-  '18)}}.
+\bibfield{author}{\bibinfo{person}{Rishabh Mehrotra}, \bibinfo{person}{James McInerney}, \bibinfo{person}{Hugues Bouchard}, \bibinfo{person}{Mounia Lalmas}, {and} \bibinfo{person}{Fernando Diaz}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Towards a Fair Marketplace: Counterfactual Evaluation of the Trade-off between Relevance, Fairness \& Satisfaction in Recommendation Systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 27th ACM International Conference on Information and Knowledge Management (CIKM '18)}}.
 \newblock
 
 
 \bibitem[Mehrotra et~al\mbox{.}(2020)]%
         {Mehrotra2020}
-\bibfield{author}{\bibinfo{person}{Rishabh Mehrotra}, \bibinfo{person}{Niannan
-  Xue}, {and} \bibinfo{person}{Mounia Lalmas}.}
-  \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Bandit Based Optimization of Multiple Objectives on
-  a Music Streaming Platform}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  26th ACM SIGKDD International Conference on Knowledge Discovery \& Data
-  Mining (KDD '20)}}. \bibinfo{pages}{3224--3233}.
+\bibfield{author}{\bibinfo{person}{Rishabh Mehrotra}, \bibinfo{person}{Niannan Xue}, {and} \bibinfo{person}{Mounia Lalmas}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Bandit Based Optimization of Multiple Objectives on a Music Streaming Platform}. In \bibinfo{booktitle}{\emph{Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining (KDD '20)}}. \bibinfo{pages}{3224--3233}.
 \newblock
 \href{https://doi.org/10.1145/3394486.3403392}{doi:\nolinkurl{10.1145/3394486.3403392}}
 
 
 \bibitem[Michel et~al\mbox{.}(2019)]%
         {Michel2019}
-\bibfield{author}{\bibinfo{person}{Paul Michel}, \bibinfo{person}{Omer Levy},
-  {and} \bibinfo{person}{Graham Neubig}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Are Sixteen Heads Really Better Than One?}. In
-  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems
-  32 (NeurIPS)}}. \bibinfo{pages}{14014--14024}.
+\bibfield{author}{\bibinfo{person}{Paul Michel}, \bibinfo{person}{Omer Levy}, {and} \bibinfo{person}{Graham Neubig}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Are Sixteen Heads Really Better Than One?}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems 32 (NeurIPS)}}. \bibinfo{pages}{14014--14024}.
 \newblock
 
 
 \bibitem[Mikolov et~al\mbox{.}(2013)]%
         {mikolov2013distributed}
-\bibfield{author}{\bibinfo{person}{Tomas Mikolov}, \bibinfo{person}{Ilya
-  Sutskever}, \bibinfo{person}{Kai Chen}, \bibinfo{person}{Greg~S Corrado},
-  {and} \bibinfo{person}{Jeff Dean}.} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Distributed representations of words and phrases
-  and their compositionality}.
-\newblock \bibinfo{journal}{\emph{Advances in neural information processing
-  systems}}  \bibinfo{volume}{26} (\bibinfo{year}{2013}).
+\bibfield{author}{\bibinfo{person}{Tomas Mikolov}, \bibinfo{person}{Ilya Sutskever}, \bibinfo{person}{Kai Chen}, \bibinfo{person}{Greg~S Corrado}, {and} \bibinfo{person}{Jeff Dean}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Distributed representations of words and phrases and their compositionality}.
+\newblock \bibinfo{journal}{\emph{Advances in neural information processing systems}}  \bibinfo{volume}{26} (\bibinfo{year}{2013}).
 \newblock
 
 
 \bibitem[Mnih et~al\mbox{.}(2016)]%
         {mnih2016asynchronous}
-\bibfield{author}{\bibinfo{person}{Volodymyr Mnih},
-  \bibinfo{person}{Adria~Puigdomenech Badia}, \bibinfo{person}{Mehdi Mirza},
-  \bibinfo{person}{Alex Graves}, \bibinfo{person}{Timothy Lillicrap},
-  \bibinfo{person}{Tim Harley}, \bibinfo{person}{David Silver}, {and}
-  \bibinfo{person}{Koray Kavukcuoglu}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Asynchronous methods for deep reinforcement
-  learning}. In \bibinfo{booktitle}{\emph{International conference on machine
-  learning}}. PMLR, \bibinfo{pages}{1928--1937}.
+\bibfield{author}{\bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Adria~Puigdomenech Badia}, \bibinfo{person}{Mehdi Mirza}, \bibinfo{person}{Alex Graves}, \bibinfo{person}{Timothy Lillicrap}, \bibinfo{person}{Tim Harley}, \bibinfo{person}{David Silver}, {and} \bibinfo{person}{Koray Kavukcuoglu}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Asynchronous methods for deep reinforcement learning}. In \bibinfo{booktitle}{\emph{International conference on machine learning}}. PMLR, \bibinfo{pages}{1928--1937}.
 \newblock
 
 
 \bibitem[Mnih et~al\mbox{.}(2015)]%
         {mnih2015human}
-\bibfield{author}{\bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Koray
-  Kavukcuoglu}, \bibinfo{person}{David Silver}, \bibinfo{person}{Andrei~A
-  Rusu}, \bibinfo{person}{Joel Veness}, \bibinfo{person}{Marc~G Bellemare},
-  \bibinfo{person}{Alex Graves}, \bibinfo{person}{Martin Riedmiller},
-  \bibinfo{person}{Andreas~K Fidjeland}, \bibinfo{person}{Georg Ostrovski},
-  \bibinfo{person}{Stig Petersen}, {et~al\mbox{.}}}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Human-level control through deep reinforcement
-  learning}.
-\newblock \bibinfo{journal}{\emph{Nature}} \bibinfo{volume}{518},
-  \bibinfo{number}{7540} (\bibinfo{year}{2015}), \bibinfo{pages}{529--533}.
+\bibfield{author}{\bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Koray Kavukcuoglu}, \bibinfo{person}{David Silver}, \bibinfo{person}{Andrei~A Rusu}, \bibinfo{person}{Joel Veness}, \bibinfo{person}{Marc~G Bellemare}, \bibinfo{person}{Alex Graves}, \bibinfo{person}{Martin Riedmiller}, \bibinfo{person}{Andreas~K Fidjeland}, \bibinfo{person}{Georg Ostrovski}, \bibinfo{person}{Stig Petersen}, {et~al\mbox{.}}} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Human-level control through deep reinforcement learning}.
+\newblock \bibinfo{journal}{\emph{Nature}} \bibinfo{volume}{518}, \bibinfo{number}{7540} (\bibinfo{year}{2015}), \bibinfo{pages}{529--533}.
 \newblock
 \href{https://doi.org/10.1038/nature14236}{doi:\nolinkurl{10.1038/nature14236}}
 
 
 \bibitem[Naumov et~al\mbox{.}(2019)]%
         {naumov2019deep}
-\bibfield{author}{\bibinfo{person}{Maxim Naumov}, \bibinfo{person}{Dheevatsa
-  Mudigere}, \bibinfo{person}{Hao-Jun~Michael Shi}, \bibinfo{person}{Jianyu
-  Huang}, \bibinfo{person}{Narayanan Sundaraman}, \bibinfo{person}{Jongsoo
-  Park}, \bibinfo{person}{Xiaodong Wang}, \bibinfo{person}{Udit Gupta},
-  \bibinfo{person}{Carole-Jean Wu}, \bibinfo{person}{Alisson~G Azzolini},
-  {et~al\mbox{.}}} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Deep learning recommendation model for
-  personalization and recommendation systems}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1906.00091}}
-  (\bibinfo{year}{2019}).
+\bibfield{author}{\bibinfo{person}{Maxim Naumov}, \bibinfo{person}{Dheevatsa Mudigere}, \bibinfo{person}{Hao-Jun~Michael Shi}, \bibinfo{person}{Jianyu Huang}, \bibinfo{person}{Narayanan Sundaraman}, \bibinfo{person}{Jongsoo Park}, \bibinfo{person}{Xiaodong Wang}, \bibinfo{person}{Udit Gupta}, \bibinfo{person}{Carole-Jean Wu}, \bibinfo{person}{Alisson~G Azzolini}, {et~al\mbox{.}}} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deep learning recommendation model for personalization and recommendation systems}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1906.00091}} (\bibinfo{year}{2019}).
 \newblock
 
 
 \bibitem[Nielsen(2017)]%
         {nielsen2017advertising}
 \bibfield{author}{\bibinfo{person}{Nielsen}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \bibinfo{title}{When It Comes to Advertising Effectiveness, What Is
-  Key?}
+\newblock \bibinfo{title}{When It Comes to Advertising Effectiveness, What Is Key?}
 \newblock \bibinfo{howpublished}{Nielsen Insights Online Article}.
 \newblock
 \urldef\tempurl%
@@ -1065,27 +700,24 @@
 \shownote{Accessed: 2025-03-27}.
 
 
+\bibitem[Pan et~al\mbox{.}(2023)]%
+        {pan2023learning}
+\bibfield{author}{\bibinfo{person}{Yunzhu Pan}, \bibinfo{person}{Nian Li}, \bibinfo{person}{Chen Gao}, \bibinfo{person}{Jianxin Chang}, \bibinfo{person}{Yanan Niu}, \bibinfo{person}{Yang Song}, \bibinfo{person}{Depeng Jin}, {and} \bibinfo{person}{Yong Li}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Learning and optimization of implicit negative feedback for industrial short-video recommender system}. In \bibinfo{booktitle}{\emph{Proceedings of the 32nd ACM International Conference on Information and Knowledge Management}}. \bibinfo{pages}{4787--4793}.
+\newblock
+
+
 \bibitem[Pancha et~al\mbox{.}(2022)]%
         {pancha2022pinnerformer}
-\bibfield{author}{\bibinfo{person}{Nikil Pancha}, \bibinfo{person}{Andrew
-  Zhai}, \bibinfo{person}{Jure Leskovec}, {and} \bibinfo{person}{Charles
-  Rosenberg}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Pinnerformer: Sequence modeling for user
-  representation at pinterest}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  28th ACM SIGKDD conference on knowledge discovery and data mining}}.
-  \bibinfo{pages}{3702--3712}.
+\bibfield{author}{\bibinfo{person}{Nikil Pancha}, \bibinfo{person}{Andrew Zhai}, \bibinfo{person}{Jure Leskovec}, {and} \bibinfo{person}{Charles Rosenberg}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Pinnerformer: Sequence modeling for user representation at pinterest}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM SIGKDD conference on knowledge discovery and data mining}}. \bibinfo{pages}{3702--3712}.
 \newblock
 
 
 \bibitem[Pascanu et~al\mbox{.}(2013)]%
         {Pascanu2013}
-\bibfield{author}{\bibinfo{person}{Razvan Pascanu}, \bibinfo{person}{Tomas
-  Mikolov}, {and} \bibinfo{person}{Yoshua Bengio}.}
-  \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{On the difficulty of training recurrent neural
-  networks}. In \bibinfo{booktitle}{\emph{Proceedings of the 30th International
-  Conference on Machine Learning (ICML)}}, Vol.~\bibinfo{volume}{28}.
-  \bibinfo{publisher}{PMLR}, \bibinfo{pages}{1310--1318}.
+\bibfield{author}{\bibinfo{person}{Razvan Pascanu}, \bibinfo{person}{Tomas Mikolov}, {and} \bibinfo{person}{Yoshua Bengio}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{On the difficulty of training recurrent neural networks}. In \bibinfo{booktitle}{\emph{Proceedings of the 30th International Conference on Machine Learning (ICML)}}, Vol.~\bibinfo{volume}{28}. \bibinfo{publisher}{PMLR}, \bibinfo{pages}{1310--1318}.
 \newblock
 \urldef\tempurl%
 \url{http://proceedings.mlr.press/v28/pascanu13.pdf}
@@ -1097,131 +729,85 @@
 
 \bibitem[Puiutta and Veith(2020)]%
         {puiutta2020explainable}
-\bibfield{author}{\bibinfo{person}{Erika Puiutta} {and}
-  \bibinfo{person}{Eric~MSP Veith}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Explainable reinforcement learning: A survey}. In
-  \bibinfo{booktitle}{\emph{International cross-domain conference for machine
-  learning and knowledge extraction}}. Springer, \bibinfo{pages}{77--95}.
+\bibfield{author}{\bibinfo{person}{Erika Puiutta} {and} \bibinfo{person}{Eric~MSP Veith}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Explainable reinforcement learning: A survey}. In \bibinfo{booktitle}{\emph{International cross-domain conference for machine learning and knowledge extraction}}. Springer, \bibinfo{pages}{77--95}.
 \newblock
 
 
 \bibitem[Puterman(2014)]%
         {puterman2014markov}
-\bibfield{author}{\bibinfo{person}{Martin~L Puterman}.}
-  \bibinfo{year}{2014}\natexlab{}.
-\newblock \bibinfo{booktitle}{\emph{Markov decision processes: discrete
-  stochastic dynamic programming}}.
+\bibfield{author}{\bibinfo{person}{Martin~L Puterman}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Markov decision processes: discrete stochastic dynamic programming}}.
 \newblock \bibinfo{publisher}{John Wiley \& Sons}.
 \newblock
 
 
 \bibitem[Quadrana et~al\mbox{.}(2018)]%
         {quadrana2018sequence}
-\bibfield{author}{\bibinfo{person}{Massimo Quadrana}, \bibinfo{person}{Paolo
-  Cremonesi}, {and} \bibinfo{person}{Dietmar Jannach}.}
-  \bibinfo{year}{2018}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Massimo Quadrana}, \bibinfo{person}{Paolo Cremonesi}, {and} \bibinfo{person}{Dietmar Jannach}.} \bibinfo{year}{2018}\natexlab{}.
 \newblock \showarticletitle{Sequence-aware recommender systems}.
-\newblock \bibinfo{journal}{\emph{ACM computing surveys (CSUR)}}
-  \bibinfo{volume}{51}, \bibinfo{number}{4} (\bibinfo{year}{2018}),
-  \bibinfo{pages}{1--36}.
+\newblock \bibinfo{journal}{\emph{ACM computing surveys (CSUR)}} \bibinfo{volume}{51}, \bibinfo{number}{4} (\bibinfo{year}{2018}), \bibinfo{pages}{1--36}.
 \newblock
 
 
 \bibitem[Robbins(1952)]%
         {robbins1952sequential}
-\bibfield{author}{\bibinfo{person}{Herbert Robbins}.}
-  \bibinfo{year}{1952}\natexlab{}.
-\newblock \showarticletitle{Some aspects of the sequential design of
-  experiments}.
-\newblock \bibinfo{journal}{\emph{Bull. Amer. Math. Soc.}}
-  \bibinfo{volume}{58}, \bibinfo{number}{5} (\bibinfo{year}{1952}),
-  \bibinfo{pages}{527--535}.
+\bibfield{author}{\bibinfo{person}{Herbert Robbins}.} \bibinfo{year}{1952}\natexlab{}.
+\newblock \showarticletitle{Some aspects of the sequential design of experiments}.
+\newblock \bibinfo{journal}{\emph{Bull. Amer. Math. Soc.}} \bibinfo{volume}{58}, \bibinfo{number}{5} (\bibinfo{year}{1952}), \bibinfo{pages}{527--535}.
 \newblock
 \href{https://doi.org/10.1090/S0002-9904-1952-09620-8}{doi:\nolinkurl{10.1090/S0002-9904-1952-09620-8}}
 
 
 \bibitem[Russell and Norvig(2016)]%
         {russell2016artificial}
-\bibfield{author}{\bibinfo{person}{Stuart~J Russell} {and}
-  \bibinfo{person}{Peter Norvig}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \bibinfo{booktitle}{\emph{Artificial intelligence: a modern
-  approach}}.
+\bibfield{author}{\bibinfo{person}{Stuart~J Russell} {and} \bibinfo{person}{Peter Norvig}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Artificial intelligence: a modern approach}}.
 \newblock \bibinfo{publisher}{pearson}.
 \newblock
 
 
 \bibitem[Russo et~al\mbox{.}(2018)]%
         {russo2018tutorial}
-\bibfield{author}{\bibinfo{person}{Daniel~J Russo}, \bibinfo{person}{Benjamin
-  Van~Roy}, \bibinfo{person}{Abbas Kazerouni}, \bibinfo{person}{Ian Osband},
-  \bibinfo{person}{Zheng Wen}, {et~al\mbox{.}}}
-  \bibinfo{year}{2018}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Daniel~J Russo}, \bibinfo{person}{Benjamin Van~Roy}, \bibinfo{person}{Abbas Kazerouni}, \bibinfo{person}{Ian Osband}, \bibinfo{person}{Zheng Wen}, {et~al\mbox{.}}} \bibinfo{year}{2018}\natexlab{}.
 \newblock \showarticletitle{A Tutorial on Thompson Sampling}.
-\newblock \bibinfo{journal}{\emph{Foundations and Trends{\textregistered} in
-  Machine Learning}} \bibinfo{volume}{11}, \bibinfo{number}{1}
-  (\bibinfo{year}{2018}), \bibinfo{pages}{1--96}.
+\newblock \bibinfo{journal}{\emph{Foundations and Trends{\textregistered} in Machine Learning}} \bibinfo{volume}{11}, \bibinfo{number}{1} (\bibinfo{year}{2018}), \bibinfo{pages}{1--96}.
 \newblock
 
 
 \bibitem[Sagtani et~al\mbox{.}(2023)]%
         {sagtani2023quantifying}
-\bibfield{author}{\bibinfo{person}{Hitesh Sagtani},
-  \bibinfo{person}{Madan~Gopal Jhawar}, \bibinfo{person}{Akshat Gupta}, {and}
-  \bibinfo{person}{Rishabh Mehrotra}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Quantifying and leveraging user fatigue for
-  interventions in recommender systems}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 46th International ACM SIGIR
-  Conference on Research and Development in Information Retrieval}}.
-  \bibinfo{pages}{2293--2297}.
+\bibfield{author}{\bibinfo{person}{Hitesh Sagtani}, \bibinfo{person}{Madan~Gopal Jhawar}, \bibinfo{person}{Akshat Gupta}, {and} \bibinfo{person}{Rishabh Mehrotra}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Quantifying and leveraging user fatigue for interventions in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval}}. \bibinfo{pages}{2293--2297}.
 \newblock
 
 
 \bibitem[Sagtani et~al\mbox{.}(2024)]%
         {sagtani2024ad}
-\bibfield{author}{\bibinfo{person}{Hitesh Sagtani},
-  \bibinfo{person}{Madan~Gopal Jhawar}, \bibinfo{person}{Rishabh Mehrotra},
-  {and} \bibinfo{person}{Olivier Jeunen}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{Ad-load Balancing via Off-policy Learning in a
-  Content Marketplace}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th
-  ACM International Conference on Web Search and Data Mining}}.
-  \bibinfo{pages}{586--595}.
+\bibfield{author}{\bibinfo{person}{Hitesh Sagtani}, \bibinfo{person}{Madan~Gopal Jhawar}, \bibinfo{person}{Rishabh Mehrotra}, {and} \bibinfo{person}{Olivier Jeunen}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Ad-load Balancing via Off-policy Learning in a Content Marketplace}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM International Conference on Web Search and Data Mining}}. \bibinfo{pages}{586--595}.
 \newblock
 
 
 \bibitem[Saha et~al\mbox{.}(2021)]%
         {saha2021advertiming}
-\bibfield{author}{\bibinfo{person}{Koustuv Saha}, \bibinfo{person}{Yozen Liu},
-  \bibinfo{person}{Nicholas Vincent}, \bibinfo{person}{Farhan~Asif Chowdhury},
-  \bibinfo{person}{Leonardo Neves}, \bibinfo{person}{Neil Shah}, {and}
-  \bibinfo{person}{Maarten~W Bos}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Advertiming matters: Examining user ad consumption
-  for effective ad allocations on social media}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 2021 CHI Conference on Human
-  Factors in Computing Systems}}. \bibinfo{pages}{1--18}.
+\bibfield{author}{\bibinfo{person}{Koustuv Saha}, \bibinfo{person}{Yozen Liu}, \bibinfo{person}{Nicholas Vincent}, \bibinfo{person}{Farhan~Asif Chowdhury}, \bibinfo{person}{Leonardo Neves}, \bibinfo{person}{Neil Shah}, {and} \bibinfo{person}{Maarten~W Bos}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Advertiming matters: Examining user ad consumption for effective ad allocations on social media}. In \bibinfo{booktitle}{\emph{Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems}}. \bibinfo{pages}{1--18}.
 \newblock
 
 
 \bibitem[Schein et~al\mbox{.}(2002)]%
         {Schein2002}
-\bibfield{author}{\bibinfo{person}{Andrew~I. Schein},
-  \bibinfo{person}{Alexandrin Popescul}, \bibinfo{person}{Lyle~H. Ungar}, {and}
-  \bibinfo{person}{David~M. Pennock}.} \bibinfo{year}{2002}\natexlab{}.
-\newblock \showarticletitle{Methods and Metrics for Cold-start
-  Recommendations}. In \bibinfo{booktitle}{\emph{Proceedings of the 25th annual
-  international ACM SIGIR conference on Research and development in information
-  retrieval (SIGIR '02)}}. \bibinfo{pages}{253--260}.
+\bibfield{author}{\bibinfo{person}{Andrew~I. Schein}, \bibinfo{person}{Alexandrin Popescul}, \bibinfo{person}{Lyle~H. Ungar}, {and} \bibinfo{person}{David~M. Pennock}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Methods and Metrics for Cold-start Recommendations}. In \bibinfo{booktitle}{\emph{Proceedings of the 25th annual international ACM SIGIR conference on Research and development in information retrieval (SIGIR '02)}}. \bibinfo{pages}{253--260}.
 \newblock
 \href{https://doi.org/10.1145/564376.564421}{doi:\nolinkurl{10.1145/564376.564421}}
 
 
 \bibitem[Schulman et~al\mbox{.}(2015)]%
         {schulman2015trust}
-\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Sergey
-  Levine}, \bibinfo{person}{Pieter Abbeel}, \bibinfo{person}{Michael Jordan},
-  {and} \bibinfo{person}{Philipp Moritz}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Trust region policy optimization}. In
-  \bibinfo{booktitle}{\emph{International Conference on Machine Learning
-  (ICML)}}. PMLR, \bibinfo{pages}{1889--1897}.
+\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Sergey Levine}, \bibinfo{person}{Pieter Abbeel}, \bibinfo{person}{Michael Jordan}, {and} \bibinfo{person}{Philipp Moritz}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Trust region policy optimization}. In \bibinfo{booktitle}{\emph{International Conference on Machine Learning (ICML)}}. PMLR, \bibinfo{pages}{1889--1897}.
 \newblock
 \urldef\tempurl%
 \url{https://proceedings.mlr.press/v37/schulman15.pdf}
@@ -1231,60 +817,41 @@
 
 \bibitem[Schulman et~al\mbox{.}(2017)]%
         {schulman2017proximal}
-\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Filip
-  Wolski}, \bibinfo{person}{Prafulla Dhariwal}, \bibinfo{person}{Alec Radford},
-  {and} \bibinfo{person}{Oleg Klimov}.} \bibinfo{year}{2017}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Filip Wolski}, \bibinfo{person}{Prafulla Dhariwal}, \bibinfo{person}{Alec Radford}, {and} \bibinfo{person}{Oleg Klimov}.} \bibinfo{year}{2017}\natexlab{}.
 \newblock \showarticletitle{Proximal policy optimization algorithms}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1707.06347}}
-  (\bibinfo{year}{2017}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1707.06347}} (\bibinfo{year}{2017}).
 \newblock
 
 
 \bibitem[Schwartz et~al\mbox{.}(2017)]%
         {schwartz2017customer}
-\bibfield{author}{\bibinfo{person}{Eric~M Schwartz}, \bibinfo{person}{Eric~T
-  Bradlow}, {and} \bibinfo{person}{Peter~S Fader}.}
-  \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Customer acquisition via display advertising using
-  multi-armed bandit experiments}.
-\newblock \bibinfo{journal}{\emph{Marketing Science}} \bibinfo{volume}{36},
-  \bibinfo{number}{4} (\bibinfo{year}{2017}), \bibinfo{pages}{500--522}.
+\bibfield{author}{\bibinfo{person}{Eric~M Schwartz}, \bibinfo{person}{Eric~T Bradlow}, {and} \bibinfo{person}{Peter~S Fader}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Customer acquisition via display advertising using multi-armed bandit experiments}.
+\newblock \bibinfo{journal}{\emph{Marketing Science}} \bibinfo{volume}{36}, \bibinfo{number}{4} (\bibinfo{year}{2017}), \bibinfo{pages}{500--522}.
 \newblock
 
 
 \bibitem[Shahriari et~al\mbox{.}(2015)]%
         {shahriari2015taking}
-\bibfield{author}{\bibinfo{person}{Bobak Shahriari}, \bibinfo{person}{Kevin
-  Swersky}, \bibinfo{person}{Ziyu Wang}, \bibinfo{person}{Ryan~P Adams}, {and}
-  \bibinfo{person}{Nando De~Freitas}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Taking the human out of the loop: A review of
-  Bayesian optimization}.
-\newblock \bibinfo{journal}{\emph{Proc. IEEE}} \bibinfo{volume}{104},
-  \bibinfo{number}{1} (\bibinfo{year}{2015}), \bibinfo{pages}{148--175}.
+\bibfield{author}{\bibinfo{person}{Bobak Shahriari}, \bibinfo{person}{Kevin Swersky}, \bibinfo{person}{Ziyu Wang}, \bibinfo{person}{Ryan~P Adams}, {and} \bibinfo{person}{Nando De~Freitas}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Taking the human out of the loop: A review of Bayesian optimization}.
+\newblock \bibinfo{journal}{\emph{Proc. IEEE}} \bibinfo{volume}{104}, \bibinfo{number}{1} (\bibinfo{year}{2015}), \bibinfo{pages}{148--175}.
 \newblock
 
 
 \bibitem[Sharma et~al\mbox{.}(2017)]%
         {sharma2017learning}
-\bibfield{author}{\bibinfo{person}{Sahil Sharma}, \bibinfo{person}{Aravind
-  Suresh}, \bibinfo{person}{Rahul Ramesh}, {and} \bibinfo{person}{Balaraman
-  Ravindran}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Learning to factor policies and action-value
-  functions: Factored action space representations for deep reinforcement
-  learning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1705.07269}}
-  (\bibinfo{year}{2017}).
+\bibfield{author}{\bibinfo{person}{Sahil Sharma}, \bibinfo{person}{Aravind Suresh}, \bibinfo{person}{Rahul Ramesh}, {and} \bibinfo{person}{Balaraman Ravindran}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Learning to factor policies and action-value functions: Factored action space representations for deep reinforcement learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1705.07269}} (\bibinfo{year}{2017}).
 \newblock
 
 
 \bibitem[Shim and Sung(2022)]%
         {shim2022comparison}
-\bibfield{author}{\bibinfo{person}{Kyuhong Shim} {and} \bibinfo{person}{Wonyong
-  Sung}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{A Comparison of Transformer, Convolutional, and
-  Recurrent Neural Networks on Phoneme Recognition}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2210.00367}}
-  (\bibinfo{year}{2022}).
+\bibfield{author}{\bibinfo{person}{Kyuhong Shim} {and} \bibinfo{person}{Wonyong Sung}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A Comparison of Transformer, Convolutional, and Recurrent Neural Networks on Phoneme Recognition}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2210.00367}} (\bibinfo{year}{2022}).
 \newblock
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2210.00367}
@@ -1294,24 +861,16 @@
 
 \bibitem[Silberstein et~al\mbox{.}(2023)]%
         {silberstein2023combating}
-\bibfield{author}{\bibinfo{person}{Natalia Silberstein}, \bibinfo{person}{Or
-  Shoham}, {and} \bibinfo{person}{Assaf Klein}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Combating Ad Fatigue via Frequency-Recency Features
-  in Online Advertising Systems}. In \bibinfo{booktitle}{\emph{Proceedings of
-  the 32nd ACM International Conference on Information and Knowledge
-  Management}}. \bibinfo{pages}{4822--4828}.
+\bibfield{author}{\bibinfo{person}{Natalia Silberstein}, \bibinfo{person}{Or Shoham}, {and} \bibinfo{person}{Assaf Klein}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Combating Ad Fatigue via Frequency-Recency Features in Online Advertising Systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 32nd ACM International Conference on Information and Knowledge Management}}. \bibinfo{pages}{4822--4828}.
 \newblock
 
 
 \bibitem[Staff(2003)]%
         {wsj2003yahoooverture}
-\bibfield{author}{\bibinfo{person}{Wall Street~Journal Staff}.}
-  \bibinfo{year}{2003}\natexlab{}.
-\newblock \showarticletitle{{Yahoo Agrees to Acquire Overture For \$1.63
-  Billion}}.
-\newblock \bibinfo{journal}{\emph{The Wall Street Journal}}
-  (\bibinfo{year}{2003}).
+\bibfield{author}{\bibinfo{person}{Wall Street~Journal Staff}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{{Yahoo Agrees to Acquire Overture For \$1.63 Billion}}.
+\newblock \bibinfo{journal}{\emph{The Wall Street Journal}} (\bibinfo{year}{2003}).
 \newblock
 \urldef\tempurl%
 \url{https://www.wsj.com/articles/SB105818965623153600}
@@ -1321,24 +880,15 @@
 
 \bibitem[Sun et~al\mbox{.}(2019)]%
         {sun2019bert4rec}
-\bibfield{author}{\bibinfo{person}{Fei Sun}, \bibinfo{person}{Jun Liu},
-  \bibinfo{person}{Jian Wu}, \bibinfo{person}{Changhua Pei},
-  \bibinfo{person}{Xiao Lin}, \bibinfo{person}{Wenwu Ou}, {and}
-  \bibinfo{person}{Peng Jiang}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{BERT4Rec: Sequential recommendation with
-  bidirectional encoder representations from transformer}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM international
-  conference on information and knowledge management}}.
-  \bibinfo{pages}{1441--1450}.
+\bibfield{author}{\bibinfo{person}{Fei Sun}, \bibinfo{person}{Jun Liu}, \bibinfo{person}{Jian Wu}, \bibinfo{person}{Changhua Pei}, \bibinfo{person}{Xiao Lin}, \bibinfo{person}{Wenwu Ou}, {and} \bibinfo{person}{Peng Jiang}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{BERT4Rec: Sequential recommendation with bidirectional encoder representations from transformer}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM international conference on information and knowledge management}}. \bibinfo{pages}{1441--1450}.
 \newblock
 
 
 \bibitem[Sutton and Barto(2018)]%
         {Sutton1998}
-\bibfield{author}{\bibinfo{person}{Richard~S. Sutton} {and}
-  \bibinfo{person}{Andrew~G. Barto}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \bibinfo{booktitle}{\emph{Reinforcement Learning: An Introduction}
-  (\bibinfo{edition}{second} ed.)}.
+\bibfield{author}{\bibinfo{person}{Richard~S. Sutton} {and} \bibinfo{person}{Andrew~G. Barto}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Reinforcement Learning: An Introduction} (\bibinfo{edition}{second} ed.)}.
 \newblock \bibinfo{publisher}{The MIT Press}.
 \newblock
 \urldef\tempurl%
@@ -1349,125 +899,83 @@
 
 \bibitem[Swaminathan and Joachims(2015)]%
         {swaminathan2015counterfactual}
-\bibfield{author}{\bibinfo{person}{Adith Swaminathan} {and}
-  \bibinfo{person}{Thorsten Joachims}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Counterfactual risk minimization: Learning from
-  logged bandit feedback}. In \bibinfo{booktitle}{\emph{International
-  conference on machine learning}}. PMLR, \bibinfo{pages}{814--823}.
+\bibfield{author}{\bibinfo{person}{Adith Swaminathan} {and} \bibinfo{person}{Thorsten Joachims}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Counterfactual risk minimization: Learning from logged bandit feedback}. In \bibinfo{booktitle}{\emph{International conference on machine learning}}. PMLR, \bibinfo{pages}{814--823}.
 \newblock
 
 
 \bibitem[Tavakoli et~al\mbox{.}(2018)]%
         {tavakoli2018action}
-\bibfield{author}{\bibinfo{person}{Arash Tavakoli}, \bibinfo{person}{Fabio
-  Pardo}, {and} \bibinfo{person}{Petar Kormushev}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Action branching architectures for deep
-  reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the aaai
-  conference on artificial intelligence}}, Vol.~\bibinfo{volume}{32}.
+\bibfield{author}{\bibinfo{person}{Arash Tavakoli}, \bibinfo{person}{Fabio Pardo}, {and} \bibinfo{person}{Petar Kormushev}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Action branching architectures for deep reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the aaai conference on artificial intelligence}}, Vol.~\bibinfo{volume}{32}.
 \newblock
 
 
 \bibitem[Theocharous et~al\mbox{.}(2015)]%
         {Theocharous-2015}
-\bibfield{author}{\bibinfo{person}{Georgios Theocharous},
-  \bibinfo{person}{Philip~S. Thomas}, {and} \bibinfo{person}{Mohammad
-  Ghavamzadeh}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Personalized ad recommendation for life-time value
-  optimization}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th
-  International Joint Conference on Artificial Intelligence (IJCAI)}}.
-  \bibinfo{pages}{1807--1813}.
+\bibfield{author}{\bibinfo{person}{Georgios Theocharous}, \bibinfo{person}{Philip~S. Thomas}, {and} \bibinfo{person}{Mohammad Ghavamzadeh}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Personalized ad recommendation for life-time value optimization}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th International Joint Conference on Artificial Intelligence (IJCAI)}}. \bibinfo{pages}{1807--1813}.
 \newblock
 
 
 \bibitem[Thompson(1933)]%
         {thompson1933likelihood}
-\bibfield{author}{\bibinfo{person}{William~R. Thompson}.}
-  \bibinfo{year}{1933}\natexlab{}.
-\newblock \showarticletitle{On the likelihood that one unknown probability
-  exceeds another in view of the evidence of two samples}.
-\newblock \bibinfo{journal}{\emph{Biometrika}} \bibinfo{volume}{25},
-  \bibinfo{number}{3-4} (\bibinfo{year}{1933}), \bibinfo{pages}{285--294}.
+\bibfield{author}{\bibinfo{person}{William~R. Thompson}.} \bibinfo{year}{1933}\natexlab{}.
+\newblock \showarticletitle{On the likelihood that one unknown probability exceeds another in view of the evidence of two samples}.
+\newblock \bibinfo{journal}{\emph{Biometrika}} \bibinfo{volume}{25}, \bibinfo{number}{3-4} (\bibinfo{year}{1933}), \bibinfo{pages}{285--294}.
 \newblock
 
 
 \bibitem[van~den Akker et~al\mbox{.}(2024)]%
         {van2024practical}
-\bibfield{author}{\bibinfo{person}{Bram van~den Akker},
-  \bibinfo{person}{Olivier Jeunen}, \bibinfo{person}{Ying Li},
-  \bibinfo{person}{Ben London}, \bibinfo{person}{Zahra Nazari}, {and}
-  \bibinfo{person}{Devesh Parekh}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{Practical Bandits: An Industry Perspective}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM International
-  Conference on Web Search and Data Mining}}. \bibinfo{pages}{1132--1135}.
+\bibfield{author}{\bibinfo{person}{Bram van~den Akker}, \bibinfo{person}{Olivier Jeunen}, \bibinfo{person}{Ying Li}, \bibinfo{person}{Ben London}, \bibinfo{person}{Zahra Nazari}, {and} \bibinfo{person}{Devesh Parekh}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Practical Bandits: An Industry Perspective}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM International Conference on Web Search and Data Mining}}. \bibinfo{pages}{1132--1135}.
 \newblock
 
 
 \bibitem[Van~den Oord et~al\mbox{.}(2013)]%
         {van2013deep}
-\bibfield{author}{\bibinfo{person}{Aaron Van~den Oord}, \bibinfo{person}{Sander
-  Dieleman}, {and} \bibinfo{person}{Benjamin Schrauwen}.}
-  \bibinfo{year}{2013}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Aaron Van~den Oord}, \bibinfo{person}{Sander Dieleman}, {and} \bibinfo{person}{Benjamin Schrauwen}.} \bibinfo{year}{2013}\natexlab{}.
 \newblock \showarticletitle{Deep content-based music recommendation}.
-\newblock \bibinfo{journal}{\emph{Advances in neural information processing
-  systems}}  \bibinfo{volume}{26} (\bibinfo{year}{2013}).
+\newblock \bibinfo{journal}{\emph{Advances in neural information processing systems}}  \bibinfo{volume}{26} (\bibinfo{year}{2013}).
 \newblock
 
 
 \bibitem[Vaswani(2017)]%
         {vaswani2017attention}
-\bibfield{author}{\bibinfo{person}{A Vaswani}.}
-  \bibinfo{year}{2017}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{A Vaswani}.} \bibinfo{year}{2017}\natexlab{}.
 \newblock \showarticletitle{Attention is all you need}.
-\newblock \bibinfo{journal}{\emph{Advances in Neural Information Processing
-  Systems}} (\bibinfo{year}{2017}).
+\newblock \bibinfo{journal}{\emph{Advances in Neural Information Processing Systems}} (\bibinfo{year}{2017}).
 \newblock
 
 
 \bibitem[Verma et~al\mbox{.}(2018)]%
         {verma2018programmatically}
-\bibfield{author}{\bibinfo{person}{Abhinav Verma},
-  \bibinfo{person}{Vijayaraghavan Murali}, \bibinfo{person}{Rishabh Singh},
-  \bibinfo{person}{Pushmeet Kohli}, {and} \bibinfo{person}{Swarat Chaudhuri}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Programmatically interpretable reinforcement
-  learning}. In \bibinfo{booktitle}{\emph{International conference on machine
-  learning}}. PMLR, \bibinfo{pages}{5045--5054}.
+\bibfield{author}{\bibinfo{person}{Abhinav Verma}, \bibinfo{person}{Vijayaraghavan Murali}, \bibinfo{person}{Rishabh Singh}, \bibinfo{person}{Pushmeet Kohli}, {and} \bibinfo{person}{Swarat Chaudhuri}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Programmatically interpretable reinforcement learning}. In \bibinfo{booktitle}{\emph{International conference on machine learning}}. PMLR, \bibinfo{pages}{5045--5054}.
 \newblock
 
 
 \bibitem[Villar et~al\mbox{.}(2015)]%
         {villar2015multi}
-\bibfield{author}{\bibinfo{person}{Sof{\'\i}a~S. Villar}, \bibinfo{person}{Jack
-  Bowden}, {and} \bibinfo{person}{James Wason}.}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Multi-armed Bandit Models for the Optimal Design of
-  Clinical Trials: Benefits and Challenges}.
-\newblock \bibinfo{journal}{\emph{Statist. Sci.}} \bibinfo{volume}{30},
-  \bibinfo{number}{2} (\bibinfo{year}{2015}), \bibinfo{pages}{199--215}.
+\bibfield{author}{\bibinfo{person}{Sof{\'\i}a~S. Villar}, \bibinfo{person}{Jack Bowden}, {and} \bibinfo{person}{James Wason}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Multi-armed Bandit Models for the Optimal Design of Clinical Trials: Benefits and Challenges}.
+\newblock \bibinfo{journal}{\emph{Statist. Sci.}} \bibinfo{volume}{30}, \bibinfo{number}{2} (\bibinfo{year}{2015}), \bibinfo{pages}{199--215}.
 \newblock
 \href{https://doi.org/10.1214/14-STS504}{doi:\nolinkurl{10.1214/14-STS504}}
 
 
 \bibitem[Voita et~al\mbox{.}(2019)]%
         {Voita2019}
-\bibfield{author}{\bibinfo{person}{Elena Voita}, \bibinfo{person}{David
-  Talbot}, \bibinfo{person}{Fedor Moiseev}, \bibinfo{person}{Rico Sennrich},
-  {and} \bibinfo{person}{Ivan Titov}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Analyzing Multi-Head Self-Attention: Specialized
-  Heads Do the Heavy Lifting, the Rest Can Be Pruned}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 57th Annual Meeting of the
-  Association for Computational Linguistics (ACL)}}.
-  \bibinfo{pages}{5797--5808}.
+\bibfield{author}{\bibinfo{person}{Elena Voita}, \bibinfo{person}{David Talbot}, \bibinfo{person}{Fedor Moiseev}, \bibinfo{person}{Rico Sennrich}, {and} \bibinfo{person}{Ivan Titov}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Analyzing Multi-Head Self-Attention: Specialized Heads Do the Heavy Lifting, the Rest Can Be Pruned}. In \bibinfo{booktitle}{\emph{Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL)}}. \bibinfo{pages}{5797--5808}.
 \newblock
 
 
 \bibitem[Vorotilov and Shugaepov(2023)]%
         {vorotilov2023scaling}
-\bibfield{author}{\bibinfo{person}{Vladislav Vorotilov} {and}
-  \bibinfo{person}{Ilnur Shugaepov}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Scaling the Instagram Explore Recommendations
-  System}.
+\bibfield{author}{\bibinfo{person}{Vladislav Vorotilov} {and} \bibinfo{person}{Ilnur Shugaepov}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Scaling the Instagram Explore Recommendations System}.
 \newblock \bibinfo{journal}{\emph{Engineering at Meta}} (\bibinfo{year}{2023}).
 \newblock
 \urldef\tempurl%
@@ -1478,48 +986,31 @@
 
 \bibitem[Vouros(2022)]%
         {vouros2022explainable}
-\bibfield{author}{\bibinfo{person}{George~A Vouros}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Explainable deep reinforcement learning: state of
-  the art and challenges}.
-\newblock \bibinfo{journal}{\emph{Comput. Surveys}} \bibinfo{volume}{55},
-  \bibinfo{number}{5} (\bibinfo{year}{2022}), \bibinfo{pages}{1--39}.
+\bibfield{author}{\bibinfo{person}{George~A Vouros}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Explainable deep reinforcement learning: state of the art and challenges}.
+\newblock \bibinfo{journal}{\emph{Comput. Surveys}} \bibinfo{volume}{55}, \bibinfo{number}{5} (\bibinfo{year}{2022}), \bibinfo{pages}{1--39}.
 \newblock
 
 
 \bibitem[Wang et~al\mbox{.}(2022)]%
         {wang2022surrogate}
-\bibfield{author}{\bibinfo{person}{Yuyan Wang}, \bibinfo{person}{Mohit Sharma},
-  \bibinfo{person}{Can Xu}, \bibinfo{person}{Sriraj Badam},
-  \bibinfo{person}{Qian Sun}, \bibinfo{person}{Lee Richardson},
-  \bibinfo{person}{Lisa Chung}, \bibinfo{person}{Ed~H Chi}, {and}
-  \bibinfo{person}{Minmin Chen}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Surrogate for long-term user experience in
-  recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th
-  ACM SIGKDD conference on knowledge discovery and data mining}}.
-  \bibinfo{pages}{4100--4109}.
+\bibfield{author}{\bibinfo{person}{Yuyan Wang}, \bibinfo{person}{Mohit Sharma}, \bibinfo{person}{Can Xu}, \bibinfo{person}{Sriraj Badam}, \bibinfo{person}{Qian Sun}, \bibinfo{person}{Lee Richardson}, \bibinfo{person}{Lisa Chung}, \bibinfo{person}{Ed~H Chi}, {and} \bibinfo{person}{Minmin Chen}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Surrogate for long-term user experience in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM SIGKDD conference on knowledge discovery and data mining}}. \bibinfo{pages}{4100--4109}.
 \newblock
 
 
 \bibitem[Wen et~al\mbox{.}(2019)]%
         {wen2019learning}
-\bibfield{author}{\bibinfo{person}{Ying Wen}, \bibinfo{person}{Yao Mu}, {and}
-  \bibinfo{person}{Martin Ester}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Learning Multi-Objective Rewards and User Utility
-  Function in Recommender Systems}. In \bibinfo{booktitle}{\emph{Proceedings of
-  the 28th International Joint Conference on Artificial Intelligence (IJCAI)}}.
-  International Joint Conferences on Artificial Intelligence Organization,
-  \bibinfo{pages}{3719--3725}.
+\bibfield{author}{\bibinfo{person}{Ying Wen}, \bibinfo{person}{Yao Mu}, {and} \bibinfo{person}{Martin Ester}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Learning Multi-Objective Rewards and User Utility Function in Recommender Systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI)}}. International Joint Conferences on Artificial Intelligence Organization, \bibinfo{pages}{3719--3725}.
 \newblock
 \href{https://doi.org/10.24963/ijcai.2019/517}{doi:\nolinkurl{10.24963/ijcai.2019/517}}
 
 
 \bibitem[{Wikipedia contributors}(2025)]%
         {wikipedia-cpm}
-\bibfield{author}{\bibinfo{person}{{Wikipedia contributors}}.}
-  \bibinfo{year}{2025}\natexlab{}.
-\newblock \bibinfo{title}{{Cost per mille --- Wikipedia{,} The Free
-  Encyclopedia}}.
+\bibfield{author}{\bibinfo{person}{{Wikipedia contributors}}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{Cost per mille --- Wikipedia{,} The Free Encyclopedia}}.
 \newblock
 \urldef\tempurl%
 \url{https://en.wikipedia.org/wiki/Cost_per_mille}
@@ -1531,299 +1022,185 @@
 
 \bibitem[Williams(1992)]%
         {williams1992simple}
-\bibfield{author}{\bibinfo{person}{Ronald~J. Williams}.}
-  \bibinfo{year}{1992}\natexlab{}.
-\newblock \showarticletitle{Simple statistical gradient-following algorithms
-  for connectionist reinforcement learning}.
-\newblock \bibinfo{journal}{\emph{Machine Learning}} \bibinfo{volume}{8},
-  \bibinfo{number}{3-4} (\bibinfo{year}{1992}), \bibinfo{pages}{229--256}.
+\bibfield{author}{\bibinfo{person}{Ronald~J. Williams}.} \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Simple statistical gradient-following algorithms for connectionist reinforcement learning}.
+\newblock \bibinfo{journal}{\emph{Machine Learning}} \bibinfo{volume}{8}, \bibinfo{number}{3-4} (\bibinfo{year}{1992}), \bibinfo{pages}{229--256}.
 \newblock
 \href{https://doi.org/10.1007/BF00992696}{doi:\nolinkurl{10.1007/BF00992696}}
 
 
 \bibitem[Wu et~al\mbox{.}(2017)]%
         {wu2017returning}
-\bibfield{author}{\bibinfo{person}{Qingyun Wu}, \bibinfo{person}{Hongning
-  Wang}, \bibinfo{person}{Liangjie Hong}, {and} \bibinfo{person}{Yue Shi}.}
-  \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Returning is believing: Optimizing long-term user
-  engagement in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings
-  of the 2017 ACM on Conference on Information and Knowledge Management}}.
-  \bibinfo{pages}{1927--1936}.
+\bibfield{author}{\bibinfo{person}{Qingyun Wu}, \bibinfo{person}{Hongning Wang}, \bibinfo{person}{Liangjie Hong}, {and} \bibinfo{person}{Yue Shi}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Returning is believing: Optimizing long-term user engagement in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 2017 ACM on Conference on Information and Knowledge Management}}. \bibinfo{pages}{1927--1936}.
 \newblock
 
 
 \bibitem[Wu et~al\mbox{.}(2018)]%
         {wu2018beyond}
-\bibfield{author}{\bibinfo{person}{Siqi Wu}, \bibinfo{person}{Marian-Andrei
-  Rizoiu}, {and} \bibinfo{person}{Lexing Xie}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Beyond views: Measuring and predicting engagement
-  in online videos}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  International AAAI Conference on Web and Social Media}},
-  Vol.~\bibinfo{volume}{12}.
+\bibfield{author}{\bibinfo{person}{Siqi Wu}, \bibinfo{person}{Marian-Andrei Rizoiu}, {and} \bibinfo{person}{Lexing Xie}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Beyond views: Measuring and predicting engagement in online videos}. In \bibinfo{booktitle}{\emph{Proceedings of the International AAAI Conference on Web and Social Media}}, Vol.~\bibinfo{volume}{12}.
 \newblock
 
 
 \bibitem[Xia et~al\mbox{.}(2023)]%
         {xia2023transact}
-\bibfield{author}{\bibinfo{person}{Xue Xia}, \bibinfo{person}{Pong
-  Eksombatchai}, \bibinfo{person}{Nikil Pancha}, \bibinfo{person}{Dhruvil~Deven
-  Badani}, \bibinfo{person}{Po-Wei Wang}, \bibinfo{person}{Neng Gu},
-  \bibinfo{person}{Saurabh~Vishwas Joshi}, \bibinfo{person}{Nazanin Farahpour},
-  \bibinfo{person}{Zhiyuan Zhang}, {and} \bibinfo{person}{Andrew Zhai}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Transact: Transformer-based realtime user action
-  model for recommendation at pinterest}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM SIGKDD Conference on
-  Knowledge Discovery and Data Mining}}. \bibinfo{pages}{5249--5259}.
+\bibfield{author}{\bibinfo{person}{Xue Xia}, \bibinfo{person}{Pong Eksombatchai}, \bibinfo{person}{Nikil Pancha}, \bibinfo{person}{Dhruvil~Deven Badani}, \bibinfo{person}{Po-Wei Wang}, \bibinfo{person}{Neng Gu}, \bibinfo{person}{Saurabh~Vishwas Joshi}, \bibinfo{person}{Nazanin Farahpour}, \bibinfo{person}{Zhiyuan Zhang}, {and} \bibinfo{person}{Andrew Zhai}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Transact: Transformer-based realtime user action model for recommendation at pinterest}. In \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining}}. \bibinfo{pages}{5249--5259}.
 \newblock
 
 
 \bibitem[Xu et~al\mbox{.}(2023)]%
         {xu2023optimizing}
-\bibfield{author}{\bibinfo{person}{Ruiyang Xu}, \bibinfo{person}{Jalaj
-  Bhandari}, \bibinfo{person}{Dmytro Korenkevych}, \bibinfo{person}{Fan Liu},
-  \bibinfo{person}{Yuchen He}, \bibinfo{person}{Alex Nikulkov}, {and}
-  \bibinfo{person}{Zheqing Zhu}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Optimizing long-term value for auction-based
-  recommender systems via on-policy reinforcement learning}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM Conference on
-  Recommender Systems}}. \bibinfo{pages}{955--962}.
+\bibfield{author}{\bibinfo{person}{Ruiyang Xu}, \bibinfo{person}{Jalaj Bhandari}, \bibinfo{person}{Dmytro Korenkevych}, \bibinfo{person}{Fan Liu}, \bibinfo{person}{Yuchen He}, \bibinfo{person}{Alex Nikulkov}, {and} \bibinfo{person}{Zheqing Zhu}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Optimizing long-term value for auction-based recommender systems via on-policy reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM Conference on Recommender Systems}}. \bibinfo{pages}{955--962}.
 \newblock
 
 
 \bibitem[Yan et~al\mbox{.}(2009)]%
         {yan2009much}
-\bibfield{author}{\bibinfo{person}{Jun Yan}, \bibinfo{person}{Ning Liu},
-  \bibinfo{person}{Gang Wang}, \bibinfo{person}{Wen Zhang},
-  \bibinfo{person}{Yun Jiang}, {and} \bibinfo{person}{Zheng Chen}.}
-  \bibinfo{year}{2009}\natexlab{}.
-\newblock \showarticletitle{How much can behavioral targeting help online
-  advertising?}. In \bibinfo{booktitle}{\emph{Proceedings of the 18th
-  international conference on World wide web}}. \bibinfo{pages}{261--270}.
+\bibfield{author}{\bibinfo{person}{Jun Yan}, \bibinfo{person}{Ning Liu}, \bibinfo{person}{Gang Wang}, \bibinfo{person}{Wen Zhang}, \bibinfo{person}{Yun Jiang}, {and} \bibinfo{person}{Zheng Chen}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{How much can behavioral targeting help online advertising?}. In \bibinfo{booktitle}{\emph{Proceedings of the 18th international conference on World wide web}}. \bibinfo{pages}{261--270}.
 \newblock
 
 
 \bibitem[Yan et~al\mbox{.}(2020)]%
         {yan2020ads}
-\bibfield{author}{\bibinfo{person}{Jinyun Yan}, \bibinfo{person}{Zhiyuan Xu},
-  \bibinfo{person}{Birjodh Tiwana}, {and} \bibinfo{person}{Shaunak
-  Chatterjee}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Ads allocation in feed via constrained
-  optimization}. In \bibinfo{booktitle}{\emph{Proceedings of the 26th ACM
-  SIGKDD International Conference on Knowledge Discovery \& Data Mining}}.
-  \bibinfo{pages}{3386--3394}.
+\bibfield{author}{\bibinfo{person}{Jinyun Yan}, \bibinfo{person}{Zhiyuan Xu}, \bibinfo{person}{Birjodh Tiwana}, {and} \bibinfo{person}{Shaunak Chatterjee}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Ads allocation in feed via constrained optimization}. In \bibinfo{booktitle}{\emph{Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining}}. \bibinfo{pages}{3386--3394}.
 \newblock
 
 
 \bibitem[Yi et~al\mbox{.}(2023)]%
         {yi2023progressive}
-\bibfield{author}{\bibinfo{person}{Congrui Yi}, \bibinfo{person}{David
-  Zumwalt}, \bibinfo{person}{Zijian Ni}, {and} \bibinfo{person}{Shreya
-  Chakrabarti}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Progressive horizon learning: Adaptive long term
-  optimization for personalized recommendation}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM Conference on
-  Recommender Systems}}. \bibinfo{pages}{940--946}.
+\bibfield{author}{\bibinfo{person}{Congrui Yi}, \bibinfo{person}{David Zumwalt}, \bibinfo{person}{Zijian Ni}, {and} \bibinfo{person}{Shreya Chakrabarti}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Progressive horizon learning: Adaptive long term optimization for personalized recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM Conference on Recommender Systems}}. \bibinfo{pages}{940--946}.
 \newblock
 
 
 \bibitem[Yi et~al\mbox{.}(2014)]%
         {yi2014beyond}
-\bibfield{author}{\bibinfo{person}{Xing Yi}, \bibinfo{person}{Liangjie Hong},
-  \bibinfo{person}{Erheng Zhong}, \bibinfo{person}{Nanthan~Nan Liu}, {and}
-  \bibinfo{person}{Suju Rajan}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Beyond clicks: dwell time for personalization}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 8th ACM Conference on
-  Recommender systems}}. \bibinfo{pages}{113--120}.
+\bibfield{author}{\bibinfo{person}{Xing Yi}, \bibinfo{person}{Liangjie Hong}, \bibinfo{person}{Erheng Zhong}, \bibinfo{person}{Nanthan~Nan Liu}, {and} \bibinfo{person}{Suju Rajan}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Beyond clicks: dwell time for personalization}. In \bibinfo{booktitle}{\emph{Proceedings of the 8th ACM Conference on Recommender systems}}. \bibinfo{pages}{113--120}.
 \newblock
 
 
 \bibitem[Yuan et~al\mbox{.}(2020)]%
         {yuan2020unbiased}
-\bibfield{author}{\bibinfo{person}{Bowen Yuan}, \bibinfo{person}{Yaxu Liu},
-  \bibinfo{person}{Jui-Yang Hsia}, \bibinfo{person}{Zhenhua Dong}, {and}
-  \bibinfo{person}{Chih-Jen Lin}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Unbiased Ad click prediction for position-aware
-  advertising systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 14th
-  ACM Conference on Recommender Systems}}. \bibinfo{pages}{368--377}.
+\bibfield{author}{\bibinfo{person}{Bowen Yuan}, \bibinfo{person}{Yaxu Liu}, \bibinfo{person}{Jui-Yang Hsia}, \bibinfo{person}{Zhenhua Dong}, {and} \bibinfo{person}{Chih-Jen Lin}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Unbiased Ad click prediction for position-aware advertising systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 14th ACM Conference on Recommender Systems}}. \bibinfo{pages}{368--377}.
 \newblock
 
 
 \bibitem[Zhang et~al\mbox{.}(2018)]%
         {zhang2018whole}
-\bibfield{author}{\bibinfo{person}{Weiru Zhang}, \bibinfo{person}{Chao Wei},
-  \bibinfo{person}{Xiaonan Meng}, \bibinfo{person}{Yi Hu}, {and}
-  \bibinfo{person}{Hao Wang}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{The whole-page optimization via dynamic ad
-  allocation}. In \bibinfo{booktitle}{\emph{Companion Proceedings of the The
-  Web Conference 2018}}. \bibinfo{pages}{1407--1411}.
+\bibfield{author}{\bibinfo{person}{Weiru Zhang}, \bibinfo{person}{Chao Wei}, \bibinfo{person}{Xiaonan Meng}, \bibinfo{person}{Yi Hu}, {and} \bibinfo{person}{Hao Wang}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{The whole-page optimization via dynamic ad allocation}. In \bibinfo{booktitle}{\emph{Companion Proceedings of the The Web Conference 2018}}. \bibinfo{pages}{1407--1411}.
 \newblock
 
 
-\bibitem[Zhao et~al\mbox{.}(2018)]%
+\bibitem[Zhao et~al\mbox{.}(2018a)]%
         {zhao2018deep}
-\bibfield{author}{\bibinfo{person}{Jun Zhao}, \bibinfo{person}{Guang Qiu},
-  \bibinfo{person}{Ziyu Guan}, \bibinfo{person}{Wei Zhao}, {and}
-  \bibinfo{person}{Xiaofei He}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Deep reinforcement learning for sponsored search
-  real-time bidding}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM
-  SIGKDD international conference on knowledge discovery \& data mining}}.
-  \bibinfo{pages}{1021--1030}.
+\bibfield{author}{\bibinfo{person}{Jun Zhao}, \bibinfo{person}{Guang Qiu}, \bibinfo{person}{Ziyu Guan}, \bibinfo{person}{Wei Zhao}, {and} \bibinfo{person}{Xiaofei He}.} \bibinfo{year}{2018}\natexlab{a}.
+\newblock \showarticletitle{Deep reinforcement learning for sponsored search real-time bidding}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD international conference on knowledge discovery \& data mining}}. \bibinfo{pages}{1021--1030}.
 \newblock
 
 
 \bibitem[Zhao et~al\mbox{.}(2021)]%
         {zhao2021dear}
-\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Changsheng
-  Gu}, \bibinfo{person}{Haoshenglun Zhang}, \bibinfo{person}{Xiwang Yang},
-  \bibinfo{person}{Xiaobing Liu}, \bibinfo{person}{Jiliang Tang}, {and}
-  \bibinfo{person}{Hui Liu}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Dear: Deep reinforcement learning for online
-  advertising impression in recommender systems}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the AAAI conference on artificial
-  intelligence}}, Vol.~\bibinfo{volume}{35}. \bibinfo{pages}{750--758}.
+\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Changsheng Gu}, \bibinfo{person}{Haoshenglun Zhang}, \bibinfo{person}{Xiwang Yang}, \bibinfo{person}{Xiaobing Liu}, \bibinfo{person}{Jiliang Tang}, {and} \bibinfo{person}{Hui Liu}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Dear: Deep reinforcement learning for online advertising impression in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the AAAI conference on artificial intelligence}}, Vol.~\bibinfo{volume}{35}. \bibinfo{pages}{750--758}.
 \newblock
 
 
 \bibitem[Zhao et~al\mbox{.}(2023)]%
         {zhao2023embedding}
-\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Maolin
-  Wang}, \bibinfo{person}{Xinjian Zhao}, \bibinfo{person}{Jiansheng Li},
-  \bibinfo{person}{Shucheng Zhou}, \bibinfo{person}{Dawei Yin},
-  \bibinfo{person}{Qing Li}, \bibinfo{person}{Jiliang Tang}, {and}
-  \bibinfo{person}{Ruocheng Guo}.} \bibinfo{year}{2023}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Maolin Wang}, \bibinfo{person}{Xinjian Zhao}, \bibinfo{person}{Jiansheng Li}, \bibinfo{person}{Shucheng Zhou}, \bibinfo{person}{Dawei Yin}, \bibinfo{person}{Qing Li}, \bibinfo{person}{Jiliang Tang}, {and} \bibinfo{person}{Ruocheng Guo}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{Embedding in recommender systems: A survey}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.18608}}
-  (\bibinfo{year}{2023}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.18608}} (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Zhao et~al\mbox{.}(2018b)]%
+        {zhao2018recommendations}
+\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Liang Zhang}, \bibinfo{person}{Zhuoye Ding}, \bibinfo{person}{Long Xia}, \bibinfo{person}{Jiliang Tang}, {and} \bibinfo{person}{Dawei Yin}.} \bibinfo{year}{2018}\natexlab{b}.
+\newblock \showarticletitle{Recommendations with negative feedback via pairwise deep reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD international conference on knowledge discovery \& data mining}}. \bibinfo{pages}{1040--1048}.
 \newblock
 
 
 \bibitem[Zhao et~al\mbox{.}(2020)]%
         {zhao2020jointly}
-\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Xudong
-  Zheng}, \bibinfo{person}{Xiwang Yang}, \bibinfo{person}{Xiaobing Liu}, {and}
-  \bibinfo{person}{Jiliang Tang}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Jointly Learning to Recommend and Advertise}. In
-  \bibinfo{booktitle}{\emph{Proceedings of the 26th ACM SIGKDD International
-  Conference on Knowledge Discovery \& Data Mining}}. \bibinfo{publisher}{ACM},
-  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{3319--3327}.
+\bibfield{author}{\bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Xudong Zheng}, \bibinfo{person}{Xiwang Yang}, \bibinfo{person}{Xiaobing Liu}, {and} \bibinfo{person}{Jiliang Tang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Jointly Learning to Recommend and Advertise}. In \bibinfo{booktitle}{\emph{Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining}}. \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{3319--3327}.
 \newblock
 \href{https://doi.org/10.1145/3394486.3403233}{doi:\nolinkurl{10.1145/3394486.3403233}}
 
 
 \bibitem[Zhao and Liu(2024)]%
         {zhao2024survey}
-\bibfield{author}{\bibinfo{person}{Yu Zhao} {and} \bibinfo{person}{Fang Liu}.}
-  \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{A survey of retrieval algorithms in ad and content
-  recommendation systems}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2407.01712}}
-  (\bibinfo{year}{2024}).
+\bibfield{author}{\bibinfo{person}{Yu Zhao} {and} \bibinfo{person}{Fang Liu}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{A survey of retrieval algorithms in ad and content recommendation systems}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2407.01712}} (\bibinfo{year}{2024}).
 \newblock
 
 
 \bibitem[Zhao et~al\mbox{.}(2019)]%
         {zhao2019recommending}
-\bibfield{author}{\bibinfo{person}{Zhe Zhao}, \bibinfo{person}{Lichan Hong},
-  \bibinfo{person}{Li Wei}, \bibinfo{person}{Jilin Chen},
-  \bibinfo{person}{Aniruddh Nath}, \bibinfo{person}{Shawn Andrews},
-  \bibinfo{person}{Aditee Kumthekar}, \bibinfo{person}{Maheswaran
-  Sathiamoorthy}, \bibinfo{person}{Xinyang Yi}, {and} \bibinfo{person}{Ed
-  Chi}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Recommending what video to watch next: a multitask
-  ranking system}. In \bibinfo{booktitle}{\emph{Proceedings of the 13th ACM
-  conference on recommender systems}}. \bibinfo{pages}{43--51}.
+\bibfield{author}{\bibinfo{person}{Zhe Zhao}, \bibinfo{person}{Lichan Hong}, \bibinfo{person}{Li Wei}, \bibinfo{person}{Jilin Chen}, \bibinfo{person}{Aniruddh Nath}, \bibinfo{person}{Shawn Andrews}, \bibinfo{person}{Aditee Kumthekar}, \bibinfo{person}{Maheswaran Sathiamoorthy}, \bibinfo{person}{Xinyang Yi}, {and} \bibinfo{person}{Ed Chi}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Recommending what video to watch next: a multitask ranking system}. In \bibinfo{booktitle}{\emph{Proceedings of the 13th ACM conference on recommender systems}}. \bibinfo{pages}{43--51}.
 \newblock
 
 
 \bibitem[Zhou et~al\mbox{.}(2019a)]%
         {Zhou2019}
-\bibfield{author}{\bibinfo{person}{Guorui Zhou}, \bibinfo{person}{Na Mou},
-  \bibinfo{person}{Ying Fan}, \bibinfo{person}{Qi Pi}, \bibinfo{person}{Weijie
-  Bian}, \bibinfo{person}{Chang Zhou}, \bibinfo{person}{Xiaoqiang Zhu}, {and}
-  \bibinfo{person}{Kun Gai}.} \bibinfo{year}{2019}\natexlab{a}.
-\newblock \showarticletitle{Deep Interest Evolution Network for Click-Through
-  Rate Prediction}. In \bibinfo{booktitle}{\emph{Proceedings of the 33rd AAAI
-  Conference on Artificial Intelligence (AAAI)}}. \bibinfo{pages}{5941--5948}.
+\bibfield{author}{\bibinfo{person}{Guorui Zhou}, \bibinfo{person}{Na Mou}, \bibinfo{person}{Ying Fan}, \bibinfo{person}{Qi Pi}, \bibinfo{person}{Weijie Bian}, \bibinfo{person}{Chang Zhou}, \bibinfo{person}{Xiaoqiang Zhu}, {and} \bibinfo{person}{Kun Gai}.} \bibinfo{year}{2019}\natexlab{a}.
+\newblock \showarticletitle{Deep Interest Evolution Network for Click-Through Rate Prediction}. In \bibinfo{booktitle}{\emph{Proceedings of the 33rd AAAI Conference on Artificial Intelligence (AAAI)}}. \bibinfo{pages}{5941--5948}.
 \newblock
 \href{https://doi.org/10.1609/aaai.v33i01.33015941}{doi:\nolinkurl{10.1609/aaai.v33i01.33015941}}
 
 
 \bibitem[Zhou et~al\mbox{.}(2019b)]%
         {zhou2019deep}
-\bibfield{author}{\bibinfo{person}{Guorui Zhou}, \bibinfo{person}{Na Mou},
-  \bibinfo{person}{Ying Fan}, \bibinfo{person}{Qi Pi}, \bibinfo{person}{Weijie
-  Bian}, \bibinfo{person}{Chang Zhou}, \bibinfo{person}{Xiaoqiang Zhu}, {and}
-  \bibinfo{person}{Kun Gai}.} \bibinfo{year}{2019}\natexlab{b}.
-\newblock \showarticletitle{Deep interest evolution network for click-through
-  rate prediction}. In \bibinfo{booktitle}{\emph{Proceedings of the AAAI
-  conference on artificial intelligence}}, Vol.~\bibinfo{volume}{33}.
-  \bibinfo{pages}{5941--5948}.
+\bibfield{author}{\bibinfo{person}{Guorui Zhou}, \bibinfo{person}{Na Mou}, \bibinfo{person}{Ying Fan}, \bibinfo{person}{Qi Pi}, \bibinfo{person}{Weijie Bian}, \bibinfo{person}{Chang Zhou}, \bibinfo{person}{Xiaoqiang Zhu}, {and} \bibinfo{person}{Kun Gai}.} \bibinfo{year}{2019}\natexlab{b}.
+\newblock \showarticletitle{Deep interest evolution network for click-through rate prediction}. In \bibinfo{booktitle}{\emph{Proceedings of the AAAI conference on artificial intelligence}}, Vol.~\bibinfo{volume}{33}. \bibinfo{pages}{5941--5948}.
 \newblock
 
 
 \bibitem[Zhou et~al\mbox{.}(2018)]%
         {Zhou2018}
-\bibfield{author}{\bibinfo{person}{Guorui Zhou}, \bibinfo{person}{Chengru
-  Song}, \bibinfo{person}{Xiaoqiang Zhu}, \bibinfo{person}{Ying Fan},
-  \bibinfo{person}{Han Zhu}, \bibinfo{person}{Xiao Ma},
-  \bibinfo{person}{Yanghui Yan}, \bibinfo{person}{Junqi Jin},
-  \bibinfo{person}{Han Li}, {and} \bibinfo{person}{Kun Gai}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Deep Interest Network for Click-Through Rate
-  Prediction}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD
-  International Conference on Knowledge Discovery \& Data Mining (KDD '18)}}.
-  \bibinfo{pages}{1059--1068}.
+\bibfield{author}{\bibinfo{person}{Guorui Zhou}, \bibinfo{person}{Chengru Song}, \bibinfo{person}{Xiaoqiang Zhu}, \bibinfo{person}{Ying Fan}, \bibinfo{person}{Han Zhu}, \bibinfo{person}{Xiao Ma}, \bibinfo{person}{Yanghui Yan}, \bibinfo{person}{Junqi Jin}, \bibinfo{person}{Han Li}, {and} \bibinfo{person}{Kun Gai}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Deep Interest Network for Click-Through Rate Prediction}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining (KDD '18)}}. \bibinfo{pages}{1059--1068}.
 \newblock
 \href{https://doi.org/10.1145/3219819.3219823}{doi:\nolinkurl{10.1145/3219819.3219823}}
 
 
 \bibitem[Zhou and Brunskill(2016)]%
         {zhou2016latent}
-\bibfield{author}{\bibinfo{person}{Li Zhou} {and} \bibinfo{person}{Emma
-  Brunskill}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Latent contextual bandits and their application to
-  personalized recommendations for new users}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1604.06743}}
-  (\bibinfo{year}{2016}).
+\bibfield{author}{\bibinfo{person}{Li Zhou} {and} \bibinfo{person}{Emma Brunskill}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Latent contextual bandits and their application to personalized recommendations for new users}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1604.06743}} (\bibinfo{year}{2016}).
 \newblock
 
 
 \bibitem[Zhu et~al\mbox{.}(2021)]%
         {zhu2021overview}
-\bibfield{author}{\bibinfo{person}{Jie Zhu}, \bibinfo{person}{Fengge Wu}, {and}
-  \bibinfo{person}{Junsuo Zhao}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{An overview of the action space for deep
-  reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 2021
-  4th International Conference on Algorithms, Computing and Artificial
-  Intelligence}}. \bibinfo{pages}{1--10}.
+\bibfield{author}{\bibinfo{person}{Jie Zhu}, \bibinfo{person}{Fengge Wu}, {and} \bibinfo{person}{Junsuo Zhao}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{An overview of the action space for deep reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 2021 4th International Conference on Algorithms, Computing and Artificial Intelligence}}. \bibinfo{pages}{1--10}.
 \newblock
 
 
 \bibitem[Zhu et~al\mbox{.}(2024)]%
         {zhu2024discretizing}
-\bibfield{author}{\bibinfo{person}{Yuanyang Zhu}, \bibinfo{person}{Zhi Wang},
-  \bibinfo{person}{Yuanheng Zhu}, \bibinfo{person}{Chunlin Chen}, {and}
-  \bibinfo{person}{Dongbin Zhao}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{Discretizing Continuous Action Space With Unimodal
-  Probability Distributions for On-Policy Reinforcement Learning}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks and
-  Learning Systems}} (\bibinfo{year}{2024}).
+\bibfield{author}{\bibinfo{person}{Yuanyang Zhu}, \bibinfo{person}{Zhi Wang}, \bibinfo{person}{Yuanheng Zhu}, \bibinfo{person}{Chunlin Chen}, {and} \bibinfo{person}{Dongbin Zhao}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Discretizing Continuous Action Space With Unimodal Probability Distributions for On-Policy Reinforcement Learning}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks and Learning Systems}} (\bibinfo{year}{2024}).
 \newblock
 
 
 \bibitem[Zou et~al\mbox{.}(2019)]%
         {zou2019reinforcement}
-\bibfield{author}{\bibinfo{person}{Lixin Zou}, \bibinfo{person}{Long Xia},
-  \bibinfo{person}{Zhuoye Ding}, \bibinfo{person}{Jiaxing Song},
-  \bibinfo{person}{Weidong Liu}, {and} \bibinfo{person}{Dawei Yin}.}
-  \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Reinforcement learning to optimize long-term user
-  engagement in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings
-  of the 25th ACM SIGKDD international conference on knowledge discovery \&
-  data mining}}. \bibinfo{pages}{2810--2818}.
+\bibfield{author}{\bibinfo{person}{Lixin Zou}, \bibinfo{person}{Long Xia}, \bibinfo{person}{Zhuoye Ding}, \bibinfo{person}{Jiaxing Song}, \bibinfo{person}{Weidong Liu}, {and} \bibinfo{person}{Dawei Yin}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Reinforcement learning to optimize long-term user engagement in recommender systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 25th ACM SIGKDD international conference on knowledge discovery \& data mining}}. \bibinfo{pages}{2810--2818}.
 \newblock
 
 
