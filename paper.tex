@@ -358,64 +358,87 @@ Ad recommendation engines often need to balance multiple objectives, such as max
 \footnotesize
 \renewcommand{\arraystretch}{1.2}  % Tweak if needed
 \setlength{\tabcolsep}{4pt} % separation between columns 
-\begin{tabularx}{\linewidth}{p{0.13\linewidth} p{0.27\linewidth} p{0.54\linewidth}}
+\begin{tabularx}{\linewidth}{p{0.12\linewidth} p{0.23\linewidth} p{0.42\linewidth} p{0.17\linewidth}}
 % the decimal points allow to control the size of the table, not of the text.
 \toprule
-{\bfseries Objective} & {\bfseries Proxy Metric} & {\bfseries Short Description} \\
+{\bfseries Objective} & {\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
 \midrule
     \multirow{5}{*}{\textbf{Revenue}} 
        & \textbf{CTR (Click-Through Rate)} 
-           &  Approximates revenue potential; higher CTR often correlates with higher ad clicks \cite{zhang2018whole, yan2020ads, zhao2020jointly}. \\
+           &  Approximates revenue potential; higher CTR often correlates with higher ad clicks \cite{zhang2018whole, yan2020ads, zhao2020jointly}. 
+           & \textbf{Positive} (higher better) \\
        & \textbf{Ad Impressions} 
-           & Number of times an ad is displayed to users. \\
+           & Number of times an ad is displayed to users. 
+           & \textbf{Mixed} (depends on user tolerance and ad load) \\
        & \textbf{pCTR (Predicted CTR)} 
-           & Model-estimated probability that a user will click on an ad. \\
+           & Model-estimated probability that a user will click on an ad. 
+           & \textbf{Positive} (higher better) \\
        & \textbf{Predicted Revenue} 
-           & Often a function of bids and pCTR to estimate expected revenue  \cite{yan2020ads, zhang2018whole}. \\
+           & Often a function of bids and pCTR to estimate expected revenue  \cite{yan2020ads, zhang2018whole}. 
+           & \textbf{Positive} (higher better) \\
        & \textbf{Click Yield} 
-           & Ratio of total clicks (ads + organic) to total impressions on a page. Helps avoid bias of optimizing CTR alone \cite{zhang2018whole}. \\
+           & Ratio of total clicks (ads + organic) to total impressions on a page. Helps avoid bias of optimizing CTR alone \cite{zhang2018whole}. 
+           & \textbf{Positive} (higher better) \\
     \midrule
-    \multirow{11}{*}{\textbf{Engagement}} 
+    \multirow{12}{*}{\textbf{Engagement}} 
        & \textbf{Session Duration} 
-           & Tracks how long users stay engaged per session (proxy for longer-term engagement). \\
+           & Tracks how long users stay engaged per session (proxy for longer-term engagement). 
+           & \textbf{Positive} (higher better) \\
         & \textbf{30-day Total Sessions} 
        & Aggregated count of user sessions or interactions over a 30-day window, proxy for habit or stickiness 
-       \cite{xu2023optimizing}. \\
+       \cite{xu2023optimizing}. 
+       & \textbf{Positive} (higher better) \\
        & \textbf{Likes / Adds to Library} 
-       & High-intent actions indicating deeper user satisfaction and potential long-term retention \cite{mcdonald2023spotify}. \\
+       & High-intent actions indicating deeper user satisfaction and potential long-term retention \cite{mcdonald2023spotify}. 
+       & \textbf{Positive} (higher better) \\
           & \textbf{Dwell Time} 
-       & Actual time spent viewing/reading an item, capturing depth of engagement  \cite{yi2014beyond}. \\
+       & Actual time spent viewing/reading an item, capturing depth of engagement  \cite{yi2014beyond}. 
+       & \textbf{Mixed threshold}: short clicks/views ($<5$s) negative; long clicks/views ($\geq10$s) positive \\
        & \textbf{Shares} 
-           & Another high-intent action reflecting strong user engagement. \\
+           & Another high-intent action reflecting strong user engagement. 
+           & \textbf{Positive} (higher better) \\
     & \textbf{Ratio-based Diversity}  
-           & Proportion of unique topic clusters in consumption history (indicates breadth of user interest) \cite{wang2022surrogate}. \\
+           & Proportion of unique topic clusters in consumption history (indicates breadth of user interest) \cite{wang2022surrogate}. 
+           & \textbf{Mixed} (too low or too high can be harmful) \\
        & \textbf{High-quality Consumption} 
-           & Tracks consumption of content with high engagement (e.g., full video views, long reads) \cite{wang2022surrogate}. \\
+           & Tracks consumption of content with high engagement (e.g., full video views, long reads) \cite{wang2022surrogate}. 
+           & \textbf{Positive} (higher better) \\
      & \textbf{Repeated Consumption}  
-           & Monitors how often users revisit similar content, reflecting satisfaction \cite{wang2022surrogate}. \\
+           & Monitors how often users revisit similar content, reflecting satisfaction \cite{wang2022surrogate}. 
+           & \textbf{Mixed} (moderate repetition good; excessive repetition may reduce novelty) \\
               & \textbf{Time to Revisit} 
-           & Interval between consecutive visits; shorter intervals suggest higher retention \cite{wang2022surrogate}. \\
+           & Interval between consecutive visits; shorter intervals suggest higher retention \cite{wang2022surrogate}. 
+           & \textbf{Negative} (lower is better) \\
      & \textbf{Distribution-based Diversity}  
-           & Uses entropy to measure spread of topics consumed (gauges exploration vs. narrow focus) \cite{wang2022surrogate}. \\
+           & Uses entropy to measure spread of topics consumed (gauges exploration vs. narrow focus) \cite{wang2022surrogate}. 
+           & \textbf{Mixed} (target range, not monotonic) \\
     & \textbf{User Return Rate (URR)} 
-       & Fraction of users who revisit the platform after a set interval, reflecting long-term retention  \cite{wu2017returning}. \\
+       & Fraction of users who revisit the platform after a set interval, reflecting long-term retention  \cite{wu2017returning}. 
+       & \textbf{Positive} (higher better) \\
      & \textbf{Relative Watch Time} 
        & Percentage of a video watched, normalized by video length (better gauge of true engagement than raw views) 
-      \cite{wu2018beyond}. \\
+      \cite{wu2018beyond}. 
+      & \textbf{Positive} (higher better) \\
     \midrule
     \multirow{6}{*}{\textbf{Ad Fatigue}} 
        & \textbf{Depth} 
-           & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}. \\
+           & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}. 
+           & \textbf{Negative} (higher is worse) \\
        & \textbf{Length} 
-           & Decrease in time spent per session \cite{sagtani2023quantifying}. \\
+           & Decrease in time spent per session \cite{sagtani2023quantifying}. 
+           & \textbf{Negative} (higher is worse) \\
        & \textbf{Frequency} 
-           & Decrease in number of sessions per week \cite{sagtani2023quantifying}. \\
+           & Decrease in number of sessions per week \cite{sagtani2023quantifying}. 
+           & \textbf{Negative} (higher is worse) \\
        & \textbf{Ad Load (Sessions)} 
-           & Number of sessions that end (or quit) during an ad, indicating ad overload \cite{sagtani2023quantifying}. \\
+           & Number of sessions that end (or quit) during an ad, indicating ad overload \cite{sagtani2023quantifying}. 
+           & \textbf{Negative} (higher is worse) \\
        & \textbf{Ad Load (Absolute)} 
-           & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}. \\
+           & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}. 
+           & \textbf{Negative} (higher is usually worse) \\
        & \textbf{Click Entropy} 
-           & Measures uncertainty/diversity in ad clicks for a query; high entropy may imply users find ads less relevant \cite{sagtani2023quantifying}. \\
+           & Measures uncertainty/diversity in ad clicks for a query; high entropy may imply users find ads less relevant \cite{sagtani2023quantifying}. 
+           & \textbf{Negative} (higher often worse relevance) \\
 \bottomrule
 \end{tabularx}
 \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
