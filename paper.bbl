@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{146}
+\begin{thebibliography}{143}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -583,14 +583,6 @@
 \newblock
 
 
-\bibitem[Lu and Yang(2016)]%
-        {lu2016partially}
-\bibfield{author}{\bibinfo{person}{Zhongqi Lu} {and} \bibinfo{person}{Qiang Yang}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Partially observable Markov decision process for recommender systems}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1608.07793}} (\bibinfo{year}{2016}).
-\newblock
-
-
 \bibitem[Lyu et~al\mbox{.}(2023)]%
         {lyu2023entire}
 \bibfield{author}{\bibinfo{person}{Shanshan Lyu}, \bibinfo{person}{Qiwei Chen}, \bibinfo{person}{Tao Zhuang}, {and} \bibinfo{person}{Junfeng Ge}.} \bibinfo{year}{2023}\natexlab{}.
@@ -879,15 +871,6 @@
 \tempurl}
 
 
-\bibitem[Stigler(1950)]%
-        {Stigler1950}
-\bibfield{author}{\bibinfo{person}{George~J. Stigler}.} \bibinfo{year}{1950}\natexlab{}.
-\newblock \showarticletitle{The Development of Utility Theory. I}.
-\newblock \bibinfo{journal}{\emph{Journal of Political Economy}} \bibinfo{volume}{58}, \bibinfo{number}{4} (\bibinfo{year}{1950}), \bibinfo{pages}{307--327}.
-\newblock
-\href{https://doi.org/10.1086/256964}{doi:\nolinkurl{10.1086/256964}}
-
-
 \bibitem[Sun et~al\mbox{.}(2019)]%
         {sun2019bert4rec}
 \bibfield{author}{\bibinfo{person}{Fei Sun}, \bibinfo{person}{Jun Liu}, \bibinfo{person}{Jian Wu}, \bibinfo{person}{Changhua Pei}, \bibinfo{person}{Xiao Lin}, \bibinfo{person}{Wenwu Ou}, {and} \bibinfo{person}{Peng Jiang}.} \bibinfo{year}{2019}\natexlab{}.
@@ -1050,13 +1033,6 @@
         {wu2018beyond}
 \bibfield{author}{\bibinfo{person}{Siqi Wu}, \bibinfo{person}{Marian-Andrei Rizoiu}, {and} \bibinfo{person}{Lexing Xie}.} \bibinfo{year}{2018}\natexlab{}.
 \newblock \showarticletitle{Beyond views: Measuring and predicting engagement in online videos}. In \bibinfo{booktitle}{\emph{Proceedings of the International AAAI Conference on Web and Social Media}}, Vol.~\bibinfo{volume}{12}.
-\newblock
-
-
-\bibitem[Wu et~al\mbox{.}(2021)]%
-        {wu2021partially}
-\bibfield{author}{\bibinfo{person}{Yaxiong Wu}, \bibinfo{person}{Craig Macdonald}, {and} \bibinfo{person}{Iadh Ounis}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Partially observable reinforcement learning for dialog-based interactive recommendation}. In \bibinfo{booktitle}{\emph{Proceedings of the 15th ACM conference on recommender systems}}. \bibinfo{pages}{241--251}.
 \newblock
 
 

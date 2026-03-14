@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper"] 1773196943.87047 "paper.aux" "paper.bbl" "paper" 1773197095.6976 0
+["bibtex paper"] 1773512930.32397 "paper.aux" "paper.bbl" "paper" 1773514482.08064 0
   "./bibliography.bib" 1746171388 94278 885cc31e7714ff9aeca791d4dfd19dff ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/acmart/ACM-Reference-Format.bst" 1735764768 90749 48abc1cbed6fafc6fc31528e3aa606ca ""
-  "paper.aux" 1773197095.24706 32702 2686cc85e886e69c3cb811d265680a3f "pdflatex"
+  "paper.aux" 1773514481.5996 32121 b709d557d58a868cd929f8b927db4576 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1773197093.01511 "/Users/aordorica/Documents/UofT/PhD Research/review_paper/Review-Paper-RL-Ad-Rec-Systems/paper.tex" "paper.pdf" "paper" 1773197095.69785 0
-  "/Users/aordorica/Documents/UofT/PhD Research/review_paper/Review-Paper-RL-Ad-Rec-Systems/paper.tex" 1773197093.19578 137147 d32b8a9747f5d42ad1341800062f3b17 ""
+["pdflatex"] 1773514479.19533 "/Users/aordorica/Documents/UofT/PhD Research/review_paper/Review-Paper-RL-Ad-Rec-Systems/paper.tex" "paper.pdf" "paper" 1773514482.08099 0
+  "/Users/aordorica/Documents/UofT/PhD Research/review_paper/Review-Paper-RL-Ad-Rec-Systems/paper.tex" 1773514478.94784 134759 b5974a051601f7f06c92c49b961fe19a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1558214095 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc" 1490131464 2921 8ca0eb0831f9bc5da080d3697cfe67bf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc" 1490131464 2933 9ad527ce78d7c5fa0a642dead095f172 ""
@@ -235,14 +235,14 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1746156394 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "comment.cut" 1773197094.67429 308 d8eacb813dd4017a31427367139a7e3e "pdflatex"
+  "comment.cut" 1773514481.0257 308 d8eacb813dd4017a31427367139a7e3e "pdflatex"
   "detailed_ad_policy.png" 1746171388 714425 495ab3d4ef522d11df49b70cecac6813 ""
   "frozenlake-table.png" 1746171388 17729 1720c8e9af70dcf81ab6868e49c3bb82 ""
   "history_timeline_figure.png" 1746171388 121010 13f9e9729be38d76bf4ec9ecf9577bb9 ""
-  "paper.aux" 1773197095.24706 32702 2686cc85e886e69c3cb811d265680a3f "pdflatex"
-  "paper.bbl" 1773196944.01296 77440 fc1345508a182ec5930099e9ab2c2f4e "bibtex paper"
-  "paper.out" 1773197095.24904 3882 492785ea37b756fba89b0c8bb0a48a76 "pdflatex"
-  "paper.tex" 1773197093.19578 137147 d32b8a9747f5d42ad1341800062f3b17 ""
+  "paper.aux" 1773514481.5996 32121 b709d557d58a868cd929f8b927db4576 "pdflatex"
+  "paper.bbl" 1773512930.47641 76158 385ff9647650787a389de5d1398fb2de "bibtex paper"
+  "paper.out" 1773514481.60168 3882 492785ea37b756fba89b0c8bb0a48a76 "pdflatex"
+  "paper.tex" 1773514478.94784 134759 b5974a051601f7f06c92c49b961fe19a ""
   (generated)
   "comment.cut"
   "paper.aux"
