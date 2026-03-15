@@ -302,7 +302,8 @@ Despite the practical advantages that contextual bandits offer for real-time exp
 \section{The RL Formulation of Jointly Optimizing Ads and Content}
 
 \subsection{Formulating Monetization-Aware Ranking as an RL Problem}
-In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Decision Process (MDP), where an \textbf{agent} interacts with a \textbf{deterministic environment} by performing \textbf{discrete actions}, such as moving up, down, left, or right, to navigate through a grid with the objective of reaching a goal, while potentially avoiding obstacles or hazards. A more complex variant is the \textbf{FrozenLake problem}, which features a \textbf{stochastic environment} where movements are uncertain due to a slippery surface (\textcolor[HTML]{1E90FF}{F}) as shown in Figure~\ref{tab:frozen_lake} \cite{FrozenLakeGymnasium2023}. Here, actions do not always lead to the intended next state, adding complexity by requiring policies that effectively manage uncertainty. In this paper, we use the FrozenLake problem as a representative framework for stochastic environments and leverage this template to describe the ad optimization problem as an RL task. Specifically, we will explore components of the underlying MDP, such as states, actions, and rewards, and investigate key RL concepts including policy evaluation, value iteration, and policy iteration. The grid is typically represented as shown in Figure~\ref{tab:frozen_lake}:
+% In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Decision Process (MDP), where an \textbf{agent} interacts with a \textbf{deterministic environment} by performing \textbf{discrete actions}, such as moving up, down, left, or right, to navigate through a grid with the objective of reaching a goal, while potentially avoiding obstacles or hazards. A more complex variant is the \textbf{FrozenLake problem}, which features a \textbf{stochastic environment} where movements are uncertain due to a slippery surface (\textcolor[HTML]{1E90FF}{F}) as shown in Figure~\ref{tab:frozen_lake} \cite{FrozenLakeGymnasium2023}. Here, actions do not always lead to the intended next state, adding complexity by requiring policies that effectively manage uncertainty. In this paper, we use the FrozenLake problem as a representative framework for stochastic environments and leverage this template to describe the ad optimization problem as an RL task. Specifically, we will explore components of the underlying MDP, such as states, actions, and rewards, and investigate key RL concepts including policy evaluation, value iteration, and policy iteration. 
+% The grid is typically represented as shown in Figure~\ref{tab:frozen_lake}:
 
 
 % \label{frozen_lake}
@@ -332,15 +333,20 @@ In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Deci
 
 \subsection{Reward Design for Monetization-Aware Recommendation Systems}
 
+%section objective and scope 
 This subsection provides a structured synthesis of reward design in monetization-aware recommendation systems. It first discusses the properties a reward function should ideally satisfy and why reward specification is difficult in practice due to partial observability, sparse and delayed long-term outcomes, and competing objectives such as revenue, engagement, and ad fatigue. It then reviews how prior work operationalizes these objectives through proxy metrics and blended utility formulations, along with the rationale for these choices and their main limitations.
 
-In monetization-aware ranking, the agent is the unified ranking engine responsible for constructing the entire feed, which must jointly optimize two primary objectives: maximizing revenue while maintaining (or ideally enhancing) user engagement \cite{Theocharous-2015, zou2019reinforcement}. 
+%intuition 
+In controlled settings, relatively simple reward functions may suffice because the objective is directly specified and outcomes are immediately observable. In monetization-aware recommendation systems, by contrast, the platform must infer long-term user value from noisy behavioral traces while balancing monetization against user experience.
 
-The use of a \textbf{reward signal} to formalize the idea of a goal is a distinctive feature of RL \cite{Sutton1998}. In an MDP, the reward is a scalar value the agent receives after taking an action in a given state and transitioning to a new state, serving as immediate feedback on the benefit or cost of the action \cite{kaelbling1996reinforcement}. This feedback allows the agent to learn a policy that maximizes the cumulative reward over time \cite{kaelbling1996reinforcement}. In simple RL scenarios, rewards are typically straightforward. For instance, in the context of the Frozen Lake example, the agent might receive -1 per move (to encourage shorter paths), +100 for reaching the goal (G), and -100 if it falls into a hole (H), ending the episode. However, in real-world recommendation systems, reward structures can be far more nuanced.  It is often unclear which user behaviors warrant the highest reward or how to weigh different signals \cite{mcdonald2023spotify}. In online advertising, for example, low-intent actions such as clicks may be valued less than high-intent actions like saves or purchases.
+%properties of a good reward
+The use of a \textbf{reward signal} to formalize the idea of a goal is a distinctive feature of RL \cite{Sutton1998}. In an MDP, the reward is a scalar value the agent receives after taking an action in a given state and transitioning to a new state, serving as immediate feedback on the benefit or cost of the action \cite{kaelbling1996reinforcement}. This feedback allows the agent to learn a policy that maximizes the cumulative reward over time \cite{kaelbling1996reinforcement}. In principle, an effective reward signal for monetization-aware recommendation systems should satisfy at least three properties. First, it should be sufficiently informative about the user’s latent preferences and intent, even though these quantities are not directly observed. Second, it should provide feedback at a timescale and frequency that makes learning feasible, even when the platform ultimately cares about sparse and delayed long-term outcomes such as retention or habit formation. Third, it should faithfully encode trade-offs among competing objectives, such as revenue, engagement, and ad fatigue, rather than overemphasize any single short-term metric in isolation.
 
-Crafting effective reward signals for monetization-aware recommendation systems is far from trivial. In practice, these systems must infer users’ latent preferences and intent through a fixed set of observable signals, such as clicks, likes, shares, dwell time, or purchases—that provide only a noisy and incomplete view of the underlying user state. The delay in outcomes (e.g., retention signals may take months to manifest) and the often subtle impact of a single intervention can make it nearly impossible to detect meaningful changes within such short time frames \cite{mcdonald2023spotify}. An aspect that adds complexity is that recommendation engines often need to balance multiple objectives, such as maximizing user engagement while also ensuring ad revenue \cite{zhang2018whole, yan2020ads, sagtani2024ad}.
+%challenges to actually meet the desiderata 
+In practice, however, satisfying these properties is difficult for at least three reasons. First, reward design is constrained by \textit{partial observability}: the system must infer users’ latent preferences and intent through a fixed set of observable signals, such as clicks, likes, shares, dwell time, or purchases, that provide only a noisy and incomplete view of the underlying user state. Second, many of the outcomes platforms ultimately care about are \textit{sparse and delayed}: retention and longer-term satisfaction may take weeks or months to manifest, and the effect of any single intervention is often subtle, making meaningful changes difficult to detect within the short time horizons of typical experiments \cite{mcdonald2023spotify}. Third, reward specification is inherently \textit{multi-objective}: recommendation engines must simultaneously account for potentially competing goals such as revenue, engagement, and ad fatigue, rather than optimize a single scalar outcome in isolation \cite{zhang2018whole, yan2020ads, sagtani2024ad}.
 
-These challenges make reward design inherently difficult, since the platform’s true objectives are not directly observed but must instead be approximated through sparse and imperfect proxies. Click-through rate (CTR) and ad impressions serve as approximate rewards for revenue, while session duration, saves, and shares act as proxies for longer-term engagement \cite{wang2022surrogate}. However, these simpler proxies can fail to capture the system’s true long-term objectives, occasionally leading to suboptimal policies \cite{mazoure2021improving}. A high CTR may reflect short-term engagement, yet it can ultimately induce ad fatigue or frustrate users if the ads are misaligned with their actual interests \cite{hohnhold2015focusing, sagtani2024ad}. Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue} summarize commonly used proxies in the industry for revenue, engagement, and ad fatigue. 
+%How these challenges are present in practice (examples)
+These challenges make reward design inherently difficult, since the platform’s true objectives are not directly observed but must instead be approximated through sparse and imperfect proxies. Click-through rate (CTR) and ad impressions serve as approximate rewards for revenue, while session duration, saves, and shares act as proxies for longer-term engagement \cite{wang2022surrogate}. However, these simpler proxies can fail to capture the system’s true long-term objectives, occasionally leading to suboptimal policies \cite{mazoure2021improving}. A high CTR may reflect short-term engagement, yet it can ultimately induce ad fatigue or frustrate users if the ads are misaligned with their actual interests \cite{hohnhold2015focusing, sagtani2024ad}. Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-fatigue}, and \ref{tab:proxy-metrics-engagement} summarize commonly used proxies in the industry for revenue, ad fatigue, and engagement. 
 
 
 % \begin{figure}[H]
@@ -358,7 +364,7 @@ These challenges make reward design inherently difficult, since the platform’s
 %   \label{tab:proxy-metrics-img}
 % \end{table}
 
-\begin{table}[H]
+\begin{table}[t]
 \setstretch{1}
 \centering
 \footnotesize
@@ -387,9 +393,36 @@ These challenges make reward design inherently difficult, since the platform’s
 \end{tabularx}
 \caption{Revenue proxy metrics and their polarity.}
 \label{tab:proxy-metrics-revenue}
+\vspace{0.8em}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.49\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
+\toprule
+{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
+\midrule
+\textbf{Depth}
+    & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Length}
+    & Decrease in time spent per session \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Frequency}
+    & Decrease in number of sessions per week \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Ad Load (Sessions)}
+    & Number of sessions that end (or quit) during an ad \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Ad Load (Absolute)}
+    & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Click Entropy}
+    & Uncertainty/diversity in ad clicks for a query; high values can indicate lower relevance \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\bottomrule
+\end{tabularx}
+\caption{Ad fatigue proxy metrics and their polarity.}
+\label{tab:proxy-metrics-fatigue}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[t]
 \setstretch{1}
 \centering
 \footnotesize
@@ -453,46 +486,20 @@ These challenges make reward design inherently difficult, since the platform’s
 \label{tab:proxy-metrics-engagement}
 \end{table}
 
-\begin{table}[H]
-\setstretch{1}
-\centering
-\footnotesize
-\renewcommand{\arraystretch}{1.15}
-\setlength{\tabcolsep}{4pt}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.49\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
-\toprule
-{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
-\midrule
-\textbf{Depth}
-    & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Length}
-    & Decrease in time spent per session \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Frequency}
-    & Decrease in number of sessions per week \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Ad Load (Sessions)}
-    & Number of sessions that end (or quit) during an ad \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Ad Load (Absolute)}
-    & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Click Entropy}
-    & Uncertainty/diversity in ad clicks for a query; high values can indicate lower relevance \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\bottomrule
-\end{tabularx}
-\caption{Ad fatigue proxy metrics and their polarity.}
-\label{tab:proxy-metrics-fatigue}
-\end{table}
+%considerations on choosing individual proxies 
+
+While Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-fatigue}, and \ref{tab:proxy-metrics-engagement} summarize a wide range of proxy metrics for revenue, ad fatigue, and engagement, selecting any individual proxy requires care. Many proxies are attractive precisely because they provide dense, behaviorally grounded feedback that is easy to log and optimize. Click-based signals, for example, are widely used because they are frequent, explicit, and highly responsive to ranking changes. However, their interpretation is not always stable. A high click-through rate may indicate relevance, but it may also reflect curiosity, ambiguity, or even misleading presentation—for example, when users do not immediately realize that an item is sponsored. Such effects can improve short-term metrics while eroding trust or satisfaction over longer horizons that are difficult to measure in short experiments. Even within the same signal family, semantics can vary: short clicks are often interpreted as implicit negative feedback, whereas longer clicks or post-click dwell can be more indicative of genuine value. Similar tensions arise for other objectives. Diversity-related signals, for instance, may be desirable when they reflect broadening of user interests over time, yet high click entropy within a session can also indicate confusion, low relevance, or friction. Taken individually, these proxies can be valuable signals; taken together, however, they reveal that reward design is not simply a matter of choosing “good” metrics, but of reconciling partially informative, context-dependent, and sometimes conflicting measurements of user value. This is precisely what motivates the use of composite utility functions that blend multiple proxy signals rather than relying on any single one in isolation.
+
+One is reward density and timeliness: click-based or short-term consumption signals are attractive because they provide frequent feedback and support efficient learning, whereas return- or retention-based signals may better reflect long-term value but are much sparser and more delayed. A second consideration is heterogeneity across contexts. The same behavioral event may have different implications depending on the user segment, traffic surface, or intervention setting, so aggregate improvements can mask localized harms. A third consideration is that the meaning of a proxy is often not stable across content types and formats. For example, dwell time may indicate satisfaction for educational content but not necessarily for lightweight entertainment, and a watch event may have different utility for short-form video than for static image content. These considerations suggest that individual reward signals should be treated as context-dependent approximations rather than universally valid measures of user value.
+
+
 
 
 A \textbf{canonical utility function} at the policy layer to \textit{blend} ads and organic content can be represented as follows \cite{sagtani2024ad, yan2020ads, carrion2021blending}:
     \begin{equation}
         U(x) = \alpha \times \text{Revenue} + \beta \times \text{Engagement} - \gamma \times \text{Ad Fatigue}
     \end{equation}
-    where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of ``Revenue'', ``Engagement'', and ``Ad Fatigue'', typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
+    where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of ``Revenue'', ``Engagement'', and ``Ad Fatigue'', typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-fatigue}, and \ref{tab:proxy-metrics-engagement}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
     
 In some cases, a very simple unified function can suffice over a complex utility function. Researchers at Alibaba introduced the concept of Click Yield, which is defined as the ratio of the total number of clicks on all items (ads + organic results) to the total number of impressions on a page \cite{zhang2018whole}. Click Yield provides a holistic evaluation of page performance, accounting for the interactive effects between ads and organic content, and helping to mitigate the bias that arises from examining CTR in isolation. Their optimization task maximizes total revenue while ensuring that the Click Yield does not fall below a certain threshold (T)  \cite{zhang2018whole}. A comparison of utility function formulations is shown in Table \ref{tab:utility-comparison}.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  15 MAR 2026 15:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  15 MAR 2026 17:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1194,13 +1194,6 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [10.10]
 
-LaTeX Warning: Reference `tab:frozen_lake' on page 11 undefined on input line 305.
-
-
-LaTeX Warning: Reference `tab:frozen_lake' on page 11 undefined on input line 305.
-
-
-
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
 (fancyhdr)                Make it at least 18.48402pt, for example:
@@ -1209,12 +1202,12 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [11.11]
-Overfull \hbox (8.1637pt too wide) in alignment at lines 387--387
+Overfull \hbox (8.1637pt too wide) in alignment at lines 393--393
 [][][] 
  []
 
 
-Overfull \hbox (8.1637pt too wide) in alignment at lines 451--451
+Overfull \hbox (8.1637pt too wide) in alignment at lines 427--427
 [][][] 
  []
 
@@ -1224,7 +1217,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [12.12]
-Overfull \hbox (8.1637pt too wide) in alignment at lines 485--485
+Overfull \hbox (8.1637pt too wide) in alignment at lines 491--491
 [][][] 
  []
 
@@ -1240,65 +1233,67 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
-[13.13{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}]
+[13.13]
+
+[14.14{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 493.
+(Font)              scaled to size 7.3pt on input line 510.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 493.
+(Font)              scaled to size 5.5pt on input line 510.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 508.
+(Font)              scaled to size 9.0pt on input line 525.
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--510
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Zhao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--510
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 532--532
+Underfull \hbox (badness 10000) in paragraph at lines 549--549
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Zhao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 532--532
+Underfull \hbox (badness 10000) in paragraph at lines 549--549
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--543
+Underfull \hbox (badness 10000) in paragraph at lines 554--560
 []$\OML/nxlmi/m/it/9 R[]\LMS/ntxsy/m/n/9 ¹\OML/nxlmi/m/it/9 s[]; a[]\LMS/ntxsy/m/n/9 º \U/ntxmia/m/it/9 =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--551
+Underfull \hbox (badness 10000) in paragraph at lines 568--568
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Zhang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--551
+Underfull \hbox (badness 10000) in paragraph at lines 568--568
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--589
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Yan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--589
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 607--609
+Underfull \hbox (badness 1584) in paragraph at lines 624--626
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) Subject to the en-gage-ment con-
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 616--617
+Underfull \hbox (badness 1603) in paragraph at lines 633--634
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) gage-ment util-i-ties for ads
  []
 
@@ -1306,8 +1301,6 @@ Underfull \hbox (badness 1603) in paragraph at lines 616--617
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-[14.14]
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1319,14 +1312,6 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [15.15]
 
 [16.16]
-Underfull \hbox (badness 10000) in paragraph at lines 649--650
-
- []
-
-
-Underfull \vbox (badness 7907) has occurred while \output is active []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1336,6 +1321,14 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [17.17]
+Underfull \hbox (badness 10000) in paragraph at lines 666--667
+
+ []
+
+
+Underfull \vbox (badness 7907) has occurred while \output is active []
+
+
 
 [18.18]
 
@@ -1349,9 +1342,6 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [19.19]
 
 [20.20]
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 697.
-
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1361,6 +1351,9 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [21.21]
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 714.
+
 
 [22.22]
 
@@ -1383,12 +1376,14 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [25.25]
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/it' in size <10> not available
-(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on input line 757.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sl' will be
-(Font)              scaled to size 10.0pt on input line 757.
 
-Underfull \hbox (badness 10000) in paragraph at lines 759--760
+[26.26]
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/it' in size <10> not available
+(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on input line 774.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sl' will be
+(Font)              scaled to size 10.0pt on input line 774.
+
+Underfull \hbox (badness 10000) in paragraph at lines 776--777
 
  []
 
@@ -1396,8 +1391,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 759--760
 Underfull \vbox (badness 4660) has occurred while \output is active []
 
 
-
-[26.26]
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1407,21 +1400,11 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [27.27]
-Underfull \hbox (badness 10000) in paragraph at lines 791--792
-
- []
-
-
 
 [28.28]
-<detailed_ad_policy.png, id=1776, 1552.80125pt x 840.13875pt>
-File: detailed_ad_policy.png Graphic file (type png)
-<use detailed_ad_policy.png>
-Package pdftex.def Info: detailed_ad_policy.png  used on input line 960.
-(pdftex.def)             Requested size: 395.8225pt x 214.14922pt.
+Underfull \hbox (badness 10000) in paragraph at lines 808--809
 
-
-Class acmart Warning: A possible image without description on input line 963.
+ []
 
 
 
@@ -1432,19 +1415,38 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
-[29.29] Processing 'acks' comment.
+[29.29]
+<detailed_ad_policy.png, id=1773, 1552.80125pt x 840.13875pt>
+File: detailed_ad_policy.png Graphic file (type png)
+<use detailed_ad_policy.png>
+Package pdftex.def Info: detailed_ad_policy.png  used on input line 977.
+(pdftex.def)             Requested size: 395.8225pt x 214.14922pt.
+
+
+Class acmart Warning: A possible image without description on input line 980.
+
+
+
+[30.30] Processing 'acks' comment.
 \openout3 = `comment.cut'.
 
  Comment 'acks' writing to comment.cut. Straight input of comment.cut. (./comment.cut) (./paper.bbl
 
-[30.30 <./detailed_ad_policy.png>]
-LaTeX Info: Redefining \tempurl on input line 168.
-LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 179.
+
+Package fancyhdr Warning: \headheight is too small (13.0pt): 
+(fancyhdr)                Make it at least 18.48402pt, for example:
+(fancyhdr)                \setlength{\headheight}{18.48402pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
+
+[31.31 <./detailed_ad_policy.png>]
+LaTeX Info: Redefining \tempurl on input line 158.
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 169.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 179.
+(Font)              scaled to size 8.0pt on input line 169.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1454,6 +1456,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
+[32.32{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_u7qtuy.enc}]
+LaTeX Info: Redefining \tempurl on input line 473.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
 (fancyhdr)                Make it at least 18.48402pt, for example:
@@ -1461,16 +1470,20 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
-[31.31{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_u7qtuy.enc}]
-LaTeX Info: Redefining \tempurl on input line 483.
+[33.33]
+LaTeX Info: Redefining \tempurl on input line 516.
+LaTeX Info: Redefining \tempurl on input line 613.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[32.32]
-LaTeX Info: Redefining \tempurl on input line 526.
-LaTeX Info: Redefining \tempurl on input line 623.
+[34.34]
+LaTeX Info: Redefining \tempurl on input line 686.
+LaTeX Info: Redefining \tempurl on input line 713.
+LaTeX Info: Redefining \tempurl on input line 803.
+LaTeX Info: Redefining \tempurl on input line 847.
+LaTeX Info: Redefining \tempurl on input line 866.
 
 Underfull \vbox (badness 6396) has occurred while \output is active []
 
@@ -1483,34 +1496,16 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
-[33.33]
-LaTeX Info: Redefining \tempurl on input line 696.
-LaTeX Info: Redefining \tempurl on input line 723.
-LaTeX Info: Redefining \tempurl on input line 813.
-LaTeX Info: Redefining \tempurl on input line 857.
-LaTeX Info: Redefining \tempurl on input line 876.
+[35.35]
+LaTeX Info: Redefining \tempurl on input line 885.
+LaTeX Info: Redefining \tempurl on input line 972.
+LaTeX Info: Redefining \tempurl on input line 1006.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[34.34]
-LaTeX Info: Redefining \tempurl on input line 895.
-LaTeX Info: Redefining \tempurl on input line 982.
-LaTeX Info: Redefining \tempurl on input line 1016.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (13.0pt): 
-(fancyhdr)                Make it at least 18.48402pt, for example:
-(fancyhdr)                \setlength{\headheight}{18.48402pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
-
-[35.35])
+[36.36])
 
 Class acmart Warning: Some images may lack descriptions.
 
@@ -1525,35 +1520,38 @@ Class acmart Warning: CCS concepts are mandatory for papers over two pages.
 
 
 
+
+Package fancyhdr Warning: \headheight is too small (13.0pt): 
+(fancyhdr)                Make it at least 18.48402pt, for example:
+(fancyhdr)                \setlength{\headheight}{18.48402pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
+
 (/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/se-utf8.def
 File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
-) [36.36] (./paper.aux)
+) [37.37] (./paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 7E7275FDC902D357FF31AC91FDAE6D42;4419.
  ) 
 Here is how much of TeX's memory you used:
- 24576 strings out of 473190
- 407850 string characters out of 5715801
- 907379 words of memory out of 5000000
- 46263 multiletter control sequences out of 15000+600000
- 787243 words of font info for 625 fonts, out of 8000000 for 9000
+ 24569 strings out of 473190
+ 407644 string characters out of 5715801
+ 905162 words of memory out of 5000000
+ 46259 multiletter control sequences out of 15000+600000
+ 787076 words of font info for 623 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,23n,131p,2985b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTBO.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on paper.pdf (36 pages, 1334846 bytes).
+Output written on paper.pdf (37 pages, 1335841 bytes).
 PDF statistics:
- 1986 PDF objects out of 2073 (max. 8388607)
- 1785 compressed objects within 18 object streams
+ 1985 PDF objects out of 2073 (max. 8388607)
+ 1783 compressed objects within 18 object streams
  221 named destinations out of 1000 (max. 500000)
  107163 words of extra memory for PDF output out of 128383 (max. 10000000)
 

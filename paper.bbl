@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{145}
+\begin{thebibliography}{144}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -35,16 +35,6 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
-
-\bibitem[Fro(2023)]%
-        {FrozenLakeGymnasium2023}
- \bibinfo{year}{2023}\natexlab{}.
-\newblock \bibinfo{title}{Frozen Lake Tutorial}.
-\newblock \bibinfo{howpublished}{\url{https://gymnasium.farama.org/tutorials/training_agents/FrozenLake_tuto/}}.
-\newblock
-\newblock
-\shownote{Accessed: 2023-03-05}.
-
 
 \bibitem[Abrams and Vee(2007)]%
         {abrams2007personalized}
