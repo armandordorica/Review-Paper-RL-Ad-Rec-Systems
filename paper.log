@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 MAR 2026 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  15 MAR 2026 15:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1095,7 +1095,7 @@ Overfull \hbox (19.88966pt too wide) in paragraph at lines 121--159
  [][] 
  []
 
-<history_timeline_figure.png, id=238, 1282.7925pt x 519.9425pt>
+<history_timeline_figure.png, id=242, 1282.7925pt x 519.9425pt>
 File: history_timeline_figure.png Graphic file (type png)
 <use history_timeline_figure.png>
 Package pdftex.def Info: history_timeline_figure.png  used on input line 167.
@@ -1193,14 +1193,11 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [9.9]
 
 [10.10]
-<frozenlake-table.png, id=522, 245.91875pt x 162.6075pt>
-File: frozenlake-table.png Graphic file (type png)
-<use frozenlake-table.png>
-Package pdftex.def Info: frozenlake-table.png  used on input line 310.
-(pdftex.def)             Requested size: 138.54028pt x 91.6104pt.
+
+LaTeX Warning: Reference `tab:frozen_lake' on page 11 undefined on input line 305.
 
 
-Class acmart Warning: A possible image without description on input line 313.
+LaTeX Warning: Reference `tab:frozen_lake' on page 11 undefined on input line 305.
 
 
 
@@ -1211,20 +1208,23 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
-[11.11 <./frozenlake-table.png>]
-Overfull \hbox (8.1637pt too wide) in alignment at lines 381--381
+[11.11]
+Overfull \hbox (8.1637pt too wide) in alignment at lines 387--387
 [][][] 
  []
 
 
-Overfull \hbox (8.1637pt too wide) in alignment at lines 445--445
+Overfull \hbox (8.1637pt too wide) in alignment at lines 451--451
 [][][] 
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [12.12]
-Overfull \hbox (8.1637pt too wide) in alignment at lines 479--479
+Overfull \hbox (8.1637pt too wide) in alignment at lines 485--485
 [][][] 
  []
 
@@ -1242,63 +1242,63 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [13.13{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 487.
+(Font)              scaled to size 7.3pt on input line 493.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 487.
+(Font)              scaled to size 5.5pt on input line 493.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 502.
+(Font)              scaled to size 9.0pt on input line 508.
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--504
+Underfull \hbox (badness 10000) in paragraph at lines 510--510
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Zhao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--504
+Underfull \hbox (badness 10000) in paragraph at lines 510--510
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--526
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Zhao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--526
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--537
+Underfull \hbox (badness 10000) in paragraph at lines 537--543
 []$\OML/nxlmi/m/it/9 R[]\LMS/ntxsy/m/n/9 ¹\OML/nxlmi/m/it/9 s[]; a[]\LMS/ntxsy/m/n/9 º \U/ntxmia/m/it/9 =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 545--545
+Underfull \hbox (badness 10000) in paragraph at lines 551--551
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Zhang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 545--545
+Underfull \hbox (badness 10000) in paragraph at lines 551--551
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 583--583
+Underfull \hbox (badness 10000) in paragraph at lines 589--589
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) [[]Yan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 583--583
+Underfull \hbox (badness 10000) in paragraph at lines 589--589
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) et al[][]
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 601--603
+Underfull \hbox (badness 1584) in paragraph at lines 607--609
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) Subject to the en-gage-ment con-
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 610--611
+Underfull \hbox (badness 1603) in paragraph at lines 616--617
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) gage-ment util-i-ties for ads
  []
 
@@ -1319,7 +1319,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 [15.15]
 
 [16.16]
-Underfull \hbox (badness 10000) in paragraph at lines 643--644
+Underfull \hbox (badness 10000) in paragraph at lines 649--650
 
  []
 
@@ -1350,7 +1350,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [20.20]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 691.
+(Font)              scaled to size 10.0pt on input line 697.
 
 
 
@@ -1384,11 +1384,11 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [25.25]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/it' in size <10> not available
-(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on input line 751.
+(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on input line 757.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sl' will be
-(Font)              scaled to size 10.0pt on input line 751.
+(Font)              scaled to size 10.0pt on input line 757.
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--754
+Underfull \hbox (badness 10000) in paragraph at lines 759--760
 
  []
 
@@ -1407,21 +1407,21 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-5.48402pt}.
 
 [27.27]
-Underfull \hbox (badness 10000) in paragraph at lines 785--786
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 
  []
 
 
 
 [28.28]
-<detailed_ad_policy.png, id=1779, 1552.80125pt x 840.13875pt>
+<detailed_ad_policy.png, id=1776, 1552.80125pt x 840.13875pt>
 File: detailed_ad_policy.png Graphic file (type png)
 <use detailed_ad_policy.png>
-Package pdftex.def Info: detailed_ad_policy.png  used on input line 954.
+Package pdftex.def Info: detailed_ad_policy.png  used on input line 960.
 (pdftex.def)             Requested size: 395.8225pt x 214.14922pt.
 
 
-Class acmart Warning: A possible image without description on input line 957.
+Class acmart Warning: A possible image without description on input line 963.
 
 
 
@@ -1534,22 +1534,26 @@ File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 49CEAE7FB4F17AD11B5B4258321F7785;3882.
+(rerunfilecheck)             Checksum: 7E7275FDC902D357FF31AC91FDAE6D42;4419.
  ) 
 Here is how much of TeX's memory you used:
- 24583 strings out of 473190
- 408038 string characters out of 5715801
- 907539 words of memory out of 5000000
- 46270 multiletter control sequences out of 15000+600000
+ 24576 strings out of 473190
+ 407850 string characters out of 5715801
+ 907379 words of memory out of 5000000
+ 46263 multiletter control sequences out of 15000+600000
  787243 words of font info for 625 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,23n,131p,2985b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTBO.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on paper.pdf (36 pages, 1341693 bytes).
+Output written on paper.pdf (36 pages, 1334846 bytes).
 PDF statistics:
- 1989 PDF objects out of 2073 (max. 8388607)
- 1786 compressed objects within 18 object streams
+ 1986 PDF objects out of 2073 (max. 8388607)
+ 1785 compressed objects within 18 object streams
  221 named destinations out of 1000 (max. 500000)
- 107160 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 107163 words of extra memory for PDF output out of 128383 (max. 10000000)
 
