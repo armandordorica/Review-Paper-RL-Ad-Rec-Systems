@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{144}
+\begin{thebibliography}{146}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -384,9 +384,20 @@
 \newblock
 
 
-\bibitem[Hohnhold et~al\mbox{.}(2015)]%
+\bibitem[Hohnhold et~al\mbox{.}(2015a)]%
+        {43887}
+\bibfield{author}{\bibinfo{person}{Henning Hohnhold}, \bibinfo{person}{Deirdre O'Brien}, {and} \bibinfo{person}{Diane Tang}.} \bibinfo{year}{2015}\natexlab{a}.
+\newblock \showarticletitle{Focus on the Long-Term: It's better for Users and Business}. In \bibinfo{booktitle}{\emph{Proceedings 21st Conference on Knowledge Discovery and Data Mining}}. \bibinfo{address}{Sydney, Australia}.
+\newblock
+\urldef\tempurl%
+\url{http://dl.acm.org/citation.cfm?doid=2783258.2788583}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hohnhold et~al\mbox{.}(2015b)]%
         {hohnhold2015focusing}
-\bibfield{author}{\bibinfo{person}{Henning Hohnhold}, \bibinfo{person}{Deirdre O'Brien}, {and} \bibinfo{person}{Diane Tang}.} \bibinfo{year}{2015}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Henning Hohnhold}, \bibinfo{person}{Deirdre O'Brien}, {and} \bibinfo{person}{Diane Tang}.} \bibinfo{year}{2015}\natexlab{b}.
 \newblock \showarticletitle{Focusing on the long-term: It's good for users and business}. In \bibinfo{booktitle}{\emph{Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}}. \bibinfo{pages}{1849--1858}.
 \newblock
 
@@ -853,6 +864,13 @@
         {silberstein2023combating}
 \bibfield{author}{\bibinfo{person}{Natalia Silberstein}, \bibinfo{person}{Or Shoham}, {and} \bibinfo{person}{Assaf Klein}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{Combating Ad Fatigue via Frequency-Recency Features in Online Advertising Systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 32nd ACM International Conference on Information and Knowledge Management}}. \bibinfo{pages}{4822--4828}.
+\newblock
+
+
+\bibitem[Silberstein et~al\mbox{.}(2020)]%
+        {silberstein2020ad}
+\bibfield{author}{\bibinfo{person}{Natalia Silberstein}, \bibinfo{person}{Oren Somekh}, \bibinfo{person}{Yair Koren}, \bibinfo{person}{Michal Aharon}, \bibinfo{person}{Dror Porat}, \bibinfo{person}{Avi Shahar}, {and} \bibinfo{person}{Tingyi Wu}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Ad close mitigation for improved user experience in native advertisements}. In \bibinfo{booktitle}{\emph{Proceedings of the 13th International Conference on Web Search and Data Mining}}. \bibinfo{pages}{546--554}.
 \newblock
 
 
