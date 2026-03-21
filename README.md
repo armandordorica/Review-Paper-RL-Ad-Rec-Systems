@@ -6,56 +6,115 @@ The paper is set up to optionally print a build stamp inside the PDF (right unde
 
 - `Compiled: <YYYY-MM-DD HH:MM>`
 
-## Build on a fresh machine (recommended: conda + Tectonic)
+---
 
-This is the most reproducible approach because it avoids relying on a system-wide TeX installation.
+## One-time machine setup (fresh Mac)
 
-### 1) Clone
+### 1) SSH key for GitHub
+
+If this machine doesn't already have an SSH key:
 
 ```bash
-git clone git@github.com:armandordorica/Review-Paper-RL-Ad-Rec-Systems.git
+ssh-keygen -t ed25519 -C "your@email.com"
+cat ~/.ssh/id_ed25519.pub   # copy this output
+```
+
+Add the public key at: **GitHub → Settings → SSH and GPG keys → New SSH key**
+
+Then add the `github-personal` alias to `~/.ssh/config`:
+
+```
+Host github-personal
+  HostName github.com
+  User git
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+Verify it works:
+
+```bash
+ssh -T github-personal
+# Expected: Hi armandordorica! You've successfully authenticated...
+```
+
+### 2) Install Miniconda (if not already installed)
+
+```bash
+# Apple Silicon (M1/M2/M3)
+curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o /tmp/miniconda.sh
+
+# Intel Mac
+# curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o /tmp/miniconda.sh
+
+bash /tmp/miniconda.sh -b -p ~/miniconda3
+source ~/miniconda3/etc/profile.d/conda.sh
+```
+
+> To make `conda` available automatically in future terminals, run `conda init zsh` (or `conda init bash`).
+
+### 3) Create the `texbuild` environment
+
+Use `--override-channels` to avoid Anaconda default channel ToS prompts:
+
+```bash
+conda create -y -n texbuild -c conda-forge --override-channels tectonic
+```
+
+This only needs to be done once per machine.
+
+### 4) Clone the repo
+
+```bash
+git clone git@github-personal:armandordorica/Review-Paper-RL-Ad-Rec-Systems.git
 cd Review-Paper-RL-Ad-Rec-Systems
 ```
 
-### 2) Create a minimal LaTeX build environment
+---
 
-Requires: `conda` (Miniconda/Anaconda).
-
-```bash
-conda env create -f environment.yml
-```
-
-If you prefer the explicit one-liner instead of `environment.yml`:
+## Daily workflow: edit → compile → push
 
 ```bash
-conda create -y -n texbuild -c conda-forge tectonic
-```
+# 1. Source conda if it's not initialized in your shell
+source ~/miniconda3/etc/profile.d/conda.sh
 
-### 3) Produce a timestamped PDF (minute precision)
-
-This command:
-- embeds a timestamp in the PDF via `\\BuildTimestamp`
-- writes an output file named `paper_YYYY-MM-DD_HHMM.pdf`
-- uses US/Eastern time (shows `EST` or `EDT`, depending on the date)
-
-```bash
+# 2. Activate the build environment
 conda activate texbuild
+
+# 3. Edit paper.tex with your changes (e.g. in VS Code)
+
+# 4. Compile to a timestamped PDF
+cd /path/to/Review-Paper-RL-Ad-Rec-Systems
 ./build_timestamped_pdf.sh
+# Output: paper_YYYY-MM-DD_HHMM.pdf
+
+# 5. Commit and push
+git add paper.tex paper_YYYY-MM-DD_HHMM.pdf
+git commit -m "Describe your changes"
+git push
 ```
 
-> **Note:** The script tries to auto-detect common conda install paths (`miniconda3`, `anaconda3`, `miniforge3`, `mambaforge`). If tectonic is not found, activate the environment first with `conda activate texbuild`.
+> **Tip:** The build script auto-detects common conda paths. If `tectonic` is not found, make sure you ran `conda activate texbuild` first.
 
-If you prefer not to use the script, set the timezone explicitly:
+---
+
+## Build details
+
+The build script:
+- Embeds a timestamp in the PDF via `\BuildTimestamp`
+- Writes output to `paper_YYYY-MM-DD_HHMM.pdf` (US/Eastern time)
+
+If you prefer to run the steps manually without the script:
 
 ```bash
+source ~/miniconda3/etc/profile.d/conda.sh
 conda activate texbuild
 
 TZ=America/New_York
 TS_FILE=$(TZ=$TZ date +"%Y-%m-%d_%H%M")
 TS_DISPLAY=$(TZ=$TZ date +"%Y-%m-%d %H:%M %Z")
-JOB="._build_${TS_FILE}"  # temporary wrapper base name
+JOB="._build_${TS_FILE}"
 
-# Create a tiny wrapper so we can inject the timestamp without editing paper.tex
 WRAPPER="${JOB}.tex"
 {
   echo "\\def\\BuildTimestamp{${TS_DISPLAY}}"
@@ -69,9 +128,9 @@ rm -f "$WRAPPER" "${JOB}.aux" "${JOB}.log" "${JOB}.out" "${JOB}.toc" "${JOB}.xdv
 ls -lh "paper_${TS_FILE}.pdf"
 ```
 
-## Alternative build (system TeX Live)
+---
 
-If you prefer system packages (Linux), install TeX Live and compile with `pdflatex` + `bibtex`:
+## Alternative build (Linux / system TeX Live)
 
 ```bash
 sudo apt-get update
@@ -83,7 +142,14 @@ pdflatex paper.tex
 pdflatex paper.tex
 ```
 
+---
+
 ## Notes
 
-- Timestamped PDFs (e.g. `paper_2026-01-25_1943.pdf`) are intended to be committed to the repo for traceability.
+- Timestamped PDFs (e.g. `paper_2026-01-25_1943.pdf`) are committed to the repo for traceability.
 - Temporary build intermediates are ignored via `.gitignore`.
+- Git commits from a new machine may auto-detect your name/email from the hostname. Set them explicitly to avoid the warning:
+  ```bash
+  git config --global user.name "Armando Ordorica"
+  git config --global user.email "your@email.com"
+  ```
