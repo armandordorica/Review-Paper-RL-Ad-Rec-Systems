@@ -260,7 +260,7 @@ The evolution of ad pricing, from paying for impressions to paying for user acti
 
 
 The next set of innovations following heuristics and performance-based targeting was led by machine learning (ML) and A/B testing \cite{barajas2022online}. From 2010 to 2015, ad selection techniques evolved significantly with the adoption of machine learning models such as Logistic Regression, Decision Trees, and Gradient Boosting Machines \cite{cui2015global}. By leveraging historical data and diverse user behavior signals, these models enabled more accurate predictions of user engagement \cite{cui2015global}. In parallel, A/B testing allowed practitioners to systematically compare models and features, ensuring that any new implementation delivered measurable performance gains \cite{barajas2022online}.
-Despite these successes, traditional tabular models struggled to capture nuanced user intent, particularly when processing more complex data such as images or text. In the early 2010s, deep learning gained momentum with breakthroughs like AlexNet \cite{krizhevsky2012imagenet}, which demonstrated the power of neural networks to handle unstructured high-dimensional data. This ability to capture complex, nonlinear interactions dramatically improved ad recommendations, especially through the use of embeddings, which are dense vector representations that map words or images into high-dimensional spaces. Metrics like cosine similarity further refined personalization by aligning recommendations with user interests \cite{covington2016deep}. Embedding-based models, particularly two-tower architectures, presented a major leap forward in ad recommendation systems by effectively capturing intricate relationships between users and ads. These models utilize two neural networks: one dedicated to encoding user information and the other to encoding ad (item) information. The outputs from these networks are then combined to predict user engagement with ads \cite{vorotilov2023scaling}. This approach not only boosted accuracy but also scaled effectively. Despite the significant improvements that embedding-based models introduced in terms of predictive accuracy and scalability of ad recommendation systems, the practical challenges of balancing multiple objectives, such as maximizing revenue, mitigating ad fatigue, and sustaining long-term user engagement remained unresolved.  
+Despite these successes, traditional tabular models struggled to capture nuanced user intent, particularly when processing more complex data such as images or text. In the early 2010s, deep learning gained momentum with breakthroughs like AlexNet \cite{krizhevsky2012imagenet}, which demonstrated the power of neural networks to handle unstructured high-dimensional data. This ability to capture complex, nonlinear interactions dramatically improved ad recommendations, especially through the use of embeddings, which are dense vector representations that map words or images into high-dimensional spaces. Metrics like cosine similarity further refined personalization by aligning recommendations with user interests \cite{covington2016deep}. Embedding-based models, particularly two-tower architectures, presented a major leap forward in ad recommendation systems by effectively capturing intricate relationships between users and ads. These models utilize two neural networks: one dedicated to encoding user information and the other to encoding ad (item) information. The outputs from these networks are then combined to predict user engagement with ads \cite{vorotilov2023scaling}. This approach not only boosted accuracy but also scaled effectively. Despite the significant improvements that embedding-based models introduced in terms of predictive accuracy and scalability of ad recommendation systems, the practical challenges of balancing multiple objectives, such as maximizing revenue, sustaining long-term user engagement, and mitigating ad fatigue remained unresolved.  
 
 \textbf{Multi-Armed Bandits (MABs)} emerged as a powerful method for online advertising around the 2010s to tackle the explore–exploit tradeoff, which consists of finding the optimal balance between choosing new ad policies with unknown performance and showing older ad policies with known positive performance \cite{schwartz2017customer, burtini2015improving}. MABs are a class of algorithms for dynamic decision-making under uncertainty, originally developed in mid-20th-century probability theory \cite{robbins1952sequential}. While MABs had been widely applied in areas such as clinical trials \cite{villar2015multi, thompson1933likelihood}, they were adopted in large-scale web and advertising platforms during the early 2010s \cite{li2010contextual,chapelle2011empirical, schwartz2017customer}.  
 
@@ -301,7 +301,7 @@ Despite the practical advantages that contextual bandits offer for real-time exp
 
 \section{The RL Formulation of Jointly Optimizing Ads and Content}
 
-\subsection{Formulating Monetization-Aware Ranking as an RL Problem}
+% \subsection{Formulating Monetization-Aware Ranking as an RL Problem}
 % In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Decision Process (MDP), where an \textbf{agent} interacts with a \textbf{deterministic environment} by performing \textbf{discrete actions}, such as moving up, down, left, or right, to navigate through a grid with the objective of reaching a goal, while potentially avoiding obstacles or hazards. A more complex variant is the \textbf{FrozenLake problem}, which features a \textbf{stochastic environment} where movements are uncertain due to a slippery surface (\textcolor[HTML]{1E90FF}{F}) as shown in Figure~\ref{tab:frozen_lake} \cite{FrozenLakeGymnasium2023}. Here, actions do not always lead to the intended next state, adding complexity by requiring policies that effectively manage uncertainty. In this paper, we use the FrozenLake problem as a representative framework for stochastic environments and leverage this template to describe the ad optimization problem as an RL task. Specifically, we will explore components of the underlying MDP, such as states, actions, and rewards, and investigate key RL concepts including policy evaluation, value iteration, and policy iteration. 
 % The grid is typically represented as shown in Figure~\ref{tab:frozen_lake}:
 
@@ -343,28 +343,17 @@ Relatively simple reward functions may be sufficient in controlled settings, whe
 In principle, an effective reward signal for monetization-aware recommendation systems should satisfy at least three properties. First, it should be sufficiently informative about the user’s latent preferences and intent, even though these quantities are not directly observed. Second, it should provide feedback at a timescale and frequency that makes learning feasible, even when the platform ultimately cares about sparse and delayed long-term outcomes such as retention or habit formation. Third, it should faithfully encode trade-offs among competing objectives, such as revenue, engagement, and ad fatigue, rather than overemphasize any single short-term metric in isolation.
 
 %challenges to actually meet the desiderata 
-In practice, however, satisfying these properties is difficult for at least three reasons. First, reward design is constrained by \textit{partial observability}: the system must infer users’ latent preferences and intent through a fixed set of observable signalsthat capture different stages of response, such as immediate reactions (clicks), deeper consumption (dwell time or completion), and downstream value signals (saves, purchases, or return visits) that provide only a noisy and incomplete view of the underlying user state. Second, many of the outcomes platforms ultimately care about are \textit{sparse and delayed}: retention and longer-term satisfaction may take weeks or months to manifest, and the effect of any single intervention is often subtle, making meaningful changes difficult to detect within the short time horizons of typical experiments \cite{mcdonald2023spotify}. Third, reward specification is inherently \textit{multi-objective}: recommendation engines must simultaneously account for potentially competing goals such as revenue, engagement, and ad fatigue, rather than optimize a single scalar outcome in isolation \cite{zhang2018whole, yan2020ads, sagtani2024ad}.
+In practice, however, satisfying these properties is difficult for at least three reasons. First, reward design is constrained by \textit{partial observability}: the system must infer users’ latent preferences and intent through a fixed set of observable signals that capture different stages of response, such as immediate reactions (clicks), deeper consumption (dwell time or completion), and downstream value signals (saves, purchases, or return visits) that provide only a noisy and incomplete view of the underlying user state. Second, many of the outcomes platforms ultimately care about are \textit{sparse and delayed}: retention and longer-term satisfaction may take weeks or months to manifest, and the effect of any single intervention is often subtle, making meaningful changes difficult to detect within the short time horizons of typical experiments \cite{mcdonald2023spotify}. Third, reward specification is inherently \textit{multi-objective}: recommendation engines must simultaneously account for potentially competing goals such as revenue, engagement, and ad fatigue, rather than optimize a single scalar outcome in isolation \cite{zhang2018whole, yan2020ads, sagtani2024ad}.
 
 %How these challenges are present in practice (examples)
-Metrics such as click-through rate (CTR), predicted CTR, and ad impressions are commonly used as proxies for monetization, while session duration, saves, shares, and return-based signals stand in for longer-term engagement \cite{wang2022surrogate}. Their appeal is obvious: they provide dense, behaviorally grounded feedback that is relatively easy to log, predict, and optimize. Yet this same convenience is also their main limitation. When optimized in isolation, such proxies can misrepresent the platform’s true long-term objective \cite{mazoure2021improving}. Click-based signals provide a clear example: although they are frequent and immediately observable, high CTR does not necessarily imply high ad quality, and repeated exposure to low-quality or poorly matched ads can degrade user satisfaction and future responsiveness to ads \cite{43887, silberstein2020ad, yan2020ads}. Even within the same family of signals, semantics can vary: short clicks may function as implicit negative feedback, whereas longer clicks or post-click dwell may better reflect genuine value. Similar tensions arise elsewhere. Diversity-related signals, for instance, may be desirable when they reflect broader use-case coverage over time, which prior work associates with improved long-term user experience and retention \cite{wang2022surrogate, xu2023optimizing}, yet high click entropy within a session can also indicate confusion, low relevance, or friction \cite{sagtani2023quantifying}.Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-fatigue}, and \ref{tab:proxy-metrics-engagement} summarize representative proxies for revenue, ad fatigue, and engagement. Overall, the issue is not the absence of informative signals, but the fact that each captures only a narrow and context-dependent slice of user value. This is precisely what motivates composite utility functions that blend multiple signals rather than relying on any single proxy in isolation.
+Metrics such as click-through rate (CTR), predicted CTR, and ad impressions are commonly used as proxies for monetization, while session duration, saves, shares, and return-based signals stand in for longer-term engagement \cite{wang2022surrogate}. Their appeal is obvious: they provide dense, behaviorally grounded feedback that is relatively easy to log, predict, and optimize. Yet this same convenience is also their main limitation. When optimized in isolation, such proxies can misrepresent the platform’s true long-term objective \cite{mazoure2021improving}. Click-based signals provide a clear example: although they are frequent and immediately observable, high CTR does not necessarily imply high ad quality, and repeated exposure to low-quality or poorly matched ads can degrade user satisfaction and future responsiveness to ads \cite{43887, silberstein2020ad, yan2020ads}. Even within the same family of signals, semantics can vary: short clicks may function as implicit negative feedback, whereas longer clicks or post-click dwell may better reflect genuine value. Similar tensions arise elsewhere. Diversity-related signals, for instance, may be desirable when they reflect broader use-case coverage over time, which prior work associates with improved long-term user experience and retention \cite{wang2022surrogate, xu2023optimizing}, yet high click entropy within a session can also indicate confusion, low relevance, or friction \cite{sagtani2023quantifying}. Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue} summarize representative proxies for revenue, engagement, and ad fatigue. Overall, the issue is not the absence of informative signals, but the fact that each captures only a narrow and context-dependent slice of user value. This is precisely what motivates composite utility functions that blend multiple signals rather than relying on any single proxy in isolation.
 
 
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=\linewidth]{proxy-metrics-table.png}
-% \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
-% \label{fig:proxy-metrics}
-% \end{figure}
+While proxy metrics ensure that the system has informative observable signals for multiple latent aspects of user behavior, the utility function determines how those signals are combined into a single optimization objective. Some desirable properties of utility functions overlap with those of proxy metrics: the objective should remain aligned with long-term platform value, provide reward signals dense enough to support learning, and capture the relevant trade-offs among competing goals. However, utility functions also introduce an additional requirement that is distinct from proxy design: structural correctness of aggregation. In particular, the utility must specify not only which components enter the objective, but also the direction of each component’s contribution, its relative magnitude, and the functional form through which components interact. This includes whether effects are linear or nonlinear, additive or interaction-dependent, and whether they exhibit saturation, thresholds, or state dependence. In monetization-aware recommendation, this distinction is critical because engagement, revenue, and fatigue signals rarely combine in a purely additive or context-invariant way. As a result, even well-chosen proxies may yield a misspecified objective if they are combined with incorrect signs, poorly calibrated coefficients, or an inappropriate functional form. For example, ad revenue may increase utility up to a point but reduce it beyond a saturation threshold; dwell time may be informative only within a certain range; and an ad click followed by a hide may convey a different signal than either event in isolation.
 
-% IMAGE-BASED TABLE (kept for fallback)
-% \begin{table}[ht]
-%   \centering
-%   \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{proxy-metrics-table.png}
-%   \caption{Proxy metrics for Revenue, Engagement, and Ad Fatigue.}
-%   \label{tab:proxy-metrics-img}
-% \end{table}
+%% make sure examples are aligned
 
-\begin{table}[t]
+\begin{table}[H]
 \setstretch{1}
 \centering
 \footnotesize
@@ -394,40 +383,6 @@ Metrics such as click-through rate (CTR), predicted CTR, and ad impressions are 
 \caption{Revenue proxy metrics and their polarity.}
 \label{tab:proxy-metrics-revenue}
 \vspace{0.8em}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.49\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
-\toprule
-{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
-\midrule
-\textbf{Depth}
-    & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Length}
-    & Decrease in time spent per session \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Frequency}
-    & Decrease in number of sessions per week \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Ad Load (Sessions)}
-    & Number of sessions that end (or quit) during an ad \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Ad Load (Absolute)}
-    & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\textbf{Click Entropy}
-    & Uncertainty/diversity in ad clicks for a query; high values can indicate lower relevance \cite{sagtani2023quantifying}.
-    & \textbf{Negative} (higher is worse) \\
-\bottomrule
-\end{tabularx}
-\caption{Ad fatigue proxy metrics and their polarity.}
-\label{tab:proxy-metrics-fatigue}
-\end{table}
-
-\begin{table}[t]
-\setstretch{1}
-\centering
-\footnotesize
-\renewcommand{\arraystretch}{1.15}
-\setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.28\linewidth} >{\raggedright\arraybackslash}p{0.50\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
 \toprule
 {\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
@@ -486,9 +441,40 @@ Metrics such as click-through rate (CTR), predicted CTR, and ad impressions are 
 \label{tab:proxy-metrics-engagement}
 \end{table}
 
-
-
-
+\begin{table}[H]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.49\linewidth} >{\raggedright\arraybackslash}p{0.18\linewidth}}
+\toprule
+{\bfseries Proxy Metric} & {\bfseries Short Description} & {\bfseries Polarity} \\
+\midrule
+\textbf{Depth}
+    & Reduction in engagement (e.g., fewer impressions per session) over time \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Length}
+    & Decrease in time spent per session \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Frequency}
+    & Decrease in number of sessions per week \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Ad Load (Sessions)}
+    & Number of sessions that end (or quit) during an ad \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Ad Load (Absolute)}
+    & Absolute ad volume across sessions and changes in that volume \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\textbf{Click Entropy}
+    & Uncertainty/diversity in ad clicks for a query; high values can indicate lower relevance \cite{sagtani2023quantifying}.
+    & \textbf{Negative} (higher is worse) \\
+\bottomrule
+\end{tabularx}
+\caption{Ad fatigue proxy metrics and their polarity.}
+\label{tab:proxy-metrics-fatigue}
+\end{table}
+\vspace{-1em}
 
 A \textbf{canonical utility function} at the policy layer to \textit{blend} ads and organic content can be represented as follows \cite{sagtani2024ad, yan2020ads, carrion2021blending}:
 {\setlength{\abovedisplayskip}{4pt}
@@ -499,7 +485,7 @@ A \textbf{canonical utility function} at the policy layer to \textit{blend} ads 
 U(x) = \alpha \times \text{Revenue} + \beta \times \text{Engagement} - \gamma \times \text{Ad Fatigue}
 \]
 }
-where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of ``Revenue'', ``Engagement'', and ``Ad Fatigue'', typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-fatigue}, and \ref{tab:proxy-metrics-engagement}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
+where $\alpha$, $\beta$, and $\gamma$ are weights that determine the relative importance of each factor. To compute the utilities of ``Revenue'', ``Engagement'', and ``Ad Fatigue'', typically many signals feed into each component. These signals include, but are not limited to, the ones shown in Tables \ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}. In a bandit or RL context, $U(x)$ serves as the reward signal guiding policy updates. The process of tuning the weights of $\alpha$, $\beta$, and $\gamma$ is often done through experimentation, as the right balance between engagement and revenue can shift depending on the context. For instance, ByteDance uses a multi-objective reward framework in their recommendation systems, where different reward functions are designed for organic content and ads, combining them to guide the overall recommendation strategy \cite{zhao2020jointly}.
     
 In some cases, a very simple unified function can suffice over a complex utility function. Researchers at Alibaba introduced the concept of Click Yield, which is defined as the ratio of the total number of clicks on all items (ads + organic results) to the total number of impressions on a page \cite{zhang2018whole}. Click Yield provides a holistic evaluation of page performance, accounting for the interactive effects between ads and organic content, and helping to mitigate the bias that arises from examining CTR in isolation. Their optimization task maximizes total revenue while ensuring that the Click Yield does not fall below a certain threshold (T)  \cite{zhang2018whole}. A comparison of utility function formulations is shown in Table \ref{tab:utility-comparison}.
 
