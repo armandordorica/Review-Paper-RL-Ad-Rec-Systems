@@ -75,26 +75,26 @@ cd Review-Paper-RL-Ad-Rec-Systems
 ## Daily workflow: edit → compile → push
 
 ```bash
-# 1. Source conda if it's not initialized in your shell
-source ~/miniconda3/etc/profile.d/conda.sh
-
-# 2. Activate the build environment
+# 1. Activate the build environment
+#    If you ran `conda init zsh` during setup, conda is already available — just activate:
 conda activate texbuild
+#    If conda is not found (e.g. a fresh shell where init hasn't run), source it first:
+#    source ~/miniconda3/etc/profile.d/conda.sh && conda activate texbuild
 
-# 3. Edit paper.tex with your changes (e.g. in VS Code)
+# 2. Edit paper.tex with your changes (e.g. in VS Code)
 
-# 4. Compile to a timestamped PDF
+# 3. Compile to a timestamped PDF
 cd /path/to/Review-Paper-RL-Ad-Rec-Systems
 ./build_timestamped_pdf.sh
 # Output: paper_YYYY-MM-DD_HHMM.pdf
 
-# 5. Commit and push
+# 4. Commit and push
 git add paper.tex paper_YYYY-MM-DD_HHMM.pdf
 git commit -m "Describe your changes"
 git push
 ```
 
-> **Tip:** The build script auto-detects common conda paths. If `tectonic` is not found, make sure you ran `conda activate texbuild` first.
+> **Tip:** The build script auto-detects common conda paths (`miniconda3`, `anaconda3`, `miniforge3`, `mambaforge`). If `tectonic` is still not found, make sure you ran `conda activate texbuild` first.
 
 ---
 
@@ -104,15 +104,18 @@ The build script:
 - Embeds a timestamp in the PDF via `\BuildTimestamp`
 - Writes output to `paper_YYYY-MM-DD_HHMM.pdf` (US/Eastern time)
 
+**Expected build time:** ~1–2 minutes. Tectonic runs up to **6 TeX passes** on this paper (TeX → BibTeX → TeX × 4) to converge cross-references and the bibliography. The repeated `"internal consistency problem when checking if .bbl changed"` messages in the output are a known Tectonic quirk with ACM's `.bst` style and are **not errors** — the build completes successfully regardless.
+
 If you prefer to run the steps manually without the script:
 
 ```bash
-source ~/miniconda3/etc/profile.d/conda.sh
+# If conda init zsh has NOT been run, source manually first:
+# source ~/miniconda3/etc/profile.d/conda.sh
 conda activate texbuild
 
-TZ=America/New_York
-TS_FILE=$(TZ=$TZ date +"%Y-%m-%d_%H%M")
-TS_DISPLAY=$(TZ=$TZ date +"%Y-%m-%d %H:%M %Z")
+TZ_NAME=America/New_York
+TS_FILE=$(TZ=$TZ_NAME date +"%Y-%m-%d_%H%M")
+TS_DISPLAY=$(TZ=$TZ_NAME date +"%Y-%m-%d %H:%M %Z")
 JOB="._build_${TS_FILE}"
 
 WRAPPER="${JOB}.tex"
