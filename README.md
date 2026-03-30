@@ -74,14 +74,40 @@ cd Review-Paper-RL-Ad-Rec-Systems
 
 ## Daily workflow: edit → compile → push
 
+### Option A — Continuous preview while writing (recommended)
+
+Uses `latexmk -pvc` with system TeX Live. Recompiles automatically every time you save `paper.tex` and auto-reloads the PDF in **Skim** (installed via `brew install --cask skim`). No manual recompile needed.
+
+```bash
+cd /path/to/Review-Paper-RL-Ad-Rec-Systems
+latexmk -pvc paper.tex
+```
+
+Or run the **"LaTeX: Watch (latexmk -pvc)"** VS Code task (`Cmd+Shift+B`).
+
+**Tip:** In Skim, go to **Skim → Preferences → Sync** and enable *"Check for file changes"* → *"Automatically"*. The PDF will update in place as you type.
+
+Other useful `latexmk` commands:
+```bash
+latexmk paper.tex    # single build (no watch)
+latexmk -c           # clean aux files (keeps PDF)
+latexmk -C           # clean aux files + PDF
+```
+
+The `.latexmkrc` in the repo root configures the build: pdflatex + bibtex, up to 6 passes, SyncTeX enabled for click-to-source navigation.
+
+---
+
+### Option B — Timestamped PDF for commits
+
+Uses Tectonic (conda `texbuild` env). Produces a `paper_YYYY-MM-DD_HHMM.pdf` for traceability.
+
 ```bash
 # 1. Activate the build environment
-#    If you ran `conda init zsh` during setup, conda is already available — just activate:
 conda activate texbuild
-#    If conda is not found (e.g. a fresh shell where init hasn't run), source it first:
-#    source ~/miniconda3/etc/profile.d/conda.sh && conda activate texbuild
+#    If conda not found: source ~/miniconda3/etc/profile.d/conda.sh && conda activate texbuild
 
-# 2. Edit paper.tex with your changes (e.g. in VS Code)
+# 2. Edit paper.tex
 
 # 3. Compile to a timestamped PDF
 cd /path/to/Review-Paper-RL-Ad-Rec-Systems
