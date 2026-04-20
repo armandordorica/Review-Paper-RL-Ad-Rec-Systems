@@ -710,16 +710,22 @@ The four properties are operationalized in production through levers that map di
 Taken together, the four properties and their associated trade-offs provide a structured way to compare published systems and to reason about which design choices are appropriate for a given deployment context. The next subsection turns to the state space, which defines the context in which these actions are taken.
 
 \subsection{State Space Representation} \label{state_space_representation}
-% Definition and Desirable Properties
-% 1.1 What is a state space in RL?
-% 1.2 Desirable properties of a state space
-% Markovianity
-% Expressiveness vs. generalization
-% Stability under distribution shift
-% Sample efficiency and learnability
-% Interpretability and support for counterfactual reasoning
 
-In RL, a \textit{state} $s \in \mathcal{S}$  represents all the relevant information from past agent-environment interactions necessary for the agent to make optimal decisions to maximize the expected cumulative reward \cite{Sutton1998}. Ideally, the state space is Markovian, meaning the future is conditionally independent of the past given the current state \cite{russell2016artificial, Sutton1998}. If the agent’s policy or value estimates rely on omitted or unobserved information from the past, the state representation violates the Markov property and the performance of the learned policy may degrade as a result \cite{russell2016artificial, Sutton1998}. In the FrozenLake example, the state space consists of the agent’s current grid position as the future outcomes of any action depend only on this position, and not on how the agent arrived there \cite{frozenlake}. In this example, because future transitions depend only on the current state and action, and not on prior history, the FrozenLake Environment satisfies the \textit{Markov Property} \cite{Sutton1998, frozenlake}.  
+% Structure:
+% 1. Intro: design question, taxonomy, and section map
+% 2. Formal definition of the state space
+% 3. Property: Markovianity
+% 4. Property: Expressiveness
+% 5. Property: Stability under distribution shift
+% 6. Property: Sample efficiency
+% 7. Property: Interpretability
+% 8. Comparison across representative systems
+% 9. Closing synthesis and transition to Policy Learning
+
+The preceding subsection examined how to structure the action space. This subsection addresses the corresponding question for the state space in policies that jointly rank ads and organic content in large-scale recommendation systems: what information must the state encode so that the policy can balance short-term monetization against long-term user engagement across successive interactions? We introduce five structural properties that industrial and academic systems implicitly or explicitly appeal to when designing state representations for ad policies: \textbf{Markovianity}, \textbf{expressiveness}, \textbf{stability under distribution shift}, \textbf{sample efficiency}, and \textbf{interpretability}. As with the action-space taxonomy in the preceding subsection, this set is synthesized from recurring design considerations across published systems rather than inherited from any single source, and we use it to compare how those systems trade the properties against each other. The subsection first defines the state space formally, then analyzes each property with the trade-offs and design choices it implies, and finally summarizes how representative systems operationalize them.
+
+% Formal definition
+In RL, a \textit{state} $s \in \mathcal{S}$ denotes the information on which the agent conditions when selecting an action \cite{Sutton1998}. Together with the action space $\mathcal{A}$, a transition kernel $P(s' \mid s, a)$, a reward function $R(s, a)$, and a discount factor $\gamma \in [0, 1)$, the state space is one component of the Markov decision process (MDP) used as the standard formal framework for RL \cite{Sutton1998, puterman2014markov}. In monetization-aware ranking, a single state instance typically aggregates user-level signals (e.g., identifiers, demographics, long-term preference embeddings), session-level context (e.g., recent engagement, dwell time, device), and platform-level features (e.g., current ad load, inventory composition, the slate rendered so far) at the time of a decision \cite{afsar2022reinforcement, zhao2021dear}. Because only a subset of the latent user intent and platform dynamics is observable through these signals, constructing $s$ is itself a design problem.
 
 
 In contrast, the environments where ad recommendation systems operate are often partially observable, high-dimensional, and non-stationary \cite{dulac2021challenges, russell2016artificial}. To construct a state representation that reasonably approximates the Markov property in the face of partial observability and complex user dynamics, ad recommendation systems often combine tabular features with learned embeddings \cite{afsar2022reinforcement, kaelbling1998planning}. The tabular signals tend to include static attributes (e.g. demographics), contextual metadata (e.g. device type, time of the day), and behavioral history (e.g. recent clicks, impressions, or dwell time) \cite{cheng2016wide, covington2016deep}. An embedding is a learned, dense vector that encodes complex or high-cardinality inputs, such as user profiles, ads, or behavioral sequences, into a lower-dimensional space \cite{cheng2016wide}. Compared to static tabular features like frequency counts or recency buckets, embeddings capture richer structure, including sequence effects and latent similarity. This makes them more expressive and task-relevant, enabling ad recommendation systems to personalize content and ads more effectively \cite{covington2016deep, cheng2016wide}.
