@@ -21,6 +21,18 @@ The paper synthesizes RL methodologies for jointly optimizing ads and organic co
    - Exploration vs Exploitation (epsilon-greedy, UCB, Thompson Sampling)
 5. **Conclusions**
 
+## Authorial Contributions (Framing)
+
+The paper's abstract positions the work as introducing a "component-level taxonomy that clarifies how existing systems operationalize state, action, reward, and policy." Several specific artifacts in the paper are synthesized by the authors across multiple systems rather than inherited from any single paper, and they should be framed explicitly as contributions. When editing, make it unambiguous that these are authorial syntheses (per the "Separate prior work from your own contribution" rule):
+
+- **Three evolutionary tracks** (pricing/objectives, representation, sequential horizon) in the Brief History section.
+- **Structural properties of the action space**: expressiveness, orthogonality, interpretability, consistency. Synthesized from recurring design considerations across industrial and academic systems.
+- **Structural properties of the state space** (to be developed consistently with the action-space framing).
+- **Proxy-metric taxonomies** for revenue, engagement, and fatigue in the Reward Design subsection.
+- **Comparison tables** (e.g., `tab:utility-comparison`, `tab:action-space-comparison`) that map published systems onto these taxonomies and make the trade-offs each system accepts explicit.
+
+When introducing any of these artifacts, signal authorial synthesis with phrasing such as "We introduce...", "This taxonomy is synthesized from...", or "We use this framework to compare...". Avoid phrasing that implies the taxonomy was lifted from a single cited source unless that is literally the case.
+
 ---
 
 ## Revision Context: Reviewer Feedback
