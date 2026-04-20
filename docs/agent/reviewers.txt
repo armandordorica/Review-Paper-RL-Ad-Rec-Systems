@@ -1,0 +1,208 @@
+
+Associate Editor
+Comments to the Author (required):
+Dear Authors,
+I have received the reviews of two expert reviewers for your manuscript. Both reviewers agree that the topic is timely and important, in particular for industry practitioners. The potential tutorial value of the paper is highlighted as well.
+
+A number of major issues were however identified. One main issue is that the focus of the work is not always entirely clear. Various discussions in the paper do not seem specific to ad policies and the joint optimization of ads and recommendations. A stronger focus on ad-related aspects is needed. Furthermore, a critical discussion and comparison of approaches seems missing. Questions of evaluating the described methods are missing as well. From a presentation perspective, the work has a good tutorial value in certain places, but lacks a deeper technical discussion at other places.
+
+From my own reading, I conclude that the paper has a lot of potential but I agree with the reviewers that the organization and presentation of the work should be improved and focused. The focus of the work should be strengthened, which might also lead to re-framing of the work in the title and introductory sections, highlighting the introductory/tutorial nature of the work, which is targeted at practitioners in industry. Furthermore, as advised by the reviewers, a clearer separation between ad-related aspects and general recommendation techniques is needed. In this context, clear definitions of the problems are needed at the beginning. E.g., is the goal to select and rank ads independently, or to rank ads and recommendations jointly; or both?
+
+Some parts, on the other hand seem repetitive and partially even not too relevant. For example, the entire discussion of embeddings does not seem too specific for RL approaches, and not many RL approaches are discussed in this section. Similarly, policy learning is explained in some length, but the parts that are specific for ad-related aspects are not sufficiently emphasized. And, as mentioned earlier, questions regarding the practical evaluations should be added. Given that the focus is on industry, at least some overview of common evaluation aspects, e.g., typical KPIs or outcomes of real-world studies, could be added.
+
+As a minor aspect, please do not use references in the abstract, and please use bold-face text sparingly. The acknowledgment section looks quite uncommon, thanking the second author for the guidance.
+
+--------------------------------------------
+Reviewer(s)' Comments to Author:
+
+Reviewer: 1
+
+Recommendation: Reject
+
+Comments:
+The paper addresses a highly relevant and timely topic: balancing advertising and organic content in recommendation systems. This is an area of growing importance in industry, and the paper’s attempt to survey reinforcement learning approaches in this context is appreciated. The method used to identify relevant citations appears thoughtful, and the broad scope reflects the authors' ambition to cover the landscape comprehensively.
+
+However, the paper currently falls short in several important ways, both in focus and depth. While the topic is compelling, much of the content diverges into pedagogical material or surface-level summaries, at the expense of detailed, critical analysis. This limits the survey's value for practitioners and researchers seeking insight into the state of the art.
+
+# Major Comments
+
+1. Lack of Depth in Core Content
+
+The paper frequently mentions important techniques and papers without offering sufficient explanation or critical evaluation. For instance, references to real-world practices—such as action abstraction in practical systems or the deployment strategies used by YouTube and Meta—are intriguing, but remain under-explored. These examples would greatly benefit from further elaboration, especially given their direct relevance to the paper’s central theme.
+
+A more detailed comparison of methods, highlighting their trade-offs, assumptions, and real-world performance, would substantially enhance the utility of the survey.
+
+2. Overemphasis on Pedagogical Material
+
+A significant portion of the paper is devoted to introductory or tangential content. While some context is helpful, explanations such as the evolution of recommenders from RNNs to Transformers feel out of place, as they are not tightly linked to the core topic of RL for ad policy optimization. Similarly, the Frozen Lake example does not meaningfully contribute to understanding the core problems faced in real-world ad and recommendation systems. The paper would be much stronger with focused, domain-relevant illustrations (e.g., simplified bandit-based ad selection examples).
+
+3.   Evaluation is Underdeveloped
+
+ The paper raises the importance of evaluation but does not offer a systematic review of how evaluation is done in practice or in the cited work. Topics such as common metrics, simulator-based testing (e.g., RecSim), or the role of counterfactual estimators are either absent or only briefly mentioned. Quantitative results from existing studies could also be summarized to help readers understand real-world performance and trade-offs.
+
+4.   Terminology and Definitions
+
+Several technical terms are used before they are defined, which hinders clarity. For example, "displacement cost" appears early but is only briefly defined much later in the appendix. Ensuring that all terms are defined when first introduced would improve accessibility.
+
+5.    Reference Issues
+
+Some citations appear to be misaligned with the claims they are intended to support. For example, a reference supporting the claim that ads underperform relative to organic content actually discusses user-generated reviews versus commercial messaging. Careful review of references is needed to ensure they are accurate and appropriate.
+
+6.   Limited Discussion of Joint Optimization
+
+While utility functions are discussed, the survey does not delve deeply into techniques for jointly optimizing recommendations and ads, especially in multi-objective settings. More discussion of approaches to balancing competing goals (e.g., engagement vs. revenue) and how this is handled in practice would strengthen the paper.
+
+7.   Reward Design and Long-Term Metrics
+
+The challenge of optimizing long-term metrics such as retention is acknowledged, but the discussion remains abstract. More concrete exploration of how surrogate metrics can be identified and used in reward shaping would be helpful.
+
+# Suggestions for Improvement
+
+-    Replace generic pedagogical examples with domain-specific illustrations tied directly to ads and recommendations.
+
+-    Expand on the technical and practical implications of cited work, especially industrial deployments.
+
+-    Provide a clearer framework for comparing approaches—e.g., by organizing around challenges like exploration, long-term optimization, evaluation, or system constraints.
+
+-    Introduce terminology carefully and ensure citations align with claims.
+
+-    Include more on practical evaluation strategies, metrics, simulators, and toolkits.
+
+# Conclusion
+
+This survey sets out to cover an important topic, but in its current form, it reads more as a list of loosely connected references than as a cohesive, critical review. With more focused content, deeper analysis, and improved alignment with the domain’s practical challenges, it has the potential to become a valuable resource for both academics and practitioners.
+
+Additional Questions:
+What is the key contribution of this paper?: This paper contributes a survey of reinforcement learning techniques applied to the particular problem of unified ranking of advertising with organic content. There are pedagogical explanations of recommenders and reinforcement learning, and a look at techniques applied in industry.
+
+Relevance to the journal (<a href="https://dl.acm.org/journal/tors" target="_blank">TORS Scope Statement</a>): Excellent
+
+Comparison with previous and related works (Consider, for example: Are previous and related works adequately discussed? Are the relations of previous work to the current work clear?): Fair
+
+a) Novelty
+
+(Comment on the novelty of the idea, and the methods and techniques proposed): Fair
+
+Novelty and potential for innovation details: The idea to focus on industrial usage of RL techniques for the particular task of balancing advertising and organic content goes beyond previous literature and is highly interesting.
+
+The novel idea is, however, undercut by the poor execution of the survey with insufficient development of the discussion of relevant modern RL methods, the particular challenges faced applying them at industry scale, or the particular problem of balancing ads with organic content.
+
+b) Soundness
+
+(Comment on the soundness of the idea, and the methods and techniques proposed.): Poor
+
+soundness details: This is a survey paper, so does not propose a new idea itself.
+
+When methods are described, this is done accurately, although many important methods are barely described, if at all (e.g. policy gradient methods such as REINFORCE, or methods to deal with extremely large action spaces). In many cases, approaches are listed with explanation or any comparisons being drawn.
+
+c) Experimental evaluation [<a href="https://docs.google.com/document/d/13VwSGuFAvgPlobj2J7CC8s_bBv84YjHUK_OhCYfJvq0/edit?usp=sharing" target="_blank">Important guidelines</a>]:
+
+(Do the authors use an appropriate methodology and suitable statistical methods? Is the choice of datasets, baseline methods and evaluation metrics in empirical comparisons well justified? Have all compared models in offline experiments been systematically tuned?): Poor
+
+Experimental evaluation details: This is a survey paper, but even considering that the evaluation is poor.
+
+There is a complete lack of systematic evaluation and standardized metrics for comparing the different approaches.
+
+Even if it were difficult to come to common metrics, the highlight quantitative results of various papers could be quoted: this is not done.
+
+There was no real discussion of how evaluation should be done, and no mention of toolkits and simulators like RecSim.
+
+d) Theoretical background and evaluation:
+
+(Have the research questions and hypotheses been made explicit? Have all claims been substantiated through empirical evidence, theoretical considerations, or proofs?): Fair
+
+Theoretical background and evaluation details: The authors have given a good pedagogical account of reinforcement learning at an elementary level, but at many points there is a complete lack of depth in explanation or evaluation.
+
+For instance, they discuss offline RL at only a very shallow level, despite citing papers that discuss the important issues at great depth.
+
+e) Reproducibility [<a href="https://docs.google.com/document/d/13VwSGuFAvgPlobj2J7CC8s_bBv84YjHUK_OhCYfJvq0/edit?usp=sharing" target="_blank">Important guidelines</a>]
+
+(In case of offline experiments, do the authors share the code and data to reproduce the findings? Does the shared material include scripts for preprocessing and tuning, are hyper-parameters documented? Does the shared code include the code for the baselines? In case of user studies, is the collected data shared?): Not Applicable
+
+Reproducibility details:
+
+Presentation:
+
+(Comment about the quality of English and the structure of the paper: Are there parts that should be rewritten, expanded upon, or dropped? Is the paper concise?): Poor
+
+Reasons to accept (Provide 1-3 concise bulleted-list items.): - The authors focus on balancing advertising vs organic content is timely and important to many industry practitioners.
+- The selection criteria for the 153 papers they cite are good.
+
+Reasons to revise/reject (Provide 1-3 concise bulleted-list items.): - The paper does not focus on its main topic (jointly optimizing for ads together with recommendations). It covers a lot of superfluous ground, and when it does cover relevant things it does so in a perfunctory way. It mentions ideas but doesn't explain them, it states that certain approaches are used for similar problems without evaluating them.
+- There is almost no attempt made to draw comparisons or critically evaluate the contributions. As such there is very little added value to the survey beyond what web searches would provide.
+
+Does this paper have potential real world significance?: Yes
+
+
+Reviewer: 2
+
+Recommendation: Major Revision
+
+Comments:
+– Revisit the tables and figures: Tables 3-4 are referred but there are no such tables in the paper, and figures 3-4 looks to be tables but are mentioned as figures.
+
+– Make sure the text in the figures are readable and not too small. Also for notes under figure 1 use footnotes or include in the figure caption
+
+– Position tables in the texts where they are mentioned or referred to will make it easier for the readers. (eg: Tables are at the end of the paper, but mentioned in earlier sections)
+
+– In section 3.2 - (pg10 line 27) authors explain the use of MAB for clinical trials, and then relate it in a recommender perspective. However the paragraph's read-in might be confusing to a reader.
+
+– The RL-formulation (in section 4) is spread out into different subsections, introducing different components in each section. Although this might be essential for the structure of the paper, it would be better to have a separate subsection introducing the RL task (eg: formulating as MDP, etc) with the necessary notations. Include a table of notation if possible.
+
+– There is a notable amount of existing RL-based recommender research, including ad-serving approaches. I recommend using more citations from these literature or previous works that are relevant to the topic if possible.
+
+
+Additional Questions:
+What is the key contribution of this paper?: The paper provides a comprehensive survey on the application of Reinforcement Learning to ad policy optimization within large-scale recommender systems. In an ad-serving system, it is important to intelligently recommend ads along with organic content. This study provides an overview on the progress of ad-policies in recommenders over time, and how existing methods adapt RL for this problem.
+
+Relevance to the journal (<a href="https://dl.acm.org/journal/tors" target="_blank">TORS Scope Statement</a>): Excellent
+
+Comparison with previous and related works (Consider, for example: Are previous and related works adequately discussed? Are the relations of previous work to the current work clear?): Fair
+
+a) Novelty
+
+(Comment on the novelty of the idea, and the methods and techniques proposed): Good
+
+Novelty and potential for innovation details:
+
+b) Soundness
+
+(Comment on the soundness of the idea, and the methods and techniques proposed.): Fair
+
+soundness details:
+
+c) Experimental evaluation [<a href="https://docs.google.com/document/d/13VwSGuFAvgPlobj2J7CC8s_bBv84YjHUK_OhCYfJvq0/edit?usp=sharing" target="_blank">Important guidelines</a>]:
+
+(Do the authors use an appropriate methodology and suitable statistical methods? Is the choice of datasets, baseline methods and evaluation metrics in empirical comparisons well justified? Have all compared models in offline experiments been systematically tuned?): Fair
+
+Experimental evaluation details:
+
+d) Theoretical background and evaluation:
+
+(Have the research questions and hypotheses been made explicit? Have all claims been substantiated through empirical evidence, theoretical considerations, or proofs?):
+
+Theoretical background and evaluation details:
+
+e) Reproducibility [<a href="https://docs.google.com/document/d/13VwSGuFAvgPlobj2J7CC8s_bBv84YjHUK_OhCYfJvq0/edit?usp=sharing" target="_blank">Important guidelines</a>]
+
+(In case of offline experiments, do the authors share the code and data to reproduce the findings? Does the shared material include scripts for preprocessing and tuning, are hyper-parameters documented? Does the shared code include the code for the baselines? In case of user studies, is the collected data shared?): Not Applicable
+
+Reproducibility details:
+
+Presentation:
+
+(Comment about the quality of English and the structure of the paper: Are there parts that should be rewritten, expanded upon, or dropped? Is the paper concise?): Fair
+
+Reasons to accept (Provide 1-3 concise bulleted-list items.): The paper surveys existing ad-serving recommender systems, highlighting the various objectives, utilities and other aspects when designing such systems.
+
+The authors have clearly outlined their paper collection method. They also included related work from the industry and real-life applications, which is highly relevant, and provides a timely overview of existing methods.
+
+The RL concepts are explained well and authors clearly connects each component and characteristic of RL to the recommendation task.
+
+Reasons to revise/reject (Provide 1-3 concise bulleted-list items.): The majority of the paper looks like a general study on Reinforcement Learning and Recommender systems. Emphasis on Ad-policies is insufficient, since this is the main focus of the paper.
+
+Several statements about adaptability of RL and its traits on recommenders and ad-related systems, are not sufficiently backed by literature. Some of the cited work on these claims are on general RL research, not specific to ad-policies/recommenders.
+
+The writing and overall structure of the paper need to be improved. There is a notable amount of repeated information across sections. Also the tables and figures are inconsistent and incorrectly labelled.
+
+Does this paper have potential real world significance?: Yes

@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper"] 1773612802.70094 "paper.aux" "paper.bbl" "paper" 1773613721.95822 0
-  "./bibliography.bib" 1773611139.49361 95818 251244393810c0505c6bf43b7da5a150 ""
+["bibtex paper"] 1776647482.15214 "paper.aux" "paper.bbl" "paper" 1776647484.02791 0
+  "./bibliography.bib" 1774831910.4951 95819 a3094ced1586e3f8e1594942235737ea ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/acmart/ACM-Reference-Format.bst" 1735764768 90749 48abc1cbed6fafc6fc31528e3aa606ca ""
-  "paper.aux" 1773613721.47865 32684 750675ca5d14ca9c264cdecd9dfe1ff4 "pdflatex"
+  "paper.aux" 1776647483.73708 33541 d7cc3e847ba5b57faf1c1ef1fba15f03 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1773613719.1636 "/Users/aordorica/Documents/UofT/PhD Research/review_paper/Review-Paper-RL-Ad-Rec-Systems/paper.tex" "paper.pdf" "paper" 1773613721.95847 0
-  "/Users/aordorica/Documents/UofT/PhD Research/review_paper/Review-Paper-RL-Ad-Rec-Systems/paper.tex" 1773613719.02256 138490 995aad58eaba52e5bff48ca72d9a0459 ""
+["pdflatex"] 1776647482.24335 "/Users/armandoordoricadelatorre/Documents/U of T/PhD/PhD Research/Review-Paper-RL-Ad-Rec-Systems/paper.tex" "paper.pdf" "paper" 1776647484.02806 0
+  "/Users/armandoordoricadelatorre/Documents/U of T/PhD/PhD Research/Review-Paper-RL-Ad-Rec-Systems/paper.tex" 1776647475.74121 151025 0ea74127dbf8908b0a26e103bb779fd0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1558214095 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc" 1490131464 2921 8ca0eb0831f9bc5da080d3697cfe67bf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc" 1490131464 2933 9ad527ce78d7c5fa0a642dead095f172 ""
@@ -233,16 +233,16 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty" 1727642399 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1655411236 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
-  "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1746156394 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
+  "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1750557128 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "comment.cut" 1773613720.90214 308 d8eacb813dd4017a31427367139a7e3e "pdflatex"
-  "detailed_ad_policy.png" 1746171388 714425 495ab3d4ef522d11df49b70cecac6813 ""
-  "history_timeline_figure.png" 1746171388 121010 13f9e9729be38d76bf4ec9ecf9577bb9 ""
-  "paper.aux" 1773613721.47865 32684 750675ca5d14ca9c264cdecd9dfe1ff4 "pdflatex"
-  "paper.bbl" 1773612802.84777 78256 beb13c0d55f5c4ad3c643ef125040773 "bibtex paper"
-  "paper.out" 1773613721.48087 4419 3483b5893b6bfadf743de0e1c733b14d "pdflatex"
-  "paper.tex" 1773613719.02256 138490 995aad58eaba52e5bff48ca72d9a0459 ""
+  "comment.cut" 1776647483.33726 308 d8eacb813dd4017a31427367139a7e3e "pdflatex"
+  "detailed_ad_policy.png" 1750556307.1419 714425 495ab3d4ef522d11df49b70cecac6813 ""
+  "history_timeline_figure.png" 1750556307.14315 121010 13f9e9729be38d76bf4ec9ecf9577bb9 ""
+  "paper.aux" 1776647483.73708 33541 d7cc3e847ba5b57faf1c1ef1fba15f03 "pdflatex"
+  "paper.bbl" 1776647482.24078 76242 d42fce400dd66e0b1fcbe5130f670ec7 "bibtex paper"
+  "paper.out" 1776647483.73842 4045 0dee3930fbece45bca5fd02b2319ae96 "pdflatex"
+  "paper.tex" 1776647475.74121 151025 0ea74127dbf8908b0a26e103bb779fd0 ""
   (generated)
   "comment.cut"
   "paper.aux"

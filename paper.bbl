@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{146}
+\begin{thebibliography}{142}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -568,14 +568,6 @@
 \newblock
 
 
-\bibitem[Liu et~al\mbox{.}(2025)]%
-        {liu2025reducing}
-\bibfield{author}{\bibinfo{person}{Wenzhang Liu}, \bibinfo{person}{Lianjun Jin}, \bibinfo{person}{Lu Ren}, \bibinfo{person}{Chaoxu Mu}, {and} \bibinfo{person}{Changyin Sun}.} \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{Reducing Action Space for Deep Reinforcement Learning via Causal Effect Estimation}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2501.14543}} (\bibinfo{year}{2025}).
-\newblock
-
-
 \bibitem[Liu et~al\mbox{.}(2022)]%
         {liu2022monolith}
 \bibfield{author}{\bibinfo{person}{Zhuoran Liu}, \bibinfo{person}{Leqi Zou}, \bibinfo{person}{Xuan Zou}, \bibinfo{person}{Caihua Wang}, \bibinfo{person}{Biao Zhang}, \bibinfo{person}{Da Tang}, \bibinfo{person}{Bolin Zhu}, \bibinfo{person}{Yijie Zhu}, \bibinfo{person}{Peng Wu}, \bibinfo{person}{Ke Wang}, {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
@@ -840,14 +832,6 @@
 \newblock
 
 
-\bibitem[Sharma et~al\mbox{.}(2017)]%
-        {sharma2017learning}
-\bibfield{author}{\bibinfo{person}{Sahil Sharma}, \bibinfo{person}{Aravind Suresh}, \bibinfo{person}{Rahul Ramesh}, {and} \bibinfo{person}{Balaraman Ravindran}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Learning to factor policies and action-value functions: Factored action space representations for deep reinforcement learning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1705.07269}} (\bibinfo{year}{2017}).
-\newblock
-
-
 \bibitem[Shim and Sung(2022)]%
         {shim2022comparison}
 \bibfield{author}{\bibinfo{person}{Kyuhong Shim} {and} \bibinfo{person}{Wonyong Sung}.} \bibinfo{year}{2022}\natexlab{}.
@@ -909,13 +893,6 @@
         {swaminathan2015counterfactual}
 \bibfield{author}{\bibinfo{person}{Adith Swaminathan} {and} \bibinfo{person}{Thorsten Joachims}.} \bibinfo{year}{2015}\natexlab{}.
 \newblock \showarticletitle{Counterfactual risk minimization: Learning from logged bandit feedback}. In \bibinfo{booktitle}{\emph{International conference on machine learning}}. PMLR, \bibinfo{pages}{814--823}.
-\newblock
-
-
-\bibitem[Tavakoli et~al\mbox{.}(2018)]%
-        {tavakoli2018action}
-\bibfield{author}{\bibinfo{person}{Arash Tavakoli}, \bibinfo{person}{Fabio Pardo}, {and} \bibinfo{person}{Petar Kormushev}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{Action branching architectures for deep reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the aaai conference on artificial intelligence}}, Vol.~\bibinfo{volume}{32}.
 \newblock
 
 
@@ -1194,14 +1171,6 @@
         {zhu2021overview}
 \bibfield{author}{\bibinfo{person}{Jie Zhu}, \bibinfo{person}{Fengge Wu}, {and} \bibinfo{person}{Junsuo Zhao}.} \bibinfo{year}{2021}\natexlab{}.
 \newblock \showarticletitle{An overview of the action space for deep reinforcement learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 2021 4th International Conference on Algorithms, Computing and Artificial Intelligence}}. \bibinfo{pages}{1--10}.
-\newblock
-
-
-\bibitem[Zhu et~al\mbox{.}(2024)]%
-        {zhu2024discretizing}
-\bibfield{author}{\bibinfo{person}{Yuanyang Zhu}, \bibinfo{person}{Zhi Wang}, \bibinfo{person}{Yuanheng Zhu}, \bibinfo{person}{Chunlin Chen}, {and} \bibinfo{person}{Dongbin Zhao}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{Discretizing Continuous Action Space With Unimodal Probability Distributions for On-Policy Reinforcement Learning}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks and Learning Systems}} (\bibinfo{year}{2024}).
 \newblock
 
 
