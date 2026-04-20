@@ -1,6 +1,6 @@
 # Writing Skill: RL for Monetization-Aware Recommendation Systems (Review Paper)
 
-**Agent instruction:** When this skill is loaded, start your response with a ✍️ emoji so the user knows the writing skill is active.
+**Agent instruction:** On **every** response while editing this project (the review paper at `/home/aordorica/Review-Paper-RL-Ad-Rec-Systems`), start the response with a 🏫 emoji. This is a non-optional signal that the project-specific skill is loaded and that every rule below (including the pedagogical-overemphasis guard) is being actively applied. If the emoji is missing, this file is not being consulted. This instruction applies to this project only and does not affect any other work.
 
 ## Paper Overview
 
@@ -90,6 +90,28 @@ The paper received reviews from two ACM TORS reviewers (Reviewer 1: Reject, Revi
 - Make it unambiguous what comes from the literature and what is the paper's own synthesis, taxonomy, or analysis.
 - Use citations to distinguish external ideas, results, and methods from original contribution.
 - Referencing adds credibility; use it liberally where appropriate.
+
+### Avoid pedagogical overemphasis
+
+Reviewer 1 explicitly flagged "Overemphasis on Pedagogical Material" as a top reason to reject. Reviewer 2 echoed it. Apply this as a per-edit check, not just an aspirational guideline.
+
+**What counts as pedagogical overemphasis:**
+- Textbook-style explanations of standard RL concepts (Bellman backups, policy-gradient machinery, formal MDP derivations) beyond what is strictly needed for the ad-policy argument the paragraph is making.
+- Historical lineages of techniques (RNNs -> Transformers, CF -> MF -> neural -> two-tower) unless the lineage is itself the object of analysis.
+- Generic illustrative examples (FrozenLake, grid worlds, cartpole, thumbs-up / thumbs-down YouTube signals) when the same point can be made with an ad or organic-content example.
+- Definitions of terms that are already defined in the referenced textbook and that the review paper is not advancing or critiquing.
+
+**Positive rule.** Every paragraph should earn its space against this check: *Does this sentence advance the paper's argument about jointly optimizing ads and organic content, or does it explain RL?* If the answer is "explain RL", cut or compress it and cite a textbook instead.
+
+**Before inserting or retaining a sentence, ask:**
+1. Is the claim ad-recsys-specific, or could it appear unchanged in a generic RL tutorial?
+2. Is the example from the ad / organic-content / recsys domain?
+3. Does the citation support an ad-policy claim rather than a generic RL claim?
+4. If this sentence is cut, does the paragraph still make its point?
+
+If the answer to any of (1)-(3) is "no", rewrite to anchor the sentence in the domain. If (4) is "yes", cut.
+
+**Reviewer-cited examples of what to avoid:** FrozenLake, the RNN -> Transformer evolution narrative, generic embedding lineage, thumbs-up/down YouTube surveys, and any formal definition of Markovianity / Bellman updates / policy gradient that is not directly in service of an ad-recsys claim.
 
 ---
 
