@@ -196,6 +196,15 @@ If the answer to any of (1)-(3) is "no", rewrite to anchor the sentence in the d
 - If the citation appears at the end of the sentence, place it in parentheses before the period.
 - Be consistent in punctuation and formatting of **et al.**
 
+### Emphasis and Bold
+
+Per the ACM TORS Associate Editor's feedback (item 12 in the reviewer checklist above), bold-face text must be used sparingly. Apply the following rule during every edit:
+
+- **Use `\textbf{}` only for structural labels.** The canonical case is a paragraph-leading property header (e.g., `\textbf{Markovianity.}`, `\textbf{Expressiveness.}`) when the subsection does not use `\subsubsection` and the bold is acting as a pseudo-subheading.
+- **Do not use `\textbf{}` for emphasis in running prose.** This includes property-name enumerations in subsection introductions, key-term highlighting, and "the reader should notice this" decoration.
+- For the first introduction of a technical term, rely on the surrounding sentence structure rather than bold. Italics (`\textit{}`) are acceptable for term introductions but should also be used sparingly.
+- Before adding any `\textbf{}`, ask: *"Is this bold acting as a structural label, or as decorative emphasis?"* If decorative, cut it.
+
 ---
 
 ## Voice and Tone
