@@ -742,6 +742,31 @@ In RL, a \textit{state} $s \in \mathcal{S}$ denotes the information on which the
 % Property: Interpretability
 \textbf{Interpretability.} State components with human-readable meaning let operators trace policy behavior to upstream signals, support pre-launch review, and isolate regressions when A/B lifts move \cite{gauci2018horizon, glanois2024survey}. Engineered features such as commercial-intent scores, recency buckets, or ad-load counters allow a reviewer to predict roughly how the policy will respond before traffic is sent. Embedding-only states such as those used by PinnerFormer \cite{pancha2022pinnerformer} and TransAct \cite{xia2023transact} expose no low-dimensional summary an operator can read, so behavioral validation defers to live A/B measurement \cite{verma2018programmatically, glanois2024survey}. The trade-off is between the breadth of behavior the state can support and the ability of operators to vet the policy before deployment, mirroring the same trade-off identified in the action-space subsection.
 
+% Synthesis table across systems
+Table~\ref{tab:state-space-comparison} summarizes how four representative systems operationalize the five properties. As with the action-space comparison in the preceding subsection, no system satisfies all five cleanly; each accepts an explicit trade-off based on its deployment context.
+
+\begin{table*}[ht]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Property} & \textbf{DEAR \cite{zhao2021dear}} & \textbf{SlateQ \cite{ie2019slateq}} & \textbf{PinnerFormer \cite{pancha2022pinnerformer}} & \textbf{TransAct \cite{xia2023transact}} \\
+\midrule
+Markovianity & Request-level features with short engagement history & User context with slate-so-far; user-choice model assumed & Fixed-size embedding summarizing multi-week engagement trajectory & Long-term embedding combined with real-time session sequence \\
+Expressiveness & Engineered low-dimensional per-request features & Full slate with per-item decomposition & Single user embedding capturing long-term preference structure & Session sequence plus long-term embedding covering both horizons \\
+Stability under distribution shift & Drift absorbed through frequent retraining on rolling windows & Simulator-based training; drift handling not explicitly reported & Daily batch refresh; stable across retrain cycles, slow to inventory shifts & Explicit offline / online split, directly targeting drift \\
+Sample efficiency & Low-dimensional state converges quickly from logged data & Per-item Q decomposition reduces sample complexity per slate & Pre-trained embedding shares signal across downstream tasks & Self-attention compression controls cost of higher state dimensionality \\
+Interpretability & Engineered features readable by operators & Per-item Q-values partially readable; slate behavior not & Embedding-only; opaque to pre-launch review & Embedding-dominated; behavioral validation requires A/B \\
+Primary trade-off & Simplicity vs. coverage of long-term behavior & Choice-model assumption vs. slate-level expressiveness & Long-horizon stability vs. responsiveness to fresh inventory & Expressiveness and stability vs. serving latency and model size \\
+\bottomrule
+\end{tabularx}
+\caption{Comparison of state-representation design choices across representative ad-recsys systems. Each row corresponds to one of the five structural properties introduced in this subsection; each column describes how a published system operationalizes that property. The final row states the primary trade-off each system accepts as a consequence of its choices.}
+\label{tab:state-space-comparison}
+\end{table*}
+
 % Building blocks of the state
 Before discussing the levers that shape these properties, we summarize the representational building blocks that $s$ is typically assembled from in ad + organic systems. \textit{User embeddings} encode long-term commercial intent, preference structure, and behavioral regularities (PinnerFormer \cite{pancha2022pinnerformer}, DIN \cite{Zhou2018}); they give the policy a population-level prior over which ad categories are relevant before any session-specific signal arrives. \textit{Ad embeddings} encode creative attributes, advertiser identity, product category, landing-page quality, and bid context \cite{koren2009matrix, cheng2016wide, naumov2019deep}; they let the policy generalize across the long tail of ads where click histories are too sparse for per-ad value estimation. \textit{User-ad interaction features}, whether computed as dot products, cross features, or attention over recent impressions \cite{cheng2016wide, Zhou2018, xia2023transact}, expose the fit between a specific ad and the current user; they are the axis most directly predictive of click and conversion and are the one most sensitive to distribution shift. \textit{Contextual signals} (location, device, time, slate-so-far) anchor the representation when longer histories are weak or absent \cite{covington2016deep, zhao2021dear}. Each lever below acts on one or more of these building blocks.
 
