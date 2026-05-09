@@ -1,152 +1,358 @@
-# State Space Representation Citation Audit
+# State Space Representation: Remaining Citation And Reviewer-Risk Audit
 
-Scope: `paper.tex`, `State Space Representation`, lines 712-793 as of May 9, 2026.
+Scope: `paper.tex`, `State Space Representation`, lines 712-793, current as of May 9, 2026.
 
-Reviewer concern addressed: citations should not be repeated unnecessarily, and each citation should directly support the claim it is attached to.
+Reviewer context used:
 
-## 1. Reference Adequacy Scores
+- Reviewers asked for a stronger focus on ad policies and joint ad + organic optimization.
+- Reviewers flagged generic recommender/RL material that is not sufficiently tied to ad policy optimization.
+- Reviewers asked for deeper comparison, trade-offs, assumptions, and real-world performance.
+- Reviewers asked for clearer evaluation discussion, including common metrics, simulators, counterfactual estimators, and reproducibility limits.
+- Reviewers flagged citation mismatch risk and repeated/loosely attached references.
+
+## Current Overall Assessment
+
+The section is substantially stronger than before. It now has:
+
+- a clear section goal,
+- an explicit statement that the five properties are an analytical lens rather than a consensus taxonomy,
+- a comparison table across representative systems,
+- a reported-results paragraph,
+- practitioner guidance,
+- fewer broad or weak citation attachments than before.
+
+The remaining risks are less about obviously incorrect citations and more about how an editor might judge the depth and specificity of the synthesis. The main remaining issue is that parts of the section still read like a general state-representation discussion with ad examples, rather than a fully ad-policy-specific comparison of how state design affects joint revenue and organic-engagement outcomes.
+
+## 1. Citation Adequacy Scores
 
 Scores use a 1-10 scale:
 
-- 9-10: Directly supports the claim and is well placed.
-- 7-8: Mostly appropriate, but either broad, indirect, or slightly overburdened.
-- 5-6: Plausible but weakly aligned, too general, or supporting only part of the sentence.
-- 1-4: Likely mismatched or should be removed/replaced.
+- 9-10: directly supports the attached claim and is well placed.
+- 7-8: mostly appropriate but broad, indirect, or supporting only part of the sentence.
+- 5-6: plausible but weakly aligned or too general for the attached claim.
+- 1-4: likely mismatched and should be removed or replaced.
 
-| Citation | Where Used | Adequacy | Rationale |
+| Citation | Where Used | Adequacy | Current Assessment |
 |---|---:|---:|---|
-| `Sutton1998` | Formal MDP/state definition | 9 | Strong foundational source for state, action, reward, transition, and discount notation. Adequate when used once for the formal RL setup. |
-| `puterman2014markov` | Formal MDP definition; Markovianity definition | 9 | Strong source for Markov decision processes and the Markov property. Good fit for the formal definition. |
-| `zhao2021dear` | State-instance components; table; reported results; contextual/request-level features; guidance | 9 | Directly relevant to online advertising impression allocation and request-level features. Strong fit for DEAR-specific claims. |
-| `ie2019slateq` | State-instance components; slate-so-far context; table; reported results; guidance | 9 | Directly supports slate-level state representation and user-choice decomposition. Strong fit. |
-| `xia2023transact` | State-instance components; long/real-time sequence representation; table; reported results; sequence compression; guidance | 9 | Directly supports real-time session-sequence state representation at Pinterest. Strong fit. |
-| `swaminathan2015counterfactual` | Logged-feedback variance/counterfactual estimation; sample efficiency | 8 | Strong source for logged bandit feedback and counterfactual risk. Good fit for variance and logged-feedback claims, but it is not ad-specific. |
-| `dulac2021challenges` | Real-world RL partial observability/drift; sample-efficiency challenges | 8 | Good fit for real-world RL challenges. Broad rather than ad-specific, but appropriate for general deployment constraints. |
-| `hohnhold2015focusing` | Long-term business/user outcomes; drift over days/weeks | 7 | Relevant to long-term user/business outcomes in production systems, but only indirectly supports the specific state-representation drift claim. |
-| `Zhou2018` | DIN as long-history user behavior model; table; reported results; user embeddings; interaction features; guidance | 8 | Strong for user behavior attention in display advertising. Less direct for RL state-space design, but useful as a state-representation building block. |
-| `pancha2022pinnerformer` | Long-history user embeddings; table; reported results; guidance | 8 | Strong for long-horizon user embeddings at Pinterest. Not ad-policy-specific, but appropriate for user-state representation. |
-| `kang2018sasrec` | Sequence compression via self-attention | 7 | Strong for self-attentive sequential recommendation, but not ad-specific and not an RL system. Adequate as a sequence-modeling reference. |
-| `naumov2019deep` | Serving/model-size cost; ad embeddings; offline/online levers | 6 | Relevant to large-scale recommendation model architecture and embedding costs, but only indirectly supports state-space design claims. Use sparingly. |
-| `liu2022monolith` | Real-time embeddings, serving system, drift/online component | 7 | Relevant to real-time recommendation infrastructure and online features. Not ad-specific, but supports production serving/state-refresh claims. |
-| `gama2014survey` | Distribution shift/concept drift | 8 | Strong general source for concept drift. Not recommender- or ad-specific, but directly supports the drift concept. |
-| `zhao2023embedding` | Embedding decomposition and recommender embedding survey | 6 | Useful broad embedding survey, but weak for the specific offline/online decomposition claim unless the text explicitly frames it as general embedding practice. |
-| `levine2020offline` | Sample efficiency/offline RL | 8 | Strong for offline RL constraints and extrapolation/sample issues. Broad, but appropriate. |
-| `gauci2018horizon` | Engineered low-dimensional features; interpretability; guidance | 7 | Relevant production RL platform source. Good for applied RL workflows and operator-facing considerations, but not always specific to state representation. |
-| `glanois2024survey` | Interpretability in RL | 8 | Appropriate general interpretability-in-RL source. It supports the interpretability concept but not specific ad-system practice. |
-| `ie2019recsim` | RecSim simulator in reported results | 9 | Direct source for RecSim. Appropriate where simulator-based evaluation is mentioned with SlateQ. |
-| `cheng2016wide` | Ad/item embeddings; user-ad interaction/cross features; contextual signals | 7 | Strong for wide-and-deep recommender feature crosses and industrial recommendation modeling, but not ad-policy/RL-specific. |
-| `covington2016deep` | Contextual signals and engineered features | 6 | Strong for YouTube recommendation architecture, but only indirectly supports the specific contextual-signal claim in ad + organic policy. |
-| `grbovic2018real` | Embedding projection/personalization building blocks | 7 | Relevant to production embeddings for search ranking. Adequate for embedding-combination claims, but not ad-policy-specific. |
-| `zhang2018whole` | Final guidance on constrained reward/action formulations | 8 | Directly relevant to whole-page/dynamic ad allocation and monetization trade-offs. Good fit. |
-| `yan2020ads` | Final guidance on constrained ad allocation | 9 | Directly relevant to feed ad allocation via constrained optimization. Strong fit. |
+| `Sutton1998` | Formal MDP/state definition | 9 | Strong foundational source. Current use is not repetitive. |
+| `puterman2014markov` | Formal MDP definition; Markovianity definition | 9 | Strong source for MDPs and the Markov property. |
+| `zhao2021dear` | State components; DEAR table column; reported results; contextual signals; sample efficiency; guidance | 9 | Directly ad-policy relevant. Strong fit. |
+| `ie2019slateq` | Slate-so-far state; table; reported results; guidance | 9 | Directly supports slate state and user-choice decomposition. Strong fit. |
+| `xia2023transact` | Real-time sequence representation; table; reported results; sequence compression; offline/online representation pattern; guidance | 9 | Strong fit for real-time state representations and production serving constraints. |
+| `zhang2024scaling` | Online user representations for ads personalization; stability; representation decomposition; guidance | 9 | Strong ad-personalization fit and a good replacement for the earlier broad `zhao2023embedding` citation. |
+| `liu2022monolith` | Real-time recommendation infrastructure; stability; representation decomposition | 8 | Strong production-system source for freshness and serving-time representation, but not ad-specific. |
+| `swaminathan2015counterfactual` | Logged-feedback variance; counterfactual value estimation; sample efficiency | 8 | Good support for logged-feedback/counterfactual claims, but not ad-specific. |
+| `levine2020offline` | Offline RL and sample-efficiency constraints | 8 | Strong for offline RL limitations. Broad but appropriate. |
+| `dulac2021challenges` | Real-world RL partial observability, drift, and sample-efficiency constraints | 8 | Broad but appropriate for real-world RL constraints. |
+| `gama2014survey` | Distribution shift/concept drift | 8 | Strong concept-drift source, not ad-specific. Fine when paired with production/recsys examples. |
+| `hohnhold2015focusing` | Long-term outcomes and production drift context | 7 | Relevant to long-term user/business outcomes. Less direct for state-representation drift specifically. |
+| `Zhou2018` | DIN, user behavior attention, display advertising, reported results | 8 | Strong for display-ad CTR state features. Less direct for RL state-space design but useful as a representation building block. |
+| `pancha2022pinnerformer` | Long-history user embeddings; table; reported results; guidance | 8 | Strong for user-state representation, but not ad-policy-specific. |
+| `kang2018sasrec` | Sequence compression via self-attention | 7 | Good for sequence compression, but not ad-specific and not RL. |
+| `naumov2019deep` | Model size / serving cost in expressiveness trade-off | 7 | Acceptable for recommender architecture and embedding-system cost. No longer used for ad-feature claims. |
+| `gauci2018horizon` | Interpretability and operator-facing production RL concerns | 8 | Good fit for production RL workflow and operator-facing levers. No longer used for engineered state-feature examples. |
+| `glanois2024survey` | Interpretable RL | 8 | Good conceptual support for interpretability, but not ad-system-specific. |
+| `ie2019recsim` | RecSim in SlateQ reported results | 9 | Direct support. |
+| `mcmahan2013ad` | Ad features and sparse ad-click prediction context | 9 | Strong fit for sparse ad/user/context feature claims. |
+| `cheng2016wide` | Ad features; feature crosses; user-ad interaction features | 7 | Useful industrial feature-modeling source. Not ad-policy/RL-specific. |
+| `covington2016deep` | Engineered contextual features in the levers list; embedding combination sentence | 6 | Broad recommender-system source. It is no longer used for the main contextual-signals sentence, but remaining uses are still general rather than ad-policy-specific. |
+| `grbovic2018real` | Embedding projection / production personalization building blocks | 7 | Good production-embedding source, not ad-policy-specific. |
+| `zhang2018whole` | Final guidance on constrained reward/action formulations | 8 | Strong ad-allocation and whole-page optimization fit. |
+| `yan2020ads` | Final guidance on constrained ad allocation | 9 | Strong fit for feed ad allocation and constrained optimization. |
 
-## 2. Missing Citations
+## 2. Remaining Citation Issues
 
-The following claims are currently uncited or under-cited and should either receive support or be reframed as the authors' synthesis.
+### 2.1 `covington2016deep` remains broad in the levers section
 
-1. **Taxonomy construction in the opening paragraph.**  
-   Claim: the five properties are synthesized from recurring design considerations across published systems.  
-   Recommendation: This can remain uncited if presented as the authors' synthesis, but it may be stronger to cite the representative systems once at the end of the sentence: `\cite{zhao2021dear, ie2019slateq, pancha2022pinnerformer, xia2023transact}`.
+Current location:
 
-2. **"Only a subset of latent user intent and platform dynamics is observable."**  
-   This is plausible and important, but currently has no direct citation.  
-   Recommendation: cite a real-world RL/offline-RL challenge source such as `dulac2021challenges` or `levine2020offline`, or rephrase as interpretive framing.
+```tex
+\item \textbf{Engineered contextual features.} Anchor $s$ with low-dimensional human-readable signals (location, device, ad-load history, onboarding interests) to support interpretability and address the cold-start regime when long histories are unavailable \cite{covington2016deep}.
+```
 
-3. **"Markovianity matters because value estimators, off-policy methods, and policy-gradient updates ... assume the next reward depends only on `(s,a)`."**  
-   This is a technical RL claim and should be supported.  
-   Recommendation: attach `\cite{Sutton1998, puterman2014markov}` or `\cite{Sutton1998}` to this sentence, but avoid repeating both if the prior sentence already contains `puterman2014markov`.
+Risk:
 
-4. **"The practical question is therefore how Markovian the state must be..."**  
-   This is a synthesis claim. It does not require a citation if framed as the paper's analytical takeaway. If it is meant as an established evaluation practice, it needs support.
+`covington2016deep` supports contextual and engineered features in a large-scale recommender system, but it does not specifically support ad-load history or ad-policy interpretability. An editor concerned about ad-policy focus may still flag this as too general.
 
-5. **"The offline component absorbs short-horizon noise..."**  
-   This is plausible but broad.  
-   Recommendation: cite a system with explicit long-term/offline plus real-time components, preferably `xia2023transact` or `liu2022monolith`; otherwise soften to "is intended to absorb."
+Recommended next edit:
 
-6. **"Representations that lean entirely on dense online features..." and "representations that lean entirely on offline features..."**  
-   These are trade-off claims without direct citation.  
-   Recommendation: either cite real-time recommendation infrastructure and drift sources (`liu2022monolith`, `gama2014survey`) or frame as analytical synthesis: "In this taxonomy, representations that..."
+Replace or pair `covington2016deep` with an ad-policy citation. A safer version would be:
 
-7. **"Ad embeddings ... let the policy generalize across the long tail..."**  
-   The citations support embeddings and recommender models, but the long-tail ad-specific generalization claim could use a more directly ad/recsys source if available.
+```tex
+\item \textbf{Engineered contextual features.} Anchor $s$ with low-dimensional human-readable signals (location, device, ad-load history, onboarding interests) to support interpretability and address the cold-start regime when long histories are unavailable \cite{zhao2021dear}.
+```
 
-8. **"None of the papers share random seeds, hyperparameter search spaces, or full reproducibility artifacts."**  
-   This is an audit claim made by the authors. It is acceptable without citation, but only if the authors have actually checked the cited papers. Consider wording as "In our review of these papers..." to make the basis explicit.
+If the onboarding/location/device examples are meant as general recommender examples, keep `covington2016deep` but add `zhao2021dear`:
 
-## 3. Overclaiming
+```tex
+\cite{covington2016deep, zhao2021dear}
+```
 
-1. **Opening paragraph: "industrial and academic systems implicitly or explicitly appeal to..."**  
-   Risk: This can sound broader than the evidence if only four systems are later compared.  
-   Suggested revision: "The subsection uses five structural properties to compare representative systems: ..."
+Preferred action: use `zhao2021dear` only if the goal is stricter reviewer-proof ad-policy focus.
 
-2. **Markovianity paragraph: "exact Markovianity is unattainable."**  
-   Risk: Strong universal claim. It is directionally true for large-scale ad systems, but "unattainable" may be too absolute.  
-   Suggested revision: "exact Markovianity is generally unrealistic in production ad policies..."
+### 2.2 `hohnhold2015focusing` is indirect for state drift
 
-3. **Expressiveness paragraph: "The state must encode..."**  
-   Risk: Strong normative wording.  
-   Suggested revision: "A useful state representation should encode..."
+Current location:
 
-4. **Stability paragraph: "A common decomposition splits..."**  
-   Risk: The decomposition is common in recommender infrastructure, but may not be established as a standard state-space decomposition for ad RL.  
-   Suggested revision: "One recurring pattern in large-scale recommender systems splits..."
+```tex
+The state representation should remain informative as the logging policy, ad inventory, and user behavior change between training cycles \cite{gama2014survey, hohnhold2015focusing}.
+```
 
-5. **Sample efficiency paragraph: "Engineered low-dimensional features ... can converge faster..."**  
-   This is now appropriately softened with "can." Keep as is.
+Risk:
 
-6. **Interpretability paragraph: "Embedding-only states ... expose no low-dimensional summary an operator can read."**  
-   Risk: Some systems may expose auxiliary diagnostics even if the primary state is embedding-heavy.  
-   Suggested revision: "Embedding-dominated states ... often expose no directly human-readable low-dimensional summary..."
+`hohnhold2015focusing` is strong for long-term production outcomes, but weaker for state-representation drift itself. `gama2014survey` already covers drift conceptually.
 
-7. **Guidance paragraph: "none of the published systems directly addresses..."**  
-   Risk: Strong negative claim across all cited systems. It may be defensible, but it should be framed as scope-limited.  
-   Suggested revision: "Among the systems compared here, none directly addresses..."
+Recommended next edit:
 
-## 4. Incorrect or Weak Citation Matches
+Either remove `hohnhold2015focusing` here or keep it only if the sentence is reframed around long-term production outcomes. A stricter citation version:
 
-1. **`zhao2023embedding` for offline/online decomposition.**  
-   This is a broad embedding survey, not necessarily a direct source for the specific stable/offline versus non-stationary/online state decomposition.  
-   Recommendation: keep only if the sentence is about general recommender embedding practice, or replace/lean more heavily on `xia2023transact` and `liu2022monolith`.
+```tex
+The state representation should remain informative as the logging policy, ad inventory, and user behavior change between training cycles \cite{gama2014survey, dulac2021challenges}.
+```
 
-2. **`naumov2019deep` for ad embeddings.**  
-   DLRM is relevant to embedding-heavy recommendation models but does not directly support all ad-specific attributes such as bid context or landing-page quality.  
-   Status: The current revision narrowed the claim to "ad identity and related categorical attributes," which is safer. Keep with caution.
+Preferred action: replace `hohnhold2015focusing` with `dulac2021challenges` in this sentence, and reserve `hohnhold2015focusing` for long-term outcome/evaluation discussion.
 
-3. **`covington2016deep` for contextual signals in ad + organic systems.**  
-   YouTube DNN supports context/user/item features in recommendation, but it is not ad-policy-specific.  
-   Recommendation: acceptable as background, but pair with an ad-policy system such as `zhao2021dear` when making ad-specific claims, as the current text does.
+### 2.3 `glanois2024survey` is general for operational review
 
-4. **`gauci2018horizon` for engineered low-dimensional state features.**  
-   Horizon is an applied RL platform and may support production RL workflows, but not necessarily the exact examples "commercial-intent scores, ad-load history, dwell quantiles."  
-   Recommendation: keep only if those feature types are described in the Horizon examples; otherwise use `zhao2021dear` for request-level engineered features and leave `gauci2018horizon` for platform/workflow claims.
+Current location:
 
-5. **`hohnhold2015focusing` for state drift.**  
-   Strong for long-term user/business effects, but weaker for inventory/user-behavior distribution shift in the state representation itself.  
-   Recommendation: pair with `gama2014survey` or `dulac2021challenges`, or restrict the claim to long-term metric drift.
+```tex
+State components with human-readable meaning let operators trace policy behavior to upstream signals, support pre-launch review, and isolate regressions when A/B lifts move \cite{gauci2018horizon, glanois2024survey}.
+```
 
-6. **`glanois2024survey` for operational pre-launch review.**  
-   Strong for interpretable RL generally, but not necessarily for operator review in ad systems.  
-   Recommendation: keep as general support and use `gauci2018horizon` for applied RL operations.
+Risk:
 
-## 5. Recommended Edits
+`glanois2024survey` supports interpretable RL broadly, but not necessarily operator review in ad systems. The pairing with `gauci2018horizon` makes it acceptable.
 
-High-priority edits:
+Recommended next edit:
 
-1. Soften "exact Markovianity is unattainable" to "generally unrealistic in production ad policies."
-2. Change "The state must encode..." to "A useful state representation should encode..."
-3. Change "A common decomposition" to "One recurring pattern in large-scale recommender systems..."
-4. Change "Embedding-only states..." to "Embedding-dominated states often..."
-5. Change "none of the published systems" to "among the systems compared here, none..."
+No urgent change required. If tightening further:
 
-Medium-priority citation edits:
+```tex
+... when A/B lifts move \cite{gauci2018horizon}.
+```
 
-1. Add a citation to the partial-observability/latent-intent sentence in the formal definition, likely `dulac2021challenges`.
-2. Add `Sutton1998` to the Markovianity-assumption sentence if the technical assumption feels unsupported after removing it from the first sentence.
-3. Reconsider `zhao2023embedding` unless the surrounding text explicitly says "general recommender embedding practice."
-4. Reconsider `gauci2018horizon` for the engineered-feature sentence unless it directly supports those feature examples.
+Preferred action: keep for now unless citation density becomes a problem, because it supports the conceptual interpretability claim.
 
-Low-priority edits:
+## 3. Missing Or Under-Specified Support
 
-1. Reduce repeated mentions of `PinnerFormer`, `DIN`, `SlateQ`, and `DEAR` if the prose feels citation-dense, but do not remove them from system-specific claims.
-2. Consider moving some citations from inline parentheticals into surrounding prose for readability.
+### 3.1 Resolved: reproducibility-audit claim should identify its basis
+
+Current location:
+
+```tex
+none of the papers share random seeds, hyperparameter search spaces, or full reproducibility artifacts
+```
+
+Risk:
+
+This is exactly the kind of evaluation/reproducibility point reviewers asked for, but it is also an author audit claim. An editor may ask how the authors know this.
+
+Current resolution:
+
+Make the basis explicit:
+
+```tex
+In our review of these papers, none shared random seeds, hyperparameter search spaces, or full reproducibility artifacts, which limits cross-system comparison to the qualitative axes in Table~\ref{tab:state-space-comparison}.
+```
+
+Status: resolved in the current `paper.tex`. This small edit directly responds to reviewer concerns about evaluation and reproducibility.
+
+### 3.2 Table claims are not explicitly tied to citations row by row
+
+Current table columns cite each system in the header, but individual row entries are uncited.
+
+Risk:
+
+This is acceptable for a compact synthesis table, but a reviewer could still ask whether each cell is directly supported. The caption says the table compares published systems, but the body does not explain whether the rows are author-coded from the cited papers.
+
+Recommended next edit:
+
+Add one sentence before the table:
+
+```tex
+The entries in the table are author-coded from the cited system descriptions and reported evaluations, rather than copied verbatim from the original papers.
+```
+
+Priority: medium. This helps distinguish prior work from the authors' synthesis, which reviewers asked for.
+
+### 3.3 Latent-intent sentence is okay without citation, but could be clearer
+
+Current location:
+
+```tex
+Because only a subset of the latent user intent and platform dynamics is observable through these signals, constructing $s$ is itself a design problem.
+```
+
+Assessment:
+
+No citation is required if treated as a local inference from the preceding feature list.
+
+Optional clarity edit:
+
+```tex
+Because these signals observe user intent and platform dynamics only indirectly, constructing $s$ is itself a design problem rather than a mechanical feature-collection step.
+```
+
+Priority: low.
+
+## 4. Remaining Overclaiming / Wording Risks
+
+### 4.1 Resolved: stability paragraph used strong mechanism language
+
+Previous language:
+
+```tex
+The slower-changing component absorbs short-horizon noise and remains stable across retraining cycles...
+```
+
+Risk:
+
+"Absorbs" sounds mechanistic and universal. The cited systems support the design pattern, but not necessarily this exact mechanism in all cases.
+
+Current resolution:
+
+```tex
+The slower-changing component is intended to smooth short-horizon noise and remain stable across retraining cycles...
+```
+
+Status: resolved in the current `paper.tex`.
+
+### 4.2 Stability paragraph describes extreme representations
+
+Current language:
+
+```tex
+Representations that lean entirely on dense online features...
+representations that lean entirely on offline features...
+```
+
+Risk:
+
+The extremes are useful for explanation, but they may not correspond to real systems. Reviewers objected to general claims not sufficiently grounded in practice.
+
+Recommended next edit:
+
+```tex
+In this taxonomy, representations that lean heavily on dense online features...
+representations that lean heavily on offline features...
+```
+
+Priority: medium.
+
+### 4.3 Reported results use "meaningful" without metric values
+
+Current language:
+
+```tex
+meaningful offline retrieval-quality gains and online engagement lift
+```
+
+Risk:
+
+Reviewers specifically asked for quantitative results where available. "Meaningful" is interpretive and may invite criticism if exact magnitudes are not reported in the paragraph.
+
+Recommended next edit:
+
+Either quote the reported magnitudes if available from `pancha2022pinnerformer`, or soften:
+
+```tex
+reported offline retrieval-quality gains and online engagement lift
+```
+
+Priority: high if exact numbers are not being added.
+
+### 4.4 Guidance paragraph uses prescriptive "are appropriate"
+
+Current pattern:
+
+```tex
+Engineered low-dimensional states ... are appropriate...
+Slate-so-far representations ... are appropriate...
+Long-horizon user embeddings ... are appropriate...
+Hybrid offline / online representations ... are appropriate...
+```
+
+Risk:
+
+The guidance is useful for practitioners, but repeated "are appropriate" can sound stronger than the evidence supports. Reviewers asked for critical comparison, but not unsupported prescriptions.
+
+Recommended next edit:
+
+Use "are most defensible when" or "are better suited when" to make the guidance conditional:
+
+```tex
+Engineered low-dimensional states ... are most defensible for early-stage systems...
+```
+
+Priority: medium.
+
+## 5. Reviewer-Specific Risks Beyond Citation Fit
+
+### 5.1 Ad-policy specificity is improved but still uneven
+
+The section now discusses ad + organic ranking in the opening and guidance paragraphs, and includes DEAR, SlateQ, TransAct, and ad-feature examples. However, several core paragraphs still discuss state representation in general RL/recommender terms.
+
+Likely editor concern:
+
+"The section is more focused than before, but some discussion of embeddings and state representations still reads like general recommender-system content rather than ad-policy-specific RL analysis."
+
+Recommended next edit:
+
+In each property paragraph, ensure at least one sentence explicitly states why the property matters for balancing monetization and organic engagement. Markovianity and guidance already do this best; expressiveness, stability, and sample efficiency could be made more ad-specific.
+
+### 5.2 Evaluation discussion is present but compact
+
+The reported-results paragraph is a major improvement, but it is dense and mostly qualitative. Reviewer 1 explicitly asked for quantitative results, common metrics, simulators, and counterfactual estimators.
+
+Likely editor concern:
+
+"Reported results are mentioned, but the section still does not systematically compare metrics or evaluation setups."
+
+Recommended next edit:
+
+Consider splitting the reported-results paragraph into two parts:
+
+1. reported outcomes by system,
+2. evaluation limitations and reproducibility.
+
+This would make the response to the evaluation critique more visible.
+
+### 5.3 The table may need clearer placement/explanation
+
+Reviewer 2 complained elsewhere that tables were not positioned clearly. This table is placed in the section, which helps, but the surrounding text could more explicitly walk the reader through the takeaway.
+
+Likely editor concern:
+
+"The table is useful, but the takeaway could be more explicit."
+
+Recommended next edit:
+
+After the table or immediately before it, add a short sentence stating the main takeaway:
+
+```tex
+The table shows that higher expressiveness generally comes at the cost of serving complexity, lower interpretability, or greater evaluation burden.
+```
+
+Priority: medium.
+
+## 6. Recommended Next Edits
+
+High priority:
+
+1. Remove or soften "meaningful" in the PinnerFormer reported-results sentence unless exact magnitudes are added.
+2. Replace `hohnhold2015focusing` with `dulac2021challenges` in the state-drift sentence, or reframe the sentence to make `hohnhold2015focusing` clearly about long-term outcome stability.
+
+Medium priority:
+
+1. Replace `covington2016deep` with `zhao2021dear` in the engineered contextual-features lever, or pair them if both general and ad-specific support are desired.
+2. Rephrase "lean entirely" to "lean heavily" and explicitly frame the sentence as taxonomy-based synthesis.
+3. Add a sentence clarifying that table entries are author-coded from the cited papers.
+4. Make one or two property paragraphs more explicitly about the ad + organic trade-off, not just recommender state representation.
+
+Low priority:
+
+1. Consider reducing inline parenthetical citation density for `PinnerFormer`, `DIN`, `SlateQ`, and `DEAR` if readability becomes an issue.
+2. Consider rewording the latent-intent sentence for clarity rather than adding a citation.
+3. Consider changing repeated "are appropriate" in guidance to "are most defensible" or "are better suited."
 
