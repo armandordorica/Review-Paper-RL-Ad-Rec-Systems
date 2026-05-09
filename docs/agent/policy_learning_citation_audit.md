@@ -272,27 +272,9 @@ Priority: medium.
 
 ## 4. Overclaiming / Wording Risks
 
-### 4.1 "Stochastic policies ... spread risk"
+### Unresolved - High Priority
 
-Current claim:
-
-```tex
-randomizing over plausible actions allows the system to spread risk and continue learning
-```
-
-Risk:
-
-"Spread risk" is intuitive but underspecified. It could be read as financial or deployment risk rather than uncertainty management.
-
-Recommended next edit:
-
-```tex
-randomizing over plausible actions allows the system to avoid committing prematurely to a single uncertain action while continuing to collect learning signal
-```
-
-Priority: medium.
-
-### 4.2 "Value-based methods cannot learn when and how to be random"
+#### 4.1 "Value-based methods cannot learn when and how to be random"
 
 Current claim:
 
@@ -312,7 +294,7 @@ policy-based methods directly parameterize stochastic action probabilities, wher
 
 Priority: high.
 
-### 4.3 "Epsilon-greedy approaches ... are ad hoc and not a learned methodology"
+#### 4.2 "Epsilon-greedy approaches ... are ad hoc and not a learned methodology"
 
 Risk:
 
@@ -326,7 +308,7 @@ value-based methods often use externally specified exploration rules such as \(\
 
 Priority: high.
 
-### 4.4 End-to-end differentiability claim may be too architecture-specific
+#### 4.3 End-to-end differentiability claim may be too architecture-specific
 
 Current claim:
 
@@ -346,7 +328,7 @@ In neural ranking pipelines, policy-based methods can be easier to integrate whe
 
 Priority: high.
 
-### 4.5 "Actor-critic RL brings the bias-variance trade-off under control"
+#### 4.4 "Actor-critic RL brings the bias-variance trade-off under control"
 
 Risk:
 
@@ -360,7 +342,29 @@ Actor-critic RL provides one way to manage the bias-variance trade-off...
 
 Priority: high.
 
-### 4.6 "Superior balance" in the Cai et al. paragraph
+### Unresolved - Medium Priority
+
+#### 4.5 "Stochastic policies ... spread risk"
+
+Current claim:
+
+```tex
+randomizing over plausible actions allows the system to spread risk and continue learning
+```
+
+Risk:
+
+"Spread risk" is intuitive but underspecified. It could be read as financial or deployment risk rather than uncertainty management.
+
+Recommended next edit:
+
+```tex
+randomizing over plausible actions allows the system to avoid committing prematurely to a single uncertain action while continuing to collect learning signal
+```
+
+Priority: medium.
+
+#### 4.6 "Superior balance" in the Cai et al. paragraph
 
 Current claim:
 
@@ -379,6 +383,10 @@ Cai et al. report that this two-tier actor-critic approach improved the trade-of
 ```
 
 Priority: medium.
+
+### Resolved
+
+No resolved overclaiming/wording-risk items are currently listed in this section. Move items here after the corresponding text in `paper.tex` has been updated.
 
 ## 5. Evaluation And Reported-Results Gaps
 
