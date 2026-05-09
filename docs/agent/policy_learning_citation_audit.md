@@ -18,6 +18,7 @@ The section is improved relative to the reviewer criticism. It now:
 - opens with an explicit scope statement,
 - separates definitions from the argument about stochastic ad policies,
 - includes an explicit offline-vs-online goal sentence,
+- includes an explicit value-based vs policy-based goal sentence,
 - replaces the FrozenLake example with an ad-load example,
 - includes industry examples from YouTube, Meta/Horizon, Spotify, TikTok, LinkedIn, Google Ads, and Facebook/Meta,
 - discusses actor-critic methods and constrained actor-critic methods for multi-objective settings.
@@ -439,23 +440,25 @@ Priority: medium to high, depending on available numbers.
 
 ## 6. Structural / Presentation Risks
 
-### 6.1 Value-based vs Policy-based section lacks an explicit goal sentence
+### 6.1 Resolved: Value-based vs Policy-based section now has an explicit goal sentence
 
-The Offline vs Online subsubsection now has a goal sentence. The Value-based vs Policy-based subsubsection begins immediately with a taxonomy definition.
+Previous issue:
 
-Risk:
+The Offline vs Online subsubsection had a goal sentence, but the Value-based vs Policy-based subsubsection began immediately with a taxonomy definition.
+
+Previous risk:
 
 The user has been enforcing "explicit goal first" consistently across sections. This subsubsection may now look inconsistent.
 
-Recommended next edit:
+Resolution:
 
-Add a concise goal sentence after the heading:
+A concise goal sentence has been added after the heading:
 
 ```tex
-This subsubsection compares value-based and policy-based learning as two ways to derive ad-serving policies, emphasizing when each is better suited to discrete ad-treatment choices, stochastic ranking policies, and end-to-end neural pipelines.
+This subsubsection explains how value-based and policy-based methods differ in what they learn, and why that distinction matters for ad-policy decisions with discrete treatments, stochastic exploration, and end-to-end ranking pipelines.
 ```
 
-Priority: high.
+Status: resolved in the current `paper.tex`.
 
 ### 6.2 The value/policy-based subsection is citation-dense and long
 
@@ -503,25 +506,53 @@ Examples:
 
 Priority: high for easy cleanup because these are visible presentation issues.
 
-## 7. Recommended Next Edits
+## 7. Reviewer-Weighted Recommended Next Edits
 
-High priority:
+The ranking below prioritizes the issues most directly tied to the associate editor and reviewer comments: insufficient ad-policy focus, limited critical comparison, underdeveloped evaluation, citation alignment, and excessive pedagogical exposition.
 
-1. Add an explicit goal sentence to `Value-based vs Policy-based Learning`.
-2. Fix the awkward bolded phrase `\textbf{In Policy-based learning}` and nearby grammar/spacing issues.
-3. Soften "policy-based methods tend to be more suitable for ad policy optimization" to a conditional claim.
-4. Replace absolute claims that value-based methods "cannot" learn stochasticity and that epsilon-greedy is "ad hoc."
-5. Split the dense value-based vs policy-based industry-example paragraph into clearer value-based and policy-based comparison paragraphs.
+### Highest Priority
 
-Medium priority:
+1. Split the dense value-based vs policy-based industry paragraph into clearer comparison paragraphs.
+   - Reviewer basis: reviewers asked for deeper comparison of methods, trade-offs, assumptions, and real-world performance rather than a list of loosely connected examples.
+   - Concrete edit: separate (a) value-based RL/ad-bidding examples, (b) policy-based/PPO ranking examples, and (c) the decision rule for when each family is appropriate in ad-policy systems.
 
-1. Replace the architecture-specific transformer/multi-head attention pipeline claim with a more general neural ranking-pipeline claim.
-2. Soften "actor-critic RL brings the bias-variance trade-off under control."
-3. Attribute "superior balance" to Cai et al. and specify the comparison if available.
-4. Add concrete reported metrics or magnitudes where the cited papers provide them.
+2. Add concrete evaluation evidence where the cited systems report it.
+   - Reviewer basis: both the associate editor and Reviewer 1 flagged evaluation as underdeveloped, with missing metrics, simulator/toolkit discussion, and absent quantitative results.
+   - Concrete edit: add one compact evidence sentence or mini-table for DEAR/TikTok, YouTube actor-critic, Horizon/Meta, Cai et al., and Theocharous if reported numbers are available.
 
-Low priority:
+3. Strengthen the policy-learning discussion around ad-specific trade-offs rather than generic RL mechanics.
+   - Reviewer basis: reviewers repeatedly said policy learning is explained at length while ad-related aspects are insufficiently emphasized.
+   - Concrete edit: foreground ad-load, ad placement, auction/bidding, revenue-engagement trade-offs, rollout risk, and logged-data constraints before or alongside algorithm definitions.
 
-1. Consider moving some foundational equations to a shorter explanation if the section still feels overly pedagogical.
-2. Consider a compact reported-results table if multiple quantitative results are available.
+4. Fix overclaiming and citation-alignment risks in the value/policy discussion.
+   - Reviewer basis: Reviewer 2 flagged unsupported adaptability claims and general RL citations attached to ad/recommender claims; Reviewer 1 flagged misaligned citations.
+   - Concrete edit: soften claims that policy-based methods are generally more suitable, that value-based methods "cannot" learn stochasticity, and that epsilon-greedy is "ad hoc."
+
+### High Priority
+
+5. Replace the architecture-specific transformer/multi-head-attention pipeline claim with a broader neural ranking-pipeline claim.
+   - Reviewer basis: reviewers objected to generic recommender architecture discussion when it is not tightly linked to RL for ad policy optimization.
+   - Concrete edit: focus on differentiable policy outputs in neural ranking systems rather than asserting a common transformer-to-attention architecture.
+
+6. Attribute actor-critic performance claims precisely.
+   - Reviewer basis: reviewers asked for critical evaluation and substantiated claims, not unqualified success language.
+   - Concrete edit: change "brings the bias-variance trade-off under control" to "provides one way to manage" and attribute "superior balance" to Cai et al. with the comparison baseline if available.
+
+7. Reduce textbook-style policy-gradient exposition if it still outweighs the ad-policy analysis.
+   - Reviewer basis: reviewers said the paper has tutorial value but often lacks deeper technical and domain-specific discussion.
+   - Concrete edit: compress generic equations/prose or move them behind a concise explanation, then use the saved space for ad-policy implications and evaluation.
+
+### Medium Priority
+
+8. Clean visible prose and formatting issues in the subsection.
+   - Reviewer basis: the associate editor and Reviewer 2 flagged presentation, repeated information, and sparse use of bold text.
+   - Concrete edit: fix `\textbf{In Policy-based learning}`, extra spacing, "accommodate for stochasticity," inconsistent capitalization, and citation spacing.
+
+9. Check first-use definitions and notation in this subsection.
+   - Reviewer basis: reviewers requested clearer definitions and notation, including a more self-contained RL task formulation.
+   - Concrete edit: ensure \(s\), \(a\), \(\pi_\theta(a \mid s)\), \(Q(s,a)\), trajectory \(\tau\), and ad-policy actions are defined before use and not repeatedly redefined.
+
+10. Consider a compact summary comparison table only after the prose comparison is cleaned.
+    - Reviewer basis: reviewers asked for a clearer comparison framework, but also criticized table/figure placement and labeling.
+    - Concrete edit: if added, keep it local to the subsection and make columns directly reviewer-relevant: method family, ad-policy fit, action-space assumption, exploration behavior, evaluation evidence, and deployment risk.
 

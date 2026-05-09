@@ -1,0 +1,13 @@
+---
+description: Follow README workflow instructions when available
+alwaysApply: true
+---
+
+# Follow README Workflows
+
+Before running repository workflows such as build, compile, test, package, release, or push-with-artifacts, check `README.md` for project-specific instructions.
+
+- Prefer the README-documented command over generic commands, Makefile assumptions, or memory.
+- If the README gives multiple workflow options, choose the one that matches the user request. For example, use the timestamped PDF workflow when the user asks to compile and push a PDF artifact.
+- If the README instruction fails, report the failure and only then use a fallback, explaining why the fallback is needed.
+- When committing generated artifacts, follow the README guidance on which artifacts are expected to be committed and which intermediates should remain unstaged.
