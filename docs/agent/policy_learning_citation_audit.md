@@ -39,42 +39,43 @@ Scores use a 1-10 scale:
 - 5-6: plausible but weakly aligned or too general for the attached claim.
 - 1-4: likely mismatched and should be removed or replaced.
 
-| Citation | Where Used | Adequacy | Current Assessment |
-|---|---:|---:|---|
-| `zhang2018whole` | Policy/action levers such as ad load, placement, and thresholds | 8 | Strong fit for whole-page/dynamic ad allocation and ad-load decisions. Good support for ad-policy levers. |
-| `zhao2021dear` | Policy definition; deterministic/stochastic production ad policies; end-to-end ad ranking; TikTok PPO example | 9 | Directly relevant to online advertising impressions in recommender systems. Strong ad-policy anchor. |
-| `ie2019reinforcement` | Policy/action formulation and slate recommender context | 8 | Relevant to slate-based recommender RL. Less ad-specific but appropriate for slate/ranking context. |
-| `pancha2022pinnerformer` | State features in policy context; pipeline representation example | 7 | Strong user-representation source, but not policy-learning-specific and not ad-policy-specific. Use cautiously. |
-| `xia2023transact` | State features and differentiable ranking pipeline context | 8 | Strong production representation/ranking source. Relevant to end-to-end pipeline discussion, less directly to policy learning. |
-| `Zhou2019` | State features in policy context | 6 | Likely supports user behavior modeling or recommender representation, but the current attachment to state variables in the policy definition is broad. Check exact bib entry before relying on it. |
-| `Sutton1998` | Deterministic/stochastic policy definition; offline/online taxonomy; Monte Carlo; value/policy-based taxonomy; policy gradients; value functions; actor-critic | 9 for foundational definitions; 6 when repeated in adjacent explanatory sentences | Foundational source is appropriate, but repeated use is dense. Some instances can be consolidated to reduce textbook feel. |
-| `levine2020offline` | Stochastic policy definition; uncertainty/partial information; offline policy learning; MC limitations; sample efficiency; policy-based shortcomings | 8 | Strong for offline RL and practical limitations. Less direct for stochastic policies in production ad systems. Use strongest in offline-learning paragraphs. |
-| `gauci2018horizon` | Deterministic vs stochastic ad policies; offline-first practice; Horizon/Meta rollout; actor-critic production systems | 8 | Strong production RL platform source. Good for offline-to-online deployment and applied RL workflow; weaker for "ad policies are typically stochastic" unless Horizon examples specifically support it. |
-| `russo2018tutorial` | Exploration benefit of stochastic policies | 8 | Strong exploration/exploitation reference. Not ad-specific, but appropriate for exploration claim. |
-| `zou2019reinforcement` | Long-term ad-user pairing / recommendation outcomes | 7 | Relevant to RL in recommendation, but verify it directly supports the specific "uncover ad-user pairings" phrasing. |
-| `mazoure2021improving` | Long-term outcomes / improving long-term metrics | 8 | Good support for long-term recommendation objectives. Not necessarily ad-specific. |
-| `dulac2021challenges` | Real-world RL uncertainty, drift, value-method scalability, policy-method limitations | 8 | Broad but appropriate for real-world RL constraints. |
-| `Mehrotra2020` | Uncertainty/trade-offs, Spotify contextual bandits/offline-to-online practice | 8 | Good industry/practical recommender example. Check whether exact Spotify offline/online phrasing is fully supported. |
-| `Jannach2023` | Uncertainty/trade-offs in recommender systems | 6 | Broad recommender-system source. Acceptable only for general recommender uncertainty/trade-off claims, not ad-policy-specific claims. |
-| `dimitrakakis2018decision` | Online policy learning through interaction | 7 | Appropriate for decision-making/online learning concepts. Not ad-specific. |
-| `dulac2019challenges` | Online risk, MC limitations, value/policy limitations, action-space complexity | 8 | Strong for real-world RL challenges. Broad but well matched. |
-| `swaminathan2015counterfactual` | Logged-data support, importance sampling, counterfactual evaluation | 9 | Strong source for logged bandit feedback and counterfactual risk. Good fit. |
-| `dudik2011doubly` | Doubly robust estimation and counterfactual reasoning | 9 | Directly supports doubly robust evaluation claims. Good fit. |
-| `chen2022off` | YouTube offline RL, actor-critic, end-to-end production policy learning | 9 | Strong industry ad/recsys-adjacent production RL source. Good fit for offline actor-critic and policy-learning examples. |
-| `russell2016artificial` | Value vs policy taxonomy; informal policy-based explanation | 6 | General AI textbook. Fine for background, but less necessary when `Sutton1998` and specific RL sources are already cited. |
-| `schulman2017proximal` | Policy optimization/PPO; policy gradient formalism | 9 | Strong source for PPO and policy optimization. Good fit. |
-| `mnih2015human` | DQN | 9 | Direct source for DQN. Good fit. |
-| `mnih2016asynchronous` | Neural network policy/function approximation; actor-critic | 8 | Strong RL source, especially for deep actor-critic. |
-| `williams1992simple` | REINFORCE/policy gradient; policy distribution; ad-load example | 9 for REINFORCE/policy-gradient claims; 6 for the ad-load example | Strong foundational policy-gradient source. Less necessary for the illustrative ad-load example if `Sutton1998` already supports the concept. |
-| `kaelbling1996reinforcement` | General RL sufficiency; epsilon-greedy workaround | 7 | Classic RL survey. Useful but often redundant with `Sutton1998`. |
-| `lin2023survey` | Neural policies in recommender systems; value-vs-policy taxonomy; actor-critic | 7 | Relevant RL/recsys survey. Broad but helpful for recommendation context. |
-| `schulman2015trust` | TRPO; policy-based stochastic policies | 9 | Direct support for TRPO and policy optimization. |
-| `mcmahan2013ad` | Google/LinkedIn value-based approaches; small discrete ad policies | 5 | Strong ad-click prediction paper, but likely weak support for "Q-learning to optimize discrete ad policies." Verify exact claim. |
-| `Theocharous-2015` | Personalized ad recommendation / lifetime value optimization | 8 | Directly ad/recsys RL-ish source. Better fit than `mcmahan2013ad` for value-based ad policy optimization. |
-| `zhao2024survey` | Ad/content retrieval survey; industry examples | 6 | Broad survey source. Useful for context, but weak for precise claims about TikTok/Google/LinkedIn methods unless it explicitly reports them. |
-| `ie2019slateq` | Slate/action complexity and stochastic policy flexibility | 8 | Good fit for slate-level recommendation and action-space complexity. |
-| `cai2023two` | Two-stage constrained actor-critic / multi-objective setting | 9 | Direct source for constrained actor-critic and multi-objective balancing. Strong fit. |
-| `zhu2021overview` | Final paradigm-selection factors | 6 | Broad overview. Acceptable for general RL considerations, but weak for ad-policy-specific practitioner guidance. |
+| Citation | Where Used In Current Policy-Learning Text | Adequacy | Current Assessment |
+|---|---|---:|---|
+| `zhang2018whole` | Ad-policy levers such as ad load, placement, and price thresholds | 8 | Strong fit for whole-page/dynamic ad allocation and ad-load decisions. Appropriate as an ad-policy action-space anchor. |
+| `zhao2021dear` | Ad-serving policy definition; stochastic/exploration mechanisms; policy-based ad ranking; TikTok PPO example | 9 | Directly relevant to online advertising impressions in recommender systems. One of the strongest ad-policy anchors in this subsection. |
+| `ie2019reinforcement` | Slate/action formulation in the policy definition | 8 | Relevant to slate-based recommender RL. Less ad-specific than DEAR, but appropriate for slate and ranking policy context. |
+| `pancha2022pinnerformer` | User/state representation and differentiable pipeline context | 7 | Strong for industrial user representation, but indirect for policy learning. Best used as representation support rather than as evidence for RL claims. |
+| `xia2023transact` | State representation and end-to-end differentiable ranking context | 8 | Good production ranking/representation source. Supports pipeline integration better than it supports policy-learning theory. |
+| `Zhou2019` | User behavior/state variables in the policy definition | 6 | Plausible support for behavior-aware recommendation state features, but broad in this subsection. Consider replacing or pairing with a more ad-specific state-representation source if the claim becomes more specific. |
+| `Sutton1998` | Foundational policy definitions, offline/online taxonomy, Monte Carlo, value functions, policy gradients, and actor-critic | 9 for definitions; 6 for repeated explanatory uses | Foundationally appropriate, but still appears frequently. Keep for first definitions and equations; remove where adjacent prose is already supported. |
+| `levine2020offline` | Offline RL, logged-data limitations, uncertainty, sample efficiency, and policy-gradient shortcomings | 8 | Strong for offline RL and practical limitations. Less direct for production ad systems, so it works best when paired with industry examples. |
+| `gauci2018horizon` | Stochastic/exploration mechanisms, offline-to-online workflow, Meta/Horizon rollout, and actor-critic production practice | 8 | Strong applied RL platform source. Good for production workflow and actor-critic claims; weaker as sole support for broad ad-serving generalizations. |
+| `russo2018tutorial` | Exploration benefit of stochastic policies | 8 | Strong exploration/exploitation reference. Not ad-specific, but well matched to the general exploration mechanism claim. |
+| `zou2019reinforcement` | Long-term recommendation outcomes from exploration | 7 | Relevant to RL for long-term recommender engagement. Indirect for ad-user pairings specifically, but acceptable after the prose was softened. |
+| `mazoure2021improving` | Long-term metrics in recommendation systems | 8 | Good support for long-term recommendation objectives. Not ad-specific, but useful for the long-term outcome framing. |
+| `dulac2021challenges` | Real-world RL uncertainty, partial information, drift, and deterministic-policy limitations | 8 | Broad but appropriate for real-world RL constraints. Good support for uncertainty and deployment-risk language. |
+| `Mehrotra2020` | Practical uncertainty/trade-offs and Spotify offline-to-online contextual-bandit workflow | 8 | Good industry/practical recommender example. Keep tied to Spotify or general recommender experimentation rather than ad-specific claims. |
+| `Jannach2023` | General recommender uncertainty and objective trade-offs | 6 | Broad recommender-system support. Acceptable for general trade-off language, but weak for ad-policy-specific production claims. |
+| `dimitrakakis2018decision` | Online policy learning through live interaction | 7 | Appropriate for decision-making and online learning concepts. Not ad-specific, but the claim is conceptual. |
+| `dulac2019challenges` | Online risk, Monte Carlo limitations, action-space scaling, value-method limits, and policy-method limits | 8 | Strong for real-world RL challenges and algorithmic limitations. Broad but well aligned with the current claims. |
+| `swaminathan2015counterfactual` | Logged bandit feedback, importance sampling, and counterfactual evaluation | 9 | Directly supports logged-data and counterfactual-risk claims. Strong fit. |
+| `dudik2011doubly` | Doubly robust estimation and counterfactual reasoning | 9 | Direct support for doubly robust evaluation. Strong fit. |
+| `chen2022off` | YouTube offline RL, actor-critic, Monte Carlo returns, policy rollout, and end-to-end production policy learning | 9 | Strong industry recommender-system RL source. One of the best supports for offline actor-critic and production policy-learning claims. |
+| `russell2016artificial` | Value-based vs policy-based taxonomy | 6 | General AI textbook. Acceptable background, but less necessary when `Sutton1998` and more specific RL sources are already cited. |
+| `schulman2017proximal` | Policy optimization and the policy objective/formalism | 9 | Strong source for policy optimization and PPO-style policy learning. Good fit. |
+| `mnih2015human` | Deep Q-Networks | 9 | Direct source for DQN. Strong fit for the algorithm list. |
+| `mnih2016asynchronous` | Neural policy/function approximation and actor-critic methods | 8 | Strong deep RL source, especially for actor-critic. Less specific to recommendation/ad systems. |
+| `williams1992simple` | REINFORCE, policy gradients, and stochastic policy parameterization | 9 for REINFORCE/policy gradient; 6 for repeated stochastic-policy explanations | Strong foundational policy-gradient source. Use sparingly outside REINFORCE and policy-gradient claims. |
+| `kaelbling1996reinforcement` | General sufficiency of value/policy approaches and epsilon-greedy workaround | 7 | Classic RL survey. Useful but often redundant with `Sutton1998`; keep only where it adds breadth. |
+| `lin2023survey` | Recommender-system RL taxonomy and actor-critic context | 7 | Relevant RL/recsys survey. Helpful for recommendation context, but broad for ad-specific claims. |
+| `schulman2015trust` | TRPO, policy-gradient stability, and stochastic policy optimization | 9 | Direct support for TRPO and policy optimization/stability claims. Strong fit. |
+| `mcmahan2013ad` | Google Ads supervised ad-click prediction / immediate outcome modeling | 8 | Strong support for large-scale supervised ad click prediction after the value-based RL claim was split out. No longer used to support Q-learning or discrete RL ad-policy optimization. |
+| `Theocharous-2015` | Personalized ad recommendation and lifetime-value optimization | 8 | Direct ad/recsys RL source. Stronger fit for value-based ad-policy optimization than `mcmahan2013ad`, though the paper should avoid overgeneralizing it to all platforms. |
+| `zhao2018deep` | Sponsored-search real-time bidding with deep RL | 9 | Direct ad/RL source for value-based or deep RL formulations in sponsored-search bidding. Strong support for the revised value-based RL sentence. |
+| `wu2018budget` | Budget-constrained bidding via model-free RL in display advertising | 9 | Direct display-advertising RL source. Strong support for the revised value-based/ad-bidding sentence. |
+| `ie2019slateq` | Slate-level recommendation and action-space complexity | 8 | Good fit for slate-level recommendation and action decomposition. Less ad-specific, but appropriate for complex slate/action claims. |
+| `cai2023two` | Two-stage constrained actor-critic and multi-objective optimization | 9 | Direct support for constrained actor-critic and multi-objective balancing. Strong fit. |
+| `zhu2021overview` | Final paradigm-selection factors and action-space considerations | 6 | Broad overview. Acceptable for high-level practitioner guidance, but weak for ad-policy-specific recommendations. |
 
 ## 2. Missing Or Under-Specified Support
 
@@ -196,9 +197,9 @@ The value/policy-based subsection has been trimmed so `Sutton1998` remains mainl
 
 Status: resolved in the current `paper.tex`, though further citation reduction may still be possible during broader prose cleanup.
 
-### 3.2 `mcmahan2013ad` may not support value-based RL ad-policy claim
+### 3.2 Resolved: `mcmahan2013ad` did not support the value-based RL ad-policy claim
 
-Current claim:
+Previous claim:
 
 ```tex
 Platforms like LinkedIn and Google Ads have applied value-based approaches like Q-learning to optimize between discrete ad policies...
@@ -210,21 +211,21 @@ Citation cluster:
 \cite{mcmahan2013ad, Theocharous-2015, zhao2024survey}
 ```
 
-Risk:
+Previous risk:
 
 `mcmahan2013ad` is about ad click prediction and large-scale supervised ad models, not necessarily Q-learning or value-based RL policy optimization. This may be a citation mismatch.
 
-Recommended next edit:
+Resolution:
 
-Verify whether `Theocharous-2015` or another source directly supports value-based ad-policy optimization. If not, split the claim:
+The claim has been split so `mcmahan2013ad` supports supervised ad click prediction, while value-based RL/ad-bidding claims are supported by more direct ad/RL sources:
 
 ```tex
-Large-scale ad systems such as Google Ads have long used supervised models for ad click prediction \cite{mcmahan2013ad}, while value-based RL formulations have been explored for personalized ad recommendation and lifetime-value optimization \cite{Theocharous-2015}.
+Large-scale ad systems such as Google Ads have long relied on supervised prediction models for immediate outcomes such as click prediction \cite{mcmahan2013ad}. Value-based RL formulations, by contrast, have been explored for personalized ad recommendation, sponsored-search real-time bidding, and budget-constrained display advertising, where the learner estimates the long-term value of candidate ad actions before deriving a policy \cite{Theocharous-2015, zhao2018deep, wu2018budget}.
 ```
 
-Priority: high.
+Status: resolved in the current `paper.tex`.
 
-### 3.3 `zhao2024survey` may be too broad for TikTok/PPO claim
+### 3.3 Resolved: `zhao2024survey` was too broad for the TikTok/PPO claim
 
 Current claim:
 
@@ -232,25 +233,25 @@ Current claim:
 TikTok used Proximal Policy Optimization (PPO) to learn a stochastic ranking policy...
 ```
 
-Citation cluster:
-
-```tex
-\cite{zhao2021dear, zhao2024survey}
-```
-
-Risk:
-
-If `zhao2021dear` directly reports PPO in DEAR, `zhao2024survey` may be unnecessary. If not, the claim needs a more direct citation.
-
-Recommended next edit:
-
-Use only the primary system paper if it supports the claim:
+Current citation:
 
 ```tex
 \cite{zhao2021dear}
 ```
 
-Priority: medium.
+Previous risk:
+
+If `zhao2021dear` directly reports PPO in DEAR, `zhao2024survey` may be unnecessary. If not, the claim needs a more direct citation.
+
+Resolution:
+
+The broader survey citation was removed from the TikTok/PPO sentence. The current text relies on the primary DEAR paper:
+
+```tex
+\cite{zhao2021dear}
+```
+
+Status: resolved in the current `paper.tex`.
 
 ### 3.4 General recommender sources are mixed with ad-policy claims
 
@@ -502,8 +503,7 @@ High priority:
 2. Fix the awkward bolded phrase `\textbf{In Policy-based learning}` and nearby grammar/spacing issues.
 3. Soften "policy-based methods tend to be more suitable for ad policy optimization" to a conditional claim.
 4. Replace absolute claims that value-based methods "cannot" learn stochasticity and that epsilon-greedy is "ad hoc."
-5. Verify and likely revise the `mcmahan2013ad` / Q-learning / Google Ads claim.
-6. Split the dense value-based vs policy-based industry-example paragraph into clearer value-based and policy-based comparison paragraphs.
+5. Split the dense value-based vs policy-based industry-example paragraph into clearer value-based and policy-based comparison paragraphs.
 
 Medium priority:
 
