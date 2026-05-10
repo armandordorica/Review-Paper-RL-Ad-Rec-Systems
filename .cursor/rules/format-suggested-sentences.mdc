@@ -1,0 +1,21 @@
+---
+description: Format suggested replacement sentences as blocks
+alwaysApply: true
+---
+
+# Suggested Sentence Formatting
+
+When proposing replacement sentences, paragraph rewrites, or other text intended to be copied into the paper, do not place long suggestions inline in a paragraph.
+
+- Put the suggested text in a block quote or fenced code block so it appears as a distinct block in the chat.
+- Manually insert line breaks at natural sentence or clause boundaries for long suggestions. Keep lines short enough to fit the agent chat width, ideally no more than about 70 characters per physical line.
+- Prefer a fenced `latex` block for LaTeX-ready replacement text, with hard line breaks for readability.
+- This chat-display wrapping rule does not apply to edits made directly in source files. When editing `.tex` or other files, preserve the existing file's wrapping and paragraph style unless the user asks to reflow the source.
+- Keep explanatory prose outside the block and concise.
+
+Preferred format:
+
+```latex
+This is the proposed replacement sentence.
+This is the next sentence in the proposed paragraph.
+```
