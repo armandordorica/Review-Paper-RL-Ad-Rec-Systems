@@ -49,19 +49,36 @@
     \country{Canada}
 }
 
+
 % Build timestamp shown in the PDF (override at compile-time via: \def\BuildTimestamp{...})
 \providecommand{\BuildTimestamp}{\today\ at \currenttime}
 
 \begin{document}
 \begin{abstract}
-[Test] Balancing advertisements with organic content in large-scale recommendation engines is a well-known challenge in the industry. While ads are essential for revenue generation in platforms that integrate them alongside organic content, they often underperform in user engagement compared to organic content. The key challenges in achieving this balance include ad selection, ranking, and integration with organic content. These involve decisions about whether to insert an ad, which ad to select, and where to place it. 
+Balancing advertisements with organic content in large-scale recommendation engines is a challenge in the industry. Ads are central to platform revenue, but jointly
+serving them with organic content creates trade-offs
+between monetization and user experience. The key challenges in achieving this balance include ad selection, ranking, and integration with organic content. These involve decisions about whether to insert an ad, which ad to select, and where to place it. 
 
-Traditional methods optimize the probability of immediate ad clickthrough with fixed placements and are typically framed as supervised learning problems. However, these approaches estimate conditional expectations of immediate outcomes under a historical logging policy, treating decisions as independent and optimizing short-horizon objectives. A more principled formulation that accounts for contextual information and policy-induced state evolution, and that optimizes long-horizon value over action sequences to jointly balance engagement and revenue, remains an open research challenge. \\
+Many production systems frame these decisions as
+supervised learning problems that optimize the
+probability of immediate ad clickthrough under
+fixed placements. However, these approaches estimate conditional expectations of immediate outcomes under a historical logging policy, treating decisions as independent and optimizing short-horizon objectives. A formulation that accounts for contextual information and policy-induced state evolution, and that optimizes long-horizon value over action sequences to jointly balance engagement and revenue, remains an active area of research.
 
 Reinforcement Learning (RL) provides a principled framework for modeling recommendation as a sequential decision process under uncertainty. However, implementing RL in large-scale recommendation systems faces challenges including high-dimensional state and action spaces, the risk of poorly chosen reward functions and unsafe exploration, high computational costs, and the difficulty of interpreting online policy learning. 
 
-This survey synthesizes RL methodologies and frameworks for jointly optimizing ads and organic content, organizing prior approaches according to how they model state, action, reward, and policy. Our review indicates that while fully online RL is theoretically appealing, documented industrial systems more frequently adopt hybrid architectures that leverage supervised learning for robust short-term estimation while incorporating RL components for long-horizon value optimization.
-Furthermore, many large-scale deployments rely on constrained RL formulations, such as contextual bandits and offline replay, that balance sequential optimization with practical considerations of scalability, safety, and interpretability.
+This survey, aimed at industry practitioners,
+synthesizes prior RL work on the joint optimization
+of ads and organic content, distilling design choices,
+trade-offs, and evaluation practices through a
+unifying taxonomy that organizes each system by how
+it formulates the MDP (state, action, reward) and
+learns its policy. Our review indicates that while fully online RL is theoretically appealing, documented industrial systems more frequently adopt hybrid architectures that leverage supervised learning for short-term estimation while incorporating RL components for long-horizon value optimization.
+Furthermore, many large-scale deployments rely on
+offline and constrained RL formulations, such as
+contextual bandits and counterfactual policy
+evaluation, that enable policy learning from logged
+interaction data while balancing scalability,
+safety, and interpretability.
 \end{abstract}
 
 \keywords{Reinforcement Learning, Ad Policy Optimization, Contextual Bandits, Recommendation Systems, Off-Policy Learning, Online Advertising, Deep Reinforcement Learning, Multi-Objective Optimization}
