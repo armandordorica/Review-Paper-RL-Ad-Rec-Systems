@@ -121,32 +121,32 @@ The paper begins with a historical overview of recommendation systems with monet
 
 To ensure broad coverage, relevant papers were collected from both academic and industry sources. Foundational academic works such as \textit{Reinforcement Learning: An Introduction} \cite{Sutton1998}, \textit{Statistical Methods for Recommender Systems} \cite{agarwal2016statistical}, and \textit{Artificial Intelligence: A Modern Approach} \cite{russell2016artificial} were used to establish key mathematical foundations, including Markov Decision Processes (MDPs), Contextual Bandits, Off-Policy Learning, and Offline Replay.
 
-To reflect the internal perspective of a production-facing ad policy team, a curated list of 10–15 papers referenced within Pinterest’s Ad Policy team was also compiled. Examples include \textit{Jointly Learning to Recommend and Advertise} \cite{zhao2020jointly}, \textit{DEAR: Deep Reinforcement Learning for Online Advertising Impressions in Recommender Systems} \cite{zhao2021dear}, \textit{Ad-load Balancing via Off-Policy Learning} \cite{sagtani2024ad}, and \textit{Practical Bandits} \cite{van2024practical}. In addition, targeted keyword searches such as ``Reinforcement Learning ads [company name]'' and ``Contextual Bandit [company name]'' were conducted for leading companies in the advertising and recommendation space (e.g., Google, Meta, Pinterest, Microsoft, TikTok, YouTube, LinkedIn),  surfacing additional papers describing real-world systems and methodologies. To complement those efforts, a separate search was conducted on Google Scholar for relevant review papers. While no surveys were found that specifically focused on RL in ad recommendation systems, related reviews on ``contextual bandits'', ``ad fatigue'', and ``recommender systems'' were used to identify additional references.
+To reflect the internal perspective of a production-facing ad policy team, 14 papers from an industry curated reading list were also compiled. Examples include \textit{Jointly Learning to Recommend and Advertise} \cite{zhao2020jointly}, \textit{DEAR: Deep Reinforcement Learning for Online Advertising Impressions in Recommender Systems} \cite{zhao2021dear}, \textit{Ad-load Balancing via Off-Policy Learning} \cite{sagtani2024ad}, and \textit{Practical Bandits} \cite{van2024practical}. In addition, targeted keyword searches such as ``Reinforcement Learning ads [company name]'' and ``Contextual Bandit [company name]'' were conducted for leading companies in the advertising and recommendation space (e.g., Google, Meta, Pinterest, Microsoft, TikTok, YouTube, LinkedIn),  surfacing additional papers describing real-world systems and methodologies. To complement those efforts, a separate search was conducted on Google Scholar for relevant review papers. While no surveys were found that specifically focused on RL in ad recommendation systems, related reviews on ``contextual bandits'', ``ad fatigue'', and ``recommender systems'' were used to identify additional references.
 
 Finally, manual crawling of citation networks in cornerstone papers was used to identify additional key contributions. For instance, tracing citations from \textit{Jointly Learning to Recommend and Advertise} \cite{zhao2020jointly}, \textit{DEAR} \cite{zhao2021dear}, and \textit{Offline Reinforcement Learning} \cite{levine2020offline} led to works such as \textit{Ads Allocation in Feed via Constrained Optimization} \cite{yan2020ads} and \textit{A Contextual Bandit Bake-off} \cite{bietti2021contextual}.
 In total, 153 papers were selected and reviewed. Papers were ranked according to three main criteria: influence, to capture the foundational or widely adopted ideas in the field; industry relevance, to ensure that the outcomes were sound, implementable, and actionable; and recency, to reflect the latest methodological developments and deployment practices.
 
-While recent and highly cited work was prioritized, papers introducing novel methodologies were also included regardless of citation count. To contextualize the selected works, this survey builds from the ground up. Each component of the Markov Decision Process, including states, actions, rewards, and policies, is defined and illustrated using a toy example such as the Frozen Lake. This foundation is then extended to practice through a review of how each component is operationalized in industry, along with a discussion of the limitations of those approaches. Drawing on existing methods and lessons from industry, the resulting framework is intended to inform practitioners exploring how RL can be applied in their organizations to develop ad policies that balance monetization with organic engagement. A comparison between the toy example and real-world implementation parallels can be found in Table \ref{tab:comparison}.
+While recent and highly cited work was prioritized, papers introducing novel methodologies were also included regardless of citation count. To contextualize the selected works, this survey reviews each component of the Markov Decision Process, including states, actions, rewards, and policies, in terms of how it is operationalized in industrial recommender systems with ads, along with a discussion of the limitations of those approaches. Drawing on existing methods and lessons from industry, the resulting framework is intended to inform practitioners exploring how RL can be applied in their organizations to develop ad policies that balance monetization with organic engagement. Table~\ref{tab:comparison} summarizes how each MDP component maps to a monetization-aware recommendation setting.
 
 \begin{table*}[ht]
     \centering
     \small
-    \begin{tabular}{|>{\centering\arraybackslash}p{2.5cm}|p{3cm}|p{8cm}|}
+    \begin{tabular}{|>{\centering\arraybackslash}p{2.5cm}|p{11cm}|}
         \hline
-        MDP Component & FrozenLake Example & Ad Recommendations \\ 
+        MDP Component & Ad Recommendations \\ 
         \hline
-        Environment & The frozen lake. & The users. \\ 
+        Environment & The users. \\ 
         \hline
-        Goal & Reach the goal (G) from the start position (S) while avoiding holes (H). The agent must avoid falling into a hole, and reaching the goal faster is rewarded. & Maximize revenue without compromising user experience. \\ 
+        Goal & Maximize revenue without compromising user experience. \\ 
          \hline
-          Episode & A game. & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
+          Episode & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
         \hline
-        Rewards & Rewarded for reaching the goal (i.e., +100), but penalized for delays (i.e., -1 per step). & 
+        Rewards & 
         The reward is typically represented by a utility function, which could be a weighted sum of metrics like user engagement (clicks, time spent) and revenue generated (ad clicks, conversions). The challenge lies in balancing short-term revenue with long-term user retention. \\ 
         \hline
-        Agent & The learner. & The Recommendation System. \\ 
+        Agent & The Recommendation System. \\ 
         \hline
-        Actions & Up, down, left and right. & 
+        Actions & 
         Basically infinite. But when it comes to ad recommendations specifically, some typical actions are the following: 
         \begin{itemize}
             \item Reserve Price Floor: The minimum price at which an ad impression is sold.
@@ -156,7 +156,7 @@ While recent and highly cited work was prioritized, papers introducing novel met
             \item Ad Placement: The specific position of ads within the user feed (e.g., first, third, or fifth position).
         \end{itemize} \\
         \hline
-        States & All possible grid positions the agent can occupy, representing the state space of the environment. & 
+        States & 
         Signals:
         \begin{itemize}
             \item User Context: Demographics, user profile
@@ -165,11 +165,11 @@ While recent and highly cited work was prioritized, papers introducing novel met
             \item Embeddings: Latent feature representations of user interests or ad features
         \end{itemize} \\
         \hline
-        Policy & A mapping of grid positions to optimal action to take for a maximum reward. & 
+        Policy & 
         A mapping of user segments to ad treatments to maximize both revenue and user experience. This policy can be dynamically adjusted based on real-time feedback or offline simulations. \\ 
         \hline
     \end{tabular}
-    \caption{Comparison of Frozen Lake Example and Large-Scale Recommendation Systems for Ad Policy Optimization}
+    \caption{Mapping of MDP Components to Large-Scale Recommendation Systems for Ad Policy Optimization}
     \label{tab:comparison}
 \end{table*}
 
