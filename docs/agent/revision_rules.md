@@ -9,6 +9,7 @@ Revise the document using the following priorities, in this exact order. Apply e
 - Avoid making the client, sponsor, or partner organization look bad.
 - Do not identify the sponsor company by name; use generic labels such as **the Bank** or **the Company**, where applicable.
 - Avoid grandstanding, overclaiming, or recommendations not fully supported by analysis.
+- Ensure every nontrivial claim is defensible to reviewers: a careful reviewer should not be able to find an unsupported, overstated, or misaligned assertion. When in doubt, hedge or cite.
 - Avoid extreme words such as *crucial*, *imperative*, and *essential* unless fully justified.
 
 ## 2. State the objective immediately and precisely
@@ -45,6 +46,12 @@ Revise the document using the following priorities, in this exact order. Apply e
 - Avoid unsupported assertions.
 - Prefer paraphrasing with citation over quotation.
 - Use quotations only sparingly.
+
+### 7.1 Citation audit
+Apply the following three checks when reviewing any passage:
+- **No redundancy**: do not repeat the same citation for the same claim across consecutive sentences within a paragraph. Use one well-placed anchor per claim. Multiple citations for a single claim are acceptable only when each genuinely supports a distinct facet (e.g., different platforms, signals, time periods, or methodological aspects).
+- **No orphaned claims**: every claim that depends on external evidence, methodology, or framework must have a citation supporting it. Identify unsupported assertions and either cite them or remove the unsupported scope.
+- **Claim–citation alignment**: each cited source must substantiate the specific claim it is attached to, not just an adjacent or general topic. Verify the source's actual content aligns with the claim being made; replace or remove citations that only loosely relate to the topic.
 
 ## 8. Use the literature review correctly
 - Do not use the literature review to explain standard methods or common metrics in a textbook style.
