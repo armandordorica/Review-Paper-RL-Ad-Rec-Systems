@@ -197,15 +197,55 @@ Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evol
 \centering
 \footnotesize
 \renewcommand{\arraystretch}{1.25}
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{0.15\textwidth}}
+% Track 1: Pricing & Objectives
+\textbf{Track 1: Pricing \& Objectives \(\rightarrow\) Reward Design}\\[0.3em]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth}}
 \toprule
-\textbf{Historical Track} & \textbf{Evolution} & \textbf{Remaining Limitation} & \textbf{RL Formulation Link} & \textbf{Representative Sources} \\
+\textbf{Stage} & \textbf{Optimization Signal} & \textbf{Limitation} & \textbf{When Sufficient} \\
 \midrule
-\textbf{Pricing and objectives} & Online ads moved from impression-based pricing toward click-, action-, and utility-based objectives that more directly encode advertiser and platform outcomes. & Single business metrics can overemphasize immediate revenue, clicks, or conversions while leaving user experience, fatigue, and retention under-specified. & Maps to \textbf{reward design}: the reward function must encode trade-offs among advertiser value, platform revenue, engagement, and long-term user value. & \cite{hu2004performance,fain2006sponsored,engel2008incorporating,yan2020ads} \\
-\textbf{Representation} & Systems moved from hand-crafted segments and tabular features toward learned embeddings and sequential representations of users, ads, items, and context. & Better representations improve prediction, but pointwise scores do not by themselves determine which policy should be used when actions change future user behavior. & Maps to \textbf{state and action spaces}: user, item, ad, context, and policy-control variables define what the agent observes and what it can change. & \cite{covington2016deep,cheng2016wide,vorotilov2023scaling,Zhou2019} \\
-\textbf{Decision horizon} & Decision-making moved from static rules and supervised prediction toward A/B testing, bandits, offline policy evaluation, and eventually multi-step RL. & Short-horizon methods can adapt among candidate actions, but they remain limited when ad load, fatigue, retention, and future training data depend on earlier recommendations. & Maps to \textbf{policy learning and evaluation}: the learning framework determines whether the system optimizes immediate response, one-step exploration, or cumulative return under policy-induced dynamics. & \cite{li2010contextual,bietti2021contextual,swaminathan2015counterfactual,zhao2021dear,gauci2018horizon} \\
+\textbf{CPM} & Impressions and reach & Weak alignment with relevance or user value & Brand exposure and guaranteed reach \\
+\textbf{CPC} & Clicks and traffic & Can overvalue immediate engagement & Direct-response campaigns \\
+\textbf{CPA} & Conversions and purchases & Sparse feedback and attribution challenges & Clear conversion funnels \\
+\textbf{Utility functions} & Revenue, engagement, fatigue, and other objectives & Objective weights are hard to choose and validate & Explicit multi-objective trade-offs \\
+\midrule
+\multicolumn{4}{>{\raggedright\arraybackslash}p{0.94\textwidth}}{\emph{Representative sources:} \cite{hu2004performance,fain2006sponsored,engel2008incorporating,yan2020ads}.} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1em}
+
+% Track 2: Representation
+\textbf{Track 2: Representation \(\rightarrow\) State and Action Spaces}\\[0.3em]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth}}
+\toprule
+\textbf{Stage} & \textbf{Encoded Information} & \textbf{Limitation} & \textbf{When Sufficient} \\
+\midrule
+\textbf{Rules and segments} & Demographics, location, and hand-crafted eligibility rules & Coarse personalization and manual updates & Small inventories or strict policy constraints \\
+\textbf{Tabular features} & Click history, session statistics, and engineered context & Limited nonlinear interaction modeling & Interpretable models or limited compute \\
+\textbf{Embeddings} & Dense user, ad, item, and context vectors & Pointwise similarity does not model policy feedback & Large-scale retrieval and ranking \\
+\textbf{Sequential encoders} & User histories and evolving interests & More complex training and harder action attribution & Session-aware ranking and dynamic intent \\
+\midrule
+\multicolumn{4}{>{\raggedright\arraybackslash}p{0.94\textwidth}}{\emph{Representative sources:} \cite{covington2016deep,cheng2016wide,vorotilov2023scaling,Zhou2019}.} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1em}
+
+% Track 3: Decision Horizon
+\textbf{Track 3: Decision Horizon \(\rightarrow\) Policy Learning and Evaluation}\\[0.3em]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth}}
+\toprule
+\textbf{Stage} & \textbf{Horizon Modeled} & \textbf{Limitation} & \textbf{When Sufficient} \\
+\midrule
+\textbf{Rule-based} & None; static allocation & No learning from user response & Stable, low-complexity policy settings \\
+\textbf{Supervised ML} & Pointwise immediate response & Treats logged impressions as independent labels & Decisions are approximately independent \\
+\textbf{Bandits} & One-step exploration and exploitation & Limited treatment of future state changes & Few policy arms and immediate rewards \\
+\textbf{Contextual bandits} & One-step decisions with user and item context & Actions are not modeled as changing future states & Real-time adaptation with short-horizon goals \\
+\textbf{Full RL} & Multi-step cumulative return & Harder reward design, evaluation, and deployment & Ad fatigue, retention, and long-horizon objectives \\
+\midrule
+\multicolumn{4}{>{\raggedright\arraybackslash}p{0.94\textwidth}}{\emph{Representative sources:} \cite{li2010contextual,bietti2021contextual,swaminathan2015counterfactual,zhao2021dear,gauci2018horizon}.} \\
 \bottomrule
 \end{tabularx}
 
