@@ -190,60 +190,26 @@ While recent and highly cited work was prioritized, papers introducing novel met
 
 The goal is not to provide a general history of online advertising, but to explain why earlier approaches became insufficient for monetization-aware feeds that must balance advertiser value, platform revenue, user engagement, and long-term retention. The history begins with rule-based advertising, which gave platforms simple control over eligibility and placement but could not personalize ads at scale. Performance-based pricing reframed ad allocation around observable outcomes such as clicks and conversions. Supervised machine learning and representation learning then improved platforms' ability to estimate conditional expectations from logged interaction data, but these methods remained largely pointwise and myopic. Bandits and offline policy evaluation introduced adaptive policy selection under uncertainty, but they still struggled when present ad decisions shaped future user states. RL therefore appears as the next step for modeling ad recommendation as a sequential policy-optimization problem. This evolution is summarized in Figure~\ref{fig:ad_timeline} and Table~\ref{tab:evolution-tracks}. \\
 
-Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evolutionary tracks in ad optimization: (1) pricing and objectives, (2) representation, and (3) sequential horizon of decision-making. These dimensions evolved somewhat in parallel rather than strictly sequentially, and modern systems typically combine advances from all three tracks. This framework helps practitioners identify which dimension requires improvement for their specific business context. Evaluating these choices is difficult because the possible policies, state definitions, action discretizations, and reward functions create a large and often intractable search space. Although online A/B testing remains the gold standard for causal validation, testing every candidate live is prohibitively expensive and risky. Offline replay and related counterfactual methods are therefore used to narrow the set of promising candidates before A/B testing, balancing broad coverage of the design space with high-confidence online validation.
+Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evolutionary tracks in ad optimization: pricing and objectives, representation, and decision horizon. These dimensions evolved somewhat in parallel rather than strictly sequentially, and modern systems typically combine advances from all three tracks. The table also previews how this history maps onto the RL formulation used in the rest of the paper: pricing and objectives motivate reward design, representation choices shape state and action spaces, and decision horizon determines whether supervised prediction, bandits, or full RL is the appropriate policy-learning framework. Evaluating these choices is difficult because the possible policies, state definitions, action discretizations, and reward functions create a large and often intractable search space. Although online A/B testing remains the gold standard for causal validation, testing every candidate live is prohibitively expensive and risky. Offline replay and related counterfactual methods are therefore used to narrow the set of promising candidates before A/B testing, balancing broad coverage of the design space with high-confidence online validation.
 
 \begin{table*}[ht]
 \setstretch{1}
 \centering
 \footnotesize
 \renewcommand{\arraystretch}{1.25}
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{4pt}
 
-% Track 1: Pricing & Objectives
-\textbf{Track 1: Evolution of Pricing \& Objectives}\\[0.3em]
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth}}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{0.15\textwidth}}
 \toprule
-\textbf{Stage} & \textbf{What It Optimizes} & \textbf{Shortcomings} & \textbf{When Sufficient} \\
+\textbf{Historical Track} & \textbf{Evolution} & \textbf{Remaining Limitation} & \textbf{RL Formulation Link} & \textbf{Representative Sources} \\
 \midrule
-\textbf{CPM} (Cost per Mille) & Impressions; brand exposure & No incentive for relevance; misaligned with user value & Brand awareness; guaranteed reach campaigns \\
-\textbf{CPC} (Cost per Click) & Clicks; measurable engagement & Incentivizes clickbait; ignores post-click behavior & Direct response; traffic-focused goals \\
-\textbf{CPA} (Cost per Action) & Conversions; purchases, sign-ups & Sparse signal; attribution challenges & E-commerce; clear conversion funnels \\
-\textbf{Utility Functions} & Multi-objective (revenue + engagement + fatigue) & Weight tuning is subjective; hard to validate offline & When explicit trade-offs between objectives are required \\
+\textbf{Pricing and objectives} & Online ads moved from impression-based pricing toward click-, action-, and utility-based objectives that more directly encode advertiser and platform outcomes. & Single business metrics can overemphasize immediate revenue, clicks, or conversions while leaving user experience, fatigue, and retention under-specified. & Maps to \textbf{reward design}: the reward function must encode trade-offs among advertiser value, platform revenue, engagement, and long-term user value. & \cite{hu2004performance,fain2006sponsored,engel2008incorporating,yan2020ads} \\
+\textbf{Representation} & Systems moved from hand-crafted segments and tabular features toward learned embeddings and sequential representations of users, ads, items, and context. & Better representations improve prediction, but pointwise scores do not by themselves determine which policy should be used when actions change future user behavior. & Maps to \textbf{state and action spaces}: user, item, ad, context, and policy-control variables define what the agent observes and what it can change. & \cite{covington2016deep,cheng2016wide,vorotilov2023scaling,Zhou2019} \\
+\textbf{Decision horizon} & Decision-making moved from static rules and supervised prediction toward A/B testing, bandits, offline policy evaluation, and eventually multi-step RL. & Short-horizon methods can adapt among candidate actions, but they remain limited when ad load, fatigue, retention, and future training data depend on earlier recommendations. & Maps to \textbf{policy learning and evaluation}: the learning framework determines whether the system optimizes immediate response, one-step exploration, or cumulative return under policy-induced dynamics. & \cite{li2010contextual,bietti2021contextual,swaminathan2015counterfactual,zhao2021dear,gauci2018horizon} \\
 \bottomrule
 \end{tabularx}
 
-\vspace{1em}
-
-% Track 2: Representation
-\textbf{Track 2: Evolution of Representation}\\[0.3em]
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth}}
-\toprule
-\textbf{Stage} & \textbf{How Users/Items Are Encoded} & \textbf{Shortcomings} & \textbf{When Sufficient} \\
-\midrule
-\textbf{Demographics / Rules} & Hand-crafted segments (age, gender, location) & Coarse; no personalization; ad fatigue & Small catalogs; regulatory constraints on data use \\
-\textbf{Tabular Features} & Engineered features (click history, session stats) & Manual feature engineering; misses nonlinear patterns & Interpretable models required; limited compute \\
-\textbf{Embeddings} (Two-tower) & Dense vectors capturing user-item similarity & Pointwise; doesn't model sequences or context shifts & Large-scale retrieval; content with rich metadata \\
-\textbf{Attention / Transformers} & Contextual, sequential representations; multi-head & Complex tuning; heads vary across users/time & Sequential sessions; long-range dependencies matter \\
-\bottomrule
-\end{tabularx}
-
-\vspace{1em}
-
-% Track 3: Sequential Horizon
-\textbf{Track 3: Evolution of Sequential Decision-Making}\\[0.3em]
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth}}
-\toprule
-\textbf{Stage} & \textbf{Sequence Consideration} & \textbf{Shortcomings} & \textbf{When Sufficient} \\
-\midrule
-\textbf{Rule-based} & None; static if-then logic & No learning; manual updates; ignores user behavior & Low traffic; strict compliance; simple business rules \\
-\textbf{Supervised ML} (LR, GBM, DL) & Pointwise; each decision independent & Ignores sequential dependencies; no exploration & When decisions are approximately independent \\
-\textbf{Multi-Armed Bandits} & One-step; no context & No personalization; same arm for all users & Few discrete treatments; homogeneous user base \\
-\textbf{Contextual Bandits} & One-step with context; special case of RL & Actions don't influence future states; fixed action set & Real-time personalization; immediate rewards suffice \\
-\textbf{Full RL} & Multi-step; actions shape future states & Sample inefficiency; reward design; safety/interpretability & Extended sessions; ad fatigue; long-horizon objectives \\
-\bottomrule
-\end{tabularx}
-
-\caption{Three Evolutionary Tracks in Ad Optimization. Modern systems combine advances from all three tracks. Practitioners should identify which dimension is the bottleneck: Are objectives misaligned (Track 1)? Are representations too coarse (Track 2)? Or is the decision horizon too myopic (Track 3)?}
+\caption{Three Evolutionary Tracks in Ad Optimization and Their Link to the RL Formulation. Modern systems combine advances across pricing objectives, representation, and decision horizon. The tracks motivate the later discussion of reward design, state and action spaces, and policy learning.}
 \label{tab:evolution-tracks}
 \end{table*}
 

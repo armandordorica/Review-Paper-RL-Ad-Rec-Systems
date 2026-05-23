@@ -55,7 +55,6 @@ Priority and status are color-coded using inline HTML. Colors render in Cursor /
 
 ## What Should Stay
 
-- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **H2.** Keep Table `tab:evolution-tracks` conceptually. It is the strongest element because it synthesizes pricing objectives, representations, and decision horizon. Consider splitting it into a cleaner single table or shorter panel format if the rendered table is cramped.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **H3.** Keep the LinkedIn ad-load example (`yan2020ads`) because it is concrete, industrial, and directly tied to ad placement, top slot, minimum gap, and saturation.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **H4.** Keep the progression from CPM/CPC/CPA to utility functions, but compress the historical corporate details and use the discussion to motivate why utility functions encode explicit trade-offs among revenue, engagement, fatigue, and conversions.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **H5.** Keep bandits and contextual bandits, but frame them as short-horizon adaptive policy tools for choosing ad configurations or treatment arms, not as a broad clinical-trials history.
@@ -144,6 +143,7 @@ If space is tight, collapse subsections into one section with two shorter subsec
 ## Resolved Revision Items
 
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **H1.** Replaced the opener with a purpose-first bridge paragraph that explains why the section exists, preserves the "static allocation and pointwise prediction" through-line, avoids unsupported causal claims about performance-based pricing, and points readers to Figure `fig:ad_timeline` and Table `tab:evolution-tracks`.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **H2.** Replaced the visually heavy three-panel table with a single synthesis table. The revised table explicitly maps pricing/objectives to reward design, representation to state and action spaces, and decision horizon to policy learning and evaluation, and adds representative sources for each track rather than dense citations in every cell.
 
 ## Out of scope for this file
 
