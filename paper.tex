@@ -190,7 +190,7 @@ While recent and highly cited work was prioritized, papers introducing novel met
 
 This section traces the evolution of advertising recommendation algorithms, culminating in the adoption of RL to overcome the limitations of earlier approaches. It begins by outlining how early online advertising primarily mirrored offline methods through banner ads and other static formats. It continues by explaining how static online advertising evolved over time to incorporate rule-based models and more sophisticated heuristic techniques. The discussion then transitions to the integration of machine learning methods, including regression-based models, tree-based algorithms, and collaborative filtering, followed by the emergence of deep learning and embedding-based approaches that effectively capture the nonlinear interactions between users and content. Finally, RL is introduced as a promising solution to address the shortcomings of preceding methodologies. This evolution is visually represented in Figure \ref{fig:ad_timeline}, which shows the initial adoption and popularization of techniques and methodologies in online advertising. \\
 
-Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evolutionary tracks in ad optimization: (1) pricing and objectives, (2) representation, and (3) sequential horizon of decision-making. These dimensions evolved somewhat in parallel rather than strictly sequentially, and modern systems typically combine advances from all three tracks. This framework helps practitioners identify which dimension requires improvement for their specific business context. Additionally, Table~\ref{tab:evaluation-methods} describes complementary evaluation methods used to validate and infer policy performance.
+Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evolutionary tracks in ad optimization: (1) pricing and objectives, (2) representation, and (3) sequential horizon of decision-making. These dimensions evolved somewhat in parallel rather than strictly sequentially, and modern systems typically combine advances from all three tracks. This framework helps practitioners identify which dimension requires improvement for their specific business context. Evaluating these choices is difficult because the possible policies, state definitions, action discretizations, and reward functions create a large and often intractable search space. Although online A/B testing remains the gold standard for causal validation, testing every candidate live is prohibitively expensive and risky. Offline replay and related counterfactual methods are therefore used to narrow the set of promising candidates before A/B testing, balancing broad coverage of the design space with high-confidence online validation.
 
 \begin{table*}[ht]
 \setstretch{1}
@@ -246,24 +246,6 @@ Table~\ref{tab:evolution-tracks} summarizes three distinct but interrelated evol
 \caption{Three Evolutionary Tracks in Ad Optimization. Modern systems combine advances from all three tracks. Practitioners should identify which dimension is the bottleneck: Are objectives misaligned (Track 1)? Are representations too coarse (Track 2)? Or is the decision horizon too myopic (Track 3)?}
 \label{tab:evolution-tracks}
 \end{table*}
-
-\begin{table}[H]
-\setstretch{1}
-\centering
-\footnotesize
-\renewcommand{\arraystretch}{1.25}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.30\linewidth} >{\raggedright\arraybackslash}p{0.44\linewidth}}
-\toprule
-\textbf{Method} & \textbf{Objective} & \textbf{Use Case} \\
-\midrule
-\textbf{A/B Testing} & Validate experiments; causal attribution & New model launches; feature comparisons; statistical significance required \\
-\textbf{Offline Replay} & Infer policy performance from logs; counterfactual estimation & Policy evaluation before deployment; large parameter search; risk-averse exploration \\
-\bottomrule
-\end{tabularx}
-\caption{Complementary Evaluation Methods. A/B testing validates experiments online, while Offline Replay enables inference on logged data. Both can be used alongside any decision-making approach in Track 3.}
-\label{tab:evaluation-methods}
-\end{table}
 
 \subsection{From Rule-Based Advertising to Traditional Machine Learning}
 Around the early 2000s, online advertising largely mirrored offline practices, heavily relying on non-targeted formats such as banner ads \cite{kant2021history}. These generic advertising methods conflicted with the objective of search engines of efficiently directing users to relevant content \cite{fain2006sponsored}. As a marginal improvement on nontargeted ad formats like banner ads, advertisers began to utilize simple \texttt{if-then} logic with predefined rules to select and display ads based on basic criteria like user demographics. While rule-based systems were straightforward to implement, their lack of flexibility and personalization became evident as ad fatigue, defined as reduced user engagement due to repeated exposure to the same advertisement, persisted \cite{abrams2007personalized}. This issue underscored the necessity of not only leveraging user signals but also optimizing ad load tuning parameters, such as frequency and placement, to maintain user interest and maximize click-through rates \cite{abrams2007personalized}. For instance, researchers at LinkedIn introduced concepts like top slot - highest eligible position for an ad within the feed -  and minimum gap - the required distance between consecutive ads to prevent oversaturation - as ad load tuning parameters \cite{yan2020ads}. Their research indicated that users are more likely to click on ads that are spaced farther apart \cite{yan2020ads}. \\
