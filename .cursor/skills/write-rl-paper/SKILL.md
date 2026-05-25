@@ -80,6 +80,15 @@ When discussing literature, accurately categorize approaches by underlying parad
 ### E. Ethical Dimensions
 Address fairness across advertisers and users, bias mitigation, filter bubbles, privacy (differential privacy, federated learning), and downstream platform integrity concerns where relevant.
 
+### F. Reviewer Feedback Calibration (when revising paper.tex specifically)
+This sub-section applies only when working on the manuscript in this repository (`paper.tex`). The reviewer comments in `docs/agent/reviewers.txt` respond to the original submission, frozen as `original_submission_paper.pdf` in the workspace root. Every reviewer quote used to justify a revision must be checked against that submitted text, not against the current draft. Three rules govern correct use of reviewer feedback:
+
+1. **Pair reviewer quotes with the submitted text they describe.** Before citing a reviewer concern as motivation for a change, locate the corresponding passage in `original_submission_paper.pdf`. Reviewer 2's page references (e.g., "pg10 line 27") map directly to that file. If the cited concern targets text that has already been removed or substantially changed in the current draft, the concern is wholly or partially resolved; do not re-apply it to unrelated current content.
+2. **Apply the three-state classification before claiming reviewer alignment.** For any passage being revised, classify the corresponding submitted content as: (a) present and reviewer-flagged, (b) present and not flagged, or (c) added after submission. Only case (a) supports a reviewer-aligned label on the revision. Cases (b) and (c) are still legitimate revision targets, but the writing rationale must be internal-style (citation hygiene per Section 7, ad-policy focus per Section 5A, prose precision per Section 4), not reviewer-driven.
+3. **Use the Premise / Conclusion / Assumption framework on the revision itself.** When proposing a change motivated by reviewer feedback, structure the justification as: Premise = exact reviewer quote, Conclusion = proposed change, Assumption = the change resolves the specific complaint without creating a new flaw. Verify the assumption by checking that the change does not over-rotate (compressing what reviewers tolerated), under-rotate (failing to address the explicit concern), or shift the problem elsewhere in the manuscript.
+
+When in doubt about whether the original submission contained a specific passage, extract its text and verify by direct comparison. The procedure documented in `.cursor/skills/revise-rl-ad-paper/SKILL.md` under "Reviewer–Submission Calibration" produces a plain-text dump that can be searched with `Grep`.
+
 ## 6. Review Paper Architecture (Synthesis Over Summary)
 
 A top-tier review paper synthesizes prior work into a structured argument; it does not enumerate it.

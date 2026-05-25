@@ -18,10 +18,56 @@ The paper targets ACM Transactions on Recommender Systems and surveys reinforcem
 Before doing substantive revision or audit work, read the relevant project guidance:
 
 - `SKILL.md` for repository-wide writing, LaTeX, and domain conventions.
-- `docs/agent/reviewers.txt` for the Associate Editor and reviewer feedback.
+- `docs/agent/reviewers.txt` for the Associate Editor and reviewer feedback. **Critical:** these comments respond to `original_submission_paper.pdf`, not the current `paper.tex`. Every reviewer quote must be calibrated against the submitted text before being used to justify a revision. See the "Reviewer–Submission Calibration" section below.
+- `original_submission_paper.pdf` (workspace root) is the exact manuscript that the Associate Editor and the two reviewers read. Treat this file as the frozen reference for reviewer-flag mapping.
 - `docs/agent/revision_rules.md` for document-wide revision priorities.
 - `docs/agent/Guidelines for Algorithm Papers.txt` for ACM TORS methodology and evaluation expectations.
 - Existing section audits in `docs/agent/*_audit.md` when working on a section with an audit file or creating a new one.
+
+## Reviewer–Submission Calibration
+
+The reviewer feedback in `docs/agent/reviewers.txt` is paired one-to-one with the text in `original_submission_paper.pdf`. The current `paper.tex` has diverged from that submission through every prior revision pass. Therefore, whenever a revision claims reviewer alignment, verify the claim by checking three things against the submitted PDF.
+
+### Three-state check for any passage being revised
+
+For any passage in `paper.tex` you are considering changing, classify the corresponding content against the submitted PDF:
+
+1. **Present in submission and reviewer-flagged.** The reviewer explicitly criticized this passage (by quote, page reference, or unambiguous description). Deleting, compressing, or rewriting this passage is directly reviewer-aligned. Audit items targeting this passage can cite the reviewer quote as motivation.
+2. **Present in submission and not reviewer-flagged.** The passage was in the manuscript reviewers read, and neither reviewer nor the Associate Editor mentioned it. Deletion or compression is **not** reviewer-aligned by default. It may still be the right call on internal-style grounds (citation hygiene per `/write-rl-paper` Section 7, ad-policy focus, prose precision), but the audit must label such changes as internal-style improvements, not reviewer-driven fixes. The reviewer tolerated this content; do not overcompress it on the assumption that "reviewers would have flagged it if they had read more carefully."
+3. **Not present in submission.** The content was added during revision and reviewers have never seen it. New content carries full author responsibility: it must independently satisfy the citation audit (`/write-rl-paper` Section 7), ad-policy focus, and orphan-claim checks. New content should anchor to a specific reviewer concern when possible (e.g., "added to address Reviewer 2: Emphasis on Ad-policies is insufficient"), so the audit shows the change is responsive rather than discretionary.
+
+### Mapping reviewer quotes to audit items
+
+When opening a section audit or refreshing one, map each reviewer concern to specific items via direct quotes:
+
+- Anchor each audit item to the reviewer quote it addresses, formatted as `"<exact quote>" → <Audit-ID>`.
+- If an audit item cannot be tied to a specific reviewer quote, label it as an internal-style item rather than a reviewer-risk item.
+- The score sheet at the top of each audit should distinguish "reviewer-flag risk remaining" from "internal-style cleanup remaining" so that triage prioritizes reviewer-aligned work first.
+
+### Extracting text from the original submission
+
+To compare a current `paper.tex` paragraph against the submitted version:
+
+```bash
+python3 -m venv /tmp/pdfenv
+/tmp/pdfenv/bin/pip install pypdf --quiet
+/tmp/pdfenv/bin/python -c "
+import pypdf
+reader = pypdf.PdfReader('original_submission_paper.pdf')
+for i, page in enumerate(reader.pages):
+    print(f'=== PAGE {i+1} ===')
+    print(page.extract_text())
+" > /tmp/orig_paper.txt
+```
+
+Then grep or read `/tmp/orig_paper.txt` for the section keywords you are revising. Reviewer 2's page references (e.g., "pg10 line 27") map directly to the PDF page numbering in this file.
+
+### Common calibration pitfalls
+
+- Treating absence of a reviewer mention as endorsement. A reviewer's silence on a paragraph is not approval; it usually reflects what they had time to read carefully. Use silence to downgrade reviewer-risk priority, not to escalate it.
+- Citing one reviewer's comment to justify removing content that a different reviewer praised. Cross-check before deletion.
+- Citing reviewer feedback to justify adding content that reviewers did not request. New content needs its own justification: a Major Comment quote, an Associate Editor directive, or an explicit author choice flagged as such.
+- Conflating "the original paragraph was reviewed and tolerated" with "the original paragraph is correct." Tolerance is not endorsement. Internal-style improvements (citation alignment, prose precision, ad-policy focus) remain valid even on tolerated passages, provided the audit labels them as internal rather than reviewer-driven.
 
 ## Reviewer Priorities
 
@@ -112,10 +158,14 @@ Latest refresh: [date and short context].
 
 ## Reviewer context used
 
-- Associate Editor: [section-relevant points].
-- Reviewer 1: [section-relevant points].
-- Reviewer 2: [section-relevant points].
-- `revision_rules.md`: [specific sections used].
+Anchored to direct quotes from `docs/agent/reviewers.txt`, which respond to `original_submission_paper.pdf`. For each concern, record the exact quote and the audit ID(s) it maps to.
+
+- **Associate Editor:** `"<quote>"` → [Audit-ID(s)].
+- **Reviewer 1 Major Comment N:** `"<quote>"` → [Audit-ID(s)].
+- **Reviewer 2:** `"<quote>"` → [Audit-ID(s)].
+- **`revision_rules.md`:** [specific sections used].
+
+If an audit item cannot be tied to a specific quote, mark it explicitly as an internal-style item rather than reviewer-flag risk.
 
 ## Current Overall Assessment
 
@@ -156,19 +206,22 @@ Latest refresh: [date and short context].
 
 When asked to revise `paper.tex`:
 
-1. Read the relevant section and any matching audit file.
-2. Identify whether the requested edit affects reviewer risks, citations, floats, or section structure.
-3. Propose the smallest reviewer-aligned change when the user is asking for judgment or approval.
-4. Edit only the intended passage.
-5. Check for broken references or labels when removing tables, figures, equations, or citations.
-6. Run lints after substantive edits.
-7. If asked to compile, follow `README.md`: use `./build_timestamped_pdf.sh` for timestamped PDFs.
+1. Read the relevant section in `paper.tex` and any matching audit file.
+2. Apply the Reviewer–Submission Calibration three-state check: classify the affected content as (1) present in submission and reviewer-flagged, (2) present in submission and not reviewer-flagged, or (3) added during revision and not seen by reviewers. Use the classification to label the change as reviewer-driven or internal-style.
+3. Identify whether the requested edit affects reviewer risks, citations, floats, or section structure.
+4. Propose the smallest reviewer-aligned change when the user is asking for judgment or approval. If the change is internal-style, state that explicitly rather than overclaiming reviewer alignment.
+5. Edit only the intended passage.
+6. Check for broken references or labels when removing tables, figures, equations, or citations.
+7. Run lints after substantive edits.
+8. If asked to compile, follow `README.md`: use `./build_timestamped_pdf.sh` for timestamped PDFs.
 
 When asked to create or refresh an audit:
 
 1. Read the section in `paper.tex`.
 2. Read the reviewer feedback and revision rules.
-3. Inspect citations in the section and score adequacy.
-4. Record pending items with concrete, actionable fixes.
-5. Record resolved items separately so the audit remains useful as a work queue.
+3. Extract the corresponding section from `original_submission_paper.pdf` (see the calibration section above) and compare against current `paper.tex`. Classify each paragraph against the three-state check.
+4. Map each reviewer concern to specific audit items by direct quote.
+5. Inspect citations in the section and score adequacy.
+6. Record pending items with concrete, actionable fixes. Distinguish reviewer-flag risk from internal-style cleanup in the priority structure.
+7. Record resolved items separately so the audit remains useful as a work queue.
 
