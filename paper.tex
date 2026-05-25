@@ -126,50 +126,28 @@ To reflect the internal perspective of a production-facing ad policy team, 14 pa
 Finally, manual crawling of citation networks in cornerstone papers was used to identify additional key contributions. For instance, tracing citations from \textit{Jointly Learning to Recommend and Advertise} \cite{zhao2020jointly}, \textit{DEAR} \cite{zhao2021dear}, and \textit{Offline Reinforcement Learning} \cite{levine2020offline} led to works such as \textit{Ads Allocation in Feed via Constrained Optimization} \cite{yan2020ads} and \textit{A Contextual Bandit Bake-off} \cite{bietti2021contextual}.
 In total, 153 papers were selected and reviewed. Papers were ranked according to three main criteria: influence, to capture the foundational or widely adopted ideas in the field; industry relevance, to ensure that the outcomes were sound, implementable, and actionable; and recency, to reflect the latest methodological developments and deployment practices.
 
-While recent and highly cited work was prioritized, papers introducing novel methodologies were also included regardless of citation count. To contextualize the selected works, this survey reviews each component of the Markov Decision Process, including states, actions, rewards, and policies, in terms of how it is operationalized in industrial recommender systems with ads, along with a discussion of the limitations of those approaches. Drawing on existing methods and lessons from industry, the resulting framework is intended to inform practitioners exploring how RL can be applied in their organizations to develop ad policies that balance monetization with organic engagement. Table~\ref{tab:comparison} summarizes how each MDP component maps to a monetization-aware recommendation setting.
+While recent and highly cited work was prioritized, papers introducing novel methodologies were also included regardless of citation count. To contextualize the selected works, this survey reviews the five design questions that structure the RL formulation: reward design, action-space design, state-space representation, policy learning, and exploration-exploitation. These design questions are not a one-to-one expansion of the MDP tuple; rather, they identify the modeling choices that recur when RL is applied to industrial recommender systems with ads. Drawing on existing methods and lessons from industry, the resulting framework is intended to inform practitioners exploring how RL can be applied in their organizations to develop ad policies that balance monetization with organic engagement. Table~\ref{tab:comparison} serves as a compact notation guide for the recurring RL constructs used throughout the paper, including the environment, goal, episode, actions, and policy.
 
-\begin{table*}[ht]
+\begin{table*}[!t]
     \centering
-    \small
-    \begin{tabular}{|>{\centering\arraybackslash}p{2.5cm}|p{11cm}|}
-        \hline
-        MDP Component & Ad Recommendations \\ 
-        \hline
-        Environment & The users. \\ 
-        \hline
-        Goal & Maximize revenue without compromising user experience. \\ 
-         \hline
-          Episode & A time period (T), typically 2 weeks, corresponding to an A/B experiment where enough data is collected to evaluate policy performance across users. \\ 
-        \hline
-        Rewards & 
-        The reward is typically represented by a utility function, which could be a weighted sum of metrics like user engagement (clicks, time spent) and revenue generated (ad clicks, conversions). The challenge lies in balancing short-term revenue with long-term user retention. \\ 
-        \hline
-        Agent & The Recommendation System. \\ 
-        \hline
-        Actions & 
-        Basically infinite. But when it comes to ad recommendations specifically, some typical actions are the following: 
-        \begin{itemize}
-            \item Reserve Price Floor: The minimum price at which an ad impression is sold.
-            \item Displacement Cost Threshold: A measure of the opportunity cost for showing an ad.
-            \item Max Ad Load: The maximum number of ads that can be shown without reducing user satisfaction.
-            \item Ad Quality Thresholds: Standards used to ensure ads meet a quality bar before being shown.
-            \item Ad Placement: The specific position of ads within the user feed (e.g., first, third, or fifth position).
-        \end{itemize} \\
-        \hline
-        States & 
-        Signals:
-        \begin{itemize}
-            \item User Context: Demographics, user profile
-            \item Interaction Data: Previous interactions with ads, organic content
-            \item Contextual Features: Time of day, browsing context
-            \item Embeddings: Latent feature representations of user interests or ad features
-        \end{itemize} \\
-        \hline
-        Policy & 
-        A mapping of user segments to ad treatments to maximize both revenue and user experience. This policy can be dynamically adjusted based on real-time feedback or offline simulations. \\ 
-        \hline
-    \end{tabular}
-    \caption{Mapping of MDP Components to Large-Scale Recommendation Systems for Ad Policy Optimization}
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.12}
+    \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        RL construct & Notation & Role in monetization-aware recommendation \\
+        \midrule
+        Environment & $\mathcal{E}$; dynamics $P(s_{t+1}\mid s_t,a_t)$ & The platform setting that reacts to the ranking policy: users, ad inventory, organic items, auction context, and the interface where ads displace or accompany organic content. \\
+        Goal & $\max_\pi \mathbb{E}_\pi[\sum_{t=0}^{T}\gamma^tR_t]$ & Learn a policy that improves monetization while preserving engagement, retention, and user-experience guardrails over repeated interactions. \\
+        Episode / horizon & $\tau=(s_0,a_0,r_0,\ldots,s_T)$; $T$ & A user session, repeated-visit window, or A/B experiment horizon over which cumulative effects of ad and organic ranking decisions are measured. \\
+        State & $s_t \in \mathcal{S}$ & The partially observed user, session, request, context, ad-history, and organic-interaction signals available before a ranking decision. \\
+        Action & $a_t \in \mathcal{A}^{\mathrm{ad}} \cup \mathcal{A}^{\mathrm{org}}$ & The decision the platform takes at a ranking opportunity: which ads are eligible, how many ads to show, where to place them, which quality thresholds to enforce, and how to order organic items. \\
+        Reward & $R_t$ or $R(s_t,a_t)$ & The scalar utility that combines monetization and user-side outcomes, such as revenue, clicks, conversions, dwell time, retention, and ad-fatigue penalties. \\
+        Policy & $\pi(a\mid s)$ or $\pi_\theta$ & The learned rule that maps observed context to ranking actions, thereby controlling ad load, placement, eligibility, and organic ordering. \\
+        Exploration and logging & $\epsilon$, UCB, Thompson sampling, or $\mu(a\mid s)$ & The mechanism that generates evidence about uncertain actions, either through deliberate exploration or through the historical logging policy used for offline replay. \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Notation guide for RL formulation in monetization-aware recommendation}
     \label{tab:comparison}
 \end{table*}
 
@@ -289,38 +267,21 @@ Despite the practical advantages that contextual bandits offer for real-time exp
 
 
 \section{The RL Formulation of Jointly Optimizing Ads and Content}
+\label{sec:rl-formulation}
 
-% \subsection{Formulating Monetization-Aware Ranking as an RL Problem}
-% In RL, the \textbf{GridWorld problem} is a foundational example of a Markov Decision Process (MDP), where an \textbf{agent} interacts with a \textbf{deterministic environment} by performing \textbf{discrete actions}, such as moving up, down, left, or right, to navigate through a grid with the objective of reaching a goal, while potentially avoiding obstacles or hazards. A more complex variant is the \textbf{FrozenLake problem}, which features a \textbf{stochastic environment} where movements are uncertain due to a slippery surface (\textcolor[HTML]{1E90FF}{F}) as shown in Figure~\ref{tab:frozen_lake} \cite{FrozenLakeGymnasium2023}. Here, actions do not always lead to the intended next state, adding complexity by requiring policies that effectively manage uncertainty. In this paper, we use the FrozenLake problem as a representative framework for stochastic environments and leverage this template to describe the ad optimization problem as an RL task. Specifically, we will explore components of the underlying MDP, such as states, actions, and rewards, and investigate key RL concepts including policy evaluation, value iteration, and policy iteration. 
-% The grid is typically represented as shown in Figure~\ref{tab:frozen_lake}:
+\subsection{Formulating Joint Ad and Organic Ranking as a Markov Decision Process}
+\label{subsec:mdp-formulation}
 
+We formalize joint ad and organic content ranking as a Markov Decision Process \cite{puterman2014markov, Sutton1998}, defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, P, R, \gamma)$. At each timestep $t$, the platform observes a user state $s_t \in \mathcal{S}$, selects an action $a_t \in \mathcal{A}$, transitions to a new state $s_{t+1}$ according to the dynamics $P(s_{t+1} \mid s_t, a_t)$, and receives a scalar reward $R_t \in \mathbb{R}$. The discount factor $\gamma \in [0,1]$ trades off immediate against delayed feedback. The policy $\pi(a \mid s)$ governs which action the platform takes in each state, and the objective is to find $\pi^\star = \arg\max_\pi \mathbb{E}_\pi\!\left[\sum_{t=0}^{T} \gamma^t R_t\right]$. Table~\ref{tab:comparison} summarizes how each of these components is operationalized in industrial ad systems.
 
-% \label{frozen_lake}
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=0.35\linewidth]{frozenlake-table.png}
-% \caption{Frozen Lake Environment Grid}
-% \label{tab:frozen_lake}
-% \end{figure}
+The action space decomposes into ad and organic candidates, $\mathcal{A} = \mathcal{A}^{\mathrm{ad}} \cup \mathcal{A}^{\mathrm{org}}$, with the policy choosing both what to insert and where, rather than treating ads and organic items as independent ranking problems \cite{yan2020ads, sagtani2024ad}. The reward $R_t$ similarly aggregates ad-side and organic-side outcomes through a utility function (Section~\ref{subsec:reward-design}), so that the policy evaluates monetization and engagement within the same optimization objective rather than optimizing each signal in isolation.
 
+Two practical complications separate this formulation from the fully observed, on-policy MDP abstraction used to introduce the notation above. First, the platform observes behavioral traces (clicks, dwell time, profile attributes) rather than the user's latent intent or satisfaction, so the state representation is inherently \emph{partially observable} \cite{kaelbling1998planning, lu2016partially}. Second, in an on-policy setting, the same policy generates the data used to update or evaluate it. By contrast, ad systems often learn from historical impressions collected under an already-deployed ranking or allocation rule, called the \emph{logging policy} $\mu(a \mid s)$. A new candidate policy $\pi_\theta$ may choose different ad loads, placements, or organic items from the same state, so the logged data do not directly show what would have happened under that candidate policy. Offline learning and evaluation therefore must account for the gap between $\mu$ and $\pi_\theta$ through importance weighting or doubly robust estimation \cite{swaminathan2015counterfactual, dudik2011doubly, levine2020offline}.
 
-% \begin{table}[ht]
-%     \centering
-%     \setlength{\arrayrulewidth}{0.5mm}
-%     \setlength{\tabcolsep}{12pt}
-%     \renewcommand{\arraystretch}{1.5}
-%     \begin{tabular}{|c|c|c|c|}
-%         \hline
-%         \cellcolor[HTML]{A9DFBF}\textbf{S} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{D6EAF8}\textbf{F} \\ \hline
-%         \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{F5B7B1}\textbf{H} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{F5B7B1}\textbf{H} \\ \hline
-%         \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{D6EAF8}\textbf{H} \\ \hline
-%         \cellcolor[HTML]{F5B7B1}\textbf{H} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{D6EAF8}\textbf{F} & \cellcolor[HTML]{F1948A}\textbf{G} \\ \hline
-%     \end{tabular}
-%     \caption{Frozen Lake Environment Grid}
-%     \label{tab:frozen_lake} % This label is used to reference the table
-% \end{table}
+The remainder of Section~\ref{sec:rl-formulation} is organized around the components of this MDP. Section~\ref{subsec:reward-design} discusses how $R$ is specified to balance monetization and engagement. Section~\ref{action_space_representation} addresses the structure of $\mathcal{A}$, including the ad-versus-organic split and constraints such as ad load and frequency capping. Section~\ref{state_space_representation} reviews state representations that summarize partially observed user histories. Section~\ref{policy_learning} surveys methods for learning $\pi$ under the off-policy data conditions noted above. Section~\ref{subsec:exploration-exploitation} treats exploration as the deliberate divergence between $\mu$ and $\pi_\theta$ used to discover better policies under uncertainty.
 
 \subsection{Reward Design for Monetization-Aware Recommendation Systems}
+\label{subsec:reward-design}
 
 %section objective and scope 
 This subsection provides a structured synthesis of reward design in monetization-aware recommendation systems. It first discusses the properties a reward function should ideally satisfy and why reward specification is difficult in practice due to partial observability, sparse and delayed long-term outcomes, and competing objectives such as revenue, engagement, and ad fatigue. It then reviews how prior work operationalizes these objectives through proxy metrics and blended utility formulations, along with the rationale for these choices and their main limitations.
@@ -884,6 +845,7 @@ Actor-critic hybrids & Large-scale systems needing both direct policy learning a
 
 
 \subsection{Balancing Exploration and Exploitation in Policy Learning}
+\label{subsec:exploration-exploitation}
 
 Balancing exploration and exploitation is a fundamental challenge in policy learning \cite{Sutton1998}, particularly at large scale, whereby exhaustively exploring all options is computationally infeasible, the cost of suboptimal decisions compounds quickly, and sustained bias toward early winners can prevent  the discovery of truly optimal policies over time \cite{dulac2021challenges}.
 
