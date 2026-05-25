@@ -1,360 +1,139 @@
-# Policy Learning: Citation And Reviewer-Risk Audit
+# Policy Learning: Revision And Reviewer-Risk Audit
 
-Scope: `paper.tex`, `Policy Learning` subsection, current as of May 10, 2026. The audit emphasizes the `Offline vs Online Policy Learning` and `Value-based vs Policy-based Learning` subsubsections because those are the most citation-dense and most exposed to reviewer concerns about generic RL exposition, shallow synthesis, and citation alignment.
+Scope: `paper.tex`, `\subsection{Policy Learning}` (currently lines 745-846).
 
-Latest refresh: May 10, 2026, after the citation cleanup in `Value-based vs Policy-based Learning`.
+Latest refresh: May 25, 2026. Rebuilt from a citation-focused audit into a scored section-level reviewer-risk audit with an explicit score, prioritized pending items, citation adequacy scores, and resolved items. The current subsection is stronger than earlier drafts: it defines an ad-serving policy, connects actions and states back to Sections~\ref{action_space_representation} and~\ref{state_space_representation}, compares offline, online, and hybrid rollout patterns, and replaces some generic algorithm listing with ad-policy examples. The main remaining risks are still reviewer-significant: the value/policy subsection contains a long formal exposition block before the ad-policy synthesis; the REINFORCE/PPO/TRPO/actor-critic discussion is still compressed; several industry performance claims lack exact magnitudes; and the final policy-learning table still contains wording that may be too abstract for a junior practitioner.
 
-Reviewer context used:
+## Reviewer Context Used
 
-- Reviewers said policy learning was explained at length, but ad-specific aspects were not sufficiently emphasized.
-- Reviewers asked for fewer generic pedagogical explanations and more domain-specific illustrations tied to ads and recommendation.
-- Reviewers asked for deeper comparison of methods, including trade-offs, assumptions, and real-world performance.
-- Reviewers flagged shallow offline-RL and evaluation discussion despite citations to richer offline-RL and recommender-system literature.
-- Reviewers flagged citation mismatch risk and unsupported claims about adaptability or production relevance.
+Anchored to direct quotes from `docs/agent/reviewers.txt`, which responds to `original_submission_paper.pdf`. Three-state calibration: the original submission already contained policy-learning exposition and reviewers directly criticized that area. The current offline/online table, strengthened value/policy examples, and actor-critic synthesis contain substantial **new content** added after submission. New content carries full author responsibility and should be source-verified before final submission.
+
+- **Associate Editor:** `"policy learning is explained in some length, but the parts that are specific for ad-related aspects are not sufficiently emphasized."` -> P1, P2, P5, P8.
+- **Associate Editor:** `"a critical discussion and comparison of approaches seems missing"` -> P3, P4, P7, P9.
+- **Reviewer 1 Major Comment 1:** `"A more detailed comparison of methods, highlighting their trade-offs, assumptions, and real-world performance, would substantially enhance the utility of the survey."` -> P3, P4, P6, P7.
+- **Reviewer 1 Soundness:** `"many important methods are barely described, if at all (e.g. policy gradient methods such as REINFORCE, or methods to deal with extremely large action spaces). In many cases, approaches are listed with explanation or any comparisons being drawn."` -> P1, P2, P3, P7.
+- **Reviewer 1 Theoretical Background:** `"they discuss offline RL at only a very shallow level, despite citing papers that discuss the important issues at great depth."` -> P4, P5.
+- **Reviewer 1 Major Comment 3:** `"Quantitative results from existing studies could also be summarized to help readers understand real-world performance and trade-offs."` -> P6.
+- **Reviewer 2:** `"The majority of the paper looks like a general study on Reinforcement Learning and Recommender systems. Emphasis on Ad-policies is insufficient, since this is the main focus of the paper."` -> P1, P2, P5, P8.
+- **Reviewer 2:** `"Several statements about adaptability of RL and its traits on recommenders and ad-related systems, are not sufficiently backed by literature. Some of the cited work on these claims are on general RL research, not specific to ad-policies/recommenders."` -> P5, P6, P7.
+- **Reviewer 2:** `"Position tables in the texts where they are mentioned or referred to will make it easier for the readers."` -> P10.
+- **`revision_rules.md`:** Section 7.1 citation audit, Section 8 literature-review discipline, Section 15 table handling, Section 17.2 metric and trade-off discussion.
 
 ## Current Overall Assessment
 
-The subsection is substantially stronger than earlier drafts. It now:
+The policy-learning subsection is no longer a purely generic RL tutorial. It introduces policy learning through ad-serving decisions, distinguishes offline from online learning in terms of logged impressions, counterfactual evaluation, staged rollout, and exploration risk, and compares value-based, policy-based, and actor-critic approaches with ad-policy anchors. The two comparison tables are useful because they summarize practical choices that practitioners actually face.
 
-- defines policy, state, and action symmetrically,
-- avoids treating ads themselves as the only possible action space,
-- softens broad production claims about stochastic policies and offline-first deployment,
-- gives a concrete offline/online synthesis table,
-- replaces generic value-based algorithm listing with ad-policy examples,
-- adds industry-facing support for neural policies and actor-critic systems,
-- removes several repeated or weakly placed uses of `Sutton1998`, `williams1992simple`, `schulman2017proximal`, `dulac2019challenges`, `zhao2021dear`, `chen2022off`, and `cai2023two`,
-- adds a stronger on-policy / auction-based recommender citation, `xu2023optimizing`.
+The remaining risks are still more serious than in the reward, action, and state-space subsections. Reviewer 1 explicitly named policy-gradient methods such as REINFORCE as underdeveloped, and the current text still compresses REINFORCE, PPO, TRPO, and actor-critic into a short algorithm list before moving to actor-critic examples. Several paragraphs still teach the policy-gradient objective and action-value notation before giving the ad-policy interpretation. That material is correct, but it may reinforce the reviewer concern that policy learning is explained at length while the ad-specific implications arrive late. The section also needs stronger reported-results evidence from DEAR, YouTube, Horizon, and constrained actor-critic sources where exact magnitudes are public.
 
-The main remaining risks are:
+Estimated reviewer-aligned score: **7.4 / 10**. The section has a usable structure and several strong industry anchors, but it remains the highest-risk Section 4 subsection because the remaining depth issue is explicitly named by Reviewer 1 and is still listed as a Tier 1 blocker in the master audit.
 
-- `Sutton1998` still appears several times in the value/policy subsection, but current uses are mostly for definitions, equations, or foundational concepts.
-- The value/policy subsection still contains a block of formal RL exposition before the ad-policy synthesis, though the examples and supporting citations are now more domain-specific.
-- The final policy-learning comparison table still contains some broad RL citations, but the highest-risk rows now include more ad/recommender-specific anchors.
-- Several performance claims cite industry systems but do not report quantitative magnitudes.
-- Some claims are directionally right but could still be tightened if exact reported results are available, especially around actor-critic benefits and policy-based suitability.
+## Legend
+
+Priority and status are color-coded using inline HTML. Colors render in Cursor / VS Code markdown preview and most rich markdown viewers; on GitHub the text labels remain readable even if colors are stripped.
+
+**Priority:**
+<span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> critical / cannot ship
+&nbsp;
+<span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> blocker / must-fix
+&nbsp;
+<span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> should-fix
+&nbsp;
+<span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P3</span> nice-to-have
+
+**Status:**
+<span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> not started
+&nbsp;
+<span style="background:#0d6efd;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">IN PROGRESS</span> being edited
+&nbsp;
+<span style="background:#ffc107;color:black;padding:2px 8px;border-radius:4px;font-weight:bold">PENDING REVIEW</span> awaiting user sign-off
+&nbsp;
+<span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> applied and committed
+
+## Pending Revision Items
+
+### Reviewer-Flagged Depth And Ad-Policy Focus
+
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P1.** Expand the policy-gradient depth pass. Reviewer 1 explicitly named policy-gradient methods such as REINFORCE as barely described. Current text lists REINFORCE, PPO, TRPO, and actor-critic methods in one sentence. Recommended fix: give a short, ad-policy-grounded explanation of REINFORCE, PPO/TRPO-style constrained updates, and actor-critic methods, each tied to what changes in ad-load, insertion, bidding, or slate policy learning.
+
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P2.** Compress or relocate generic formal exposition before the ad-policy synthesis. The policy-gradient objective and action-value definition are accurate, but the section spends many lines on equations and method definitions before the practical ad-policy interpretation. Recommended fix: keep the equations only if the adjacent prose immediately explains what the terms mean for ad-policy actions, logged trajectories, and downstream monetization/engagement returns.
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P3.** Recheck the "policy-based methods can handle large or complex sets of ads more flexibly" sentence. The idea is plausible, but `ie2019slateq` is not policy-gradient-specific and `dulac2021challenges` is broad. If retained, make the claim narrower: policy-based methods can directly parameterize stochastic decisions over candidate ad-policy controls, but they do not remove the need to restrict or factor large action spaces.
+
+### Offline, Online, And Deployment Claims
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P4.** Re-audit the offline/online policy-learning table for exact source support. The table is useful and generally well grounded, but each row blends multiple sources across RL, counterfactual learning, and production systems. Confirm that the cited sources directly support the role, mechanism, and trade-off columns, or add a table note that the rows are authorial synthesis from the cited systems.
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P5.** Soften broad stochastic-policy production claims if they cannot be source-verified. Current language says many large-scale recommendation and ad-serving systems use stochastic policies or stochastic exploration mechanisms, while simpler or older systems may use deterministic rules. This is directionally plausible, but broad. Recommended fix: tie the claim to specific systems or narrow it to "systems that learn online or use bandit/RL exploration often include stochastic exploration mechanisms."
+
+### Evidence, Results, And Citation Fit
+
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P6.** Add concrete reported-results evidence where available. Reviewer 1 asked for quantitative results. Check `zhao2021dear`, `chen2022off`, `gauci2018horizon`, `cai2023two`, and `Theocharous-2015` for exact metrics or improvement magnitudes. If exact values are not public, say that rather than using broad improvement language.
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P7.** Verify the actor-critic claims. The YouTube `chen2022off` discussion is strong and specific. The Horizon/Facebook paragraph mentions notifications and video ranking rather than ad recommendations, so it should not be used as direct evidence for ad recommendation unless the sentence is framed as production RL infrastructure rather than ad-specific deployment. The `cai2023two` paragraph should be checked for exact objective names, constraints, and reported trade-off results.
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P8.** Replace table phrase "limited support" with plain language. Recommended wording: "unreliable for actions rarely selected by the previous policy." This matches the earlier prose and avoids jargon that a junior practitioner may not understand.
+
+### Tables, Placement, And Style
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P9.** Check whether Table~\ref{tab:policy-learning-comparison} adds enough beyond Table~\ref{tab:offline-online-policy-learning}. Both are useful, but together they may feel table-heavy. Keep both only if the first table explains rollout modality and the second explains algorithm family.
+
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P10.** Compile and inspect placement of both policy-learning tables. They are `table*` floats, so source placement may not match rendered placement.
+
+- <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P3</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **P11.** Reduce repeated `Sutton1998` visibility only where it does not harm clarity. The current uses are mostly defensible for definitions and equations; the risk is reviewer perception that the section is textbook-like.
 
 ## Citation Adequacy Scores
 
-Scores use a 1-10 scale:
-
-- 9-10: directly supports the attached claim and is well placed.
-- 7-8: mostly appropriate but broad, indirect, or supporting only part of the sentence.
-- 5-6: plausible but weakly aligned or too general for the attached claim.
-- 1-4: likely mismatched and should be removed or replaced.
-
-| Citation | Current Use | Adequacy | Assessment |
+| Citation | Current Use In Policy-Learning Subsection | Adequacy | Assessment |
 |---|---|---:|---|
-| `Sutton1998` | RL definitions, offline/online taxonomy, Monte Carlo, value functions, trajectory notation, policy-gradient theorem | 9 for definitions/equations; 6 where repeated | Foundationally correct. Keep for first-use definitions and equations, but avoid stacking it onto industry or ad-policy claims. |
-| `russell2016artificial` | Broad value-based vs policy-based taxonomy in earlier draft | 6 | Removed from the current value/policy subsection because `Sutton1998` already supports the taxonomy. |
-| `levine2020offline` | Offline learning, logged-data limits, Monte Carlo/offline-RL limitations, table row on offline learning | 8 | Strong for offline RL and logged-data concerns. It is broad, so it is best when paired with `chen2022off`, `gauci2018horizon`, or counterfactual-learning citations. |
-| `chen2022off` | YouTube/off-policy actor-critic, logged recommender trajectories, offline evaluation, rollout, neural policies, actor-critic | 9 | One of the strongest industry/recommender RL anchors. Well placed for offline-to-online, actor-critic, and logged-trajectory claims. |
-| `gauci2018horizon` | Horizon/Meta workflow, gated rollout, production RL platform, actor-critic/hybrid claims | 8 | Strong applied RL infrastructure source. Good for production rollout and hybrid methods. Avoid using it as sole support for broad ad-serving generalizations. |
-| `Mehrotra2020` | Spotify contextual bandit, multi-objective online optimization, offline-then-online rollout | 8 | Strong industry platform example. Best tied to bandit/multi-objective online learning and Spotify, not generic offline RL. |
-| `swaminathan2015counterfactual` | Logged bandit feedback, missing counterfactuals, IPS, support-region limits | 9 | Strong fit for logged-feedback and counterfactual-risk claims. Current placement is appropriate. |
-| `dudik2011doubly` | Doubly robust estimators and counterfactual policy evaluation | 9 | Strong fit where doubly robust estimators are explicitly named. Current use is appropriate. |
-| `zhao2021dear` | Ad-policy actions, ad-impression policy learning, TikTok/DEAR, neural ad-serving policy | 9 | Strong ad-policy anchor. Current use is well aligned, especially for ad-impression and policy-based ad-ranking claims. |
-| `ie2019reinforcement` / `ie2019slateq` | Slate formulation, large slate/action-space claims, comparison table limitations | 8 | Good for slate-based recommender RL. Not ad-specific, but appropriate for slate/action-space complexity. |
-| `Theocharous-2015` | Personalized ad recommendation and lifetime-value optimization | 9 | Strong fit for value-based ad-policy formulations. Better than generic RL citations for this claim. |
-| `zhao2018deep` | Sponsored-search real-time bidding with deep RL | 9 | Strong ad/RL source for value-based or deep RL bidding settings. |
-| `wu2018budget` | Budget-constrained display advertising with model-free RL | 9 | Strong display-advertising RL source. Current use is well aligned. |
-| `williams1992simple` | Policy-gradient estimator, REINFORCE, stochastic policy parameterization | 9 | Strong foundational policy-gradient support. Current use is more focused than before. |
-| `schulman2015trust` | TRPO, policy-gradient stability, high-variance policy updates | 9 | Strong fit for stability and policy-optimization claims. |
-| `schulman2017proximal` | PPO and parameterized policy optimization | 9 | Strong fit. Current use is concentrated in the algorithm list rather than repeated across explanatory claims. |
-| `mnih2016asynchronous` | Actor-critic and neural RL methods | 8 | Strong deep RL source, especially for actor-critic. It is not ad-specific, so pairing with `chen2022off` is helpful. |
-| `lin2023survey` | RL/recommender taxonomy and actor-critic context | 7 | Useful broad recommender RL survey. Should not carry ad-policy-specific claims alone. |
-| `dulac2021challenges` | Real-world RL limits, large action spaces, exploration risk, deployment constraints | 8 | Broad but appropriate for practical RL challenges. The subsection now prefers the later journal version and avoids repeated use where a method-specific citation exists. |
-| `kaelbling1996reinforcement` | Exploration rules such as epsilon-greedy and classic RL survey support | 7 | Acceptable for general RL exploration, but older and broad. Current use is acceptable but not industry-specific. |
-| `cai2023two` | Two-stage constrained actor-critic and multi-objective trade-offs | 9 | Direct support for constrained actor-critic in recommendation. Strong fit. |
-| `xu2023optimizing` | On-policy RL in auction-based recommender systems and online/guarded policy updates | 8.5 | Newer and relevant to on-policy learning in auction-based recommender systems. Good addition for online/on-policy policy learning. |
-| `mcmahan2013ad` | Supervised ad click prediction at Google scale | 8 | Strong for supervised ad prediction, not for value-based RL. Current separation is appropriate. |
-| `zhu2021overview` | Action-space structure, discrete/enumerable action-space claims, final practitioner factors | 7 | Broad but useful for action-space structure. Current placement is acceptable when paired with ad-specific examples. |
-
-## Resolved Citation / Wording Issues
-
-### 1. Generic value-based algorithm list was replaced
-
-Previous issue:
-
-```tex
-Common algorithms used in value-based learning include Q-learning, SARSA,
-and Deep Q-Networks (DQN) \cite{Sutton1998, mnih2015human}.
-```
-
-Risk:
-
-This read as generic RL pedagogy and did not answer the reviewer request for ad-policy relevance. `mnih2015human` only directly supported DQN, not the whole list.
-
-Current resolution:
-
-```tex
-In ad-policy settings, value-based formulations appear in personalized ad
-recommendation, sponsored-search real-time bidding, and budget-constrained
-display advertising...
-\cite{Theocharous-2015, zhao2018deep, wu2018budget}.
-```
-
-Status: resolved.
-
-### 2. Policy-based learning wording was made more formal
-
-Previous issue:
-
-```tex
-the agent tries out different strategies and tweaks their behavior
-directly based on what works well overall
-```
-
-Risk:
-
-Informal and underspecified.
-
-Current resolution:
-
-```tex
-In policy-based learning, the agent directly adjusts the decision rule
-used at each decision point to maximize expected cumulative reward,
-rather than first estimating the value of every candidate action at that
-decision point and then choosing the action with the highest estimated
-value.
-```
-
-Status: resolved.
-
-### 3. Policy-gradient theorem now has a direct citation
-
-Previous issue:
-
-The sentence introducing the policy-gradient theorem did not cite the theorem directly.
-
-Current resolution:
-
-```tex
-... the policy gradient theorem provides a way to compute the gradient
-... \cite{Sutton1998, williams1992simple}
-```
-
-Status: resolved.
-
-### 4. Epsilon-greedy and stochasticity claims were softened
-
-Previous issue:
-
-The text said value-based methods could not learn stochasticity and described epsilon-greedy as ad hoc.
-
-Risk:
-
-Too absolute. Value-based methods can be paired with exploration rules or uncertainty estimates.
-
-Current resolution:
-
-The text now says value-based systems can explore through mechanisms such as epsilon-greedy, but the exploration rule is usually specified separately from the learned value estimates.
-
-Status: resolved.
-
-### 5. Architecture-specific pipeline claim was generalized
-
-Previous issue:
-
-The subsection implied that ad-ranking systems commonly follow a specific transformer-to-multi-head-attention pipeline.
-
-Risk:
-
-Too architecture-specific and not clearly supported across ad systems.
-
-Current resolution:
-
-The text now refers more generally to ad-ranking systems that combine representation learning, retrieval, and downstream ranking layers.
-
-Status: resolved.
-
-### 6. Offline/online synthesis was added
-
-Previous issue:
-
-The offline-vs-online discussion had useful explanation but lacked synthesis of when each approach is preferred.
-
-Current resolution:
-
-Table `tab:offline-online-policy-learning` now compares offline learning, online learning, and offline-then-online rollout by role, mechanism, and main trade-off.
-
-Status: resolved.
-
-### 7. Duplicate `xu2023optimizing` bibliography entry was removed
-
-Previous issue:
-
-`bibliography.bib` briefly contained duplicate `xu2023optimizing` entries.
-
-Current resolution:
-
-The duplicate was removed and the DOI-bearing entry was retained.
-
-Status: resolved.
-
-### 8. Softmax/action-logit wording was removed
-
-Previous issue:
-
-```tex
-a parameterized policy can output an action distribution directly,
-for example through a softmax over action logits
-```
-
-Risk:
-
-This was technically correct but too didactic and not intuitive for the practitioner audience emphasized by the reviewers.
-
-Current resolution:
-
-```tex
-a parameterized ad policy can assign probabilities directly to
-candidate actions such as ad-load levels, insertion positions, bids,
-or slate choices in the current user and auction context
-\cite{zhao2021dear, xu2023optimizing}.
-```
-
-Status: resolved.
-
-### 9. Dense repeated citations in the value/policy subsection were reduced
-
-Previous issue:
-
-The subsection used `Sutton1998`, `williams1992simple`, `schulman2017proximal`, `dulac2019challenges`, `zhao2021dear`, `chen2022off`, and `cai2023two` repeatedly, sometimes several times within a single paragraph.
-
-Risk:
-
-Even when technically accurate, citation density made the subsection read as generic RL exposition and could reinforce the reviewer concern that the paper overemphasizes pedagogy rather than ad-policy synthesis.
-
-Current resolution:
-
-- `russell2016artificial` was removed from the value/policy taxonomy sentence.
-- `dulac2019challenges` was replaced with `dulac2021challenges` where a real-world RL limitations source was still needed.
-- Repeated `zhao2021dear`, `chen2022off`, and `cai2023two` citations were trimmed within paragraphs after the first relevant attribution.
-- Ad-policy claims now lean more on `zhao2021dear`, `xu2023optimizing`, `Theocharous-2015`, `zhao2018deep`, `wu2018budget`, and `ie2019slateq`.
-
-Status: resolved.
-
-### 10. Actor-critic overclaiming was softened
-
-Previous issue:
-
-```tex
-Actor-critic RL brings the bias-variance trade-off under control...
-```
-
-Risk:
-
-This overclaimed the method's effect. Actor-critic methods can manage the trade-off but do not eliminate it.
-
-Current resolution:
-
-```tex
-Actor-critic RL manages the bias--variance trade-off by using the
-critic to provide lower-variance value estimates while the actor
-directly optimizes the policy objective
-\cite{mnih2016asynchronous, chen2022off}.
-```
-
-Status: resolved.
-
-## Remaining Reviewer-Risk Items
-
-### 1. "Better suited" for hybrid methods may still overstate
-
-Current text:
-
-```tex
-This combination improves learning stability and makes hybrid methods
-better suited for complex recommendation and ad-serving systems than
-either pure value-based or pure policy-gradient methods alone...
-```
-
-Risk:
-
-This is plausible and now less over-cited, but comparative superiority can still be read as stronger than the evidence. It would be safer to frame it as "often attractive" or "commonly used" rather than categorically better.
-
-Recommended edit:
-
-```tex
-This combination can improve learning stability, which makes hybrid
-methods attractive for complex recommendation and ad-serving systems...
-```
-
-Priority: medium.
-
-### 2. Quantitative evidence remains thin
-
-Current issue:
-
-The subsection now has better citations and synthesis, but still rarely reports concrete metric names or improvement magnitudes from cited industry systems.
-
-Risk:
-
-Reviewer 1 explicitly asked for practical evaluation discussion and quantitative results where available.
-
-Recommended next step:
-
-Add a compact reported-evidence sentence or table for:
-
-- `zhao2021dear` / DEAR,
-- `chen2022off` / YouTube,
-- `gauci2018horizon` / Horizon,
-- `cai2023two` / constrained actor-critic,
-- `Theocharous-2015` if lifetime-value results are reported clearly.
-
-Priority: high.
-
-### 3. Final comparison table still uses broad "limited support" phrasing
-
-Current table row:
-
-```tex
-Sensitive to logging-policy bias and limited support
-```
-
-Risk:
-
-The phrase "limited support" was confusing in prose and may also be confusing in the table.
-
-Recommended edit:
-
-```tex
-Sensitive to logging-policy bias and unreliable for actions rarely
-selected by the previous policy
-```
-
-Priority: medium.
-
-### 4. `Sutton1998` remains visible in adjacent foundational sentences
-
-Current issue:
-
-`Sutton1998` still appears in the value/policy subsection for taxonomy, greedy action selection, the policy-gradient theorem, and the action-value definition.
-
-Assessment:
-
-Most current uses are defensible. The remaining issue is less citation mismatch and more reviewer perception: too many textbook references in a section that reviewers already saw as overly didactic.
-
-Recommended next step:
-
-Do not remove all `Sutton1998`; instead, reduce repeated adjacent uses if the sentence can be supported by the immediately preceding equation or by a more specific method source.
-
-Priority: low to medium.
-
-### 5. Minor prose cleanup remains
-
-Examples:
-
-- Bias-variance dash style should be consistent with the rest of the document.
-- Actor-critic capitalization should be consistent.
-- Some table wording still says "safer policy screening" or "lower deployment risk"; these are acceptable but could be softened if reviewer-safety is prioritized.
-
-Priority: low.
-
-## Reviewer-Weighted Next Edits
-
-1. Add concrete reported-results evidence where available.
-2. Replace "limited support" in the final policy-learning comparison table.
-3. Consider softening the remaining "better suited" hybrid-method sentence if exact comparative evidence is not available.
-4. Continue reducing dense textbook exposition only where it does not harm clarity.
-5. Keep domain-specific citations close to ad-policy claims and reserve foundational RL citations for definitions and equations.
+| `Sutton1998` | RL definitions, offline/online taxonomy, Monte Carlo, value functions, trajectory notation, policy-gradient theorem. | 9 for definitions/equations; 6 where repeated | Foundationally correct. Keep for first-use definitions and equations, but avoid stacking it onto industry or ad-policy claims. |
+| `levine2020offline` | Offline learning, logged-data limits, Monte Carlo/offline-RL limitations, table row on offline learning. | 8 | Strong for offline RL and logged-data concerns. Broad, so best paired with recommender or counterfactual-learning sources. |
+| `chen2022off` | YouTube off-policy actor-critic, logged recommender trajectories, offline evaluation, rollout, neural policies, actor-critic. | 9 | One of the strongest industry/recommender RL anchors. Well placed for offline-to-online, actor-critic, and logged-trajectory claims. |
+| `gauci2018horizon` | Horizon/Meta workflow, gated rollout, production RL platform, actor-critic/hybrid claims. | 8 | Strong applied RL infrastructure source. Good for production rollout and hybrid methods. Avoid using as sole support for ad-serving generalizations. |
+| `Mehrotra2020` | Spotify contextual bandit, multi-objective online optimization, offline-then-online rollout. | 8 | Strong industry platform example. Best tied to bandit/multi-objective online learning, not generic offline RL. |
+| `swaminathan2015counterfactual` | Logged bandit feedback, missing counterfactuals, IPS, support-region limits. | 9 | Strong fit for logged-feedback and counterfactual-risk claims. |
+| `dudik2011doubly` | Doubly robust estimators and counterfactual policy evaluation. | 9 | Strong fit where doubly robust estimators are explicitly named. |
+| `zhao2021dear` | Ad-policy actions, ad-impression policy learning, TikTok/DEAR, neural ad-serving policy. | 9 | Strong ad-policy anchor. Current use is well aligned. |
+| `ie2019reinforcement` / `ie2019slateq` | Slate formulation, large slate/action-space claims, comparison table limitations. | 8 | Good for slate-based recommender RL. Not ad-specific, but relevant to slate/action-space complexity. |
+| `Theocharous-2015` | Personalized ad recommendation and lifetime-value optimization. | 9 | Strong fit for value-based ad-policy formulations. |
+| `zhao2018deep` | Sponsored-search real-time bidding with deep RL. | 9 | Strong ad/RL source for value-based or deep RL bidding settings. |
+| `wu2018budget` | Budget-constrained display advertising with model-free RL. | 9 | Strong display-advertising RL source. |
+| `williams1992simple` | Policy-gradient estimator, REINFORCE, stochastic policy parameterization. | 9 | Strong foundational policy-gradient support. Needs more explanatory use, not just citation in a list. |
+| `schulman2015trust` | TRPO, policy-gradient stability, high-variance policy updates. | 9 | Strong fit for stability and policy-optimization claims. |
+| `schulman2017proximal` | PPO and parameterized policy optimization. | 9 | Strong fit. Current use is concentrated in the algorithm list; may need a sentence explaining why PPO matters for ad-policy updates. |
+| `mnih2016asynchronous` | Actor-critic and neural RL methods. | 8 | Strong deep RL source, especially for actor-critic. Not ad-specific, so pair with `chen2022off` or `cai2023two`. |
+| `lin2023survey` | RL/recommender taxonomy and actor-critic context. | 7 | Useful broad recommender RL survey. Should not carry ad-policy-specific claims alone. |
+| `dulac2021challenges` | Real-world RL limits, large action spaces, exploration risk, deployment constraints. | 8 | Broad but appropriate for practical RL challenges. |
+| `kaelbling1996reinforcement` | Exploration rules such as epsilon-greedy and classic RL survey support. | 7 | Acceptable for general RL exploration, but older and broad. |
+| `cai2023two` | Two-stage constrained actor-critic and multi-objective trade-offs. | 9 | Direct support for constrained actor-critic in recommendation. Strong fit, but exact results should be source-checked. |
+| `xu2023optimizing` | On-policy RL in auction-based recommender systems and online/guarded policy updates. | 8 | Relevant to on-policy learning in auction-based recommender systems. |
+| `mcmahan2013ad` | Supervised ad click prediction at Google scale. | 8 | Strong for supervised ad prediction, not value-based RL. Current separation is appropriate. |
+| `zhu2021overview` | Action-space structure, discrete/enumerable action-space claims, final practitioner factors. | 7 | Broad but useful for action-space structure. Current placement is acceptable when paired with ad-specific examples. |
+
+## Resolved Revision Items
+
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P12.** Generic value-based algorithm listing was replaced with ad-policy settings: personalized ad recommendation, sponsored-search real-time bidding, and budget-constrained display advertising.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P13.** Policy-based learning wording was made more formal and less conversational.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P14.** The policy-gradient theorem now has direct foundational support through `Sutton1998` and `williams1992simple`.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P15.** Epsilon-greedy and stochasticity claims were softened so value-based methods are no longer described as incapable of stochastic exploration.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P16.** Architecture-specific pipeline claims were generalized to avoid implying a universal transformer-to-attention ad-ranking architecture.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P17.** The offline/online synthesis table now distinguishes offline learning, online learning, and offline-then-online rollout.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P18.** Softmax/action-logit wording was removed and replaced with practitioner-facing examples of ad-load levels, insertion positions, bids, and slate choices.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P19.** Dense repeated citations were reduced in the value/policy subsection.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **P20.** Actor-critic overclaiming was softened from controlling the bias-variance trade-off to managing it.
+
+## Out Of Scope For This File
+
+- Section 4.1 reward design: handled in `reward_design_citation_audit.md`.
+- Section 4.2 action-space design: handled in `action_space_audit.md`.
+- Section 4.3 state-space design: handled in `state_space_citation_audit.md`.
+- Section 4.5 exploration/exploitation: audit file still missing.
+- Section 5 evaluation framework: handled in `evaluation_audit.md`.
+- Paper-wide float placement and table/figure numbering: belongs in a future `tables_figures_audit.md`.
+
+## Working Rules
+
+- Treat P1 and P2 as the highest-leverage Section 4.4 fixes because they directly answer Reviewer 1's named policy-gradient critique.
+- Preserve only as much formal RL exposition as needed to support the ad-policy argument.
+- Tie every method family to a concrete ad-policy decision: ad load, insertion position, bid, slate choice, guardrail constraint, or rollout policy.
+- Do not claim an industry example is ad-specific if the cited system is a broader recommender or production RL platform.
+- Apply citation checks to every metric, performance claim, method-family comparison, and deployment claim.
