@@ -138,13 +138,14 @@ While recent and highly cited work was prioritized, papers introducing novel met
         RL construct & Notation & Role in monetization-aware recommendation \\
         \midrule
         Environment & $\mathcal{E}$; dynamics $P(s_{t+1}\mid s_t,a_t)$ & The platform setting that reacts to the ranking policy: users, ad inventory, organic items, auction context, and the interface where ads displace or accompany organic content. \\
-        Goal & $\max_\pi \mathbb{E}_\pi[\sum_{t=0}^{T}\gamma^tR_t]$ & Learn a policy that improves monetization while preserving engagement, retention, and user-experience guardrails over repeated interactions. \\
+        Goal & $\max_\pi \mathbb{E}_\pi[\sum_{t=0}^{T}\gamma^tR_t]$ & Learn a policy that optimizes a weighted utility over monetization, engagement, retention, and user-experience costs. The weights encode the platform's chosen trade-off among these objectives. \\
         Episode / horizon & $\tau=(s_0,a_0,r_0,\ldots,s_T)$; $T$ & A user session, repeated-visit window, or A/B experiment horizon over which cumulative effects of ad and organic ranking decisions are measured. \\
         State & $s_t \in \mathcal{S}$ & The partially observed user, session, request, context, ad-history, and organic-interaction signals available before a ranking decision. \\
         Action & $a_t \in \mathcal{A}^{\mathrm{ad}} \cup \mathcal{A}^{\mathrm{org}}$ & The decision the platform takes at a ranking opportunity: which ads are eligible, how many ads to show, where to place them, which quality thresholds to enforce, and how to order organic items. \\
         Reward & $R_t$ or $R(s_t,a_t)$ & The scalar utility that combines monetization and user-side outcomes, such as revenue, clicks, conversions, dwell time, retention, and ad-fatigue penalties. \\
         Policy & $\pi(a\mid s)$ or $\pi_\theta$ & The learned rule that maps observed context to ranking actions, thereby controlling ad load, placement, eligibility, and organic ordering. \\
-        Exploration and logging & $\epsilon$, UCB, Thompson sampling, or $\mu(a\mid s)$ & The mechanism that generates evidence about uncertain actions, either through deliberate exploration or through the historical logging policy used for offline replay. \\
+        Exploration strategy & e.g., $\epsilon$, UCB, Thompson sampling & The action-selection strategy that allocates traffic to uncertain ad or organic ranking decisions to reduce uncertainty about outcomes not yet observed with enough support. These are examples rather than an exhaustive list. \\
+        Logging policy & $\mu(a\mid s)$ & The historical or experimental policy that generated logged impressions used for offline replay, counterfactual evaluation, and off-policy learning. \\
         \bottomrule
     \end{tabularx}
     \caption{Notation guide for RL formulation in monetization-aware recommendation}
