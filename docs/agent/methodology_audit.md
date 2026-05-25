@@ -1,8 +1,8 @@
 # Paper Collection Methodology: Revision And Reviewer-Risk Audit
 
-Scope: `paper.tex`, `\section{Paper Collection Methodology}` (currently lines 119-174). Covers four prose paragraphs (lines 122, 124, 126-127, 129) and the FrozenLake vs Ad Recommendations comparison table (lines 131-174).
+Scope: `paper.tex`, `\section{Paper Collection Methodology}` (currently lines 119-152). Covers four prose paragraphs (lines 122, 124, 126-127, 129) and Table~\ref{tab:comparison}, now a compact notation guide for recurring RL constructs in monetization-aware recommendation.
 
-Latest refresh: May 17, 2026, first comprehensive audit. Builds on the deferred-decision note from the introduction audit (R7) that the FrozenLake table and references in this section need their own coordinated cleanup.
+Latest refresh: May 25, 2026 (noon). Refreshed after Table 1 was redesigned from a FrozenLake/MDP-component comparison into a notation guide near the beginning of the paper. The table now preserves environment, goal, episode/horizon, action, and policy, adds notation, frames the goal as a weighted utility, and separates exploration strategy from logging policy.
 
 ## Reviewer context used
 
@@ -31,18 +31,17 @@ The methodology section is one of the **reviewer-praised** parts of the paper. B
 - enumerates four distinct collection channels (foundational textbooks, curated industry list, targeted keyword searches, Google Scholar review-paper search, citation-network crawling),
 - reports the final corpus size (153 papers),
 - names three explicit ranking criteria (influence, industry relevance, recency),
-- includes a cross-domain mapping table that grounds the MDP abstraction in concrete ad-policy terms.
+- includes a notation guide that grounds recurring RL constructs in concrete ad-policy terms.
 
 The main remaining risks are:
 
 - **Citation-claim alignment**: `russell2016artificial` is cited at line 122 as foundational for *"Contextual Bandits, Off-Policy Learning, and Offline Replay"*. Russell & Norvig is broad enough to mention MDPs in passing, but it is not a defensible foundation for off-policy learning or offline replay — those are domain-specific topics better anchored to `Sutton1998` or specialized references.
 - **Missing reproducibility hygiene**: no date range for the collection window, no exclusion criteria, no description of how duplicates or near-duplicates were handled. `revision_rules.md` §17.1 explicitly calls for this kind of reporting.
 - **Missing section-level scaffolding**: no opening sentence describing what the section covers, no closing summary. `revision_rules.md` §3 requires both.
-- **Residual "displacement cost" mentions elsewhere in the paper** may still appear without a definition. The methodology table now defines the term inline (M3 partially resolved), but a sweep of other body mentions is still needed.
-- **Goal row in the comparison table** still uses *"without compromising user experience"* — the same absolute construction softened in the introduction (intro audit I4). Worth a follow-up consistency edit.
+- **Residual "displacement cost" mentions elsewhere in the paper** may still appear without a definition. The methodology table no longer contains this term, so the remaining risk lives in the history section and is tracked in `history_audit.md` C6/H15.
 - **Redundancy with the introduction**: the closing sentences of paragraph 4 (line 129) restate the paper's overall structure, which is already covered by the structure paragraph at line 117.
 
-Estimated reviewer-aligned score: **8.5 / 10**, up from 7.75 / 10 after M2 (FrozenLake content) was resolved by dropping the FrozenLake column from the comparison table and rewriting the line 129 prose to remove the toy-example framing. M3 (displacement-cost term) is partially resolved by the inline gloss in the restructured table now appearing in the main body. The remaining gap is held by smaller phrasing and reproducibility hygiene items, plus the `russell2016artificial` citation-claim alignment fix.
+Estimated reviewer-aligned score: **8.8 / 10**, up from 8.5 / 10 after Table 1 was redesigned as a notation guide. The prior goal-row issue (*"without compromising user experience"*) is resolved by the weighted-utility framing, and the prior exploration/logging conflation has been corrected by separating exploration strategy from logging policy. The remaining methodology-specific gaps are reproducibility hygiene, section-level scaffolding, and the `russell2016artificial` citation-claim alignment fix.
 
 ## Legend
 
@@ -68,9 +67,9 @@ Priority and status are color-coded using inline HTML. Colors render in Cursor /
 
 ## Pending Revision Items
 
-### Reviewer-flagged content (partially resolved)
+### Reviewer-flagged content
 
-- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#ffc107;color:black;padding:2px 8px;border-radius:4px;font-weight:bold">PENDING REVIEW</span> **M3 (partially resolved).** *"Displacement Cost Threshold"* still appears at the equivalent line inside the restructured table, but the inline gloss in the table now sits in the main body (no longer only deferred to the appendix), and the term is preceded by a definition (*"A measure of the opportunity cost for showing an ad"*). Reviewer 1's complaint was that *"displacement cost appears early but is only briefly defined much later in the appendix"*; the table now provides the early definition in the main body. Verify whether *"displacement cost"* (lowercase, narrative usage) appears anywhere else in the paper without an inline definition and either define on first use or replace the references. If no other unmoored uses exist, this can be moved to Resolved.
+No methodology-local reviewer-flagged content remains open after the Table 1 redesign. Residual displacement-cost definition risk is now tracked in `history_audit.md`, where the surviving body uses occur.
 
 ### Citation-claim alignment
 
@@ -86,7 +85,7 @@ Priority and status are color-coded using inline HTML. Colors render in Cursor /
 ### Section-level scaffolding
 
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **M9.** Add a 1-2 sentence opening paragraph that frames what the section covers and how it is organized. `revision_rules.md` §3 requires this for every chapter / section past the first. Currently the section opens directly with *"To ensure broad coverage..."* with no orientation.
-- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **M10.** Add a brief closing summary that pulls the section together before the historical-overview section begins. The current section ends with the FrozenLake table caption and segues abruptly into the next section. `revision_rules.md` §3 ("each chapter ... should end with a summary section") and §5 ("make the 'so what' explicit") both apply.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **M10.** Add a brief closing summary that pulls the section together before the historical-overview section begins. The current section ends with the Table 1 notation guide and segues directly into the next section. `revision_rules.md` §3 ("each chapter ... should end with a summary section") and §5 ("make the 'so what' explicit") both apply.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **M11.** Consider whether a process-flow diagram (search channels → ranking → final 153 papers) would add value. `revision_rules.md` §13 explicitly suggests this for methodology sections. Optional but reviewer-friendly given Reviewer 2's broader structure complaint.
 
 ### Redundancy with the introduction
@@ -132,11 +131,14 @@ Scores use a 1-10 scale:
 
 - <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M1.** Anonymized the curated-list source in paragraph 2 (line 124). Replaced *"a curated list of 10-15 papers referenced within Pinterest's Ad Policy team was also compiled"* with *"14 papers from an industry curated reading list were also compiled"*. Resolution chosen over a transparency-with-disclosure path because the byline already lists University of Toronto as both authors' affiliation; adding employment disclosure would have *created* a Pinterest connection that does not otherwise exist in the paper, contrary to the author's intent to publish as an independent academic. The keyword-search company list at line 124 retains *"Pinterest"* alongside the other six platforms — now neutral methodology reporting rather than a sponsor disclosure. The `revision_rules.md` §1 sponsor-anonymity rule is satisfied by removal of the only sponsor-implying mention, without requiring §1 itself to be reframed.
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M8.** Replaced the vague *"10-15 papers"* with the exact count *"14 papers"* in the same edit that resolved M1. The curated-list count is now reproducible at the level of cardinality, even though the individual papers on the list beyond the four named examples are not explicitly enumerated (the four examples plus the criteria stated elsewhere are sufficient).
-- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M2.** Removed the FrozenLake content per Reviewer 1's explicit feedback that *"the Frozen Lake example does not meaningfully contribute to understanding the core problems faced in real-world ad and recommendation systems."* Two coordinated edits: (1) prose at line 129 rewritten to drop the *"toy example such as the Frozen Lake"* framing and the *"comparison between the toy example and real-world implementation parallels"* table reference, replacing them with a direct framing of the survey as a per-component review of how MDP components are operationalized in industrial recommender systems; (2) comparison table restructured from three columns (MDP Component / FrozenLake Example / Ad Recommendations) to two columns (MDP Component / Ad Recommendations), with column widths adjusted (was `p{2.5cm}|p{3cm}|p{8cm}`, now `p{2.5cm}|p{11cm}`, same total width) and the caption updated from *"Comparison of Frozen Lake Example and Large-Scale Recommendation Systems..."* to *"Mapping of MDP Components to Large-Scale Recommendation Systems for Ad Policy Optimization."* Every Ad Recommendations cell is preserved verbatim, so no ad-policy content was lost.
+- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M2.** Removed the FrozenLake content per Reviewer 1's explicit feedback that *"the Frozen Lake example does not meaningfully contribute to understanding the core problems faced in real-world ad and recommendation systems."* The final Table 1 implementation is now a compact `tabularx` notation guide with rows for environment, goal, episode/horizon, state, action, reward, policy, exploration strategy, and logging policy. It preserves the useful practical mapping from the older table while dropping the toy-example comparison and nested bullet lists.
+- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M3.** Methodology-local displacement-cost issue resolved by removal: Table 1 no longer introduces *"Displacement Cost Threshold"*. Remaining body-level displacement-cost claims are tracked in `history_audit.md` C6/H15.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M16.** Corrected the Table 1 goal row from an absolute *"without compromising user experience"* frame to a weighted-utility objective over monetization, engagement, retention, and user-experience costs. This aligns the table with the paper's multi-objective reward framing.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **M17.** Split exploration strategy from logging policy in Table 1. Exploration now refers to example action-selection strategies for reducing uncertainty, while logging policy refers to the historical or experimental data-generating policy used for offline replay and off-policy learning.
 
 ## Out of scope for this file
 
-- The FrozenLake content elsewhere in the paper (lines beyond the methodology) is addressed by intro audit R7 (the preview sentence is already removed) and any future per-section audits.
+- FrozenLake content outside the methodology has been addressed by the introduction audit and the Section 4 opener audit.
 - The "comparison table later in the paper" mentioned in earlier conversations (the policy-learning comparison table at lines 791-892 or thereabouts) is out of scope for this audit; it lives in the policy-learning subsection.
 - Citation audits for body sections live in `reward_design_citation_audit.md`, `state_space_citation_audit.md`, and `policy_learning_citation_audit.md`.
 - Abstract revisions live in `abstract_revision_todo.md`. Introduction revisions live in `introduction_audit.md`. Document-wide revision conventions live in `revision_rules.md`.
@@ -149,4 +151,4 @@ Scores use a 1-10 scale:
 - When updating an item's status, swap the colored status badge in place (TODO -> IN PROGRESS -> PENDING REVIEW -> DONE).
 - When an item is resolved, move it from Pending to Resolved with a one-line summary of how it was resolved.
 - Apply the §7.1 citation audit checks (no redundancy, no orphans, claim-citation alignment) to every change.
-- M2 (FrozenLake content) is the largest pending change in scope: it includes both prose and a 40-line table. Discuss the high-level decision (drop / replace / restructure) before applying.
+- Table 1 is now a notation guide, not a toy-example comparison. Future methodology edits should preserve this compact role unless the paper-wide tables/figures audit recommends a different table taxonomy.

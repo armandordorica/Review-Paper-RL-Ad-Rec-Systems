@@ -1,10 +1,10 @@
 # Evaluation Section: Revision And Reviewer-Risk Audit
 
-Scope: planned new top-level section in `paper.tex`, to be inserted after `\subsection{Balancing Exploration and Exploitation in Policy Learning}` and before `\section{Conclusions}`. This audit defines the objective, placement, scope boundaries, section outline, and paper-by-paper evaluation inventory for the future evaluation section.
+Scope: `paper.tex`, `\section{Evaluating Joint Ad and Organic Ranking Policies}` (currently lines 1068-1117). The section now sits after `\subsection{Balancing Exploration and Exploitation in Policy Learning}` and before `\section{Conclusions}`. It contains three subsections: evaluation metrics and guardrails, offline replay and simulation, and online industrial evidence, plus Table~\ref{tab:evaluation-evidence}.
 
-Latest refresh: May 25, 2026 (early afternoon). Created after the Section 4 MDP-formulation opener and Table 1 notation guide landed, then recalibrated against the current `paper.tex` metric tables. A compact first draft of the new evaluation section has now been inserted into `paper.tex` before Conclusions, using three subsections and one evidence table. The section opener was then grounded in verified prior-survey coverage: Afsar et al.\ categorize RL recommender evaluation environments as offline, simulation, and online; Lin et al.\ summarize evaluation strategies, datasets, and ranking metrics; Deffayet et al.\ critique next-item prediction as an offline protocol for RL recommenders. The manuscript section now follows the same survey convention with ad-policy-specific subsections on trade-off metrics and guardrails, pre-deployment evidence, and online industrial evidence. The metrics subsection now explicitly distinguishes primary metrics, secondary/diagnostic metrics, guardrails, short-term proxies, and long-term holdout outcomes. The evaluation table was redesigned from a system-by-system comparison into a mechanism-oriented table with evaluation setting, mechanism, goal, metrics used, and representative systems. This remains a draft until reported metrics are verified source-by-source.
+Latest refresh: May 25, 2026 (2:00 PM). Refreshed against the current manuscript after the dedicated evaluation section landed. The section is no longer a planned insertion: it now directly addresses the AE and Reviewer 1 evaluation complaint with a compact framework that ties Section 4.1's metric tables to offline replay, IPS, doubly robust estimation, RecSim/SlateQ-style simulation evidence, online A/B testing, staged rollout, long-term holdouts, and a four-row mechanism-oriented evidence table. The remaining audit risk is source verification and precision, not structural absence.
 
-Latest citation audit: May 25, 2026 (mid-afternoon). Audited current `paper.tex` lines 1068-1114 after the evidence table was relabeled and metric cells were revised. Overall citation coverage is strong enough for a draft, but several claims need tightening before final submission: SlateQ should not be described as a simulator platform, online rollout details should not be carried by broad platform papers without more precise phrasing, and table rows should distinguish direct ad-policy systems from general recommender/RL workflow anchors.
+Latest citation audit: May 25, 2026 (2:00 PM). Audited current `paper.tex` lines 1068-1117. The prior simulator wording issues have been corrected: RecSim now carries the simulator-platform claim and SlateQ carries the slate-decomposition / slate-evaluation claim. Online rollout claims have also been softened so `gauci2018horizon` and `chen2022off` support the broader offline-screening to online-validation workflow rather than unverified feature-gate or traffic-ramp details. The section should not be treated as final until the exact reported metrics for the representative systems are checked source-by-source and the paper is compiled to inspect table placement.
 
 ## Reviewer Context Used
 
@@ -20,61 +20,54 @@ All reviewer quotes below come from `docs/agent/reviewers.txt`, which responds t
 
 ## Current Overall Assessment
 
-The reviewer complaint must be calibrated against `original_submission_paper.pdf`, not treated as a literal description of the current draft. The current `paper.tex` is not empty on evaluation: Section 4.1 now includes Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}, which inventory revenue, engagement, and ad-fatigue metrics that candidate policies should improve or guard. It also includes Table~\ref{tab:utility-comparison}, a short "Reported results" paragraph, and Section 4.4's discussion of offline versus online policy learning, counterfactual estimation, staged rollout, and actor-critic evaluation.
+The reviewer complaint must be calibrated against `original_submission_paper.pdf`, not treated as a literal description of the current draft. The original submission did not contain a dedicated evaluation section, so the current Section 5 is new content added in response to the AE and Reviewer 1. That makes the section reviewer-responsive, but every sentence carries full author responsibility under the three-state rule.
 
-The remaining gap is therefore narrower and more precise than "metrics are absent." The current manuscript has a metric inventory, but it does not yet synthesize those metrics into an evaluation framework. The new section should explain how the existing policy-improvement targets are used in practice: which metrics become primary objectives, which become guardrails, how offline replay or counterfactual estimators estimate them, when simulators are useful, and why A/B tests or long-term holdouts remain necessary.
+The current section substantially changes the reviewer-facing state. It now explains why evaluation for joint ad and organic ranking is a trade-off problem rather than a single-metric leaderboard; classifies metrics into primary, secondary, and guardrail roles; distinguishes short-term proxies from long-horizon outcomes; explains offline replay, IPS, doubly robust estimation, support limitations, RecSim, and SlateQ; and then places A/B tests and long-term holdouts as the high-confidence validation stage. Table~\ref{tab:evaluation-evidence} summarizes the workflow by measurement mode rather than ranking papers against a nonexistent shared benchmark.
 
-Recommended placement: insert a new top-level section after Section 4 and before Conclusions. Section 4 explains how the MDP components are designed; the new section explains how candidate policies and formulations are validated. Placing it before Conclusions lets the conclusion synthesize methods and evidence rather than ending after a methods-only section.
-
-Estimated reviewer-aligned score if this section is absent: **5.5 / 10** for evaluation coverage. The current metric tables and reward-validation prose mean the paper is no longer at the original-submission baseline, but the reviewer-facing "systematic review of how evaluation is done" remains incomplete. Estimated score after E1-E6 land: **8.5 / 10**, assuming the section connects the existing metric tables to evaluation modalities, includes one comparative evaluation-evidence table, and avoids unverified numerical claims.
+Estimated reviewer-aligned score: **8.0 / 10** for evaluation coverage. This is a major improvement over the original-submission baseline and likely moves the AE's evaluation concern from a major blocker to a revision item. The score is held below 8.5 because the evidence table remains mostly qualitative, exact reported magnitudes have not been verified, several entries mix ad-policy systems with broader recommender/RL workflow anchors, and the section has not yet been compiled to verify float placement and cross-references.
 
 ## Section Objective
 
-The section should answer one governing question:
+The section answers one governing question:
 
 > How do industrial and academic systems evaluate whether an RL-based ad policy improves the joint trade-off among monetization, engagement, and long-term user value?
 
-The section should make three conclusions explicit:
+The section should continue to make three conclusions explicit:
 
 1. **No single evaluation modality is sufficient.** Offline replay and counterfactual estimators screen candidate policies cheaply, simulators test sequential behavior under controlled assumptions, and online A/B tests remain the strongest causal evidence for production impact.
 2. **Metrics must match the policy objective.** CTR, CVR, RPM, ad load, dwell time, short-view rate, return rate, and retention proxies measure different parts of the monetization-engagement trade-off. A gain in one metric is not evidence of overall policy improvement unless guardrail metrics and time horizons are specified.
 3. **Reported results across papers are not directly comparable without context.** Systems differ in platforms, action spaces, logging policies, rollout constraints, horizon length, and guardrail definitions. The evaluation section should compare evidence type and trade-offs, not rank papers as if they used a shared benchmark.
 
-## Recommended Placement And Shape
+## Current Placement And Shape
 
-### Recommended LaTeX placement
+### Implemented LaTeX placement
 
-Insert after the current exploration/exploitation subsection and before Conclusions:
+The section has been inserted after the exploration/exploitation subsection and before Conclusions:
 
 ```latex
 \section{Evaluating Joint Ad and Organic Ranking Policies}
 \label{sec:evaluation}
 ```
 
-This should become the new Section 5, pushing Conclusions to Section 6.
+It is now Section 5, and Conclusions have shifted to Section 6.
 
-### Recommended compact manuscript structure
+### Current compact manuscript structure
 
-The seven concerns in this audit are a coverage checklist, **not** seven manuscript subsections. To avoid bloating the paper, the actual section should be capped at roughly **1.5-2 pages** and should use the existing Section 4.1 metric tables instead of recreating them.
+The section follows the intended compact three-subsection structure and uses the existing Section 4.1 metric tables instead of recreating the metric inventory.
 
 1. `\subsection{Evaluation Metrics: Trade-offs and Guardrails}`
-   - Goal: connect the existing metric tables to evaluation without duplicating them.
-   - Include: revenue, engagement, and ad-fatigue proxies from Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}; primary metric versus secondary diagnostic versus guardrail use; short-term proxy metrics versus long-term holdout outcomes; horizon mismatch between immediate revenue metrics and delayed retention/fatigue metrics.
-   - Also include, in 2-3 sentences, why evaluation is hard in joint ad and organic ranking: logging-policy bias, policy-induced feedback loops, delayed outcomes, multi-objective trade-offs, user-risk during exploration, and support mismatch.
+   - Current status: implemented at lines 1073-1078.
+   - Residual risk: the subsection clearly defines metric roles, but exact table references and float placement still need compile verification.
 
 2. `\subsection{Pre-Deployment Evidence: Offline Replay and Simulation}`
-   - Goal: satisfy the offline-replay, IPS, doubly robust, and RecSim reviewer asks in one compact subsection.
-   - Include: behavior/logging policy, target policy, support/overlap, IPS, doubly robust estimation, model-based value estimates, why estimates fail for actions rarely selected by the logging policy, and RecSim as a simulator for sequential recommender dynamics.
-   - Main citations: `swaminathan2015counterfactual`, `dudik2011doubly`, `levine2020offline`, `chen2022off`, `gauci2018horizon`, `sagtani2024ad`, `ie2019recsim`, `ie2019slateq`.
-   - Note: RecoGym is optional. Include it only if a bibliography entry is added and its relevance is verified.
+   - Current status: implemented at lines 1080-1085.
+   - Residual risk: the subsection is appropriately compact; avoid expanding it into estimator derivations.
 
 3. `\subsection{Online Evidence Across Industrial Systems}`
-   - Goal: cover A/B tests, staged rollout, long-term holdouts, and reported evidence in one place.
-   - Include: A/B tests, traffic ramps, feature gates, guardrail metrics, long-term holdouts, online contextual-bandit updates, and one compact comparative table.
-   - Main citations: `barajas2022online`, `zhao2021dear`, `zhao2020jointly`, `yan2020ads`, `zhang2018whole`, `gauci2018horizon`, `chen2022off`, `Mehrotra2020`, `hohnhold2015focusing`.
-   - The table should carry most of the reviewer-facing "reported evidence" burden. Use exact reported numbers only after verifying them in the cited source; otherwise state evidence type qualitatively.
+   - Current status: implemented at lines 1087-1117 with Table~\ref{tab:evaluation-evidence}.
+   - Residual risk: the online subsection uses qualitative evidence. Exact reported magnitudes should be added only after checking the cited sources.
 
-### Coverage checklist, not manuscript headings
+### Coverage checklist
 
 The compact 3-subsection structure must still cover these seven reviewer obligations:
 
@@ -130,37 +123,37 @@ This table is an audit inventory, not final manuscript prose. Each "reported evi
 | `wang2022surrogate`, `mcdonald2023spotify`, `yi2023progressive` | Long-term proxy and surrogate-metric evaluation | Return rate, delayed retention, progressive horizon, long-term proxies | Useful for long-term metric subsection and guardrail design. | Use as recommender-system support; pair with ad-specific reward/evaluation papers. |
 | `Theocharous-2015`, `zhao2018deep`, `wu2018budget` | Value-based RL / advertising RL evaluation | Lifetime value, bidding, budget-constrained display advertising | Useful as older ad/RL evaluation anchors for value-based formulations. | Verify exact metrics before quoting. |
 
-## Proposed Evaluation Table For `paper.tex`
+## Implemented Evaluation Table In `paper.tex`
 
-Recommended table title:
+Current table caption:
 
 ```latex
-\caption{Evaluation settings, mechanisms, metrics, and representative systems for joint ad and organic ranking policies.}
+\caption{Evaluation settings, mechanisms, metrics, and representative systems or methodological sources for joint ad and organic ranking policies.}
 ```
 
-Recommended columns:
+Current columns:
 
 | Column | Purpose |
 |---|---|
-| Evaluation setting | Offline, simulation, online, or online long-horizon setting. |
-| Mechanism | Offline replay, off-policy evaluation, simulator, A/B test, staged rollout, or holdout. |
-| Goal | Why the mechanism is used in the deployment workflow. |
+| Measurement mode | Offline, simulation, online, or online long-horizon setting. |
+| Evaluation method | Offline replay / off-policy evaluation, user-response simulator or slate model, A/B test or staged rollout, or holdout / delayed-outcome measurement. |
+| Purpose | Why the mechanism is used in the deployment workflow. |
 | Metrics used | Primary, secondary, guardrail, or long-term metrics. |
-| Representative systems | Cited systems or methodological papers using the mechanism. |
+| Representative systems and sources | Cited systems or methodological papers using the mechanism. |
 
-The table should include no more than 8-10 rows in the manuscript. Put method papers (`swaminathan2015counterfactual`, `dudik2011doubly`, `ie2019recsim`) in prose unless they function as evaluation artifacts rather than deployed systems.
+The table currently has four rows, which is appropriate for the page budget. Method papers (`swaminathan2015counterfactual`, `dudik2011doubly`, `ie2019recsim`) are mostly handled in prose, except RecSim and SlateQ appear in the simulation row because they function as evaluation artifacts.
 
 ## Pending Revision Items
 
 ### Structural and reviewer-risk items
 
-- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E1.** Add the new top-level evaluation section before Conclusions. Draft inserted in `paper.tex` as `\section{Evaluating Joint Ad and Organic Ranking Policies}`. Still needs source verification and compilation.
-- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E2.** Reuse the existing Section 4.1 metric tables as the metric taxonomy for evaluation. Draft cross-references Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}; verify after compile that references render correctly and table placement remains acceptable.
-- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E3.** Explain offline replay, IPS, and doubly robust estimation as evaluation tools with assumptions and failure modes inside the compact "Pre-Deployment Evidence: Offline Replay and Simulation" subsection. Draft includes logging-policy mismatch, IPS, DR, support limits, and offline screening role.
-- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E4.** Add simulator-based evaluation coverage, including RecSim, inside the same offline/simulation subsection. Draft includes RecSim and SlateQ; RecoGym intentionally omitted because it is not currently in the bibliography.
-- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E5.** Add online evaluation and rollout discussion inside "Online Evidence Across Industrial Systems": A/B testing, staged rollouts, feature gates, guardrail monitoring, and long-term holdouts. Draft covers all five at a high level.
-- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E6.** Add one compact comparative evaluation-evidence table across representative cited systems. Draft table has six rows. Exact numbers and evidence wording must be verified source-by-source before finalizing.
-- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (May 25 draft)</span> **E7.** Add a 1-paragraph practitioner workflow, preferably as the closing paragraph of the online-validation subsection rather than a separate subsection. Draft closing paragraph added after Table~\ref{tab:evaluation-evidence}.
+- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25 draft)</span> **E1.** Add the new top-level evaluation section before Conclusions. Implemented in `paper.tex` as `\section{Evaluating Joint Ad and Organic Ranking Policies}` at lines 1068-1117.
+- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25 draft)</span> **E2.** Reuse the existing Section 4.1 metric tables as the metric taxonomy for evaluation. The section cross-references Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}; compile verification remains a separate production check.
+- <span style="background:#7c1d1d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P0</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25 draft)</span> **E3.** Explain offline replay, IPS, and doubly robust estimation as evaluation tools with assumptions and failure modes. Implemented in the "Pre-Deployment Evidence: Offline Replay and Simulation" subsection.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25 draft)</span> **E4.** Add simulator-based evaluation coverage, including RecSim. Implemented with RecSim and SlateQ; RecoGym remains intentionally omitted because it is not in the bibliography.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25 draft)</span> **E5.** Add online evaluation and rollout discussion. Implemented in "Online Evidence Across Industrial Systems" with A/B tests, staged rollout, guardrails, and long-term holdouts.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">PARTIAL (source verification)</span> **E6.** Add one compact comparative evaluation-evidence table across representative cited systems. Implemented as a four-row mechanism table, but exact numbers and evidence wording must be verified source-by-source before finalizing.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25 draft)</span> **E7.** Add a practitioner workflow as the closing paragraph. Implemented after Table~\ref{tab:evaluation-evidence}.
 
 ### Citation and verification items
 
@@ -171,6 +164,7 @@ The table should include no more than 8-10 rows in the manuscript. Put method pa
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25)</span> **E12.** Tightened the online-evidence paragraph by removing unverified feature-gate and traffic-ramp wording. `gauci2018horizon` and `chen2022off` now support the broader offline-screening to online-validation workflow rather than specific rollout mechanisms.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25)</span> **E13.** Relabeled the table column from "Representative systems" to "Representative systems and sources" and adjusted the caption to acknowledge that some entries are methodological sources rather than deployed ad systems.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE (May 25)</span> **E14.** Clarified that the primary / secondary / guardrail taxonomy is the authors' synthesis by adding "We organize these metrics into three roles" before the metric definitions.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **E15.** Compile the paper and inspect whether Table~\ref{tab:evaluation-evidence} appears near first reference, whether references to Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue} resolve cleanly, and whether the added section creates page-budget or float-placement pressure.
 
 ## Citation Adequacy Scores
 
@@ -192,24 +186,23 @@ The table should include no more than 8-10 rows in the manuscript. Put method pa
 | `levine2020offline` | Offline RL support / out-of-distribution action limitations. | 8 | Strong general offline-RL anchor; pair with recommender/off-policy sources for domain fit. |
 | `chen2022off` | YouTube off-policy actor-critic; offline recommender policy learning; rollout/workflow examples. | 8 | Strong recommender off-policy source, but not ad-specific. Avoid making it carry ad-policy deployment claims alone. |
 | `ie2019recsim` | Configurable recommender simulator and simulation evidence row. | 9 | Strong simulator-platform anchor. |
-| `ie2019slateq` | Slate recommendation decomposition and simulation/evaluation row. | 7 | Relevant to slate-based RL evaluation, but current wording should not imply SlateQ is itself a simulator platform. |
+| `ie2019slateq` | Slate recommendation decomposition and simulation/evaluation row. | 7 | Relevant to slate-based RL evaluation. Current wording avoids implying that SlateQ is itself a simulator platform. |
 | `dulac2021challenges` | Simulator representativeness and need for online validation. | 8 | Good broad real-world RL limitations source; not ad-specific. |
 | `barajas2022online` | Online advertising incrementality testing and practical online-evaluation framing. | 8 | Relevant ad-experiment source. Does not by itself support every listed metric in the sentence. |
-| `gauci2018horizon` | Industrial RL workflow, offline evaluation, staged rollout / guardrail examples. | 6 | Useful broad platform source, but broad for ad-policy-specific rollout claims. Verify source text or soften wording. |
+| `gauci2018horizon` | Industrial RL workflow and offline-screening to online-validation pattern. | 7 | Useful broad platform source. Current wording is safer than earlier rollout-specific phrasing, but it remains broad for ad-policy-specific claims. |
 | `sagtani2024ad` | Ad-load balancing via off-policy learning; offline row; ad-load / guardrail examples. | 9 | Direct ad-policy and off-policy-learning source. Strong fit. |
 
 ## Recommended Order Of Execution
 
-1. Draft the compact section opener and `Evaluation Metrics: Trade-offs and Guardrails`, reusing Tables 3-5 rather than repeating their contents.
-2. Draft `Pre-Deployment Evidence: Offline Replay and Simulation`, merging offline replay, IPS, doubly robust estimation, RecSim, and optional RecoGym.
-3. Verify reported metrics for the representative systems that will appear in the table.
-4. Draft `Online Evidence Across Industrial Systems`, including the compact evidence table and a short closing practitioner workflow.
-5. Trim for page budget: target 1.5-2 pages, avoid estimator derivations, and move any long method explanation back to Section 4 or cut it.
-6. Update `paper_audit_master.md` and `history_audit.md` H23 after the section lands.
+1. Verify reported metrics and evidence wording for the representative systems in E8, starting with the direct ad-policy systems (`zhao2021dear`, `zhao2020jointly`, `zhang2018whole`, `yan2020ads`, `sagtani2024ad`).
+2. Compile the manuscript and inspect Table~\ref{tab:evaluation-evidence}, cross-references, and page budget (E15).
+3. Decide whether any exact quantitative results are safe to add. If not, keep the table qualitative and explicitly frame it as evidence-type comparison rather than performance ranking.
+4. Update `history_audit.md` H23 to mark the dedicated evaluation section as structurally landed, with source verification remaining in this audit.
+5. Revisit the conclusion so it synthesizes the new evaluation section rather than ending with generic future-work language.
 
 ## Out Of Scope For This File
 
-- Rewriting Section 4.4 policy-learning prose, except to avoid duplicating content in the future evaluation section.
+- Rewriting Section 4.4 policy-learning prose, except to avoid duplicating content in the current evaluation section.
 - Designing new experiments.
 - Full proofs or derivations of IPS, doubly robust estimation, or regret.
 - Bibliography deduplication outside the evaluation sources.

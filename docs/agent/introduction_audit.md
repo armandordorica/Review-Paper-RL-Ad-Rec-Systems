@@ -136,14 +136,14 @@ Status assessed against the current introduction on May 17, 2026.
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **R4.** RL-as-solution paragraph (P6, line 109): S2 "addresses" softened to "explicitly represents... providing the framework within which RL algorithms can account for this dependence"; S3 rewritten to actually address counterfactual evaluation via off-policy estimators (now parallels SL "Second" critique); S4 SL+RL framing changed from "rather than replacing" with `chen2022off` as the load-bearing recsys anchor; citation cleanup (9 tokens to 6, each cite appearing once).
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **R5.** Gap paragraph opener (P8, line 115) updated to name the MDP elements and policy learning as the unifying taxonomy axes, replacing "through the lens of" framing.
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **R6.** Contributions paragraph (P9, line 118) expanded from a single sentence into a three-sentence block: taxonomy + 150 works (with grammar fix "a component-level taxonomy"), synthesis dimensions, practitioner audience.
-- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **R7.** FrozenLake preview sentence removed from structure paragraph (P10, line 121) per Reviewer 1's explicit feedback. Note: line 133 mention and the comparison table at lines 135-176 still reference FrozenLake; coordinated cleanup deferred pending the toy-example replacement decision.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **R7.** FrozenLake preview sentence removed from structure paragraph (P10, line 121) per Reviewer 1's explicit feedback. Subsequent methodology and Section 4 opener work removed the remaining FrozenLake table/source content from the rendered paper and replaced the early table with a compact RL-notation guide.
 
 ## Out of scope for this file
 
 - Citation audits for body sections live in `reward_design_citation_audit.md`, `state_space_citation_audit.md`, and `policy_learning_citation_audit.md`.
 - Abstract revisions live in `abstract_revision_todo.md`.
 - Document-wide revision conventions live in `revision_rules.md`.
-- FrozenLake cleanup at line 133 and the comparison table at lines 135-176 are in the methodology section, not the introduction proper.
+- Methodology Table 1 and the Section 4 opener are out of scope for this introduction audit; their current state is tracked in `methodology_audit.md` and `rl_formulation_opener_audit.md`.
 
 ## Working rules
 
