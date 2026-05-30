@@ -120,7 +120,7 @@ This table is an audit inventory, not final manuscript prose. Each "reported evi
 | `xu2023optimizing` | On-policy RL in auction-based recommender systems | Long-term value, auction/recommendation outcomes, online policy learning | Relevant to online RL in auction-based recommendation, close to ad-policy evaluation. | Verify exact metrics and whether reported outcomes are online or offline. |
 | `cai2023two` | Offline experiments for constrained actor-critic | Watch time, interactions, main objective vs auxiliary constraints | Useful for multi-objective constrained evaluation and trade-off tables. | Current paper says offline experiments showed a better balance. Verify exact metrics. |
 | `hohnhold2015focusing` | Long-term holdout/evaluation framing | Long-term user value, holdouts, metric calibration | Important for explaining why short A/B windows miss delayed engagement and fatigue. | Good as conceptual evaluation anchor; not necessarily ad-specific. |
-| `wang2022surrogate`, `mcdonald2023spotify`, `yi2023progressive` | Long-term proxy and surrogate-metric evaluation | Return rate, delayed retention, progressive horizon, long-term proxies | Useful for long-term metric subsection and guardrail design. | Use as recommender-system support; pair with ad-specific reward/evaluation papers. |
+| `wang2022surrogate`, `mcdonald2023spotify`, `yi2023progressive` | Long-term proxy and surrogate-metric evaluation | Return rate, delayed retention, progressive horizon, long-term proxies | Useful for long-term metric subsection and guardrail design. | Use as recommender-system support; pair with ad-policy reward/evaluation papers. |
 | `Theocharous-2015`, `zhao2018deep`, `wu2018budget` | Value-based RL / advertising RL evaluation | Lifetime value, bidding, budget-constrained display advertising | Useful as older ad/RL evaluation anchors for value-based formulations. | Verify exact metrics before quoting. |
 
 ## Implemented Evaluation Table In `paper.tex`
@@ -214,3 +214,196 @@ The table currently has four rows, which is appropriate for the page budget. Met
 - Do not compare systems as if they share a benchmark.
 - Every metric claim must state the evaluation modality: offline, simulator, online A/B, rollout, or long-term holdout.
 - Keep the section practitioner-facing and ad-policy-specific.
+
+## Quantitative Results from Cited Papers
+
+To address the reviewers' request for quantitative results and specific metrics used in practice, we have aggregated the reported outcomes from key cited papers. This provides a quantitative lens for the evaluation section, detailing *what* metrics are reported and *how* they are used across different stages of deployment (offline vs. online). 
+
+### 1. Online Evidence Across Industrial Systems
+
+**DEAR (Deep Reinforcement Learning for Online Advertising Impression) [`zhao2021dear`]**
+*   **Context:** Jointly determines whether to interpolate an ad, which ad to select, and where to place it in a recommendation list.
+*   **Metrics Used:** Accumulated rewards in a session ($R = \sum r_t$), where the reward balances advertising revenue against the negative influence of ads on user experience.
+*   **Reported Results:** In offline experiments on a real-world short video site, DEAR achieved an accumulated reward of 10.96, outperforming baselines like HDQN (10.27), GRU (9.87), DeepFM (9.23), and Wide & Deep (9.12). All improvements showed high statistical significance (p-value < 0.01).
+
+**Jointly Learning to Recommend and Advertise [`zhao2020jointly`]**
+*   **Context:** A two-level RL framework that generates a recommendation list (level 1) and then inserts ads into it (level 2) to balance immediate ad revenue and long-term user experience.
+*   **Metrics Used:** Session Dwell Time ($R^{rs}$), Session Length ($R^{as}$), and Session Ad Revenue ($R^{rev}$).
+*   **Reported Results:** Offline experiments demonstrated significant improvements over the best baseline (RAM-l): Session Dwell Time improved by 0.61%, Session Length improved by 0.83%, and Session Ad Revenue improved by 4.70% (all p-values < 0.01).
+
+**Alibaba Whole-Page Optimization [`zhang2018whole`]**
+*   **Context:** Dynamic ad allocation on Taobao that shifts from slot-based serving to whole-page modeling.
+*   **Metrics Used:** Revenue and Click Yield (a proxy for user engagement).
+*   **Reported Results:** Through online A/B testing, the proposed dynamic ad allocation strategy significantly increased platform revenue while ensuring that Click Yield remained above a predefined satisfaction threshold, demonstrating successful constrained optimization in production.
+
+**LinkedIn Ads Allocation in Feed [`yan2020ads`]**
+*   **Context:** Ads allocation in a newsfeed to achieve an optimal balance of revenue and engagement via constrained optimization.
+*   **Metrics Used:** Revenue (REV/RPM) and User Engagement (CTR, total clicks).
+*   **Reported Results:** The paper reports that the best-performing algorithm successfully balanced revenue and engagement and was fully deployed on the LinkedIn newsfeed, serving all live traffic. (Note: Exact percentage lifts from the online A/B test are abstracted for confidentiality, but the production deployment is explicitly claimed).
+
+### 2. Pre-Deployment Evidence: Offline Replay and Simulation
+
+**Ad-load Balancing via Off-policy Learning [`sagtani2024ad`]**
+*   **Context:** Off-policy learning framework using Doubly Robust (DR) estimators to determine optimal ad-load for feed fetches.
+*   **Metrics Used:** User Satisfaction (D1 Retention, Time spent, Views, Engagements, Video plays) and Ads Metrics (Impressions, Clicks, Revenue).
+*   **Reported Results:** Online A/B experiments deployed across over 80 million users (200 million sessions) showed statistically significant improvements. For instance, a variant with a trade-off parameter $\beta=0.9$ achieved a 0.52% increase in Ad Clicks and a 0.2% increase in Revenue, alongside positive lifts in Time Spent (0.22%) and Views (0.15%).
+
+**YouTube Off-policy Actor-Critic [`chen2022off`]**
+*   **Context:** Offline actor-critic training on logged recommender data to improve long-term user engagement.
+*   **Metrics Used:** Long-horizon value, Monte Carlo returns, and critic estimates.
+*   **Reported Results:** The paper demonstrates that the off-policy actor-critic approach yields improved offline policy evaluation and was successfully deployed on YouTube, showing improvements in long-term user engagement over traditional REINFORCE-based methods.
+
+### 4. Evaluation Metrics, Guardrails, and Long-Term Proxies
+
+**Surrogate for Long-Term User Experience [`wang2022surrogate`]**
+*   **Context:** Uses immediate-term user behavior signals as surrogates for long-term outcomes (user revisiting the platform) in a reinforcement learning recommender.
+*   **Metrics Used:** Sequential behavior patterns, repeat visit frequency, and engagement depth metrics.
+*   **Reported Results:** Validated surrogates by proving they are statistically predictive of users' increased visiting to the platform over a 5-month horizon. Live experiments on an industrial platform serving billions of users demonstrated the surrogates effectively improved long-term user experience.
+
+**Optimizing for Long-Term Value in Spotify [`mcdonald2023spotify`]**
+*   **Context:** Models long-term user engagement outcomes as a time-to-event problem using survival models.
+*   **Metrics Used:** Time-to-inactivity (a churn metric), retention, and survival estimates.
+*   **Reported Results:** Demonstrated that the churn-based time-to-inactivity metric provided improved sensitivity over baseline retention metrics in Spotify A/B tests while preserving directional accuracy, allowing faster validation of long-term effects.
+
+**Quantifying and Leveraging User Fatigue [`sagtani2023quantifying`]**
+*   **Context:** Models multi-granularity user fatigue (global session fatigue and coarse-grained taxonomy fatigue) to prevent engagement drops from repetitive recommendations.
+*   **Metrics Used:** Click-through rate (CTR), average click numbers per user (ACN), dwell time (DT), and average refresh number (ARN).
+*   **Reported Results:** Online A/B tests showed that fatigue-enhanced models achieved consistent CTR and dwell time improvements (2%–6% relative improvements) across different numbers of refreshes.
+
+**Ad Close Mitigation for Improved User Experience [`silberstein2020ad`]**
+*   **Context:** Penalizes ads with a high predicted likelihood of being closed by the user within Yahoo Gemini's generalized second price (GSP) auction to improve user experience.
+*   **Metrics Used:** Ad close rate (ACR), click-through rate (CTR), and total revenue.
+*   **Reported Results:** Large-scale online experiments on Gemini native traffic showed the system reduced the number of ad close events by more than 20%, while limiting the associated revenue decrease to less than 0.4%.
+
+**Online Advertising Incrementality Testing [`barajas2022online`]**
+*   **Context:** Evaluates the true causal effect of advertising by isolating conversions that would not have occurred without a specific campaign.
+*   **Metrics Used:** Absolute lift, percentage lift, incremental ROAS, and cost per incremental conversion (CPIC).
+*   **Reported Results:** Details the practical deployment of geo-testing and synthetic control methods in a major DSP/ad network, emphasizing that standard attribution often overstates performance compared to true incremental lift.
+
+**Reinforcement Learning to Optimize Long-term User Engagement [`zou2019reinforcement`]**
+*   **Context:** Introduces FeedRec, an RL framework with a hierarchical LSTM Q-Network and an S-Network environment simulator to optimize long-term user engagement.
+*   **Metrics Used:** Average clicks per session, average browsing depth, and average return time.
+*   **Reported Results:** In real-world dataset evaluations, FeedRec outperformed DDPG and other baselines with strong statistical significance (p-value < 0.01) across all three long-term engagement metrics.
+
+### 5. Foundational Estimators and Contextual Bandits
+
+**A Contextual Bandit Bake-off [`bietti2021contextual`]**
+*   **Context:** A large-scale empirical evaluation of contextual bandit algorithms across hundreds of datasets.
+*   **Metrics Used:** Progressive validation (PV) loss, and a statistically significant win-loss difference metric (calculated via an approximate Z-test).
+*   **Reported Results:** Found that optimism under uncertainty (e.g., RegCB) worked best overall, with a simple greedy baseline performing as a surprisingly close second.
+
+**Practical Contextual Bandits with Regression Oracles [`foster2018contextual`]**
+*   **Context:** Introduces RegCB, which uses a regression oracle to generalize UCB and LinUCB to more expressive model classes.
+*   **Metrics Used:** Cumulative regret, normalized relative loss, and confidence width decay.
+*   **Reported Results:** In extensive empirical evaluations, RegCB consistently outperformed or matched $\epsilon$-greedy and other baselines, typically remaining within 20% of the best possible oracle performance across diverse datasets.
+
+**Doubly Robust Policy Evaluation and Learning [`dudik2011doubly`]**
+*   **Context:** Evaluates the Doubly Robust (DR) estimator, which combines propensity scoring with a reward model to evaluate policies from logged data.
+*   **Metrics Used:** Root mean squared error (RMSE), bias, and standard deviation.
+*   **Reported Results:** Demonstrated that the DR estimator consistently reduced RMSE by 10% to 20% (average 13.6%) compared to standard Inverse Propensity Scoring (IPS), achieving lower variance while remaining unbiased.
+
+**Counterfactual Risk Minimization [`swaminathan2015counterfactual`]**
+*   **Context:** Introduces the POEM algorithm for batch learning from logged bandit feedback, using variance regularization.
+*   **Metrics Used:** Hamming loss and computational efficiency (CPU seconds).
+*   **Reported Results:** POEM significantly outperformed standard IPS on multi-label classification tasks (p-value < 0.05 across 10 runs), proving that variance regularization improves generalization in off-policy learning.
+
+**Constrained Actor-Critic for Short Video Recommendation [`cai2023two`]**
+*   **Context:** Two-stage constrained actor-critic (TSCAC) optimizing watch time while satisfying interaction constraints (likes, shares, comments).
+*   **Metrics Used:** WatchTime (main), Click, Like, Comment, Share, Download.
+*   **Reported Results:** Offline evaluations showed a 2.23% improvement in WatchTime over behavior cloning. Live A/B experiments demonstrated a 0.379% improvement in WatchTime, +3.376% in Shares, and +1.733% in Downloads.
+
+**Optimizing Long-term Value for Auction-Based Recommender Systems [`xu2023optimizing`]**
+*   **Context:** On-policy RL (temporal difference learning) to optimize long-term return metrics in an auction-based recommender system (Meta).
+*   **Metrics Used:** Conversion count, conversion rate, total impressions.
+*   **Reported Results:** Online A/B testing on a system handling billions of daily impressions achieved a 4-10% lift in both conversion count and conversion rate compared to the base policy, while maintaining neutral impression changes.
+
+**Bandit based Optimization of Multiple Objectives [`Mehrotra2020`]**
+*   **Context:** Contextual bandits optimizing multiple competing objectives (user satisfaction vs. supplier exposure) on Spotify.
+*   **Metrics Used:** Clicks, streams, and Generalized Gini Index (GGI) for multi-objective scalarization.
+*   **Reported Results:** The multi-objective approach (MO-LinCB) outperformed single-objective algorithms with over 6.9%, 11.0%, and 10.0% gains across three different interaction metrics.
+
+**Deep Reinforcement Learning for Page-wise Recommendations [`zhao2018deep`]**
+*   **Context:** Jointly generates a set of items and their 2D display strategy using a Deep Q-network (DeepPage).
+*   **Metrics Used:** Precision@20, Recall@20, F1-score@20, NDCG@20, MAP (offline).
+*   **Reported Results:** In offline e-commerce dataset evaluations, DeepPage achieved Precision@20 of 0.0491, Recall@20 of 0.3576, and NDCG@20 of 0.1872, outperforming baseline display strategies.
+
+**SlateQ: Tractable Decomposition for RL with Recommendation Sets [`ie2019slateq`]**
+*   **Context:** Decomposes the long-term value (LTV) of a slate into item-wise LTVs to handle combinatorial action spaces in YouTube recommendations.
+*   **Metrics Used:** User engagement, LTV, click-through rates.
+*   **Reported Results:** Simulations showed higher CTR and average reward per episode compared to myopic baselines. The paper also reports successful validation of scalability and effectiveness in live production experiments on YouTube.
+
+**Budget Constrained Bidding by Model-free RL [`wu2018budget`]**
+*   **Context:** Deep Reinforcement Learning to Bid (DRLB) framework for real-time bidding (RTB) under budget constraints.
+*   **Metrics Used:** Ratio of winning impression value to optimal ($R/R^*$), acquired real clicks.
+*   **Reported Results:** Outperformed baseline bidding strategies (FLB, RLB) across various budget settings, achieving up to 100.92% improvement over FLB and a 4.3% overall improvement in acquired real clicks in offline dataset evaluations.
+
+### 3. Online, Long Horizon (Holdout or Delayed-Outcome Measurement)
+
+**Focusing on the Long-term: It's Good for Users and Business [`hohnhold2015focusing`]**
+*   **Context:** Google search ads study on how short-term revenue-focused decisions cause ad blindness and reduce long-term user satisfaction.
+*   **Metrics Used:** Long-Term Revenue Per Mille (LTRPM), user click propensity.
+*   **Reported Results:** Used long-term holdout experiments to justify a 50% reduction in mobile ad load at Google, proving that reducing ad load was revenue-neutral or positive in the long term while significantly improving user experience.
+
+**Personalized Ad Recommendation Systems for LTV Optimization [`Theocharous-2015`]**
+*   **Context:** Uses RL with high-confidence off-policy evaluation (HCOPE) to optimize personalized ad recommendations for long-term user value.
+*   **Metrics Used:** Life-Time Value (LTV) vs. Click-Through Rate (CTR).
+*   **Reported Results:** Demonstrated that RL algorithms optimizing for LTV outperform myopic CTR-based approaches, using off-policy evaluation techniques to provide statistical guarantees on performance before deployment.
+
+**Blending Advertising with Organic Content in E-Commerce [`carrion2021blending`]**
+*   **Context:** A system deployed on JD.COM that uses virtual bids to optimize the blend of personalized sponsored content with non-sponsored content.
+*   **Metrics Used:** Virtual bids (platform valuation of clicks), ad revenue, and long-term user engagement.
+*   **Reported Results:** The paper reports successful full deployment, serving all traffic through JD.COM's mobile application and processing tens of millions of auctions daily, demonstrating the scalability of the virtual bids approach.
+
+### 4. Evaluation Metrics, Guardrails, and Long-Term Proxies
+
+**Surrogate for Long-Term User Experience [`wang2022surrogate`]**
+*   **Context:** Uses immediate-term user behavior signals as surrogates for long-term outcomes (user revisiting the platform) in a reinforcement learning recommender.
+*   **Metrics Used:** Sequential behavior patterns, repeat visit frequency, and engagement depth metrics.
+*   **Reported Results:** Validated surrogates by proving they are statistically predictive of users' increased visiting to the platform over a 5-month horizon. Live experiments on an industrial platform serving billions of users demonstrated the surrogates effectively improved long-term user experience.
+
+**Optimizing for Long-Term Value in Spotify [`mcdonald2023spotify`]**
+*   **Context:** Models long-term user engagement outcomes as a time-to-event problem using survival models.
+*   **Metrics Used:** Time-to-inactivity (a churn metric), retention, and survival estimates.
+*   **Reported Results:** Demonstrated that the churn-based time-to-inactivity metric provided improved sensitivity over baseline retention metrics in Spotify A/B tests while preserving directional accuracy, allowing faster validation of long-term effects.
+
+**Quantifying and Leveraging User Fatigue [`sagtani2023quantifying`]**
+*   **Context:** Models multi-granularity user fatigue (global session fatigue and coarse-grained taxonomy fatigue) to prevent engagement drops from repetitive recommendations.
+*   **Metrics Used:** Click-through rate (CTR), average click numbers per user (ACN), dwell time (DT), and average refresh number (ARN).
+*   **Reported Results:** Online A/B tests showed that fatigue-enhanced models achieved consistent CTR and dwell time improvements (2%–6% relative improvements) across different numbers of refreshes.
+
+**Ad Close Mitigation for Improved User Experience [`silberstein2020ad`]**
+*   **Context:** Penalizes ads with a high predicted likelihood of being closed by the user within Yahoo Gemini's generalized second price (GSP) auction to improve user experience.
+*   **Metrics Used:** Ad close rate (ACR), click-through rate (CTR), and total revenue.
+*   **Reported Results:** Large-scale online experiments on Gemini native traffic showed the system reduced the number of ad close events by more than 20%, while limiting the associated revenue decrease to less than 0.4%.
+
+**Online Advertising Incrementality Testing [`barajas2022online`]**
+*   **Context:** Evaluates the true causal effect of advertising by isolating conversions that would not have occurred without a specific campaign.
+*   **Metrics Used:** Absolute lift, percentage lift, incremental ROAS, and cost per incremental conversion (CPIC).
+*   **Reported Results:** Details the practical deployment of geo-testing and synthetic control methods in a major DSP/ad network, emphasizing that standard attribution often overstates performance compared to true incremental lift.
+
+**Reinforcement Learning to Optimize Long-term User Engagement [`zou2019reinforcement`]**
+*   **Context:** Introduces FeedRec, an RL framework with a hierarchical LSTM Q-Network and an S-Network environment simulator to optimize long-term user engagement.
+*   **Metrics Used:** Average clicks per session, average browsing depth, and average return time.
+*   **Reported Results:** In real-world dataset evaluations, FeedRec outperformed DDPG and other baselines with strong statistical significance (p-value < 0.01) across all three long-term engagement metrics.
+
+### 5. Foundational Estimators and Contextual Bandits
+
+**A Contextual Bandit Bake-off [`bietti2021contextual`]**
+*   **Context:** A large-scale empirical evaluation of contextual bandit algorithms across hundreds of datasets.
+*   **Metrics Used:** Progressive validation (PV) loss, and a statistically significant win-loss difference metric (calculated via an approximate Z-test).
+*   **Reported Results:** Found that optimism under uncertainty (e.g., RegCB) worked best overall, with a simple greedy baseline performing as a surprisingly close second.
+
+**Practical Contextual Bandits with Regression Oracles [`foster2018contextual`]**
+*   **Context:** Introduces RegCB, which uses a regression oracle to generalize UCB and LinUCB to more expressive model classes.
+*   **Metrics Used:** Cumulative regret, normalized relative loss, and confidence width decay.
+*   **Reported Results:** In extensive empirical evaluations, RegCB consistently outperformed or matched $\epsilon$-greedy and other baselines, typically remaining within 20% of the best possible oracle performance across diverse datasets.
+
+**Doubly Robust Policy Evaluation and Learning [`dudik2011doubly`]**
+*   **Context:** Evaluates the Doubly Robust (DR) estimator, which combines propensity scoring with a reward model to evaluate policies from logged data.
+*   **Metrics Used:** Root mean squared error (RMSE), bias, and standard deviation.
+*   **Reported Results:** Demonstrated that the DR estimator consistently reduced RMSE by 10% to 20% (average 13.6%) compared to standard Inverse Propensity Scoring (IPS), achieving lower variance while remaining unbiased.
+
+**Counterfactual Risk Minimization [`swaminathan2015counterfactual`]**
+*   **Context:** Introduces the POEM algorithm for batch learning from logged bandit feedback, using variance regularization.
+*   **Metrics Used:** Hamming loss and computational efficiency (CPU seconds).
+*   **Reported Results:** POEM significantly outperformed standard IPS on multi-label classification tasks (p-value < 0.05 across 10 runs), proving that variance regularization improves generalization in off-policy learning.

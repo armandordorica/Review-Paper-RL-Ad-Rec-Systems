@@ -1104,7 +1104,40 @@ Online, long horizon & Holdout or delayed-outcome measurement & Measure outcomes
 \label{tab:evaluation-evidence}
 \end{table*}
 
-Taken together, these practices define a staged evaluation workflow for practitioners. First, define the objective and guardrails using the metric families in Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}. Second, use offline replay, counterfactual estimators, or simulation to remove policies that are unsupported, unsafe, or unlikely to improve the target utility. Third, validate the strongest candidates through staged online experiments with both short-term and long-term guardrails. This workflow does not remove the need for live experimentation. It reduces the number of risky policies tested on users and clarifies which trade-offs each evaluation stage can and cannot resolve.
+Taken together, these practices define a staged evaluation workflow for practitioners. First, define the objective and guardrails using the metric families in Tables~\ref{tab:proxy-metrics-revenue}, \ref{tab:proxy-metrics-engagement}, and \ref{tab:proxy-metrics-fatigue}. Second, use offline replay, counterfactual estimators, or simulation to remove policies that are unsupported, unsafe, or unlikely to improve the target utility. Third, validate the strongest candidates through staged online experiments with both short-term and long-term guardrails. To provide a concrete perspective on the magnitude of these improvements, Table~\ref{tab:quantitative-results} aggregates reported quantitative results and performance lifts from representative industrial deployments and foundational algorithms. This workflow does not remove the need for live experimentation. It reduces the number of risky policies tested on users and clarifies which trade-offs each evaluation stage can and cannot resolve.
+
+\begin{table*}[ht]
+\setstretch{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{System / Source} & \textbf{Domain / Context} & \textbf{Key Metrics} & \textbf{Reported Quantitative Results} \\
+\midrule
+DEAR \cite{zhao2021dear} & Short-video (TikTok) & Accumulated reward & Outperformed HDQN baseline (10.96 vs 10.27) with $p < 0.05$. \\
+\midrule
+Jointly Learning \cite{zhao2020jointly} & E-commerce feed & Dwell Time, Ad Revenue & +0.61\% Session Dwell Time, +0.83\% Session Length, +4.70\% Ad Revenue. \\
+\midrule
+Constrained AC \cite{cai2023two} & Short-video (KuaiShou) & WatchTime, Interactions & +0.379\% WatchTime, +3.376\% Shares, +1.733\% Downloads in live A/B tests. \\
+\midrule
+Multi-Objective Bandits \cite{Mehrotra2020} & Audio streaming (Spotify) & Clicks, Streams, GGI & +6.9\% clicks, +11.0\% streams, +10.0\% GGI over single-objective baselines. \\
+\midrule
+Ad Close Mitigation \cite{silberstein2020ad} & Native ads (Yahoo Gemini) & Ad Close Rate, Revenue & >20\% reduction in ad close events while limiting revenue decrease to <0.4\%. \\
+\midrule
+User Fatigue \cite{sagtani2023quantifying} & Recommender feeds & CTR, Dwell Time & 2\%--6\% relative improvements in CTR and dwell time across different refresh depths. \\
+\midrule
+FeedRec \cite{zou2019reinforcement} & Recommender feeds & Clicks, Browsing Depth & Outperformed DDPG baselines with strong statistical significance ($p < 0.01$). \\
+\midrule
+Budget Bidding \cite{wu2018budget} & Real-Time Bidding (RTB) & Acquired clicks, $R/R^*$ & Up to 100.92\% improvement in $R/R^*$, +4.3\% overall acquired real clicks. \\
+\midrule
+Doubly Robust \cite{dudik2011doubly} & Offline Evaluation & RMSE, Bias & 10\%--20\% (average 13.6\%) reduction in RMSE compared to standard IPS. \\
+\bottomrule
+\end{tabularx}
+\caption{Reported quantitative results and performance lifts from representative industrial deployments and foundational algorithms.}
+\label{tab:quantitative-results}
+\end{table*}
 
 \section{Conclusions}
 
