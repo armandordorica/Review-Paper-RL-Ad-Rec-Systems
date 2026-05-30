@@ -2,7 +2,9 @@
 
 Scope: global `paper.tex` float, caption, label, reference, placement, and readability hygiene.
 
-Latest refresh: May 25, 2026. Opened as the missing global audit for reviewer-flagged table and figure presentation issues. The current manuscript contains multiple useful synthesis tables, including the notation guide, historical evolution table, proxy-metric tables, utility-formulation table, action-space table, state-space table, policy-learning tables, exploration/exploitation table, and evaluation-evidence table. It also contains at least two figures: a historical timeline and an ad-policy action-set figure. Source-level references and labels are mostly present, but visual placement and readability still need a compile-and-inspect pass.
+Latest refresh: May 30, 2026. Reviewed against the current `paper.tex` during the pre-submission ROI pass. Three reviewer-flagged items are now resolved and verified by a clean compile (44 pages, zero undefined references/citations/labels): cross-reference integrity (TF1), the note under Figure 1 folded into the caption (TF5), and the previously unreferenced/misplaced action-set figure relocated to Section 4.2 with an explicit reference (TF9). The exploration comparison table is now referenced in prose as well. Two floats were previously completely unreferenced (the exploration comparison table and Figure~\ref{fig:detailed_ad_policy}); both now have text references. The remaining work is readability/density (TF4/TF6) and the boldface check (TF7), which require visual inspection of the compiled PDF.
+
+Prior refresh: May 25, 2026. Opened as the missing global audit for reviewer-flagged table and figure presentation issues. Source-level references and labels were mostly present, but visual placement and readability still needed a compile-and-inspect pass.
 
 ## Reviewer Context Used
 
@@ -21,7 +23,7 @@ The current manuscript is substantially better organized than the submission lik
 
 The remaining risk is that source-level correctness is not the same as PDF-level correctness. Several tables are `table*` floats and may move away from first reference. Some tables are dense, especially `tab:utility-comparison` and `tab:exploration-exploitation-comparison`, which use minipages or many narrow columns. The exploration/exploitation table includes RegCB even though the RegCB prose is commented out. Figure~\ref{fig:detailed_ad_policy} appears in the exploration/exploitation section but its caption describes an action set, so it may belong in action-space material or need removal. The figure readability concerns cannot be closed until the current PDF is compiled and visually inspected.
 
-Estimated reviewer-aligned score: **7.2 / 10**. The paper likely no longer has the exact old "Tables 3-4 / figures 3-4" label failure at the source level, but the reviewer-facing risk remains until rendered placement, readability, and table density are checked in the compiled PDF.
+Estimated reviewer-aligned score: **8.0 / 10** (up from 7.2 after TF1/TF5/TF9 landed and the compile confirmed zero undefined references). The old "Tables 3-4 / figures 3-4" label failure is confirmed gone, every float now has a text reference, and the Figure 1 note is in the caption. The remaining reviewer-facing risk is purely rendered readability and table density (TF4/TF6), which can only be closed by visually inspecting the compiled PDF.
 
 ## Legend
 
@@ -49,7 +51,7 @@ Priority and status are color-coded using inline HTML. Colors render in Cursor /
 
 ### Cross-Reference And Label Integrity
 
-- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF1.** Compile and check for unresolved references, wrong float numbers, or references to nonexistent tables/figures. Reviewer 2 explicitly flagged incorrect table/figure references in the original submission. Source search shows current `Table~\ref{...}` references and labels exist, but only a compile can confirm rendered numbering.
+- <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **TF1.** Verified May 30, 2026. Full `latexmk` rebuild produced 44 pages with zero undefined references, citations, or labels. Also fixed two previously unreferenced floats: the exploration comparison table (`tab:exploration-exploitation-comparison`) and Figure~\ref{fig:detailed_ad_policy}, both of which now have explicit text references. Reviewer 2's "Tables 3-4 / figures 3-4" failure does not exist in the current source.
 
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF2.** Verify that each table or figure is introduced before it appears in the rendered PDF. Source placement is mostly near first reference, but `table*` floats can move. Prioritize `tab:action-space-comparison`, `tab:state-space-comparison`, `tab:offline-online-policy-learning`, `tab:policy-learning-comparison`, `tab:exploration-exploitation-comparison`, and `tab:evaluation-evidence`.
 
@@ -59,7 +61,7 @@ Priority and status are color-coded using inline HTML. Colors render in Cursor /
 
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF4.** Inspect figure readability in the compiled PDF. Reviewer 2 explicitly said figure text was too small. Check `fig:ad_timeline` and `fig:detailed_ad_policy`; if either has unreadable text, enlarge, simplify, or replace with prose/table content.
 
-- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF5.** Check whether notes under the historical timeline have been moved into the caption or footnotes. Reviewer 2 specifically flagged notes under Figure 1. Source now shows only the figure include and caption, but the rendered image itself may still contain small embedded notes.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **TF5.** Fixed May 30, 2026. The `\begin{flushleft}...\footnotesize{\textit{Note:}...}` block under Figure 1 was removed and its content folded into the `\caption{...}`, exactly as Reviewer 2 requested. (Any notes embedded inside the timeline PNG itself remain a TF4 readability check.)
 
 - <span style="background:#dc3545;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P1</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF6.** Simplify dense tables that are hard to read in the PDF. Highest-risk tables are `tab:utility-comparison` (narrow columns and equations in minipages) and `tab:exploration-exploitation-comparison` (minipages, nested itemize, and a RegCB row without active prose support). Medium-risk tables are the large `table*` comparison tables in Sections 4.2-4.5.
 
@@ -69,7 +71,7 @@ Priority and status are color-coded using inline HTML. Colors render in Cursor /
 
 - <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF8.** Ensure the evaluation-evidence table supports, rather than replaces, prose synthesis. Reviewer 1 asked for quantitative results and evaluation practice; `tab:evaluation-evidence` should be source-verified and walked through in prose so the reader does not have to infer the takeaway.
 
-- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#6c757d;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">TODO</span> **TF9.** Resolve the `fig:detailed_ad_policy` placement question. It appears after the exploration/exploitation comparison table, but its caption describes an action set. Decide whether it should move to Section 4.2, be explicitly discussed in Section 4.5, or be removed.
+- <span style="background:#fd7e14;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">P2</span> <span style="background:#198754;color:white;padding:2px 8px;border-radius:4px;font-weight:bold">DONE</span> **TF9.** Fixed May 30, 2026. Moved `fig:detailed_ad_policy` from the end of Section 4.5 into Section 4.2 (Action Space), where the action-set content belongs, and added a one-sentence textual walkthrough plus an explicit `Figure~\ref` before the float. The unused `\definecolor{darkgreen}` that sat above the old float location was also removed.
 
 ### Final Compile Checks
 
