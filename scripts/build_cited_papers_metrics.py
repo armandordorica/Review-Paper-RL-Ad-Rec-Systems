@@ -32,8 +32,8 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "barajas2022online": {"cvr", "rev", "adux"},
     "bietti2021contextual": {"regret"},
     "cai2023two": {"dwell", "ctr", "rl"},
-    "carrion2021blending": {"rev", "ltv", "rl"},
-    "chen2022off": {"rl", "ope"},
+    "carrion2021blending": {"rev", "ltv", "rl", "ctr"},
+    "chen2022off": {"rl", "ope", "ltv"},
     "dudik2011doubly": {"ope"},
     "foster2018contextual": {"regret", "rl"},
     "hohnhold2015focusing": {"rev", "ctr", "ltv", "adux"},
@@ -46,11 +46,11 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "wang2022surrogate": {"ltv", "dwell", "rl"},
     "mcdonald2023spotify": {"ltv"},
     "wu2018budget": {"ctr", "rev", "rl"},
-    "xu2023optimizing": {"cvr", "rl"},
+    "xu2023optimizing": {"cvr", "rl", "adux"},
     "yan2020ads": {"rev", "ctr"},
     "zhang2018whole": {"rev", "ctr", "adux"},
-    "zhao2020jointly": {"dwell", "rev"},
-    "zhao2021dear": {"rl", "rev"},
+    "zhao2020jointly": {"dwell", "rev", "rl"},
+    "zhao2021dear": {"rl", "rev", "ctr", "adux"},
     "zou2019reinforcement": {"ctr", "dwell", "ltv", "rl"},
     "afsar2022reinforcement": {"rank", "rl"},
     "lin2023survey": {"rank", "rl"},
@@ -70,16 +70,16 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "li2010contextual": {"ctr", "regret"},
     "chapelle2011empirical": {"regret", "ctr"},
     "zhou2016latent": {"ctr", "regret"},
-    "zhao2018deep": {"ctr", "rev", "rl"},
+    "zhao2018deep": {"ctr", "rev", "rl", "rank"},
     "gao2022bidding": {"cvr", "rev", "ctr"},
-    "schwartz2017customer": {"cvr", "rev"},
+    "schwartz2017customer": {"cvr", "ctr"},
     "zhang2024scaling": {"ctr", "cvr"},
     "mcmahan2013ad": {"auc", "ctr"},
     "Zhou2018": {"auc", "ctr"},
     "Zhou2019": {"auc", "ctr"},
     "yuan2020unbiased": {"auc", "ctr"},
     "naumov2019deep": {"auc"},
-    "cheng2016wide": {"auc"},
+    "cheng2016wide": {"auc", "ctr"},
     "Kang2018": {"rank"},
     "kang2018sasrec": {"rank"},
     "pancha2022pinnerformer": {"rank"},
@@ -89,7 +89,7 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "yi2014beyond": {"dwell", "ctr"},
     "pan2023learning": {"dwell"},
     "wu2018beyond": {"dwell", "ctr"},
-    "wu2017returning": {"ltv", "dwell"},
+    "wu2017returning": {"ltv", "dwell", "rl"},
     "mazoure2021improving": {"ltv", "rl"},
     "mcdonald2023impatient": {"ltv", "rl"},
     "yi2023progressive": {"ltv", "rl"},
@@ -98,9 +98,9 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "tang2013ad": {"ctr", "rev"},
     "silberstein2023combating": {"ctr", "rev", "cvr", "adux"},
     "koutsopoulos2016native": {"rev", "ctr", "dwell"},
-    "cui2015global": {"rev", "adux"},
-    "chen2009large": {"ctr", "cvr"},
-    "yan2009much": {"ctr", "cvr"},
+    "cui2015global": {"rev", "adux", "ctr"},
+    "chen2009large": {"ctr", "cvr", "adux"},
+    "yan2009much": {"ctr", "cvr", "adux"},
     "grbovic2018real": {"cvr", "rank"},
     "liu2022monolith": {"cvr", "dwell"},
     "lu2016partially": {"rank"},
@@ -111,7 +111,7 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "hu2004performance": {"rev"},
     "engel2008incorporating": {"rev"},
     "ellam2003overture": {"rev"},
-    "burtini2015improving": {"regret", "rev"},
+    "burtini2015improving": {"regret", "rl"},
     "van2024practical": {"regret", "ctr", "rev"},
     "agarwal2014taming": {"regret"},
     "agarwal2019online": {"regret"},
@@ -119,7 +119,7 @@ KEY_FAMILIES: dict[str, set[str]] = {
     "bubeck2012regret": {"regret"},
     "kuleshov2014algorithms": {"regret"},
     "robbins1952sequential": {"regret"},
-    "russo2018tutorial": set(),
+    "russo2018tutorial": {"regret"},
     "chakrabarti2008contextual": {"ctr", "rank"},
     "vouros2022explainable": {"rl"},
     "vorotilov2023scaling": {"dwell", "ltv"},
@@ -432,18 +432,23 @@ def parse_audit_metric_details(audit_text: str) -> dict[str, tuple[str, str, str
 # Tuple: (how calculated, reported value/magnitude, evaluation setting).
 RL_REWARD_DETAILS: dict[str, tuple[str, str, str]] = {
     "zhao2021dear": (
-        "Session return R = Σ r_t; each step reward balances ad revenue vs. UX penalty from ad insertion/placement.",
-        "Offline mean R = 10.96 vs. HDQN 10.27, GRU 9.87, DeepFM 9.23, Wide&Deep 9.12 (p < 0.01).",
-        "Offline replay on short-video logs; production deployment claimed.",
+        "Session return R = Σ r_t with r_t = r_t^{ad} + α·r_t^{ex}; r_t^{ad} = ad-video revenue; r_t^{ex} = browse-continue UX signal.",
+        "Offline mean R = 10.96 vs. HDQN 10.27, GRU 9.87, DeepFM 9.23, Wide&Deep 9.12 (p < 0.01); sensitivity also plots Rad (Σ r^{ad}) and Rex (Σ r^{ex}).",
+        "Offline off-policy training on Douyin logs; evaluation via simulated online environment (Algorithm 2), not live A/B.",
     ),
     "zhao2020jointly": (
         "Two-level MDP: R^rs = session dwell time (rec list); R^as = session length; R^rev = session ad revenue; combined via level weights α, β.",
-        "vs. RAM-l: dwell +0.61%, session length +0.83%, ad revenue +4.70% (all p < 0.01).",
-        "Offline experiments on joint ad+organic lists.",
+        "Simulated online env on TikTok logs: vs. RAM-l: dwell +0.61%, session length +0.83%, ad revenue +4.70% (all p < 0.01).",
+        "Offline off-policy training + simulated online test (KDD 2020); no live A/B in source.",
+    ),
+    "wu2017returning": (
+        "RL reward combines return rate, session length, and long-term engagement proxies for returning-user recommendation.",
+        "Improves return rate and session-length metrics vs. baselines on logged recommender data (verify magnitudes in source).",
+        "Offline recommender experiments.",
     ),
     "chen2022off": (
-        "Discounted long-horizon return; Monte Carlo returns and critic targets for off-policy actor-critic on logged recommender trajectories.",
-        "Higher offline policy value vs. REINFORCE / full-trajectory IS; deployed on YouTube with long-term engagement gains (exact lifts not in audit).",
+        "Discounted long-horizon return / value; Monte Carlo returns and critic targets for off-policy actor-critic on logged recommender trajectories.",
+        "Higher offline long-horizon policy value vs. REINFORCE / full-trajectory IS; deployed on YouTube with long-term engagement gains (exact lifts not in audit).",
         "Offline logged YouTube data → production.",
     ),
     "cai2023two": (
@@ -453,7 +458,7 @@ RL_REWARD_DETAILS: dict[str, tuple[str, str, str]] = {
     ),
     "xu2023optimizing": (
         "On-policy TD learning optimizing long-term return tied to conversion outcomes in auction-based recommender (Meta).",
-        "Online A/B: conversion count and rate +4–10% vs. base policy; impressions neutral.",
+        "Online A/B: conversion count and rate +4–10% vs. base policy; total impressions neutral (supply guardrail).",
         "Online A/B (~billions of daily impressions).",
     ),
     "Mehrotra2020": (
@@ -726,8 +731,8 @@ CTR_CLICKS_DETAILS: dict[str, tuple[str, str, str]] = {
         "Offline simulator + logged data.",
     ),
     "zhao2018deep": (
-        "Click cost and total clicks in sponsored-search RTB; page-wise display strategy optimizes click yield under budget.",
-        "Offline: Precision@20 0.0491, Recall@20 0.3576, NDCG@20 0.1872 (ranking); click/budget metrics in RTB eval.",
+        "Click cost, total clicks, and budget consumption in sponsored-search RTB; page-wise display strategy optimizes click yield under budget.",
+        "Offline: Precision@20 0.0491, Recall@20 0.3576, NDCG@20 0.1872 vs. display baselines; click/budget metrics in RTB eval.",
         "Offline e-commerce / RTB logs.",
     ),
     "chakrabarti2008contextual": (
@@ -814,6 +819,31 @@ CTR_CLICKS_DETAILS: dict[str, tuple[str, str, str]] = {
         "CTR, CPM, conversion as ad fatigue feature evaluation metrics.",
         "Fatigue-aware models improve CTR/engagement while managing ad exposure (verify lifts in source).",
         "Industrial ad systems.",
+    ),
+    "zhao2021dear": (
+        "Ad-side reward r_t^{ad} = revenue of the inserted ad video; ad features include platform predicted-CTR; W&D/DeepFM/GRU baselines add heads to predict ad CTR and whether to insert an ad.",
+        "Table 2: session accumulated reward R = 10.96 vs. HDQN 10.27 (+6.7%, p=0.002); sensitivity analysis tracks Rad = Σ r^{ad} (ad revenue) and Rex = Σ r^{ex} separately vs. α.",
+        "Simulated online environment on Douyin logs (Mar 2019); Table 2 reports session R on held-out sessions. No live A/B or deployment results in the AAAI paper.",
+    ),
+    "carrion2021blending": (
+        "Virtual bids encode platform valuation of sponsored clicks in blended sponsored/organic auctions on JD.COM.",
+        "Full mobile deployment; tens of millions of auctions/day (exact click-valuation lifts not disclosed in audit).",
+        "Online production (JD.COM).",
+    ),
+    "cui2015global": (
+        "Click yield and revenue in sponsored-search ad selection; global optimization over click and revenue outcomes.",
+        "Improves revenue and click yield vs. greedy baselines on commercial search-engine logs.",
+        "Offline evaluation on commercial search-engine ad logs (no live A/B reported).",
+    ),
+    "van2024practical": (
+        "Production CTR and revenue KPIs alongside cumulative regret in large-scale contextual bandit deployments.",
+        "Industry perspective on balancing regret minimization with live CTR/revenue guardrails (no new experiments reported).",
+        "Conceptual / practitioner WSDM perspective paper.",
+    ),
+    "cheng2016wide": (
+        "pCTR / engagement prediction with Wide & Deep; aggregate CTR and online engagement at Google Play scale.",
+        "Reported AUC and log-loss improvements plus online engagement gains vs. prior rankers.",
+        "Industrial offline + online (Google Play).",
     ),
 }
 
@@ -903,8 +933,8 @@ EVAL_MODALITY_COLS: list[tuple[str, str]] = [
 EVAL_MODALITY_IDS = [c[0] for c in EVAL_MODALITY_COLS]
 
 EVAL_MODALITY_FLAGS: dict[str, tuple[bool, bool, bool]] = {
-    "zhao2021dear": (True, False, True),
-    "zhao2020jointly": (True, False, False),
+    "zhao2021dear": (True, True, False),  # offline logs + simulated online env; no live A/B in AAAI paper
+    "zhao2020jointly": (True, True, False),  # same TikTok logs + simulated online env as DEAR; no live A/B in KDD paper
     "zhang2018whole": (False, False, True),
     "yan2020ads": (False, False, True),
     "sagtani2024ad": (True, False, True),
@@ -917,7 +947,7 @@ EVAL_MODALITY_FLAGS: dict[str, tuple[bool, bool, bool]] = {
     "levine2020offline": (False, False, False),
     "bietti2021contextual": (True, False, False),
     "li2010contextual": (True, False, True),
-    "van2024practical": (False, False, True),
+    "van2024practical": (False, False, False),  # industry perspective; no new empirical eval in 4-page WSDM paper
     "Mehrotra2020": (False, False, True),
     "xu2023optimizing": (False, False, True),
     "cai2023two": (True, False, True),
@@ -985,6 +1015,41 @@ EVAL_MODALITY_FLAGS: dict[str, tuple[bool, bool, bool]] = {
     "everitt2021reward": (False, True, False),
     "vouros2022explainable": (False, True, False),
     "kaelbling1998planning": (False, True, False),
+    # Explicit flags for cited papers not covered above (surveys, textbooks, edge cases).
+    "Jannach2023": (False, False, False),
+    "Sutton1998": (False, False, False),
+    "abrams2007personalized": (True, False, False),
+    "acmauthoryear": (False, False, False),
+    "afsar2022reinforcement": (False, False, False),
+    "agarwal2016statistical": (False, False, False),
+    "bubeck2012regret": (False, False, False),
+    "ccelik2023ad": (False, False, False),
+    "cui2015global": (True, False, False),  # commercial search-engine logs; no live A/B reported
+    "dimitrakakis2018decision": (False, False, False),
+    "ellam2003overture": (False, False, False),
+    "engel2008incorporating": (False, False, False),
+    "fain2006sponsored": (False, False, False),
+    "gama2014survey": (False, False, False),
+    "glanois2024survey": (False, False, False),
+    "hu2004performance": (False, False, False),
+    "kaelbling1996reinforcement": (False, False, False),
+    "kant2021history": (False, False, False),
+    "kuleshov2014algorithms": (False, False, False),
+    "lambert2023entangled": (False, False, False),
+    "lin2023survey": (False, False, False),
+    "nielsen2017advertising": (False, False, True),  # controlled advertising field experiments
+    "puterman2014markov": (False, False, False),
+    "robbins1952sequential": (True, False, False),
+    "russell2016artificial": (False, False, False),
+    "russo2018tutorial": (False, False, False),
+    "saha2021advertiming": (False, False, True),  # large-scale social-media ad consumption study
+    "shahriari2015taking": (False, False, False),
+    "silberstein2023combating": (True, False, True),  # offline feature eval + online A/B at Meta
+    "vaswani2017attention": (False, False, False),
+    "wikipedia-cpm": (False, False, False),
+    "wsj2003yahoooverture": (False, False, False),
+    "zhao2024survey": (False, False, False),
+    "zhu2021overview": (False, False, False),
 }
 
 
@@ -1037,6 +1102,7 @@ def classify_eval_modality_flags(text: str) -> tuple[bool, bool, bool]:
         for k in (
             "simulator", "simulation", "simulated", "recsim", "slate model",
             "mujoco", "atari", "rwrl", "benchmark environment", "s-network",
+            "simulated online",
         )
     )
     return offline, sim, online
@@ -1061,6 +1127,9 @@ def eval_modality_cells_for_key(
     """Return eval-off / eval-sim / eval-on cell markers (✓ or empty)."""
     if key in EVAL_MODALITY_FLAGS:
         off, sim, on = EVAL_MODALITY_FLAGS[key]
+    elif reports in ("❌ No", "⚠️ Partial"):
+        # Surveys and non-empirical sources should not inherit modality from audit prose.
+        off, sim, on = False, False, False
     elif key in audit_modalities:
         off, sim, on = audit_modalities[key]
     elif (from_details := modality_flags_from_detail_settings(key)):
@@ -1229,6 +1298,9 @@ def infer_families_from_text(text: str) -> set[str]:
     auc_kw = ["auc", "log loss", "logloss", "calibration"]
     if any(k in t for k in auc_kw):
         fams.add("auc")
+    # Avoid matching "auc" inside "auction".
+    if fams.intersection({"auc"}) and "auction" in t and not re.search(r"\bauc\b", t):
+        fams.discard("auc")
 
     cvr_kw = [
         "conversion", "cvr", "booking conversion", "cpic", "roas",
@@ -1245,11 +1317,14 @@ def infer_families_from_text(text: str) -> set[str]:
         fams.add("rev")
 
     rank_kw = [
-        "ndcg", "hr@", "hr@k", "hit ratio", "recall", "precision@",
-        "map ", "f1-score", "recall@", "precision",
+        "ndcg", "hr@", "hr@k", "hit ratio", "recall@", "precision@",
+        "map ", "f1-score", "precision",
     ]
     if any(k in t for k in rank_kw):
         fams.add("rank")
+    # Avoid matching ranking "recall" inside "brand recall".
+    if fams.intersection({"rank"}) and "brand recall" in t and "recall@" not in t and "ndcg" not in t:
+        fams.discard("rank")
 
     dwell_kw = [
         "dwell", "watch time", "watchtime", "session length",
@@ -1285,19 +1360,28 @@ def infer_families_from_text(text: str) -> set[str]:
 
     ope_kw = [
         "rmse", "bias", "standard deviation", "ips", "doubly robust",
-        "counterfactual", "propensity", "offline policy", "ope",
-        "importance",
+        "counterfactual", "propensity score", "offline policy", "ope",
+        "importance", "hcope",
     ]
     if any(k in t for k in ope_kw):
         fams.add("ope")
+    # "Click propensity" is an engagement metric, not an OPE propensity model.
+    if fams.intersection({"ope"}) and "click propensity" in t and "propensity score" not in t:
+        fams.discard("ope")
 
     adux_kw = [
         "ad load", "ad close", "acr", "fatigue", "incrementality",
-        "lift", "pacing", "impression", "ad consumption", "click propensity",
-        "user satisfaction", "arn", "refresh",
+        "lift", "pacing", "ad consumption", "click propensity",
+        "user satisfaction", "arn", "refresh", "total impressions",
+        "impressions neutral", "impression cap", "ad impressions",
     ]
     if any(k in t for k in adux_kw):
         fams.add("adux")
+    # RTB "winning impression value" is a bidding metric, not ad-load UX.
+    if fams.intersection({"adux"}) and re.search(
+        r"\b(?:winning|optimal)\s+impression|\bimpression value\b", t
+    ):
+        fams.discard("adux")
 
     return fams
 
@@ -1503,6 +1587,11 @@ def render_matrix_table_rows(rows: list) -> tuple[str, int]:
     return table, total_min
 
 
+def _json_script_payload(obj) -> str:
+    """JSON safe to embed in a <script type=\"application/json\"> tag."""
+    return json.dumps(obj, ensure_ascii=False).replace("<", "\\u003c")
+
+
 def render_filter_toolbar() -> str:
     """Toolbar: search, row presets, column visibility, metric row filter."""
     metric_toggles = "".join(
@@ -1519,8 +1608,8 @@ def render_filter_toolbar() -> str:
         f"</label>"
         for fid, label in METRIC_FAMILIES
     )
-    family_ids_json = html.escape(json.dumps(FAMILY_IDS))
-    eval_modality_ids_json = html.escape(json.dumps(EVAL_MODALITY_IDS))
+    family_ids_json = _json_script_payload(FAMILY_IDS)
+    eval_modality_ids_json = _json_script_payload(EVAL_MODALITY_IDS)
     return f"""
 <div id="matrix-filters" class="filter-toolbar">
   <div class="filter-row">
@@ -2433,19 +2522,31 @@ def render_full_html(
 <script>
 (function () {{
   const table = document.getElementById('citation-matrix');
-  if (!table) return;
-
-  const familyIds = JSON.parse(document.getElementById('family-ids').textContent);
-  const evalModalityIds = JSON.parse(document.getElementById('eval-modality-ids').textContent);
-  const filterColIds = [...evalModalityIds, ...familyIds];
-  const tbody = table.querySelector('tbody');
-  const rows = Array.from(tbody.querySelectorAll('tr'));
-  const totalRows = rows.length;
-
   const searchInput = document.getElementById('filter-search');
   const presetSelect = document.getElementById('filter-preset');
   const matchSelect = document.getElementById('filter-match');
   const countEl = document.getElementById('filter-count');
+  const familyIdsEl = document.getElementById('family-ids');
+  const evalModalityIdsEl = document.getElementById('eval-modality-ids');
+  if (!table || !searchInput || !presetSelect || !matchSelect || !countEl || !familyIdsEl || !evalModalityIdsEl) {{
+    return;
+  }}
+
+  let familyIds;
+  let evalModalityIds;
+  try {{
+    familyIds = JSON.parse(familyIdsEl.textContent);
+    evalModalityIds = JSON.parse(evalModalityIdsEl.textContent);
+  }} catch (err) {{
+    console.error('Citation matrix filters: failed to parse column IDs', err);
+    return;
+  }}
+
+  const filterColIds = [...evalModalityIds, ...familyIds];
+  const tbody = table.querySelector('tbody');
+  if (!tbody) return;
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const totalRows = rows.length;
 
   // Per-column value filters: colId -> Set of allowed vals
   const colFilters = Object.fromEntries(filterColIds.map(id => [id, new Set()]));
@@ -2506,7 +2607,15 @@ def render_full_html(
   function rowMatchesSearch(tr) {{
     const q = (searchInput.value || '').trim().toLowerCase();
     if (!q) return true;
-    return (tr.dataset.search || '').includes(q);
+    const haystack = (
+      tr.getAttribute('data-search') ||
+      tr.dataset.search ||
+      ''
+    ).toLowerCase();
+    if (haystack.includes(q)) return true;
+    const keyCell = tr.querySelector('[data-col="key"]');
+    const keyText = (keyCell ? keyCell.textContent : '').toLowerCase();
+    return keyText.includes(q);
   }}
 
   function applyFilters() {{
@@ -2550,6 +2659,8 @@ def render_full_html(
 
   // Events
   searchInput.addEventListener('input', applyFilters);
+  searchInput.addEventListener('keyup', applyFilters);
+  searchInput.addEventListener('search', applyFilters);
   presetSelect.addEventListener('change', applyFilters);
   matchSelect.addEventListener('change', applyFilters);
   document.querySelectorAll('.row-require').forEach(cb => cb.addEventListener('change', () => {{
@@ -2643,6 +2754,39 @@ def render_full_html(
 """
 
 
+def audit_key_families_coverage(keys: list[str], audit_metrics: dict[str, str]) -> list[str]:
+    """
+    Compare KEY_FAMILIES against MANUAL_METRICS / evaluation_audit text.
+    Returns human-readable warnings when curated families omit inferred metrics.
+    """
+    warnings: list[str] = []
+    for key in keys:
+        if key not in KEY_FAMILIES:
+            continue
+        metrics = MANUAL_METRICS.get(key) or audit_metrics.get(key) or ""
+        if not metrics or metrics.startswith("N/A") or metrics.startswith("Catalogues"):
+            continue
+        if metrics.startswith("Discusses"):
+            continue
+        inferred = infer_families_from_text(metrics)
+        curated = KEY_FAMILIES[key]
+        missing = sorted(inferred - curated)
+        if missing:
+            warnings.append(
+                f"{key}: KEY_FAMILIES missing {missing} "
+                f"(from: {metrics[:72]}{'…' if len(metrics) > 72 else ''})"
+            )
+    return warnings
+
+
+def audit_eval_modality_coverage(keys: list[str]) -> list[str]:
+    """Warn when cited papers lack explicit evaluation-modality flags."""
+    missing = sorted(k for k in keys if k not in EVAL_MODALITY_FLAGS)
+    if not missing:
+        return []
+    return [f"{k}: missing EVAL_MODALITY_FLAGS entry" for k in missing]
+
+
 def main() -> None:
     tex = (ROOT / "paper.tex").read_text()
     audit_text = (ROOT / "docs/agent/evaluation_audit.md").read_text()
@@ -2654,6 +2798,10 @@ def main() -> None:
 
     keys = extract_cite_keys(tex)
     cite_counts = count_cite_keys(tex)
+    for warning in audit_key_families_coverage(keys, audit_metrics):
+        print(f"WARNING: {warning}")
+    for warning in audit_eval_modality_coverage(keys):
+        print(f"WARNING: {warning}")
     rows = []
     family_counts = {fid: 0 for fid in FAMILY_IDS}
 
