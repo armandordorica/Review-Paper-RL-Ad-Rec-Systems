@@ -1078,6 +1078,43 @@ def eval_modality_marker(cell: str) -> str:
     return "check" if cell == "✓" else "empty"
 
 
+# Color buckets for the eval-modality citation chart (id, legend label, hex color).
+EVAL_MODALITY_BUCKET_META: list[tuple[str, str, str]] = [
+    ("offline-only", "Offline only", "#2563eb"),
+    ("online-only", "Online only", "#059669"),
+    ("offline-sim", "Offline + simulation only", "#7c3aed"),
+    ("offline-sim-online", "Offline + simulation + online", "#dc2626"),
+    ("other-combo", "Other combination", "#f59e0b"),
+    ("none", "None / not catalogued", "#94a3b8"),
+]
+EVAL_MODALITY_BUCKET_LABELS = {bid: label for bid, label, _c in EVAL_MODALITY_BUCKET_META}
+EVAL_MODALITY_BUCKET_COLORS = {bid: color for bid, _label, color in EVAL_MODALITY_BUCKET_META}
+
+
+def eval_modality_flags_from_cells(cells: dict[str, str]) -> tuple[bool, bool, bool]:
+    return (
+        cells.get("eval-off") == "✓",
+        cells.get("eval-sim") == "✓",
+        cells.get("eval-on") == "✓",
+    )
+
+
+def eval_modality_bucket_from_cells(cells: dict[str, str]) -> str:
+    """Map offline/sim/online flags to a color-bucket id for plotting."""
+    off, sim, on = eval_modality_flags_from_cells(cells)
+    if off and not sim and not on:
+        return "offline-only"
+    if not off and not sim and on:
+        return "online-only"
+    if off and sim and not on:
+        return "offline-sim"
+    if off and sim and on:
+        return "offline-sim-online"
+    if not off and not sim and not on:
+        return "none"
+    return "other-combo"
+
+
 MANUAL_METRICS: dict[str, str] = {
     "Jannach2023": "N/A (survey; synthesizes multi-objective metrics from prior work)",
     "Kang2018": "HR@K, NDCG@K",
@@ -1568,6 +1605,62 @@ def build_citation_plot_json(rows: list) -> str:
     return json.dumps(payload, ensure_ascii=False)
 
 
+def build_citation_eval_modality_plot_json(rows: list) -> str:
+    """JSON for cite-frequency chart colored by evaluation-modality bucket."""
+    sorted_rows = sorted(rows, key=lambda r: (-r[-1], r[1].lower()))
+    payload = {
+        "keys": [],
+        "counts": [],
+        "titles": [],
+        "affiliations": [],
+        "evalBuckets": [],
+        "evalBucketLabels": EVAL_MODALITY_BUCKET_LABELS,
+        "evalBucketColors": EVAL_MODALITY_BUCKET_COLORS,
+        "bucketOrder": [bid for bid, _label, _color in EVAL_MODALITY_BUCKET_META],
+    }
+    for _i, key, title, affiliation, _reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, cite_count in sorted_rows:
+        payload["keys"].append(key)
+        payload["counts"].append(cite_count)
+        payload["titles"].append(title)
+        payload["affiliations"].append(affiliation)
+        payload["evalBuckets"].append(eval_modality_bucket_from_cells(eval_cells))
+    return json.dumps(payload, ensure_ascii=False)
+
+
+def build_eval_modality_summary_payload(rows: list) -> dict:
+    """Count and percent of cited papers per evaluation-modality bucket."""
+    total = len(rows)
+    bucket_to_keys: dict[str, list[str]] = {
+        bid: [] for bid, _label, _color in EVAL_MODALITY_BUCKET_META
+    }
+    for _i, key, _title, _aff, _reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, _cite_count in rows:
+        bid = eval_modality_bucket_from_cells(eval_cells)
+        bucket_to_keys.setdefault(bid, []).append(key)
+
+    items: list[tuple[int, str, str, str, list[str]]] = []
+    for bid, label, color in EVAL_MODALITY_BUCKET_META:
+        keys = sorted(bucket_to_keys.get(bid, []), key=str.lower)
+        count = len(keys)
+        items.append((count, bid, label, color, keys))
+    items.sort(key=lambda item: (-item[0], item[2].lower()))
+
+    percents = [round(100.0 * count / total, 1) if total else 0.0 for count, *_ in items]
+    return {
+        "total": total,
+        "bucketIds": [bid for _c, bid, _l, _col, _k in items],
+        "labels": [label for _c, _bid, label, _col, _k in items],
+        "counts": [count for count, *_ in items],
+        "percents": percents,
+        "colors": [color for _c, _bid, _l, color, _k in items],
+        "paperKeys": [keys for *_rest, keys in items],
+        "evalBucketLabels": EVAL_MODALITY_BUCKET_LABELS,
+    }
+
+
+def build_eval_modality_summary_json(rows: list) -> str:
+    return json.dumps(build_eval_modality_summary_payload(rows), ensure_ascii=False)
+
+
 def build_affiliation_histogram_payload(rows: list) -> dict:
     """Papers-per-affiliation counts (sorted by count desc)."""
     aff_to_keys: dict[str, list[str]] = {}
@@ -1608,6 +1701,48 @@ def render_citation_plot_section(rows: list) -> str:
     </p>
     <div id="cite-frequency-plot"></div>
     <script type="application/json" id="cite-plot-data">{plot_json}</script>
+  </section>
+"""
+
+
+def render_citation_eval_modality_plot_section(rows: list) -> str:
+    plot_json = build_citation_eval_modality_plot_json(rows).replace("<", "\\u003c")
+    legend_items = "".join(
+        f"<li><span class=\"eval-swatch\" style=\"background:{color}\"></span>"
+        f"{html.escape(label)}</li>"
+        for _bid, label, color in EVAL_MODALITY_BUCKET_META
+    )
+    return f"""
+  <section id="cite-eval-modality-plot">
+    <h2>Citation frequency by evaluation modality</h2>
+    <p class="plot-hint">
+      Same layout as the citation-frequency chart: each bar is a citation key (ticker),
+      sorted by times cited (highest first). Bar color shows which evaluation modalities
+      the source paper reports: offline only, online only, offline + simulation only,
+      or offline + simulation + online. Other flag combinations and uncatalogued papers
+      use separate colors (see legend).
+    </p>
+    <ul class="eval-modality-legend">{legend_items}</ul>
+    <div id="cite-eval-modality-plot"></div>
+    <script type="application/json" id="cite-eval-modality-plot-data">{plot_json}</script>
+  </section>
+"""
+
+
+def render_eval_modality_summary_section(rows: list) -> str:
+    payload = build_eval_modality_summary_payload(rows)
+    summary_json = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
+    return f"""
+  <section id="eval-modality-summary">
+    <h2>Papers by evaluation modality (share of cited set)</h2>
+    <p class="plot-hint">
+      Each bar is one evaluation-modality bucket across all {payload["total"]} unique cited papers
+      (each paper counted once, regardless of cite frequency in paper.tex).
+      Bar length is the number of papers; labels show count and percentage of the total.
+      Hover for citation keys in each bucket.
+    </p>
+    <div id="eval-modality-summary-plot"></div>
+    <script type="application/json" id="eval-modality-summary-data">{summary_json}</script>
   </section>
 """
 
@@ -1673,6 +1808,8 @@ def render_full_html(
 
     matrix_table, _ = render_matrix_table_rows(rows)
     cite_plot_section = render_citation_plot_section(rows)
+    cite_eval_modality_plot_section = render_citation_eval_modality_plot_section(rows)
+    eval_modality_summary_section = render_eval_modality_summary_section(rows)
     affiliation_hist_section = render_affiliation_histogram_section(rows)
 
     return f"""<!DOCTYPE html>
@@ -1719,7 +1856,32 @@ def render_full_html(
   h2 {{ margin: 0 0 1rem; font-size: 1.15rem; }}
   .plot-hint {{ margin: 0 0 1rem; color: var(--muted); font-size: 14px; max-width: 56rem; }}
   #cite-frequency-plot {{ width: 100%; min-height: 680px; }}
+  #cite-eval-modality-plot {{ width: 100%; min-height: 680px; }}
+  #eval-modality-summary-plot {{ width: 100%; min-height: 360px; }}
   #affiliation-histogram-plot {{ width: 100%; min-height: 560px; overflow-y: auto; }}
+  ul.eval-modality-legend {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: var(--muted);
+  }}
+  ul.eval-modality-legend li {{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }}
+  .eval-swatch {{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.12);
+    flex-shrink: 0;
+  }}
   .scroll {{ overflow-x: auto; }}
   table {{
     border-collapse: collapse;
@@ -1933,6 +2095,10 @@ def render_full_html(
 
 {cite_plot_section}
 
+{cite_eval_modality_plot_section}
+
+{eval_modality_summary_section}
+
 {affiliation_hist_section}
 
   <section id="matrix">
@@ -2020,6 +2186,172 @@ def render_full_html(
   }}
 
   renderCitePlot();
+}})();
+</script>
+<script>
+(function () {{
+  const plotEl = document.getElementById('cite-eval-modality-plot');
+  const plotDataEl = document.getElementById('cite-eval-modality-plot-data');
+  if (!plotEl || !plotDataEl) return;
+
+  function renderEvalModalityCitePlot() {{
+    if (!window.Plotly) {{
+      window.setTimeout(renderEvalModalityCitePlot, 50);
+      return;
+    }}
+
+    const data = JSON.parse(plotDataEl.textContent);
+    const colors = data.evalBucketColors || {{}};
+    const labels = data.evalBucketLabels || {{}};
+    const affiliations = data.affiliations || [];
+    const barColors = (data.evalBuckets || []).map(function (bid) {{
+      return colors[bid] || '#94a3b8';
+    }});
+
+    const hovertext = data.keys.map(function (key, i) {{
+      const bucketLabel = labels[data.evalBuckets[i]] || data.evalBuckets[i] || '—';
+      return (
+        '<b>' + data.titles[i] + '</b><br>' +
+        '<b>Eval modality:</b> ' + bucketLabel + '<br>' +
+        '<b>Affiliation:</b> ' + (affiliations[i] || '—') + '<br>' +
+        'Key: ' + key + '<br>' +
+        'Cites in paper: ' + data.counts[i]
+      );
+    }});
+
+    const barTrace = {{
+      type: 'bar',
+      x: data.keys,
+      y: data.counts,
+      text: hovertext,
+      hovertemplate: '%{{text}}<extra></extra>',
+      marker: {{ color: barColors }},
+      showlegend: false,
+    }};
+
+    const legendTraces = (data.bucketOrder || []).map(function (bid) {{
+      return {{
+        type: 'bar',
+        x: [null],
+        y: [null],
+        name: labels[bid] || bid,
+        marker: {{ color: colors[bid] || '#94a3b8' }},
+        showlegend: true,
+        hoverinfo: 'skip',
+      }};
+    }});
+
+    Plotly.newPlot(
+      plotEl,
+      [barTrace].concat(legendTraces),
+      {{
+        margin: {{ t: 24, r: 24, b: 220, l: 64 }},
+        height: 680,
+        xaxis: {{
+          title: 'Citation key (ticker)',
+          tickangle: -55,
+          automargin: true,
+          rangeslider: {{ visible: true, thickness: 0.06 }},
+        }},
+        yaxis: {{ title: 'Times cited in paper.tex', rangemode: 'tozero' }},
+        hovermode: 'closest',
+        legend: {{
+          orientation: 'h',
+          yanchor: 'bottom',
+          y: 1.02,
+          xanchor: 'left',
+          x: 0,
+          font: {{ size: 11 }},
+        }},
+      }},
+      {{ responsive: true, displayModeBar: true }}
+    );
+  }}
+
+  renderEvalModalityCitePlot();
+}})();
+</script>
+<script>
+(function () {{
+  const plotEl = document.getElementById('eval-modality-summary-plot');
+  const plotDataEl = document.getElementById('eval-modality-summary-data');
+  if (!plotEl || !plotDataEl) return;
+
+  function renderEvalModalitySummary() {{
+    if (!window.Plotly) {{
+      window.setTimeout(renderEvalModalitySummary, 50);
+      return;
+    }}
+
+    const data = JSON.parse(plotDataEl.textContent);
+    const labels = data.labels || [];
+    const counts = data.counts || [];
+    const percents = data.percents || [];
+    const colors = data.colors || [];
+    const paperKeys = data.paperKeys || [];
+    const total = data.total || 0;
+
+    const displayLabels = labels.slice().reverse();
+    const displayCounts = counts.slice().reverse();
+    const displayPercents = percents.slice().reverse();
+    const displayColors = colors.slice().reverse();
+    const displayKeys = paperKeys.slice().reverse();
+
+    const barText = displayCounts.map(function (n, i) {{
+      return n + ' (' + displayPercents[i] + '%)';
+    }});
+
+    const hovertext = displayLabels.map(function (label, i) {{
+      const keys = displayKeys[i] || [];
+      const preview = keys.length <= 12
+        ? keys.join(', ')
+        : keys.slice(0, 12).join(', ') + ' … (' + keys.length + ' papers)';
+      return (
+        '<b>' + label + '</b><br>' +
+        'Papers: ' + displayCounts[i] + ' of ' + total +
+        ' (' + displayPercents[i] + '%)<br>' +
+        'Citation keys: ' + preview
+      );
+    }});
+
+    const plotHeight = Math.max(360, displayLabels.length * 52 + 100);
+
+    Plotly.newPlot(
+      plotEl,
+      [{{
+        type: 'bar',
+        orientation: 'h',
+        y: displayLabels,
+        x: displayCounts,
+        text: barText,
+        textposition: 'outside',
+        cliponaxis: false,
+        customdata: hovertext,
+        hovertemplate: '%{{customdata}}<extra></extra>',
+        marker: {{ color: displayColors }},
+      }}],
+      {{
+        margin: {{ t: 24, r: 96, b: 56, l: 12 }},
+        height: plotHeight,
+        xaxis: {{
+          title: 'Number of papers (' + total + ' total)',
+          rangemode: 'tozero',
+          dtick: 1,
+          automargin: true,
+        }},
+        yaxis: {{
+          title: 'Evaluation modality bucket',
+          automargin: true,
+          tickfont: {{ size: 12 }},
+        }},
+        hovermode: 'closest',
+        bargap: 0.25,
+      }},
+      {{ responsive: true, displayModeBar: true }}
+    );
+  }}
+
+  renderEvalModalitySummary();
 }})();
 </script>
 <script>

@@ -42,7 +42,32 @@
   h2 { margin: 0 0 1rem; font-size: 1.15rem; }
   .plot-hint { margin: 0 0 1rem; color: var(--muted); font-size: 14px; max-width: 56rem; }
   #cite-frequency-plot { width: 100%; min-height: 680px; }
+  #cite-eval-modality-plot { width: 100%; min-height: 680px; }
+  #eval-modality-summary-plot { width: 100%; min-height: 360px; }
   #affiliation-histogram-plot { width: 100%; min-height: 560px; overflow-y: auto; }
+  ul.eval-modality-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  ul.eval-modality-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .eval-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.12);
+    flex-shrink: 0;
+  }
   .scroll { overflow-x: auto; }
   table {
     border-collapse: collapse;
@@ -264,6 +289,36 @@
     </p>
     <div id="cite-frequency-plot"></div>
     <script type="application/json" id="cite-plot-data">{"keys": ["zhao2021dear", "chen2022off", "gauci2018horizon", "yan2020ads", "Sutton1998", "zhang2018whole", "russo2018tutorial", "dulac2021challenges", "swaminathan2015counterfactual", "hohnhold2015focusing", "levine2020offline", "zhao2020jointly", "sagtani2023quantifying", "xia2023transact", "ie2019slateq", "mcdonald2023spotify", "bietti2021contextual", "dudik2011doubly", "pancha2022pinnerformer", "wang2022surrogate", "auer2002finite", "cheng2016wide", "li2010contextual", "sagtani2024ad", "williams1992simple", "Zhou2018", "covington2016deep", "mcmahan2013ad", "Mehrotra2020", "xu2023optimizing", "bubeck2012regret", "chapelle2011empirical", "dulac2019challenges", "afsar2022reinforcement", "foster2018contextual", "mnih2016asynchronous", "zhu2021overview", "agarwal2016statistical", "fain2006sponsored", "ie2019recsim", "lin2023survey", "puterman2014markov", "Theocharous-2015", "wu2017returning", "zou2019reinforcement", "abrams2007personalized", "barajas2022online", "cai2023two", "carrion2021blending", "engel2008incorporating", "liu2022monolith", "pan2023learning", "schulman2015trust", "schulman2017proximal", "schwartz2017customer", "van2024practical", "vorotilov2023scaling", "wu2018budget", "zhang2024scaling", "zhao2018deep", "Zhou2019", "agarwal2019online", "cui2015global", "glanois2024survey", "hu2004performance", "ie2019reinforcement", "kang2018sasrec", "mazoure2021improving", "naumov2019deep", "shahriari2015taking", "silberstein2020ad", "silberstein2023combating", "yi2014beyond", "acmauthoryear", "agarwal2014budget", "agarwal2014taming", "agarwal2020optimistic", "burtini2015improving", "ccelik2023ad", "chakrabarti2008contextual", "chen2009large", "deffayet2022offline", "dimitrakakis2018decision", "ellam2003overture", "everitt2021reward", "gama2014survey", "gao2022bidding", "grbovic2018real", "Jannach2023", "kaelbling1996reinforcement", "kaelbling1998planning", "Kang2018", "kant2021history", "koutsopoulos2016native", "kuleshov2014algorithms", "lambert2023entangled", "lu2016partially", "mcdonald2023impatient", "nielsen2017advertising", "robbins1952sequential", "russell2016artificial", "saha2021advertiming", "tang2013ad", "van2016deep", "vaswani2017attention", "vouros2022explainable", "wen2019learning", "wikipedia-cpm", "wsj2003yahoooverture", "wu2018beyond", "yan2009much", "yi2023progressive", "yuan2020unbiased", "zhao2018recommendations", "zhao2024survey", "zhou2016latent"], "counts": [31, 27, 27, 25, 24, 23, 21, 20, 20, 19, 19, 19, 12, 12, 11, 11, 10, 10, 10, 10, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "titles": ["Dear: Deep reinforcement learning for online advertising impression in recommender systems", "Off-policy actor-critic for recommender systems", "Horizon: Facebook's open source applied reinforcement learning platform", "Ads allocation in feed via constrained optimization", "Reinforcement Learning: An Introduction", "The whole-page optimization via dynamic ad allocation", "A Tutorial on Thompson Sampling", "Challenges of real-world reinforcement learning: definitions, benchmarks and analysis", "Counterfactual risk minimization: Learning from logged bandit feedback", "Focusing on the long-term: It's good for users and business", "Offline reinforcement learning: Tutorial, review, and perspectives on open problems", "Jointly Learning to Recommend and Advertise", "Quantifying and leveraging user fatigue for interventions in recommender systems", "Transact: Transformer-based realtime user action model for recommendation at pinterest", "SlateQ: A Tractable Decomposition for Reinforcement Learning with Recommendation Sets.", "Optimizing for the Long-Term Without Delay", "A contextual bandit bake-off", "Doubly robust policy evaluation and learning", "Pinnerformer: Sequence modeling for user representation at pinterest", "Surrogate for long-term user experience in recommender systems", "Finite-Time Analysis of the Multiarmed Bandit Problem", "Wide \\& deep learning for recommender systems", "A contextual-bandit approach to personalized news article recommendation", "Ad-load Balancing via Off-policy Learning in a Content Marketplace", "Simple statistical gradient-following algorithms for connectionist reinforcement learning", "Deep Interest Network for Click-Through Rate Prediction", "Deep neural networks for youtube recommendations", "Ad click prediction: a view from the trenches", "Bandit Based Optimization of Multiple Objectives on a Music Streaming Platform", "Optimizing Long-term Value for Auction-Based Recommender Systems via On-Policy Reinforcement Learning", "Regret analysis of stochastic and nonstochastic multi-armed bandit problems", "An empirical evaluation of thompson sampling", "Challenges of real-world reinforcement learning", "Reinforcement learning based recommender systems: A survey", "Practical contextual bandits with regression oracles", "Asynchronous methods for deep reinforcement learning", "An overview of the action space for deep reinforcement learning", "Statistical methods for recommender systems", "Sponsored search: A brief history", "Recsim: A configurable simulation platform for recommender systems", "A survey on reinforcement learning for recommender systems", "Markov decision processes: discrete stochastic dynamic programming", "Personalized ad recommendation for life-time value optimization", "Returning is believing: Optimizing long-term user engagement in recommender systems", "Reinforcement learning to optimize long-term user engagement in recommender systems", "Personalized ad delivery when ads fatigue: An approximation algorithm", "Online advertising incrementality testing: Practical lessons, paid search and Emerging challenges", "Two-stage constrained actor-critic for short video recommendation", "Blending advertising with organic content in e-commerce: A virtual bids optimization approach", "Incorporating user utility into sponsored-search auctions", "Monolith: real time recommendation system with collisionless embedding table", "Learning and optimization of implicit negative feedback for industrial short-video recommender system", "Trust region policy optimization", "Proximal policy optimization algorithms", "Customer acquisition via display advertising using multi-armed bandit experiments", "Practical Bandits: An Industry Perspective", "Scaling the Instagram Explore Recommendations System", "Budget constrained bidding by model-free reinforcement learning in display advertising", "Scaling User Modeling: Large-scale Online User Representations for Ads Personalization in Meta", "Deep reinforcement learning for sponsored search real-time bidding", "Deep Interest Evolution Network for Click-Through Rate Prediction", "Online Parameter Selection for Web-based Services", "Global optimization for advertisement selection in sponsored search", "A survey on interpretable reinforcement learning", "Performance-based pricing models in online advertising", "Reinforcement learning for slate-based recommender systems: A tractable decomposition and practical methodology", "Self-Attentive Sequential Recommendation", "Improving long-term metrics in recommendation systems using short-horizon reinforcement learning", "Deep learning recommendation model for personalization and recommendation systems", "Taking the human out of the loop: A review of Bayesian optimization", "Ad close mitigation for improved user experience in native advertisements", "Combating Ad Fatigue via Frequency-Recency Features in Online Advertising Systems", "Beyond clicks: dwell time for personalization", "Title not found in bib", "Budget pacing for targeted online advertisements at LinkedIn", "Taming the monster: A fast and simple algorithm for contextual bandits", "An Optimistic Perspective on Offline Reinforcement Learning", "Improving Online Marketing Experiments with Drifting Multi-armed Bandits", "Ad avoidance in the digital context: A systematic literature review and research agenda", "Contextual advertising by combining relevance with click feedback", "Large-scale Behavioral Targeting", "Offline Evaluation for Reinforcement Learning-Based Recommendation: A Critical Issue and Some Alternatives", "Decision making under uncertainty and reinforcement learning", "Overture and Google: Internet Pay-Per-Click (PPC) Advertising Auctions", "Reward tampering problems and solutions in reinforcement learning: A causal influence diagram perspective", "A survey on concept drift adaptation", "Bidding agent design in the LinkedIn ad marketplace", "Real-time personalization using embeddings for search ranking at airbnb", "A Survey on Multi-Objective Recommender Systems", "Reinforcement learning: A survey", "Planning and acting in partially observable stochastic domains", "Self-Attentive Sequential Recommendation", "A History of the Data-Tracked User", "Native advertisement selection and allocation in social media post feeds", "Algorithms for Multi-Armed Bandit Problems", "Entangled preferences: The history and risks of reinforcement learning and human feedback", "Partially observable Markov decision process for recommender systems", "Impatient bandits: Optimizing recommendations for the long-term without delay", "When It Comes to Advertising Effectiveness, What Is Key?", "Some aspects of the sequential design of experiments", "Artificial intelligence: a modern approach", "Advertiming matters: Examining user ad consumption for effective ad allocations on social media", "Automatic ad format selection via contextual bandits", "Deep reinforcement learning with double q-learning", "Attention is all you need", "Explainable deep reinforcement learning: state of the art and challenges", "Learning Multi-Objective Rewards and User Utility Function in Recommender Systems", "Cost per mille --- Wikipedia, The Free Encyclopedia", "Yahoo Agrees to Acquire Overture For \\$1.63 Billion", "Beyond views: Measuring and predicting engagement in online videos", "How much can behavioral targeting help online advertising?", "Progressive horizon learning: Adaptive long term optimization for personalized recommendation", "Unbiased Ad click prediction for position-aware advertising systems", "Recommendations with negative feedback via pairwise deep reinforcement learning", "A survey of retrieval algorithms in ad and content recommendation systems", "Latent contextual bandits and their application to personalized recommendations for new users"], "affiliations": ["ByteDance / TikTok; Michigan State Univ.", "Google / YouTube", "Meta", "LinkedIn", "Academic (RL textbook)", "Alibaba", "Spotify / Cornell", "DeepMind", "Microsoft Research / Cornell", "Google", "UC Berkeley", "Academic + industry (joint ad–organic lists)", "Spotify", "Pinterest", "Google", "Spotify", "Academic", "Microsoft Research", "Pinterest", "Google", "Academic", "Google", "Yahoo!", "Meta", "Academic", "Alibaba", "Google / YouTube", "Google", "Spotify", "Meta", "Academic", "Yahoo! / Criteo", "DeepMind", "Academic (survey)", "Academic", "DeepMind", "Academic (survey)", "Microsoft Research", "Academic", "Google", "Academic (survey)", "Academic (MDP textbook)", "Adobe", "Academic", "Huawei Noah's Ark Lab", "Academic", "Adobe", "Kuaishou / short-video industry", "JD.com", "Yahoo!", "ByteDance", "Kuaishou (industrial short-video)", "OpenAI / UC Berkeley", "OpenAI", "Academic", "Spotify / industry", "Meta (Instagram)", "Alibaba", "Meta", "Academic (RTB)", "Alibaba", "Google", "Google / Tencent (native ads)", "Academic (survey)", "Google", "Google", "Korea Univ. / academic", "Mila / academic", "Meta", "Univ. of British Columbia", "Yahoo / Verizon Media (Gemini)", "Meta", "Yahoo!", "ACM (citation style)", "LinkedIn", "Microsoft Research / Cornell", "Google", "Academic", "Academic (systematic review)", "Yahoo!", "Microsoft / Yahoo!", "Criteo / Univ. of Amsterdam", "Academic", "Yahoo / Overture", "DeepMind", "Academic (survey)", "LinkedIn", "Airbnb", "Academic (survey)", "Academic", "MIT", "Microsoft", "MIT Press Reader", "Academic", "Columbia Univ.", "Academic", "Academic", "Spotify", "Nielsen", "Academic", "Academic (AI textbook)", "Meta", "LinkedIn", "DeepMind", "Google", "Academic (survey)", "Baidu", "Wikipedia", "Wall Street Journal (news)", "Academic (ANU / UTS)", "Yahoo!", "Microsoft", "Alibaba", "Google / YouTube", "Academic (survey)", "Microsoft"], "offline": ["Yes", "Yes", "Yes", "No", "No", "No", "No", "No", "Yes", "No", "No", "Yes", "No", "No", "No", "No", "Yes", "Yes", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "Yes", "Yes", "Yes", "No", "No", "No", "Yes", "No", "Yes", "Yes", "No", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "Yes", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "Yes", "Yes", "No", "No", "No", "No", "No", "Yes", "Yes", "Yes", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "No", "No", "Yes", "No", "Yes", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "Yes", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "Yes", "Yes", "No", "Yes"], "simulation": ["No", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "No", "Yes", "No", "No", "No", "Yes", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "Yes", "No", "Yes", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No"], "online": ["Yes", "Yes", "Yes", "Yes", "No", "Yes", "No", "No", "No", "Yes", "No", "No", "Yes", "Yes", "Yes", "Yes", "No", "No", "Yes", "Yes", "No", "Yes", "Yes", "Yes", "No", "No", "Yes", "Yes", "Yes", "Yes", "No", "Yes", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "Yes", "No", "Yes", "Yes", "No", "No", "Yes", "Yes", "Yes", "No", "Yes", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "Yes", "No", "Yes", "No", "No", "Yes", "No", "No", "Yes", "No", "No", "No", "No", "No", "Yes", "Yes", "No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "Yes", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "Yes", "No", "No", "No", "No"], "reports": ["✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "⚠️ Partial", "✅ Yes", "✅ Yes", "❌ No", "❌ No", "❌ No", "✅ Yes", "⚠️ Partial", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "❌ No", "❌ No", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "❌ No", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "✅ Yes", "❌ No", "✅ Yes"]}</script>
+  </section>
+
+
+
+  <section id="cite-eval-modality-plot">
+    <h2>Citation frequency by evaluation modality</h2>
+    <p class="plot-hint">
+      Same layout as the citation-frequency chart: each bar is a citation key (ticker),
+      sorted by times cited (highest first). Bar color shows which evaluation modalities
+      the source paper reports: offline only, online only, offline + simulation only,
+      or offline + simulation + online. Other flag combinations and uncatalogued papers
+      use separate colors (see legend).
+    </p>
+    <ul class="eval-modality-legend"><li><span class="eval-swatch" style="background:#2563eb"></span>Offline only</li><li><span class="eval-swatch" style="background:#059669"></span>Online only</li><li><span class="eval-swatch" style="background:#7c3aed"></span>Offline + simulation only</li><li><span class="eval-swatch" style="background:#dc2626"></span>Offline + simulation + online</li><li><span class="eval-swatch" style="background:#f59e0b"></span>Other combination</li><li><span class="eval-swatch" style="background:#94a3b8"></span>None / not catalogued</li></ul>
+    <div id="cite-eval-modality-plot"></div>
+    <script type="application/json" id="cite-eval-modality-plot-data">{"keys": ["zhao2021dear", "chen2022off", "gauci2018horizon", "yan2020ads", "Sutton1998", "zhang2018whole", "russo2018tutorial", "dulac2021challenges", "swaminathan2015counterfactual", "hohnhold2015focusing", "levine2020offline", "zhao2020jointly", "sagtani2023quantifying", "xia2023transact", "ie2019slateq", "mcdonald2023spotify", "bietti2021contextual", "dudik2011doubly", "pancha2022pinnerformer", "wang2022surrogate", "auer2002finite", "cheng2016wide", "li2010contextual", "sagtani2024ad", "williams1992simple", "Zhou2018", "covington2016deep", "mcmahan2013ad", "Mehrotra2020", "xu2023optimizing", "bubeck2012regret", "chapelle2011empirical", "dulac2019challenges", "afsar2022reinforcement", "foster2018contextual", "mnih2016asynchronous", "zhu2021overview", "agarwal2016statistical", "fain2006sponsored", "ie2019recsim", "lin2023survey", "puterman2014markov", "Theocharous-2015", "wu2017returning", "zou2019reinforcement", "abrams2007personalized", "barajas2022online", "cai2023two", "carrion2021blending", "engel2008incorporating", "liu2022monolith", "pan2023learning", "schulman2015trust", "schulman2017proximal", "schwartz2017customer", "van2024practical", "vorotilov2023scaling", "wu2018budget", "zhang2024scaling", "zhao2018deep", "Zhou2019", "agarwal2019online", "cui2015global", "glanois2024survey", "hu2004performance", "ie2019reinforcement", "kang2018sasrec", "mazoure2021improving", "naumov2019deep", "shahriari2015taking", "silberstein2020ad", "silberstein2023combating", "yi2014beyond", "acmauthoryear", "agarwal2014budget", "agarwal2014taming", "agarwal2020optimistic", "burtini2015improving", "ccelik2023ad", "chakrabarti2008contextual", "chen2009large", "deffayet2022offline", "dimitrakakis2018decision", "ellam2003overture", "everitt2021reward", "gama2014survey", "gao2022bidding", "grbovic2018real", "Jannach2023", "kaelbling1996reinforcement", "kaelbling1998planning", "Kang2018", "kant2021history", "koutsopoulos2016native", "kuleshov2014algorithms", "lambert2023entangled", "lu2016partially", "mcdonald2023impatient", "nielsen2017advertising", "robbins1952sequential", "russell2016artificial", "saha2021advertiming", "tang2013ad", "van2016deep", "vaswani2017attention", "vouros2022explainable", "wen2019learning", "wikipedia-cpm", "wsj2003yahoooverture", "wu2018beyond", "yan2009much", "yi2023progressive", "yuan2020unbiased", "zhao2018recommendations", "zhao2024survey", "zhou2016latent"], "counts": [31, 27, 27, 25, 24, 23, 21, 20, 20, 19, 19, 19, 12, 12, 11, 11, 10, 10, 10, 10, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "titles": ["Dear: Deep reinforcement learning for online advertising impression in recommender systems", "Off-policy actor-critic for recommender systems", "Horizon: Facebook's open source applied reinforcement learning platform", "Ads allocation in feed via constrained optimization", "Reinforcement Learning: An Introduction", "The whole-page optimization via dynamic ad allocation", "A Tutorial on Thompson Sampling", "Challenges of real-world reinforcement learning: definitions, benchmarks and analysis", "Counterfactual risk minimization: Learning from logged bandit feedback", "Focusing on the long-term: It's good for users and business", "Offline reinforcement learning: Tutorial, review, and perspectives on open problems", "Jointly Learning to Recommend and Advertise", "Quantifying and leveraging user fatigue for interventions in recommender systems", "Transact: Transformer-based realtime user action model for recommendation at pinterest", "SlateQ: A Tractable Decomposition for Reinforcement Learning with Recommendation Sets.", "Optimizing for the Long-Term Without Delay", "A contextual bandit bake-off", "Doubly robust policy evaluation and learning", "Pinnerformer: Sequence modeling for user representation at pinterest", "Surrogate for long-term user experience in recommender systems", "Finite-Time Analysis of the Multiarmed Bandit Problem", "Wide \\& deep learning for recommender systems", "A contextual-bandit approach to personalized news article recommendation", "Ad-load Balancing via Off-policy Learning in a Content Marketplace", "Simple statistical gradient-following algorithms for connectionist reinforcement learning", "Deep Interest Network for Click-Through Rate Prediction", "Deep neural networks for youtube recommendations", "Ad click prediction: a view from the trenches", "Bandit Based Optimization of Multiple Objectives on a Music Streaming Platform", "Optimizing Long-term Value for Auction-Based Recommender Systems via On-Policy Reinforcement Learning", "Regret analysis of stochastic and nonstochastic multi-armed bandit problems", "An empirical evaluation of thompson sampling", "Challenges of real-world reinforcement learning", "Reinforcement learning based recommender systems: A survey", "Practical contextual bandits with regression oracles", "Asynchronous methods for deep reinforcement learning", "An overview of the action space for deep reinforcement learning", "Statistical methods for recommender systems", "Sponsored search: A brief history", "Recsim: A configurable simulation platform for recommender systems", "A survey on reinforcement learning for recommender systems", "Markov decision processes: discrete stochastic dynamic programming", "Personalized ad recommendation for life-time value optimization", "Returning is believing: Optimizing long-term user engagement in recommender systems", "Reinforcement learning to optimize long-term user engagement in recommender systems", "Personalized ad delivery when ads fatigue: An approximation algorithm", "Online advertising incrementality testing: Practical lessons, paid search and Emerging challenges", "Two-stage constrained actor-critic for short video recommendation", "Blending advertising with organic content in e-commerce: A virtual bids optimization approach", "Incorporating user utility into sponsored-search auctions", "Monolith: real time recommendation system with collisionless embedding table", "Learning and optimization of implicit negative feedback for industrial short-video recommender system", "Trust region policy optimization", "Proximal policy optimization algorithms", "Customer acquisition via display advertising using multi-armed bandit experiments", "Practical Bandits: An Industry Perspective", "Scaling the Instagram Explore Recommendations System", "Budget constrained bidding by model-free reinforcement learning in display advertising", "Scaling User Modeling: Large-scale Online User Representations for Ads Personalization in Meta", "Deep reinforcement learning for sponsored search real-time bidding", "Deep Interest Evolution Network for Click-Through Rate Prediction", "Online Parameter Selection for Web-based Services", "Global optimization for advertisement selection in sponsored search", "A survey on interpretable reinforcement learning", "Performance-based pricing models in online advertising", "Reinforcement learning for slate-based recommender systems: A tractable decomposition and practical methodology", "Self-Attentive Sequential Recommendation", "Improving long-term metrics in recommendation systems using short-horizon reinforcement learning", "Deep learning recommendation model for personalization and recommendation systems", "Taking the human out of the loop: A review of Bayesian optimization", "Ad close mitigation for improved user experience in native advertisements", "Combating Ad Fatigue via Frequency-Recency Features in Online Advertising Systems", "Beyond clicks: dwell time for personalization", "Title not found in bib", "Budget pacing for targeted online advertisements at LinkedIn", "Taming the monster: A fast and simple algorithm for contextual bandits", "An Optimistic Perspective on Offline Reinforcement Learning", "Improving Online Marketing Experiments with Drifting Multi-armed Bandits", "Ad avoidance in the digital context: A systematic literature review and research agenda", "Contextual advertising by combining relevance with click feedback", "Large-scale Behavioral Targeting", "Offline Evaluation for Reinforcement Learning-Based Recommendation: A Critical Issue and Some Alternatives", "Decision making under uncertainty and reinforcement learning", "Overture and Google: Internet Pay-Per-Click (PPC) Advertising Auctions", "Reward tampering problems and solutions in reinforcement learning: A causal influence diagram perspective", "A survey on concept drift adaptation", "Bidding agent design in the LinkedIn ad marketplace", "Real-time personalization using embeddings for search ranking at airbnb", "A Survey on Multi-Objective Recommender Systems", "Reinforcement learning: A survey", "Planning and acting in partially observable stochastic domains", "Self-Attentive Sequential Recommendation", "A History of the Data-Tracked User", "Native advertisement selection and allocation in social media post feeds", "Algorithms for Multi-Armed Bandit Problems", "Entangled preferences: The history and risks of reinforcement learning and human feedback", "Partially observable Markov decision process for recommender systems", "Impatient bandits: Optimizing recommendations for the long-term without delay", "When It Comes to Advertising Effectiveness, What Is Key?", "Some aspects of the sequential design of experiments", "Artificial intelligence: a modern approach", "Advertiming matters: Examining user ad consumption for effective ad allocations on social media", "Automatic ad format selection via contextual bandits", "Deep reinforcement learning with double q-learning", "Attention is all you need", "Explainable deep reinforcement learning: state of the art and challenges", "Learning Multi-Objective Rewards and User Utility Function in Recommender Systems", "Cost per mille --- Wikipedia, The Free Encyclopedia", "Yahoo Agrees to Acquire Overture For \\$1.63 Billion", "Beyond views: Measuring and predicting engagement in online videos", "How much can behavioral targeting help online advertising?", "Progressive horizon learning: Adaptive long term optimization for personalized recommendation", "Unbiased Ad click prediction for position-aware advertising systems", "Recommendations with negative feedback via pairwise deep reinforcement learning", "A survey of retrieval algorithms in ad and content recommendation systems", "Latent contextual bandits and their application to personalized recommendations for new users"], "affiliations": ["ByteDance / TikTok; Michigan State Univ.", "Google / YouTube", "Meta", "LinkedIn", "Academic (RL textbook)", "Alibaba", "Spotify / Cornell", "DeepMind", "Microsoft Research / Cornell", "Google", "UC Berkeley", "Academic + industry (joint ad–organic lists)", "Spotify", "Pinterest", "Google", "Spotify", "Academic", "Microsoft Research", "Pinterest", "Google", "Academic", "Google", "Yahoo!", "Meta", "Academic", "Alibaba", "Google / YouTube", "Google", "Spotify", "Meta", "Academic", "Yahoo! / Criteo", "DeepMind", "Academic (survey)", "Academic", "DeepMind", "Academic (survey)", "Microsoft Research", "Academic", "Google", "Academic (survey)", "Academic (MDP textbook)", "Adobe", "Academic", "Huawei Noah's Ark Lab", "Academic", "Adobe", "Kuaishou / short-video industry", "JD.com", "Yahoo!", "ByteDance", "Kuaishou (industrial short-video)", "OpenAI / UC Berkeley", "OpenAI", "Academic", "Spotify / industry", "Meta (Instagram)", "Alibaba", "Meta", "Academic (RTB)", "Alibaba", "Google", "Google / Tencent (native ads)", "Academic (survey)", "Google", "Google", "Korea Univ. / academic", "Mila / academic", "Meta", "Univ. of British Columbia", "Yahoo / Verizon Media (Gemini)", "Meta", "Yahoo!", "ACM (citation style)", "LinkedIn", "Microsoft Research / Cornell", "Google", "Academic", "Academic (systematic review)", "Yahoo!", "Microsoft / Yahoo!", "Criteo / Univ. of Amsterdam", "Academic", "Yahoo / Overture", "DeepMind", "Academic (survey)", "LinkedIn", "Airbnb", "Academic (survey)", "Academic", "MIT", "Microsoft", "MIT Press Reader", "Academic", "Columbia Univ.", "Academic", "Academic", "Spotify", "Nielsen", "Academic", "Academic (AI textbook)", "Meta", "LinkedIn", "DeepMind", "Google", "Academic (survey)", "Baidu", "Wikipedia", "Wall Street Journal (news)", "Academic (ANU / UTS)", "Yahoo!", "Microsoft", "Alibaba", "Google / YouTube", "Academic (survey)", "Microsoft"], "evalBuckets": ["other-combo", "other-combo", "other-combo", "online-only", "none", "online-only", "none", "other-combo", "offline-only", "online-only", "none", "offline-only", "online-only", "online-only", "other-combo", "online-only", "offline-only", "offline-only", "online-only", "other-combo", "offline-only", "other-combo", "other-combo", "other-combo", "other-combo", "offline-only", "other-combo", "other-combo", "online-only", "online-only", "none", "other-combo", "other-combo", "offline-sim-online", "offline-only", "other-combo", "none", "none", "none", "other-combo", "none", "none", "offline-only", "offline-only", "offline-sim", "none", "online-only", "other-combo", "online-only", "none", "online-only", "online-only", "other-combo", "other-combo", "online-only", "online-only", "online-only", "offline-only", "online-only", "offline-only", "offline-only", "online-only", "none", "none", "none", "other-combo", "offline-only", "offline-only", "offline-only", "none", "online-only", "none", "online-only", "none", "online-only", "offline-only", "offline-only", "online-only", "none", "offline-only", "online-only", "offline-only", "none", "none", "other-combo", "none", "online-only", "other-combo", "none", "none", "other-combo", "offline-only", "none", "offline-only", "none", "none", "other-combo", "online-only", "none", "none", "none", "none", "online-only", "other-combo", "none", "other-combo", "offline-sim", "none", "none", "online-only", "online-only", "online-only", "offline-only", "offline-only", "none", "offline-only"], "evalBucketLabels": {"offline-only": "Offline only", "online-only": "Online only", "offline-sim": "Offline + simulation only", "offline-sim-online": "Offline + simulation + online", "other-combo": "Other combination", "none": "None / not catalogued"}, "evalBucketColors": {"offline-only": "#2563eb", "online-only": "#059669", "offline-sim": "#7c3aed", "offline-sim-online": "#dc2626", "other-combo": "#f59e0b", "none": "#94a3b8"}, "bucketOrder": ["offline-only", "online-only", "offline-sim", "offline-sim-online", "other-combo", "none"]}</script>
+  </section>
+
+
+
+  <section id="eval-modality-summary">
+    <h2>Papers by evaluation modality (share of cited set)</h2>
+    <p class="plot-hint">
+      Each bar is one evaluation-modality bucket across all 116 unique cited papers
+      (each paper counted once, regardless of cite frequency in paper.tex).
+      Bar length is the number of papers; labels show count and percentage of the total.
+      Hover for citation keys in each bucket.
+    </p>
+    <div id="eval-modality-summary-plot"></div>
+    <script type="application/json" id="eval-modality-summary-data">{"total": 116, "bucketIds": ["none", "online-only", "other-combo", "offline-only", "offline-sim", "offline-sim-online"], "labels": ["None / not catalogued", "Online only", "Other combination", "Offline only", "Offline + simulation only", "Offline + simulation + online"], "counts": [34, 29, 26, 24, 2, 1], "percents": [29.3, 25.0, 22.4, 20.7, 1.7, 0.9], "colors": ["#94a3b8", "#059669", "#f59e0b", "#2563eb", "#7c3aed", "#dc2626"], "paperKeys": [["abrams2007personalized", "acmauthoryear", "agarwal2016statistical", "bubeck2012regret", "ccelik2023ad", "cui2015global", "dimitrakakis2018decision", "ellam2003overture", "engel2008incorporating", "fain2006sponsored", "gama2014survey", "glanois2024survey", "hu2004performance", "Jannach2023", "kaelbling1996reinforcement", "kant2021history", "kuleshov2014algorithms", "lambert2023entangled", "levine2020offline", "lin2023survey", "nielsen2017advertising", "puterman2014markov", "robbins1952sequential", "russell2016artificial", "russo2018tutorial", "saha2021advertiming", "shahriari2015taking", "silberstein2023combating", "Sutton1998", "vaswani2017attention", "wikipedia-cpm", "wsj2003yahoooverture", "zhao2024survey", "zhu2021overview"], ["agarwal2014budget", "agarwal2019online", "barajas2022online", "burtini2015improving", "carrion2021blending", "chen2009large", "gao2022bidding", "hohnhold2015focusing", "liu2022monolith", "mcdonald2023impatient", "mcdonald2023spotify", "Mehrotra2020", "pan2023learning", "pancha2022pinnerformer", "sagtani2023quantifying", "schwartz2017customer", "silberstein2020ad", "tang2013ad", "van2024practical", "vorotilov2023scaling", "wu2018beyond", "xia2023transact", "xu2023optimizing", "yan2009much", "yan2020ads", "yi2014beyond", "yi2023progressive", "zhang2018whole", "zhang2024scaling"], ["cai2023two", "chapelle2011empirical", "chen2022off", "cheng2016wide", "covington2016deep", "dulac2019challenges", "dulac2021challenges", "everitt2021reward", "gauci2018horizon", "grbovic2018real", "ie2019recsim", "ie2019reinforcement", "ie2019slateq", "kaelbling1998planning", "li2010contextual", "lu2016partially", "mcmahan2013ad", "mnih2016asynchronous", "sagtani2024ad", "schulman2015trust", "schulman2017proximal", "van2016deep", "vouros2022explainable", "wang2022surrogate", "williams1992simple", "zhao2021dear"], ["agarwal2014taming", "agarwal2020optimistic", "auer2002finite", "bietti2021contextual", "chakrabarti2008contextual", "deffayet2022offline", "dudik2011doubly", "foster2018contextual", "Kang2018", "kang2018sasrec", "koutsopoulos2016native", "mazoure2021improving", "naumov2019deep", "swaminathan2015counterfactual", "Theocharous-2015", "wu2017returning", "wu2018budget", "yuan2020unbiased", "zhao2018deep", "zhao2018recommendations", "zhao2020jointly", "zhou2016latent", "Zhou2018", "Zhou2019"], ["wen2019learning", "zou2019reinforcement"], ["afsar2022reinforcement"]], "evalBucketLabels": {"offline-only": "Offline only", "online-only": "Online only", "offline-sim": "Offline + simulation only", "offline-sim-online": "Offline + simulation + online", "other-combo": "Other combination", "none": "None / not catalogued"}}</script>
   </section>
 
 
@@ -540,6 +595,172 @@
   }
 
   renderCitePlot();
+})();
+</script>
+<script>
+(function () {
+  const plotEl = document.getElementById('cite-eval-modality-plot');
+  const plotDataEl = document.getElementById('cite-eval-modality-plot-data');
+  if (!plotEl || !plotDataEl) return;
+
+  function renderEvalModalityCitePlot() {
+    if (!window.Plotly) {
+      window.setTimeout(renderEvalModalityCitePlot, 50);
+      return;
+    }
+
+    const data = JSON.parse(plotDataEl.textContent);
+    const colors = data.evalBucketColors || {};
+    const labels = data.evalBucketLabels || {};
+    const affiliations = data.affiliations || [];
+    const barColors = (data.evalBuckets || []).map(function (bid) {
+      return colors[bid] || '#94a3b8';
+    });
+
+    const hovertext = data.keys.map(function (key, i) {
+      const bucketLabel = labels[data.evalBuckets[i]] || data.evalBuckets[i] || '—';
+      return (
+        '<b>' + data.titles[i] + '</b><br>' +
+        '<b>Eval modality:</b> ' + bucketLabel + '<br>' +
+        '<b>Affiliation:</b> ' + (affiliations[i] || '—') + '<br>' +
+        'Key: ' + key + '<br>' +
+        'Cites in paper: ' + data.counts[i]
+      );
+    });
+
+    const barTrace = {
+      type: 'bar',
+      x: data.keys,
+      y: data.counts,
+      text: hovertext,
+      hovertemplate: '%{text}<extra></extra>',
+      marker: { color: barColors },
+      showlegend: false,
+    };
+
+    const legendTraces = (data.bucketOrder || []).map(function (bid) {
+      return {
+        type: 'bar',
+        x: [null],
+        y: [null],
+        name: labels[bid] || bid,
+        marker: { color: colors[bid] || '#94a3b8' },
+        showlegend: true,
+        hoverinfo: 'skip',
+      };
+    });
+
+    Plotly.newPlot(
+      plotEl,
+      [barTrace].concat(legendTraces),
+      {
+        margin: { t: 24, r: 24, b: 220, l: 64 },
+        height: 680,
+        xaxis: {
+          title: 'Citation key (ticker)',
+          tickangle: -55,
+          automargin: true,
+          rangeslider: { visible: true, thickness: 0.06 },
+        },
+        yaxis: { title: 'Times cited in paper.tex', rangemode: 'tozero' },
+        hovermode: 'closest',
+        legend: {
+          orientation: 'h',
+          yanchor: 'bottom',
+          y: 1.02,
+          xanchor: 'left',
+          x: 0,
+          font: { size: 11 },
+        },
+      },
+      { responsive: true, displayModeBar: true }
+    );
+  }
+
+  renderEvalModalityCitePlot();
+})();
+</script>
+<script>
+(function () {
+  const plotEl = document.getElementById('eval-modality-summary-plot');
+  const plotDataEl = document.getElementById('eval-modality-summary-data');
+  if (!plotEl || !plotDataEl) return;
+
+  function renderEvalModalitySummary() {
+    if (!window.Plotly) {
+      window.setTimeout(renderEvalModalitySummary, 50);
+      return;
+    }
+
+    const data = JSON.parse(plotDataEl.textContent);
+    const labels = data.labels || [];
+    const counts = data.counts || [];
+    const percents = data.percents || [];
+    const colors = data.colors || [];
+    const paperKeys = data.paperKeys || [];
+    const total = data.total || 0;
+
+    const displayLabels = labels.slice().reverse();
+    const displayCounts = counts.slice().reverse();
+    const displayPercents = percents.slice().reverse();
+    const displayColors = colors.slice().reverse();
+    const displayKeys = paperKeys.slice().reverse();
+
+    const barText = displayCounts.map(function (n, i) {
+      return n + ' (' + displayPercents[i] + '%)';
+    });
+
+    const hovertext = displayLabels.map(function (label, i) {
+      const keys = displayKeys[i] || [];
+      const preview = keys.length <= 12
+        ? keys.join(', ')
+        : keys.slice(0, 12).join(', ') + ' … (' + keys.length + ' papers)';
+      return (
+        '<b>' + label + '</b><br>' +
+        'Papers: ' + displayCounts[i] + ' of ' + total +
+        ' (' + displayPercents[i] + '%)<br>' +
+        'Citation keys: ' + preview
+      );
+    });
+
+    const plotHeight = Math.max(360, displayLabels.length * 52 + 100);
+
+    Plotly.newPlot(
+      plotEl,
+      [{
+        type: 'bar',
+        orientation: 'h',
+        y: displayLabels,
+        x: displayCounts,
+        text: barText,
+        textposition: 'outside',
+        cliponaxis: false,
+        customdata: hovertext,
+        hovertemplate: '%{customdata}<extra></extra>',
+        marker: { color: displayColors },
+      }],
+      {
+        margin: { t: 24, r: 96, b: 56, l: 12 },
+        height: plotHeight,
+        xaxis: {
+          title: 'Number of papers (' + total + ' total)',
+          rangemode: 'tozero',
+          dtick: 1,
+          automargin: true,
+        },
+        yaxis: {
+          title: 'Evaluation modality bucket',
+          automargin: true,
+          tickfont: { size: 12 },
+        },
+        hovermode: 'closest',
+        bargap: 0.25,
+      },
+      { responsive: true, displayModeBar: true }
+    );
+  }
+
+  renderEvalModalitySummary();
 })();
 </script>
 <script>
