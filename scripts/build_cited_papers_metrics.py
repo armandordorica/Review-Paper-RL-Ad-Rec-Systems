@@ -4,6 +4,9 @@
 import html
 import json
 import re
+import urllib.error
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -134,11 +137,12 @@ def extract_cite_keys(tex: str) -> list[str]:
 
 def count_cite_keys(tex: str) -> dict[str, int]:
     """Count how many times each bib key appears in \\cite... commands in paper.tex."""
+    skip_keys = {"acmauthoryear"}
     counts: dict[str, int] = {}
-    for match in re.finditer(r"\\cite[a-z]*\{([^}]+)\}", tex):
+    for match in re.finditer(r"\\cite(?!style)[a-zA-Z]*\{([^}]+)\}", tex):
         for k in match.group(1).split(","):
             k = k.strip()
-            if k:
+            if k and k not in skip_keys:
                 counts[k] = counts.get(k, 0) + 1
     return counts
 
@@ -186,6 +190,7 @@ def parse_bib() -> dict[str, dict]:
         "address",
         "note",
     )
+    link_fields = ("url", "doi", "eprint", "eprinttype")
     for entry in re.split(r"\n@", "\n" + bib_content):
         if not entry.strip():
             continue
@@ -196,12 +201,373 @@ def parse_bib() -> dict[str, dict]:
         key = match.group(2).strip()
         title = _extract_bib_field(entry, "title") or "Unknown Title"
         info: dict[str, str] = {"title": title, "type": entry_type}
-        for field in extra_fields:
+        for field in extra_fields + link_fields:
             value = _extract_bib_field(entry, field)
             if value:
                 info[field] = value
         bib_db[key] = info
     return bib_db
+
+
+PDF_URL_CACHE_PATH = ROOT / "scripts" / "citation_pdf_url_cache.json"
+
+# Verified paper links (PDF when available; otherwise best official landing page).
+# Overrides take precedence over the OpenAlex/Semantic Scholar cache.
+PDF_URL_OVERRIDES: dict[str, str] = {
+    "zhao2021dear": "https://arxiv.org/pdf/1909.03602.pdf",
+    "zhao2020jointly": "https://arxiv.org/pdf/2003.00097.pdf",
+    "Sutton1998": "http://incompleteideas.net/book/the-book-2nd.html",
+    "wikipedia-cpm": "https://en.wikipedia.org/wiki/Cost_per_mille",
+    # Corrections (previously wrong in auto-resolved cache)
+    "agarwal2019online": "https://dl.acm.org/doi/pdf/10.1145/3292500.3330677",
+    "kant2021history": "https://thereader.mitpress.mit.edu/a-history-of-the-data-tracked-user/",
+    "yi2014beyond": "https://dl.acm.org/doi/pdf/10.1145/2645710.2645733",
+    "vaswani2017attention": "https://arxiv.org/pdf/1706.03762",
+    "Zhou2019": "https://ojs.aaai.org/index.php/AAAI/article/download/4545/4423",
+    "vorotilov2023scaling": "https://engineering.fb.com/2023/08/09/ml-applications/scaling-instagram-explore-recommendations-system/",
+    "mcdonald2023spotify": "https://research.atspotify.com/2023/07/optimizing-for-the-long-term-without-delay/",
+    "mcdonald2023impatient": "https://arxiv.org/pdf/2307.09943",
+    # Previously missing
+    "Theocharous-2015": "https://www.ijcai.org/Proceedings/15/Papers/257.pdf",
+    "abrams2007personalized": "https://link.springer.com/content/pdf/10.1007/978-3-540-77105-0_57.pdf",
+    "auer2002finite": "https://link.springer.com/content/pdf/10.1023/A:1013689704352.pdf",
+    "barajas2022online": "https://link.springer.com/content/pdf/10.1007/978-3-030-99739-7_72.pdf",
+    "burtini2015improving": "https://www.scitepress.org/PublishedPapers/2015/54587/54587.pdf",
+    "ccelik2023ad": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/ijcs.12882",
+    "chakrabarti2008contextual": "https://dl.acm.org/doi/pdf/10.1145/1367497.1367554",
+    "chapelle2011empirical": "https://papers.nips.cc/paper/4317-an-empirical-evaluation-of-thompson-sampling.pdf",
+    "chen2009large": "https://people.eecs.berkeley.edu/~jfc/papers/09/KDD09.pdf",
+    "cui2015global": "https://link.springer.com/content/pdf/10.1007/s11390-015-1523-4.pdf",
+    "dimitrakakis2018decision": "https://www.cse.chalmers.se/~chrdimi/downloads/book.pdf",
+    "engel2008incorporating": "https://dl.acm.org/doi/pdf/10.5555/1402790.1403055",
+    "grbovic2018real": "https://dl.acm.org/doi/pdf/10.1145/3219819.3219885",
+    "kaelbling1998planning": "https://people.csail.mit.edu/lpk/papers/aij98-pomdp.pdf",
+    "koutsopoulos2016native": "https://link.springer.com/content/pdf/10.1007/978-3-319-46128-1_37.pdf",
+    "sagtani2023quantifying": "https://dl.acm.org/doi/pdf/10.1145/3539618.3592044",
+    "saha2021advertiming": "https://dl.acm.org/doi/pdf/10.1145/3411764.3445394",
+    "shahriari2015taking": "https://arxiv.org/pdf/1502.05700",
+    "silberstein2020ad": "https://dl.acm.org/doi/pdf/10.1145/3336191.3371798",
+    "silberstein2023combating": "https://dl.acm.org/doi/pdf/10.1145/3583780.3615461",
+    "yan2009much": "https://dl.acm.org/doi/pdf/10.1145/1526709.1526745",
+    "yan2020ads": "https://dl.acm.org/doi/pdf/10.1145/3394486.3403391",
+    "yuan2020unbiased": "https://dl.acm.org/doi/pdf/10.1145/3383313.3412241",
+    # Best official link when no open PDF exists
+    "nielsen2017advertising": "https://www.nielsen.com/insights/2017/when-it-comes-to-advertising-effectiveness-what-is-key/",
+    "wsj2003yahoooverture": "https://www.wsj.com/articles/SB105818965623153600",
+    "hu2004performance": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=501082",
+    "agarwal2016statistical": "https://www.cambridge.org/highereducation/products/statistical-methods-for-recommender-systems/F9781107036075",
+    "puterman2014markov": "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470317195",
+    "russell2016artificial": "https://aima.cs.berkeley.edu/",
+}
+
+
+def _strip_latex_url(raw: str) -> str:
+    text = raw.strip()
+    if text.lower().startswith(r"\url{") and text.endswith("}"):
+        text = text[5:-1].strip()
+    return text.replace("{", "").replace("}", "")
+
+
+def _arxiv_id_from_text(text: str) -> str:
+    if not text:
+        return ""
+    match = re.search(r"arxiv[:\s]*([\d]{4}\.[\d]{4,5}(?:v\d+)?)", text, re.IGNORECASE)
+    if match:
+        return match.group(1)
+    match = re.search(r"([\d]{4}\.[\d]{4,5}(?:v\d+)?)", text)
+    return match.group(1) if match else ""
+
+
+def _arxiv_pdf_url(arxiv_id: str) -> str:
+    arxiv_id = arxiv_id.strip().removesuffix(".pdf")
+    if not arxiv_id:
+        return ""
+    return f"https://arxiv.org/pdf/{arxiv_id}.pdf"
+
+
+def _normalize_http_url(raw: str) -> str:
+    url = _strip_latex_url(raw)
+    if not url:
+        return ""
+    if url.startswith("//"):
+        return "https:" + url
+    if url.startswith("http://") or url.startswith("https://"):
+        return url
+    return ""
+
+
+def _pdf_url_from_doi(doi: str) -> str:
+    doi = doi.replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+    if not doi:
+        return ""
+    if doi.startswith("10.1145/"):
+        return f"https://dl.acm.org/doi/pdf/{doi}"
+    if doi.startswith("10.1007/"):
+        return f"https://link.springer.com/content/pdf/{doi}.pdf"
+    if doi.startswith("10.1111/"):
+        return f"https://onlinelibrary.wiley.com/doi/pdfdirect/{doi}"
+    if doi.startswith("10.24963/ijcai."):
+        match = re.match(r"10\.24963/ijcai\.(\d{4})/(\d+)", doi)
+        if match:
+            year, paper_id = match.group(1), match.group(2)
+            return f"https://www.ijcai.org/proceedings/{year}/{int(paper_id):04d}.pdf"
+    if doi.startswith("10.48550/") or "arxiv" in doi.lower():
+        arxiv_id = doi.split("arXiv.")[-1] if "arxiv" in doi.lower() else ""
+        if arxiv_id:
+            return _arxiv_pdf_url(arxiv_id)
+    return ""
+
+
+def _pdf_url_from_bib_info(info: dict[str, str]) -> str:
+    """Best-effort PDF URL from bib url/doi/eprint fields only."""
+    url = _normalize_http_url(info.get("url", ""))
+    if url:
+        lower = url.lower()
+        if lower.endswith(".pdf") or "/pdf/" in lower or "pdfdirect" in lower:
+            return url
+        abs_match = re.search(r"arxiv\.org/abs/([\d]{4}\.[\d]{4,5}(?:v\d+)?)", url, re.I)
+        if abs_match:
+            return _arxiv_pdf_url(abs_match.group(1))
+        nips_match = re.search(r"papers\.nips\.cc/paper/\d+", url, re.I)
+        if nips_match:
+            return url if url.endswith(".pdf") else url + ".pdf"
+
+    doi = info.get("doi", "").strip()
+    if doi:
+        from_doi = _pdf_url_from_doi(doi)
+        if from_doi:
+            return from_doi
+
+    eprint = info.get("eprint", "").strip()
+    eprinttype = info.get("eprinttype", "").strip().lower()
+    if eprint and (eprinttype == "arxiv" or re.match(r"[\d]{4}\.", eprint)):
+        return _arxiv_pdf_url(_arxiv_id_from_text(eprint) or eprint)
+
+    journal = info.get("journal", "")
+    arxiv_id = _arxiv_id_from_text(journal)
+    if arxiv_id:
+        return _arxiv_pdf_url(arxiv_id)
+
+    return ""
+
+
+def _fallback_url_from_bib_info(info: dict[str, str]) -> str:
+    """Non-PDF official URL from bib when no PDF could be resolved."""
+    return _normalize_http_url(info.get("url", ""))
+
+
+def load_pdf_url_cache() -> dict[str, str]:
+    if not PDF_URL_CACHE_PATH.exists():
+        return {}
+    try:
+        data = json.loads(PDF_URL_CACHE_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    if isinstance(data, dict):
+        return {str(k): str(v) for k, v in data.items() if v}
+    return {}
+
+
+def save_pdf_url_cache(cache: dict[str, str]) -> None:
+    PDF_URL_CACHE_PATH.write_text(
+        json.dumps(dict(sorted(cache.items())), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _pdf_from_openalex_work(work: dict) -> str:
+    if not isinstance(work, dict):
+        return ""
+    for location_key in ("best_oa_location", "primary_location"):
+        location = work.get(location_key)
+        if isinstance(location, dict):
+            pdf_url = location.get("pdf_url") or ""
+            if pdf_url:
+                return _normalize_http_url(pdf_url)
+    oa_info = work.get("open_access")
+    if isinstance(oa_info, dict):
+        oa_url = oa_info.get("oa_url") or ""
+        if oa_url.lower().endswith(".pdf"):
+            return _normalize_http_url(oa_url)
+    return ""
+
+
+def _title_match_score(query_title: str, candidate_title: str) -> float:
+    def norm(text: str) -> str:
+        return re.sub(r"[^a-z0-9]+", "", (text or "").lower())
+
+    query = norm(query_title)
+    candidate = norm(candidate_title)
+    if not query or not candidate:
+        return 0.0
+    if query == candidate:
+        return 1.0
+    if query in candidate or candidate in query:
+        return 0.9
+    return 0.0
+
+
+def _openalex_pdf_url(*, doi: str = "", title: str = "") -> str:
+    """Query OpenAlex for an open-access PDF URL (network call)."""
+    if doi:
+        doi_clean = doi.replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+        endpoint = f"https://api.openalex.org/works/https://doi.org/{urllib.parse.quote(doi_clean)}"
+    elif title:
+        endpoint = (
+            "https://api.openalex.org/works?"
+            + urllib.parse.urlencode({"search": title, "per_page": 5})
+        )
+    else:
+        return ""
+
+    request = urllib.request.Request(
+        endpoint,
+        headers={"User-Agent": "Review-Paper-RL-Ad-Rec-Systems/1.0 (mailto:local-build)"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError):
+        return ""
+
+    if "results" in payload:
+        results = payload.get("results") or []
+        if not results:
+            return ""
+        if title:
+            ranked: list[tuple[float, int, dict]] = []
+            for idx, work in enumerate(results):
+                if not isinstance(work, dict):
+                    continue
+                score = _title_match_score(title, work.get("title", ""))
+                has_pdf = 1 if _pdf_from_openalex_work(work) else 0
+                ranked.append((score, has_pdf, work))
+            ranked.sort(key=lambda item: (item[0], item[1], -item[2].get("cited_by_count", 0)), reverse=True)
+            for score, _has_pdf, work in ranked:
+                if score <= 0:
+                    break
+                pdf_url = _pdf_from_openalex_work(work)
+                if pdf_url:
+                    return pdf_url
+            if ranked and ranked[0][0] > 0:
+                return _pdf_from_openalex_work(ranked[0][2])
+            work = results[0]
+        else:
+            work = results[0]
+    else:
+        work = payload
+
+    return _pdf_from_openalex_work(work)
+
+
+def _semantic_scholar_pdf(*, doi: str = "", title: str = "") -> str:
+    """Fallback PDF lookup via Semantic Scholar (network call)."""
+    if doi:
+        doi_clean = doi.replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+        endpoint = (
+            "https://api.semanticscholar.org/graph/v1/paper/"
+            + urllib.parse.quote(f"DOI:{doi_clean}")
+            + "?fields=openAccessPdf,title"
+        )
+    elif title:
+        endpoint = (
+            "https://api.semanticscholar.org/graph/v1/paper/search?"
+            + urllib.parse.urlencode(
+                {"query": title, "limit": 5, "fields": "openAccessPdf,title"}
+            )
+        )
+    else:
+        return ""
+
+    request = urllib.request.Request(
+        endpoint,
+        headers={"User-Agent": "Review-Paper-RL-Ad-Rec-Systems/1.0 (mailto:local-build)"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError):
+        return ""
+
+    if "data" in payload:
+        papers = payload.get("data") or []
+        if not papers:
+            return ""
+        if title:
+            ranked: list[tuple[float, dict]] = []
+            for paper in papers:
+                if not isinstance(paper, dict):
+                    continue
+                ranked.append((_title_match_score(title, paper.get("title", "")), paper))
+            ranked.sort(key=lambda item: item[0], reverse=True)
+            for score, paper in ranked:
+                if score <= 0:
+                    break
+                oa_pdf = paper.get("openAccessPdf") or {}
+                if isinstance(oa_pdf, dict) and oa_pdf.get("url"):
+                    return _normalize_http_url(str(oa_pdf["url"]))
+            paper = ranked[0][1] if ranked else papers[0]
+        else:
+            paper = papers[0]
+    else:
+        paper = payload
+
+    if isinstance(paper, dict):
+        oa_pdf = paper.get("openAccessPdf") or {}
+        if isinstance(oa_pdf, dict) and oa_pdf.get("url"):
+            return _normalize_http_url(str(oa_pdf["url"]))
+    return ""
+
+
+def resolve_pdf_url(
+    key: str,
+    info: dict[str, str],
+    cache: dict[str, str],
+    *,
+    fetch_missing: bool = False,
+) -> str:
+    """Resolve a direct PDF (or best open-access) URL for a cited paper."""
+    if key in PDF_URL_OVERRIDES:
+        return PDF_URL_OVERRIDES[key]
+    if key in cache and cache[key]:
+        return cache[key]
+
+    from_bib = _pdf_url_from_bib_info(info)
+    if from_bib:
+        cache[key] = from_bib
+        return from_bib
+
+    if fetch_missing:
+        fetched = _openalex_pdf_url(doi=info.get("doi", ""), title=info.get("title", ""))
+        if not fetched:
+            fetched = _semantic_scholar_pdf(doi=info.get("doi", ""), title=info.get("title", ""))
+        if fetched:
+            cache[key] = fetched
+            return fetched
+
+    fallback = _fallback_url_from_bib_info(info)
+    if fallback:
+        return fallback
+
+    doi = info.get("doi", "").strip()
+    if doi:
+        doi_clean = doi.replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+        return f"https://doi.org/{doi_clean}"
+
+    return ""
+
+
+def format_title_cell(title: str, pdf_url: str) -> str:
+    escaped = html.escape(title)
+    if not pdf_url:
+        return escaped
+    href = html.escape(pdf_url, quote=True)
+    is_pdf = pdf_url.lower().rstrip("/").endswith(".pdf") or "/pdf" in pdf_url.lower()
+    link_title = "Open paper PDF" if is_pdf else "Open paper"
+    return (
+        f'<a class="paper-pdf-link" href="{href}" target="_blank" '
+        f'rel="noopener noreferrer" title="{link_title}">{escaped}</a>'
+    )
 
 
 # Primary affiliation labels for industrial / institutional papers (manual curation).
@@ -1525,7 +1891,7 @@ def render_matrix_table_rows(rows: list) -> tuple[str, int]:
     )
 
     body_rows = []
-    for i, key, title, affiliation, reports, fam_cells, notes, _metrics, ctr_detail, rl_detail, eval_cells, cite_count in rows:
+    for i, key, title, pdf_url, affiliation, reports, fam_cells, notes, _metrics, ctr_detail, rl_detail, eval_cells, cite_count in rows:
         eval_tds = "".join(
             td(
                 eid,
@@ -1567,7 +1933,7 @@ def render_matrix_table_rows(rows: list) -> tuple[str, int]:
             + td("num", str(i), center=True)
             + td("cite-count", str(cite_count), center=True)
             + td("key", f"<code>{html.escape(key)}</code>")
-            + td("title", html.escape(title))
+            + td("title", format_title_cell(title, pdf_url))
             + td("affiliation", html.escape(affiliation))
             + td("reports", html.escape(reports), center=True)
             + eval_tds
@@ -1682,7 +2048,7 @@ def build_citation_plot_json(rows: list) -> str:
         "online": [],
         "reports": [],
     }
-    for _i, key, title, affiliation, reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, cite_count in sorted_rows:
+    for _i, key, title, _pdf_url, affiliation, reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, cite_count in sorted_rows:
         payload["keys"].append(key)
         payload["counts"].append(cite_count)
         payload["titles"].append(title)
@@ -1707,7 +2073,7 @@ def build_citation_eval_modality_plot_json(rows: list) -> str:
         "evalBucketColors": EVAL_MODALITY_BUCKET_COLORS,
         "bucketOrder": [bid for bid, _label, _color in EVAL_MODALITY_BUCKET_META],
     }
-    for _i, key, title, affiliation, _reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, cite_count in sorted_rows:
+    for _i, key, title, _pdf_url, affiliation, _reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, cite_count in sorted_rows:
         payload["keys"].append(key)
         payload["counts"].append(cite_count)
         payload["titles"].append(title)
@@ -1722,7 +2088,7 @@ def build_eval_modality_summary_payload(rows: list) -> dict:
     bucket_to_keys: dict[str, list[str]] = {
         bid: [] for bid, _label, _color in EVAL_MODALITY_BUCKET_META
     }
-    for _i, key, _title, _aff, _reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, _cite_count in rows:
+    for _i, key, _title, _pdf_url, _aff, _reports, _fam, _notes, _metrics, _ctr, _rl, eval_cells, _cite_count in rows:
         bid = eval_modality_bucket_from_cells(eval_cells)
         bucket_to_keys.setdefault(bid, []).append(key)
 
@@ -1753,7 +2119,7 @@ def build_eval_modality_summary_json(rows: list) -> str:
 def build_affiliation_histogram_payload(rows: list) -> dict:
     """Papers-per-affiliation counts (sorted by count desc)."""
     aff_to_keys: dict[str, list[str]] = {}
-    for _i, key, _title, affiliation, *_rest in rows:
+    for _i, key, _title, _pdf_url, affiliation, *_rest in rows:
         aff_to_keys.setdefault(affiliation, []).append(key)
 
     sorted_items = sorted(
@@ -1892,7 +2258,7 @@ def render_full_html(
         f"<tr><td class=\"center\">{i}</td>"
         f"<td><code>{html.escape(key)}</code></td>"
         f"<td>{html.escape(metrics)}</td></tr>"
-        for i, key, _title, _aff, _reports, _fam, _notes, metrics, _ctr, _rl, _eval, _cc in rows
+        for i, key, _title, _pdf_url, _aff, _reports, _fam, _notes, metrics, _ctr, _rl, _eval, _cc in rows
     )
 
     matrix_table, _ = render_matrix_table_rows(rows)
@@ -2024,6 +2390,13 @@ def render_full_html(
   td.metric-detail .metric-set {{ color: var(--muted); font-size: 12px; }}
   table.matrix th[data-col="notes"] {{ min-width: 240px; }}
   td.center, th.center {{ text-align: center; }}
+  td[data-col="title"] a.paper-pdf-link {{
+    color: #1d4ed8;
+    text-decoration: none;
+  }}
+  td[data-col="title"] a.paper-pdf-link:hover {{
+    text-decoration: underline;
+  }}
   tbody tr:hover {{ background: #f5f8ff; }}
   code {{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -2788,6 +3161,11 @@ def audit_eval_modality_coverage(keys: list[str]) -> list[str]:
 
 
 def main() -> None:
+    import os
+    import sys
+
+    fetch_pdf_urls = "--fetch-pdf-urls" in sys.argv or os.environ.get("CITE_METRICS_FETCH_PDF") == "1"
+
     tex = (ROOT / "paper.tex").read_text()
     audit_text = (ROOT / "docs/agent/evaluation_audit.md").read_text()
     bib_db = parse_bib()
@@ -2795,6 +3173,10 @@ def main() -> None:
     audit_metric_details = parse_audit_metric_details(audit_text)
     audit_eval_modalities = parse_audit_eval_modalities(audit_text)
     audit_keys = set(audit_metrics.keys())
+    pdf_url_cache = load_pdf_url_cache()
+    initial_pdf_cache = dict(pdf_url_cache)
+    for key, url in PDF_URL_OVERRIDES.items():
+        pdf_url_cache[key] = url
 
     keys = extract_cite_keys(tex)
     cite_counts = count_cite_keys(tex)
@@ -2823,14 +3205,21 @@ def main() -> None:
         rl_detail = rl_reward_detail_for_key(key, fam_cells, audit_metric_details)
         eval_cells = eval_modality_cells_for_key(key, reports, audit_eval_modalities)
         affiliation = affiliation_for_key(key, title, info)
+        pdf_url = resolve_pdf_url(key, info, pdf_url_cache, fetch_missing=fetch_pdf_urls)
         rows.append((
-            i, key, title, affiliation, reports, fam_cells, notes, metrics,
+            i, key, title, pdf_url, affiliation, reports, fam_cells, notes, metrics,
             ctr_detail, rl_detail, eval_cells, cite_counts.get(key, 0),
         ))
 
-    verified = sum(1 for r in rows if r[6] == "Verified in evaluation_audit.md")
-    with_any = sum(1 for r in rows if any(r[5][fid] for fid in FAMILY_IDS))
-    no_empirical = sum(1 for r in rows if r[4] == "❌ No")
+    if pdf_url_cache != initial_pdf_cache:
+        save_pdf_url_cache(pdf_url_cache)
+
+    linked = sum(1 for r in rows if r[3])
+    print(f"Title PDF links: {linked}/{len(rows)}")
+
+    verified = sum(1 for r in rows if r[7] == "Verified in evaluation_audit.md")
+    with_any = sum(1 for r in rows if any(r[6][fid] for fid in FAMILY_IDS))
+    no_empirical = sum(1 for r in rows if r[5] == "❌ No")
 
     html_out = ROOT / "CITED_PAPERS_METRICS.html"
     html_out.write_text(

@@ -1,6 +1,6 @@
 # Cited Papers and Metrics Reporting
 
-Open **[CITED_PAPERS_METRICS.html](CITED_PAPERS_METRICS.html)** for the full wide-format citation matrix (116 papers).
+Open **[CITED_PAPERS_METRICS.html](CITED_PAPERS_METRICS.html)** for the full wide-format citation matrix (115 papers).
 
 Regenerate both files:
 
