@@ -6,6 +6,8 @@
 \usepackage{enumitem}
 \usepackage{amsmath,amssymb}
 \usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\emergencystretch}{2em}
 
 % Reviewer comment block: indented, italic, with a colored left rule.
 \definecolor{rulegray}{gray}{0.55}
@@ -24,7 +26,7 @@
 
 \begin{document}
 \maketitle
-\vspace{-2.5em}
+\vspace{1em}
 
 \noindent\textbf{Manuscript:} ``A Practitioner-Oriented Review of Reinforcement
 Learning for the Joint Optimization of Ads and Organic Content in Large-Scale
@@ -59,8 +61,8 @@ Section and table references point to the revised manuscript.
   gives a single formal MDP definition with notation before the component-wise
   discussion, and Table 1 is a consolidated notation guide. This directly
   answers the AE's question of whether the goal is to rank ads independently or
-  jointly: we make the joint formulation explicit
-  (\(\mathcal{A} = \mathcal{A}^{\mathrm{ad}} \cup \mathcal{A}^{\mathrm{org}}\)).
+  jointly: we make the joint formulation explicit, defining the action space as
+  the union of the ad and organic candidate sets.
 
 \item \textbf{Reduced pedagogical material.} The Frozen Lake example and the
   generic RNN-to-Transformer evolution narrative were removed. The remaining
@@ -68,7 +70,7 @@ Section and table references point to the revised manuscript.
   ads in organic feeds creates a joint-optimization problem.
 
 \item \textbf{New, dedicated evaluation section (Section 5).} It covers metric
-  roles (primary/secondary/guardrail KPIs), offline replay and counterfactual
+  roles (primary, secondary, and guardrail KPIs), offline replay and counterfactual
   estimators (IPS, doubly robust), simulator-based testing (RecSim, SlateQ),
   and online A/B tests and long-term holdouts, plus two tables: an evaluation
   evidence/mechanism table and a quantitative-results table aggregating
@@ -377,5 +379,13 @@ to re-introduce notation in each later section.
 critical comparison, and evaluation) as well as the presentation items, and we
 thank the reviewers and editors again for feedback that materially improved the
 paper.
+
+\bigskip
+
+\noindent Sincerely,
+
+\medskip
+
+\noindent Armando Ordorica and Yuri Lawryshyn
 
 \end{document}

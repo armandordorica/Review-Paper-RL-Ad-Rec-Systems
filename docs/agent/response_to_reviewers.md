@@ -31,8 +31,8 @@ Section and table references point to the revised manuscript.
    formal MDP definition with notation before the component-wise discussion,
    and Table 1 is a consolidated notation guide. This directly answers the AE's
    question of whether the goal is to rank ads independently or jointly: we make
-   the joint formulation explicit (\(\mathcal{A} = \mathcal{A}^{\mathrm{ad}}
-   \cup \mathcal{A}^{\mathrm{org}}\)).
+   the joint formulation explicit, defining the action space as the union of the
+   ad and organic candidate sets.
 
 3. **Reduced pedagogical material.** The Frozen Lake example and the generic
    RNN-to-Transformer evolution narrative were removed. The remaining deep
@@ -40,7 +40,7 @@ Section and table references point to the revised manuscript.
    organic feeds creates a joint-optimization problem.
 
 4. **New, dedicated evaluation section (Section 5).** It covers metric roles
-   (primary/secondary/guardrail KPIs), offline replay and counterfactual
+   (primary, secondary, and guardrail KPIs), offline replay and counterfactual
    estimators (IPS, doubly robust), simulator-based testing (RecSim, SlateQ),
    and online A/B tests and long-term holdouts, plus two tables: an evaluation
    evidence/mechanism table and a **quantitative-results table** aggregating
