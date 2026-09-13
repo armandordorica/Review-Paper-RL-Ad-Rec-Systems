@@ -443,15 +443,20 @@ Associate Editor — not-so-minor points
 ----------------------------------------------------------------
 
 6. Incorrect DOIs and AI disclosure
-   Done (DOIs). We audited every bibliography entry that carried a DOI
-   against Crossref metadata and manually verified mismatches. Wrong
-   DOIs for Zhao et al. (2020), Wen/Wanigasekara et al. (2019),
-   Mehrotra et al. (2020), McDonald et al. (2023), and Stigler (1950)
-   were replaced with the correct records; we also added the missing
+   Done (DOIs). We manually inspected every bibliography entry that
+   carries a DOI (and the AE-mentioned Mehrotra 2018 record that lacked
+   one), checking each DOI against the claimed paper title and authors
+   via publisher / Crossref landing pages. Where the registered work
+   did not match the cited paper, we replaced the DOI with the correct
+   record. Corrected mismatches include Zhao et al. (2020),
+   Wanigasekara et al. (2019; IJCAI, previously listed under an
+   incorrect Wen et al. metadata/DOI pair), Mehrotra et al. (2020),
+   McDonald et al. (2023), and Stigler (1950). We also added the missing
    DOI for Mehrotra et al. (2018, CIKM). Regarding the AE example
    “Mehrotra et al., 2018,” the Spotify multi-objective bandit paper
    cited in the manuscript is Mehrotra et al. (2020); both that DOI and
-   the 2018 CIKM DOI were corrected/added.
+   the 2018 CIKM DOI were corrected/added. All remaining DOIs were
+   manually confirmed to resolve to the intended papers.
    [Planned:] Methods-section AI disclosure not yet applied.
 
 7–11. Claim–citation alignment, off-policy / SL wording, Section 3
@@ -502,6 +507,21 @@ completed a manuscript-wide pass so acronyms are introduced in full
 before later abbreviated uses (including MDP, pricing metrics such as
 CPM/CPC/CPA, CTR/pCTR, UCB-family methods, DIN/SASRec, and common
 evaluation metrics and baselines).
+```
+
+**DOI verification paragraph (standalone):**
+
+```text
+Regarding incorrect DOIs: we manually went through each bibliography
+DOI one by one and verified that it resolves to the intended paper
+(title and authors). Where a DOI pointed to a different work, we
+replaced it with the correct publisher record. This included the
+examples noted in the decision letter (Zhao et al. 2020; the 2019
+IJCAI multi-objective utility paper; Mehrotra et al.), as well as
+additional mismatches found in the same pass (McDonald et al. 2023;
+Stigler 1950). We also added the missing DOI for Mehrotra et al.
+(2018, CIKM). All remaining DOIs were manually confirmed to match
+the cited papers.
 ```
 
 ---
