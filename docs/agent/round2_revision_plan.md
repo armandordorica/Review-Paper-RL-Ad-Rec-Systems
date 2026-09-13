@@ -36,7 +36,7 @@ Work AE not-so-minor and R1 Accept-blocker first, then AE minor reference polish
 | Order | ID | Severity | Owner | Status | One-line |
 |---:|---|---|---|---|---|
 | 1 | R2-AI1 | Not-so-minor / AE | Methodology | PENDING APPROVAL | Draft AI-use disclosure paragraph |
-| 2 | R2-DOI1 | Not-so-minor / AE | Bibliography | INVESTIGATED | Fix confirmed wrong DOIs |
+| 2 | R2-DOI1 | Not-so-minor / AE | Bibliography | DONE | Fixed wrong DOIs via checklist |
 | 3 | R2-CITE1 | Not-so-minor / AE | Introduction | LOCATED | Revise Chen et al. 2022 / "supervised prediction" claim |
 | 4 | R2-CITE2 | Not-so-minor / AE | Introduction | LOCATED | Soften off-policy estimator generalization |
 | 5 | R2-CITE3 | Not-so-minor / AE | Introduction | LOCATED | Soften "SL ignores policy-induced distribution shifts" |
@@ -87,24 +87,21 @@ generate experimental results, figures, or numerical findings.
 
 ### R2-DOI1 — Wrong DOIs (AE)
 
-**AE examples:** Mehrotra et al., Wen et al. 2019, Zhao et al. 2020, and others.
+**Status:** DONE (13-Sep-2026). Manual checklist verification applied from
+`docs/agent/doi_checklist_progress.json` (6 Fix DOI; 17 Verified OK;
+1 pending left untouched: `robbins1952sequential`).
 
-**Investigation done:** Crossref audit of all 19 bib entries that currently have a `doi` field (`scripts/audit_dois.py`). Result: **4 mismatches / 19**.
+| Bib key | Old DOI | New DOI |
+|---|---|---|
+| `zhao2020jointly` | `10.1145/3394486.3403233` | `10.1145/3394486.3403384` |
+| `wen2019learning` | `10.24963/ijcai.2019/517` | `10.24963/ijcai.2019/532` (+ corrected title/authors/pages to Wanigasekara et al.) |
+| `Mehrotra2020` | `10.1145/3394486.3403392` | `10.1145/3394486.3403374` |
+| `mcdonald2023impatient` | `10.1145/3580305.3599410` | `10.1145/3580305.3599386` (+ url) |
+| `Stigler1950` | `10.1086/256964` | `10.1086/256962` (uncited) |
+| `Mehrotra2018` | *(missing)* | `10.1145/3269206.3272027` (uncited; AE “2018” candidate) |
 
-| Bib key | Claimed paper | Current DOI resolves to | Correct DOI |
-|---|---|---|---|
-| `zhao2020jointly` | Jointly Learning to Recommend and Advertise | Graph Attention Networks over Edge Content-Based Channels | `10.1145/3394486.3403384` |
-| `wen2019learning` | Multi-objective rewards / utility (IJCAI) | Deep Cascade Generation on Point Sets | `10.24963/ijcai.2019/532` (+ fix title to "...Contextual Bandits for Personalized Ranking") |
-| `Mehrotra2020` | Bandit Based Optimization... Music Streaming | USAD | `10.1145/3394486.3403374` |
-| `Stigler1950` | The Development of Utility Theory. I | Unrelated antitrust paper | `10.1086/256962` |
-
-**Note:** AE said "Mehrotra et al, 2018"; the cited Spotify multi-objective bandit paper in our bib is `Mehrotra2020` (KDD 2020). Separate `Mehrotra2018` exists (CIKM fair marketplace) and currently has **no** DOI field. Confirm in cover letter which paper was flagged.
-
-**Follow-up (not yet done):**
-- Spot-check high-risk entries without DOIs (venue/year/title consistency).
-- Optionally add correct DOIs for cited entries that lack them (not AE-required, but improves polish).
-
-**Approval needed before bib edits.**
+Crossref re-check after edits: all six new DOIs resolve to the claimed titles.
+Checklist UI: `docs/agent/doi_checklist.html`.
 
 ---
 
@@ -446,8 +443,16 @@ Associate Editor — not-so-minor points
 ----------------------------------------------------------------
 
 6. Incorrect DOIs and AI disclosure
-   [Planned:] DOI audit fixes and Methods-section AI disclosure are
-   next; not yet applied in this reference-polish pass.
+   Done (DOIs). We audited every bibliography entry that carried a DOI
+   against Crossref metadata and manually verified mismatches. Wrong
+   DOIs for Zhao et al. (2020), Wen/Wanigasekara et al. (2019),
+   Mehrotra et al. (2020), McDonald et al. (2023), and Stigler (1950)
+   were replaced with the correct records; we also added the missing
+   DOI for Mehrotra et al. (2018, CIKM). Regarding the AE example
+   “Mehrotra et al., 2018,” the Spotify multi-objective bandit paper
+   cited in the manuscript is Mehrotra et al. (2020); both that DOI and
+   the 2018 CIKM DOI were corrected/added.
+   [Planned:] Methods-section AI disclosure not yet applied.
 
 7–11. Claim–citation alignment, off-policy / SL wording, Section 3
    historical framing, and Table utility (Zhao 2020; LinkedIn / Yan 2020)
@@ -504,7 +509,7 @@ evaluation metrics and baselines).
 ## Suggested session workflow (one-by-one)
 
 1. Approve **R2-AI1** disclosure wording → apply.
-2. Approve **R2-DOI1** table of DOI fixes → apply to `bibliography.bib`.
+2. **R2-DOI1** DOI fixes — DONE (checklist applied).
 3. Approve intro claim softens (**R2-ABBR1**, **R2-CITE3**, **R2-CITE2**, **R2-CITE1**) as a short Intro batch (or one sentence at a time if preferred).
 4. Approve **R2-TAB1** + **R2-TAB2** together (same table).
 5. Approve **R2-HIST1** after locating the remaining "next step" sentence.

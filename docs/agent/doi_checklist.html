@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Round-2 DOI checklist</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --warn: #b45309;
+      --warn-soft: #ffedd5;
+      --ok: #166534;
+      --ok-soft: #dcfce7;
+      --bad: #991b1b;
+      --bad-soft: #fee2e2;
+      --skip: #6b7280;
+      --skip-soft: #f3f4f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, #dbeafe 0, transparent 35%),
+        var(--bg);
+      line-height: 1.45;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(244,246,248,0.94);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 1.25rem;
+    }
+    header h1 { margin: 0 0 0.25rem; font-size: 1.25rem; letter-spacing: -0.02em; }
+    header p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+    .toolbar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+      margin-top: 0.75rem;
+    }
+    .toolbar select, .toolbar input[type="search"], .toolbar button,
+    .card input, .card textarea, .card select {
+      font: inherit;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      background: white;
+    }
+    .toolbar button, .card button {
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .toolbar button.secondary { background: white; color: var(--ink); border-color: var(--line); }
+    .stats { margin-left: auto; font-size: 0.9rem; color: var(--muted); }
+    main { max-width: 980px; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      margin: 0.75rem 0;
+      box-shadow: 0 1px 0 rgba(15,23,42,0.03);
+    }
+    .card.done { opacity: 0.78; border-color: #86efac; background: #f7fff8; }
+    .card.mismatch { border-left: 4px solid var(--bad); }
+    .card.ok { border-left: 4px solid #22c55e; }
+    .card.missing { border-left: 4px solid var(--warn); }
+    .card.toprow {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .key { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92rem; }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      margin-right: 0.35rem;
+    }
+    .badge.mismatch { background: var(--bad-soft); color: var(--bad); }
+    .badge.ok { background: var(--ok-soft); color: var(--ok); }
+    .badge.missing, .badge.ae-missing { background: var(--warn-soft); color: var(--warn); }
+    .badge.error { background: #fce7f3; color: #9d174d; }
+    .badge.check { background: var(--accent-soft); color: var(--accent); }
+    .badge.ae { background: #ede9fe; color: #5b21b6; }
+    .badge.cited { background: #ecfeff; color: #0e7490; }
+    .badge.uncited { background: var(--skip-soft); color: var(--skip); }
+    .title { font-weight: 600; margin: 0.2rem 0; }
+    .meta { color: var(--muted); font-size: 0.88rem; }
+    .links a { color: var(--accent); margin-right: 0.75rem; }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+    @media (max-width: 720px) { .compare, .grid { grid-template-columns: 1fr; } }
+    .pane {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.55rem 0.7rem;
+      background: #f8fafc;
+      font-size: 0.86rem;
+    }
+    .pane h4 { margin: 0 0 0.35rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .pane.bad { background: #fff1f2; border-color: #fecdd3; }
+    .pane.good { background: #f0fdf4; border-color: #bbf7d0; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    label.field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.82rem; color: var(--muted); }
+    label.field span { font-weight: 600; color: var(--ink); }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-top: 0.75rem; }
+    .actions button.ok { background: var(--ok); border-color: var(--ok); }
+    .actions button.fix { background: #b45309; border-color: #b45309; }
+    .actions button.reset { background: white; color: var(--ink); border-color: var(--line); }
+    .suggest-box {
+      margin-top: 0.65rem;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      background: #eff6ff;
+      border: 1px dashed #93c5fd;
+      font-size: 0.86rem;
+    }
+    .suggest-box code {
+      font-size: 0.84rem;
+      background: rgba(255,255,255,0.7);
+      padding: 0.05rem 0.3rem;
+      border-radius: 4px;
+    }
+    .decision {
+      font-size: 0.85rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px;
+    }
+    .decision.verified_ok { background: var(--ok-soft); color: var(--ok); }
+    .decision.fix_doi { background: var(--warn-soft); color: var(--warn); }
+    .decision.remove_doi { background: var(--bad-soft); color: var(--bad); }
+    .decision.pending { background: var(--skip-soft); color: var(--skip); }
+    textarea { min-height: 2.6rem; resize: vertical; }
+    .export {
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 0.9rem;
+      border-radius: 10px;
+      display: none;
+      margin-top: 0.75rem;
+    }
+    footer { color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem; }
+    .flash { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Round-2 DOI checklist</h1>
+    <p>
+      Inspect each bibliography DOI against Crossref (agent first pass prefilled).
+      Mark <em>Verified OK</em>, <em>Fix DOI</em>, or <em>Remove DOI</em>.
+      Progress saves in <code>localStorage</code> (<code>tors-doi-checklist-v1</code>).
+      Use <em>Download backup</em> before closing.
+    </p>
+    <div class="toolbar">
+      <select id="filterStatus">
+        <option value="all">All statuses</option>
+        <option value="mismatch">Mismatch (agent)</option>
+        <option value="ok">OK (agent)</option>
+        <option value="missing">Missing DOI</option>
+      </select>
+      <select id="filterDecision">
+        <option value="all">All decisions</option>
+        <option value="pending">Pending</option>
+        <option value="verified_ok">Verified OK</option>
+        <option value="fix_doi">Fix DOI</option>
+        <option value="remove_doi">Remove DOI</option>
+      </select>
+      <select id="filterCited">
+        <option value="all">Cited + uncited</option>
+        <option value="cited">Cited in paper.tex</option>
+        <option value="uncited">Uncited only</option>
+      </select>
+      <label style="font-size:0.85rem;color:var(--muted)"><input type="checkbox" id="aeOnly" /> AE-flagged only</label>
+      <input id="search" type="search" placeholder="Filter by key or title…" style="min-width:14rem" />
+      <button class="secondary" id="btnExport">Export decisions JSON</button>
+      <button class="secondary" id="btnCopy">Copy for chat</button>
+      <button class="secondary" id="btnBackup">Download backup</button>
+      <button class="secondary" id="btnImport">Import backup…</button>
+      <input id="importFile" type="file" accept="application/json,.json" style="display:none" />
+      <button class="secondary" id="btnLoadSug">Load suggestions into empty fix fields</button>
+      <button class="secondary" id="btnClear">Clear saved progress</button>
+      <div class="stats" id="stats"></div>
+    </div>
+    <pre class="export" id="exportBox"></pre>
+  </header>
+  <main id="list"></main>
+  <footer style="max-width:980px;margin:0 auto;padding:0 1.25rem 2rem">
+    Open:
+    <code>docs/agent/doi_checklist.html</code>
+    &nbsp;·&nbsp; Data snapshot:
+    <code>docs/agent/doi_checklist_data.json</code>
+    <br/>
+    After verifying, paste the export into chat and ask me to apply DOI fixes to <code>bibliography.bib</code>.
+  </footer>
+
+  <script>
+    const STORAGE_KEY = "tors-doi-checklist-v1";
+    const ITEMS = [
+  {
+    "id": "Mehrotra2020",
+    "type": "inproceedings",
+    "title": "Bandit based optimization of multiple objectives on a music streaming platform",
+    "authors": "Rishabh Mehrotra and Niannan Xue and Mounia Lalmas",
+    "year": "2020",
+    "venue": "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \\& Data Mining (KDD '20)",
+    "doi": "10.1145/3394486.3403392",
+    "url": "",
+    "cited": true,
+    "crossref_title": "USAD",
+    "crossref_container": "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining",
+    "crossref_year": 2020,
+    "similarity": 0.07,
+    "status": "mismatch",
+    "doi_url": "https://doi.org/10.1145/3394486.3403392",
+    "suggested_doi": "10.1145/3394486.3403374",
+    "suggested_doi_url": "https://doi.org/10.1145/3394486.3403374",
+    "suggested_note": "AE-flagged family. Current DOI resolves to USAD (wrong KDD 2020 paper). Correct DOI is Bandit based Optimization\u2026 (Mehrotra/Xue/Lalmas).",
+    "priority": "mismatch",
+    "ae_flagged": true
+  },
+  {
+    "id": "wen2019learning",
+    "type": "inproceedings",
+    "title": "Learning multi-objective rewards and user utility function in recommender systems",
+    "authors": "Wen, Ying and Mu, Yao and Ester, Martin",
+    "year": "2019",
+    "venue": "Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI)",
+    "doi": "10.24963/ijcai.2019/517",
+    "url": "https://www.ijcai.org/proceedings/2019/0532.pdf",
+    "cited": true,
+    "crossref_title": "Deep Cascade Generation on Point Sets",
+    "crossref_container": "Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence",
+    "crossref_year": 2019,
+    "similarity": 0.32,
+    "status": "mismatch",
+    "doi_url": "https://doi.org/10.24963/ijcai.2019/517",
+    "suggested_doi": "10.24963/ijcai.2019/532",
+    "suggested_doi_url": "https://doi.org/10.24963/ijcai.2019/532",
+    "suggested_note": "AE-flagged. Current DOI /517 is Deep Cascade Generation. Correct is /532. Also update title to \u201c\u2026in Contextual Bandits for Personalized Ranking\u201d (Wanigasekara et al.). Bib URL already points to 0532.pdf.",
+    "priority": "mismatch",
+    "ae_flagged": true
+  },
+  {
+    "id": "zhao2020jointly",
+    "type": "inproceedings",
+    "title": "Jointly learning to recommend and advertise",
+    "authors": "Zhao, Xiangyu and Zheng, Xudong and Yang, Xiwang and Liu, Xiaobing and Tang, Jiliang",
+    "year": "2020",
+    "venue": "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \\& Data Mining",
+    "doi": "10.1145/3394486.3403233",
+    "url": "",
+    "cited": true,
+    "crossref_title": "Graph Attention Networks over Edge Content-Based Channels",
+    "crossref_container": "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining",
+    "crossref_year": 2020,
+    "similarity": 0.26,
+    "status": "mismatch",
+    "doi_url": "https://doi.org/10.1145/3394486.3403233",
+    "suggested_doi": "10.1145/3394486.3403384",
+    "suggested_doi_url": "https://doi.org/10.1145/3394486.3403384",
+    "suggested_note": "AE-flagged. Current DOI resolves to Graph Attention Networks\u2026 Correct DOI is Jointly Learning to Recommend and Advertise.",
+    "priority": "mismatch",
+    "ae_flagged": true
+  },
+  {
+    "id": "Mehrotra2018",
+    "type": "inproceedings",
+    "title": "Towards a Fair Marketplace: Counterfactual Evaluation of the Trade-off between Relevance, Fairness \\& Satisfaction in Recommendation Systems",
+    "authors": "Rishabh Mehrotra and James McInerney and Hugues Bouchard and Mounia Lalmas and Fernando Diaz",
+    "year": "2018",
+    "venue": "Proceedings of the 27th ACM International Conference on Information and Knowledge Management (CIKM '18)",
+    "doi": "",
+    "url": "",
+    "cited": false,
+    "crossref_title": "",
+    "crossref_container": "",
+    "crossref_year": null,
+    "similarity": 0.0,
+    "status": "missing",
+    "doi_url": "",
+    "suggested_doi": "10.1145/3269206.3272027",
+    "suggested_doi_url": "https://doi.org/10.1145/3269206.3272027",
+    "suggested_note": "AE said \u201cMehrotra et al., 2018\u201d. This CIKM 2018 fair-marketplace paper has no DOI in our bib. Suggested DOI 10.1145/3269206.3272027. The Spotify multi-objective paper we cite as Mehrotra2020 is the other AE example (wrong DOI).",
+    "priority": "ae-missing",
+    "ae_flagged": true
+  },
+  {
+    "id": "Stigler1950",
+    "type": "article",
+    "title": "The Development of Utility Theory. I",
+    "authors": "George J. Stigler",
+    "year": "1950",
+    "venue": "Journal of Political Economy",
+    "doi": "10.1086/256964",
+    "url": "",
+    "cited": false,
+    "crossref_title": "Vertical Integration and Antitrust Policy",
+    "crossref_container": "Journal of Political Economy",
+    "crossref_year": 1950,
+    "similarity": 0.26,
+    "status": "mismatch",
+    "doi_url": "https://doi.org/10.1086/256964",
+    "suggested_doi": "10.1086/256962",
+    "suggested_doi_url": "https://doi.org/10.1086/256962",
+    "suggested_note": "Current DOI 10.1086/256964 is Vertical Integration and Antitrust Policy. Correct Part I utility-theory paper is 10.1086/256962.",
+    "priority": "mismatch",
+    "ae_flagged": false
+  },
+  {
+    "id": "mcdonald2023impatient",
+    "type": "inproceedings",
+    "title": "Impatient bandits: Optimizing recommendations for the long-term without delay",
+    "authors": "McDonald, Thomas M and Maystre, Lucas and Lalmas, Mounia and Russo, Daniel and Ciosek, Kamil",
+    "year": "2023",
+    "venue": "Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "doi": "10.1145/3580305.3599410",
+    "url": "https://dl.acm.org/doi/10.1145/3580305.3599410",
+    "cited": true,
+    "crossref_title": "Learning Strong Graph Neural Networks with Weak Information",
+    "crossref_container": "Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "crossref_year": 2023,
+    "similarity": 0.22,
+    "status": "mismatch",
+    "doi_url": "https://doi.org/10.1145/3580305.3599410",
+    "suggested_doi": "10.1145/3580305.3599386",
+    "suggested_doi_url": "https://doi.org/10.1145/3580305.3599386",
+    "suggested_note": "New mismatch (not in AE examples). Current DOI resolves to Learning Strong Graph Neural Networks\u2026. Correct Impatient Bandits DOI is 10.1145/3580305.3599386; also fix url= field.",
+    "priority": "mismatch",
+    "ae_flagged": false
+  },
+  {
+    "id": "Bobadilla2013",
+    "type": "article",
+    "title": "Recommender systems survey",
+    "authors": "Bobadilla, Jesus and Ortega, Fernando and Hernando, Antonio and Guti\\rrez, Arturo",
+    "year": "2013",
+    "venue": "Knowledge-Based Systems",
+    "doi": "10.1016/j.knosys.2013.03.012",
+    "url": "",
+    "cited": false,
+    "crossref_title": "Recommender systems survey",
+    "crossref_container": "Knowledge-Based Systems",
+    "crossref_year": 2013,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1016/j.knosys.2013.03.012",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "Jannach2023",
+    "type": "article",
+    "title": "A survey on multi-objective recommender systems",
+    "authors": "Dietmar Jannach and Himan Abdollahpouri",
+    "year": "2023",
+    "venue": "Frontiers in Big Data",
+    "doi": "10.3389/fdata.2023.1157899",
+    "url": "",
+    "cited": true,
+    "crossref_title": "A survey on multi-objective recommender systems",
+    "crossref_container": "Frontiers in Big Data",
+    "crossref_year": 2023,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.3389/fdata.2023.1157899",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "Schein2002",
+    "type": "inproceedings",
+    "title": "Methods and Metrics for Cold-start Recommendations",
+    "authors": "Schein, Andrew I. and Popescul, Alexandrin and Ungar, Lyle H. and Pennock, David M.",
+    "year": "2002",
+    "venue": "Proceedings of the 25th annual international ACM SIGIR conference on Research and development in information retrieval (SIGIR '02)",
+    "doi": "10.1145/564376.564421",
+    "url": "",
+    "cited": false,
+    "crossref_title": "Methods and metrics for cold-start recommendations",
+    "crossref_container": "Proceedings of the 25th annual international ACM SIGIR conference on Research and development in information retrieval",
+    "crossref_year": 2002,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1145/564376.564421",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "Zhou2018",
+    "type": "inproceedings",
+    "title": "Deep interest network for click-through rate prediction",
+    "authors": "Guorui Zhou and Chengru Song and Xiaoqiang Zhu and Ying Fan and Han Zhu and Xiao Ma and Yanghui Yan and Junqi Jin and Ha",
+    "year": "2018",
+    "venue": "Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery \\& Data Mining (KDD '18)",
+    "doi": "10.1145/3219819.3219823",
+    "url": "",
+    "cited": true,
+    "crossref_title": "Deep Interest Network for Click-Through Rate Prediction",
+    "crossref_container": "Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining",
+    "crossref_year": 2018,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1145/3219819.3219823",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "Zhou2019",
+    "type": "inproceedings",
+    "title": "Deep interest evolution network for click-through rate prediction",
+    "authors": "Guorui Zhou and Na Mou and Ying Fan and Qi Pi and Weijie Bian and Chang Zhou and Xiaoqiang Zhu and Kun Gai",
+    "year": "2019",
+    "venue": "Proceedings of the 33rd AAAI Conference on Artificial Intelligence (AAAI)",
+    "doi": "10.1609/aaai.v33i01.33015941",
+    "url": "",
+    "cited": true,
+    "crossref_title": "Deep Interest Evolution Network for Click-Through Rate Prediction",
+    "crossref_container": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "crossref_year": 2019,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1609/aaai.v33i01.33015941",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "agarwal2014budget",
+    "type": "inproceedings",
+    "title": "Budget pacing for targeted online advertisements at LinkedIn",
+    "authors": "Agarwal, Deepak and Ghosh, Souvik and Wei, Kai and You, Siyu",
+    "year": "2014",
+    "venue": "Proceedings of the 20th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)",
+    "doi": "10.1145/2623330.2623366",
+    "url": "",
+    "cited": true,
+    "crossref_title": "Budget pacing for targeted online advertisements at LinkedIn",
+    "crossref_container": "Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining",
+    "crossref_year": 2014,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1145/2623330.2623366",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "carrion2021blending",
+    "type": "inproceedings",
+    "title": "Blending advertising with organic content in e-commerce via virtual bids",
+    "authors": "Carrion, Carlos and Wang, Zenan and Nair, Harikesh and Luo, Xianghong and Lei, Yulin and Lin, Xiliang and Chen, Wenlong ",
+    "year": "2023",
+    "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "doi": "10.1609/aaai.v37i13.26835",
+    "url": "https://doi.org/10.1609/aaai.v37i13.26835",
+    "cited": true,
+    "crossref_title": "Blending Advertising with Organic Content in E-commerce via Virtual Bids",
+    "crossref_container": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "crossref_year": 2023,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1609/aaai.v37i13.26835",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "dulac2021challenges",
+    "type": "article",
+    "title": "Challenges of real-world reinforcement learning: definitions, benchmarks and analysis",
+    "authors": "Dulac-Arnold, Gabriel and Levine, Nir and Mankowitz, Daniel J and Li, Jerry and Paduraru, Cosmin and Gowal, Sven and Hes",
+    "year": "2021",
+    "venue": "Machine Learning",
+    "doi": "10.1007/s10994-021-05961-4",
+    "url": "https://doi.org/10.1007/s10994-021-05961-4",
+    "cited": true,
+    "crossref_title": "Challenges of real-world reinforcement learning: definitions, benchmarks and analysis",
+    "crossref_container": "Machine Learning",
+    "crossref_year": 2021,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1007/s10994-021-05961-4",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "ie2019slateq",
+    "type": "inproceedings",
+    "title": "SlateQ: A tractable decomposition for reinforcement learning with recommendation sets",
+    "authors": "Ie, Eugene and Jain, Vihan and Wang, Jing and Narvekar, Sanmit and Agarwal, Ritesh and Wu, Rui and Cheng, Heng-Tze and C",
+    "year": "2019",
+    "venue": "Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence (IJCAI)",
+    "doi": "10.24963/ijcai.2019/360",
+    "url": "https://doi.org/10.24963/ijcai.2019/360",
+    "cited": true,
+    "crossref_title": "SlateQ: A Tractable Decomposition for Reinforcement Learning with Recommendation Sets",
+    "crossref_container": "Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence",
+    "crossref_year": 2019,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.24963/ijcai.2019/360",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "kang2018sasrec",
+    "type": "inproceedings",
+    "title": "Self-attentive sequential recommendation",
+    "authors": "Kang, Wang-Cheng and McAuley, Julian",
+    "year": "2018",
+    "venue": "Proceedings of the 2018 IEEE International Conference on Data Mining (ICDM)",
+    "doi": "10.1109/ICDM.2018.00035",
+    "url": "https://ieeexplore.ieee.org/document/8594844",
+    "cited": true,
+    "crossref_title": "Self-Attentive Sequential Recommendation",
+    "crossref_container": "2018 IEEE International Conference on Data Mining (ICDM)",
+    "crossref_year": 2018,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1109/ICDM.2018.00035",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "koren2009matrix",
+    "type": "article",
+    "title": "Matrix factorization techniques for recommender systems",
+    "authors": "Koren, Yehuda and Bell, Robert and Volinsky, Chris",
+    "year": "2009",
+    "venue": "Computer",
+    "doi": "10.1109/MC.2009.263",
+    "url": "",
+    "cited": false,
+    "crossref_title": "Matrix Factorization Techniques for Recommender Systems",
+    "crossref_container": "Computer",
+    "crossref_year": 2009,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1109/MC.2009.263",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "mnih2015human",
+    "type": "article",
+    "title": "Human-level control through deep reinforcement learning",
+    "authors": "Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and Rusu, Andrei A and Veness, Joel and Bellemare, Marc G and G",
+    "year": "2015",
+    "venue": "Nature",
+    "doi": "10.1038/nature14236",
+    "url": "https://doi.org/10.1038/nature14236",
+    "cited": false,
+    "crossref_title": "Human-level control through deep reinforcement learning",
+    "crossref_container": "Nature",
+    "crossref_year": 2015,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1038/nature14236",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "robbins1952sequential",
+    "type": "article",
+    "title": "Some aspects of the sequential design of experiments",
+    "authors": "Herbert Robbins",
+    "year": "1952",
+    "venue": "Bulletin of the American Mathematical Society",
+    "doi": "10.1090/S0002-9904-1952-09620-8",
+    "url": "https://projecteuclid.org/euclid.bams/1183517370",
+    "cited": true,
+    "crossref_title": "Some aspects of the sequential design of experiments",
+    "crossref_container": "Bulletin of the American Mathematical Society",
+    "crossref_year": 1952,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1090/S0002-9904-1952-09620-8",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "tang2013ad",
+    "type": "inproceedings",
+    "title": "Automatic ad format selection via contextual bandits",
+    "authors": "Tang, Liang and Rosales, Rmer and Singh, Ajit and Agarwal, Deepak",
+    "year": "2013",
+    "venue": "Proceedings of the 22nd ACM International Conference on Information \\& Knowledge Management (CIKM)",
+    "doi": "10.1145/2505515.2514700",
+    "url": "",
+    "cited": true,
+    "crossref_title": "Automatic ad format selection via contextual bandits",
+    "crossref_container": "Proceedings of the 22nd ACM international conference on Information &amp; Knowledge Management",
+    "crossref_year": 2013,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1145/2505515.2514700",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "villar2015multi",
+    "type": "article",
+    "title": "Multi-armed Bandit Models for the Optimal Design of Clinical Trials: Benefits and Challenges",
+    "authors": "Villar, Sof\\ia S. and Bowden, Jack and Wason, James",
+    "year": "2015",
+    "venue": "Statistical Science",
+    "doi": "10.1214/14-STS504",
+    "url": "https://projecteuclid.org/euclid.ss/1432829203",
+    "cited": false,
+    "crossref_title": "Multi-armed Bandit Models for the Optimal Design of Clinical Trials: Benefits and Challenges",
+    "crossref_container": "Statistical Science",
+    "crossref_year": 2015,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1214/14-STS504",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "williams1992simple",
+    "type": "article",
+    "title": "Simple statistical gradient-following algorithms for connectionist reinforcement learning",
+    "authors": "Williams, Ronald J.",
+    "year": "1992",
+    "venue": "Machine Learning",
+    "doi": "10.1007/BF00992696",
+    "url": "https://link.springer.com/article/10.1007/BF00992696",
+    "cited": true,
+    "crossref_title": "Simple statistical gradient-following algorithms for connectionist reinforcement learning",
+    "crossref_container": "Machine Learning",
+    "crossref_year": 1992,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1007/BF00992696",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "xu2023optimizing",
+    "type": "inproceedings",
+    "title": "Optimizing long-term value for auction-based recommender systems via on-policy reinforcement learning",
+    "authors": "Xu, Ruiyang and Bhandari, Jalaj and Korenkevych, Dmytro and Liu, Fan and He, Yuchen and Nikulkov, Alex and Zhu, Zheqing",
+    "year": "2023",
+    "venue": "Proceedings of the 17th ACM Conference on Recommender Systems",
+    "doi": "10.1145/3604915.3608854",
+    "url": "",
+    "cited": true,
+    "crossref_title": "Optimizing Long-term Value for Auction-Based Recommender Systems via On-Policy Reinforcement Learning",
+    "crossref_container": "Proceedings of the 17th ACM Conference on Recommender Systems",
+    "crossref_year": 2023,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.1145/3604915.3608854",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  },
+  {
+    "id": "zhao2024survey",
+    "type": "article",
+    "title": "A survey of retrieval algorithms in ad and content recommendation systems",
+    "authors": "Zhao, Yu and Liu, Fang and Yuan, Yuan and Dang, Yifan",
+    "year": "2026",
+    "venue": "International Journal of Electrical and Computer Engineering (IJECE)",
+    "doi": "10.11591/ijece.v16i3.pp1518-1530",
+    "url": "https://ijece.iaescore.com/index.php/IJECE/article/view/42030",
+    "cited": true,
+    "crossref_title": "A survey of retrieval algorithms in ad and content recommendation systems",
+    "crossref_container": "International Journal of Electrical and Computer Engineering (IJECE)",
+    "crossref_year": 2026,
+    "similarity": 1.0,
+    "status": "ok",
+    "doi_url": "https://doi.org/10.11591/ijece.v16i3.pp1518-1530",
+    "suggested_doi": "",
+    "suggested_doi_url": "",
+    "suggested_note": "Crossref title matches bib title in first-pass audit.",
+    "priority": "ok",
+    "ae_flagged": false
+  }
+];
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+      catch { return {}; }
+    }
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+    function decisionLabel(d) {
+      if (d === "verified_ok") return "Verified OK";
+      if (d === "fix_doi") return "Fix DOI";
+      if (d === "remove_doi") return "Remove DOI";
+      return "Pending";
+    }
+    function defaultEntry(item) {
+      return {
+        decision: "pending",
+        new_doi: "",
+        notes: "",
+        verified_at: ""
+      };
+    }
+
+    const state = loadState();
+    ITEMS.forEach(it => {
+      if (!state[it.id]) state[it.id] = defaultEntry(it);
+    });
+    saveState(state);
+
+    function visibleItems() {
+      const st = document.getElementById("filterStatus").value;
+      const dec = document.getElementById("filterDecision").value;
+      const cited = document.getElementById("filterCited").value;
+      const aeOnly = document.getElementById("aeOnly").checked;
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      return ITEMS.filter(it => {
+        const s = state[it.id] || defaultEntry(it);
+        if (st !== "all") {
+          if (st === "missing" && !(it.status === "missing" || it.status === "ae-missing")) return false;
+          else if (st !== "missing" && it.status !== st) return false;
+        }
+        if (dec !== "all" && (s.decision || "pending") !== dec) return false;
+        if (cited === "cited" && !it.cited) return false;
+        if (cited === "uncited" && it.cited) return false;
+        if (aeOnly && !it.ae_flagged) return false;
+        if (q) {
+          const hay = (it.id + " " + it.title + " " + (it.doi||"") + " " + (it.crossref_title||"")).toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    function updateStats() {
+      const all = ITEMS;
+      const decided = all.filter(it => (state[it.id]?.decision || "pending") !== "pending").length;
+      const mismatch = all.filter(it => it.status === "mismatch").length;
+      const pendingMismatch = all.filter(it => it.status === "mismatch" && (state[it.id]?.decision || "pending") === "pending").length;
+      document.getElementById("stats").textContent =
+        `${decided}/${all.length} decided · ${mismatch} agent mismatches · ${pendingMismatch} mismatch still pending`;
+    }
+
+    function render() {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      visibleItems().forEach(it => {
+        const s = state[it.id] || defaultEntry(it);
+        const card = document.createElement("div");
+        card.className = "card " + (it.status || "") + ((s.decision && s.decision !== "pending") ? " done" : "");
+        const sug = it.suggested_doi
+          ? `<div class="suggest-box"><strong>Agent suggestion:</strong> replace with <code>${it.suggested_doi}</code>
+               ${it.suggested_doi_url ? `· <a href="${it.suggested_doi_url}" target="_blank" rel="noopener">open suggested DOI</a>` : ""}
+               <div style="margin-top:0.35rem">${it.suggested_note || ""}</div></div>`
+          : `<div class="suggest-box">${it.suggested_note || "No change suggested."}</div>`;
+        card.innerHTML = `
+          <div class="toprow">
+            <div>
+              <span class="badge ${it.status}">${it.status}</span>
+              ${it.ae_flagged ? '<span class="badge ae">AE flagged</span>' : ''}
+              <span class="badge ${it.cited ? 'cited' : 'uncited'}">${it.cited ? 'cited' : 'uncited'}</span>
+            </div>
+            <div>
+              <div class="key">${it.id}</div>
+              <div class="title">${it.title || "(no title)"}</div>
+              <div class="meta">${it.authors || ""} · ${it.year || ""} · ${it.venue || ""}</div>
+              <div class="links" style="margin-top:0.35rem">
+                ${it.doi_url ? `<a href="${it.doi_url}" target="_blank" rel="noopener">Current DOI</a>` : "<span class='meta'>No DOI in bib</span>"}
+                ${it.url ? `<a href="${it.url}" target="_blank" rel="noopener">Bib URL</a>` : ""}
+                <a href="https://search.crossref.org/?q=${encodeURIComponent(it.title || it.id)}" target="_blank" rel="noopener">Crossref search</a>
+              </div>
+            </div>
+            <div class="decision ${s.decision || 'pending'}">${decisionLabel(s.decision || 'pending')}</div>
+          </div>
+          <div class="compare">
+            <div class="pane ${it.status === 'mismatch' ? 'bad' : ''}">
+              <h4>Bib claims</h4>
+              <div><strong>Title:</strong> ${it.title || "—"}</div>
+              <div><strong>DOI:</strong> <code>${it.doi || "(none)"}</code></div>
+            </div>
+            <div class="pane ${it.status === 'mismatch' ? 'bad' : (it.status === 'ok' ? 'good' : '')}">
+              <h4>Current DOI resolves to (Crossref)</h4>
+              <div><strong>Title:</strong> ${it.crossref_title || "—"}</div>
+              <div><strong>Venue:</strong> ${it.crossref_container || "—"} ${it.crossref_year || ""}</div>
+              <div><strong>Title similarity:</strong> ${it.similarity ?? "—"}</div>
+            </div>
+          </div>
+          ${sug}
+          <div class="grid">
+            <label class="field"><span>Correct / new DOI (if fixing)</span>
+              <input data-id="${it.id}" data-field="new_doi" value="${(s.new_doi || "").replaceAll('"','&quot;')}" placeholder="10......." />
+            </label>
+            <label class="field"><span>Notes</span>
+              <textarea data-id="${it.id}" data-field="notes" placeholder="What you checked…">${s.notes || ""}</textarea>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="ok" data-act="verified_ok" data-id="${it.id}">Verified OK</button>
+            <button class="fix" data-act="fix_doi" data-id="${it.id}">Fix DOI</button>
+            <button class="secondary" data-act="remove_doi" data-id="${it.id}">Remove DOI</button>
+            <button class="reset" data-act="pending" data-id="${it.id}">Reset</button>
+            <button class="secondary" data-load="${it.id}">Load suggestion</button>
+            <span class="flash" id="flash-${it.id}"></span>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+      updateStats();
+    }
+
+    function setDecision(id, decision) {
+      state[id] = state[id] || defaultEntry({});
+      state[id].decision = decision;
+      state[id].verified_at = new Date().toISOString();
+      if (decision === "fix_doi" && !state[id].new_doi) {
+        const it = ITEMS.find(x => x.id === id);
+        if (it?.suggested_doi) state[id].new_doi = it.suggested_doi;
+      }
+      saveState(state);
+      render();
+    }
+
+    document.getElementById("list").addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      if (btn.dataset.act) {
+        setDecision(btn.dataset.id, btn.dataset.act);
+        return;
+      }
+      if (btn.dataset.load) {
+        const id = btn.dataset.load;
+        const it = ITEMS.find(x => x.id === id);
+        state[id] = state[id] || defaultEntry({});
+        if (it?.suggested_doi) {
+          state[id].new_doi = it.suggested_doi;
+          state[id].decision = "fix_doi";
+          state[id].notes = state[id].notes || (it.suggested_note || "");
+          const flash = document.getElementById("flash-" + id);
+          if (flash) flash.textContent = "Suggestion loaded";
+        }
+        saveState(state);
+        render();
+      }
+    });
+    document.getElementById("list").addEventListener("input", (e) => {
+      const el = e.target;
+      if (!el.dataset.id || !el.dataset.field) return;
+      state[el.dataset.id] = state[el.dataset.id] || defaultEntry({});
+      state[el.dataset.id][el.dataset.field] = el.value;
+      saveState(state);
+      updateStats();
+    });
+
+    ["filterStatus","filterDecision","filterCited","aeOnly","search"].forEach(id => {
+      document.getElementById(id).addEventListener("change", render);
+      document.getElementById(id).addEventListener("input", render);
+    });
+
+    function exportObj() {
+      const decisions = {};
+      ITEMS.forEach(it => {
+        const s = state[it.id] || defaultEntry(it);
+        decisions[it.id] = {
+          ...s,
+          agent_status: it.status,
+          current_doi: it.doi,
+          suggested_doi: it.suggested_doi,
+          cited: it.cited,
+          ae_flagged: it.ae_flagged,
+          bib_title: it.title,
+          crossref_title: it.crossref_title,
+        };
+      });
+      return {
+        exported_at: new Date().toISOString(),
+        storage_key: STORAGE_KEY,
+        summary: {
+          total: ITEMS.length,
+          pending: ITEMS.filter(it => (state[it.id]?.decision || "pending") === "pending").length,
+          verified_ok: ITEMS.filter(it => state[it.id]?.decision === "verified_ok").length,
+          fix_doi: ITEMS.filter(it => state[it.id]?.decision === "fix_doi").length,
+          remove_doi: ITEMS.filter(it => state[it.id]?.decision === "remove_doi").length,
+        },
+        decisions
+      };
+    }
+
+    document.getElementById("btnExport").onclick = () => {
+      const box = document.getElementById("exportBox");
+      box.style.display = "block";
+      box.textContent = JSON.stringify(exportObj(), null, 2);
+    };
+    document.getElementById("btnCopy").onclick = async () => {
+      const text = JSON.stringify(exportObj(), null, 2);
+      await navigator.clipboard.writeText(text);
+      alert("Copied DOI decisions JSON to clipboard — paste into chat.");
+    };
+    document.getElementById("btnBackup").onclick = () => {
+      const blob = new Blob([JSON.stringify(exportObj(), null, 2)], {type:"application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "doi_checklist_progress.json";
+      a.click();
+    };
+    document.getElementById("btnImport").onclick = () => document.getElementById("importFile").click();
+    document.getElementById("importFile").onchange = async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const raw = JSON.parse(await file.text());
+      const decisions = raw.decisions || raw;
+      Object.keys(decisions).forEach(id => {
+        if (!ITEMS.find(x => x.id === id)) return;
+        const d = decisions[id];
+        state[id] = {
+          decision: d.decision || "pending",
+          new_doi: d.new_doi || "",
+          notes: d.notes || "",
+          verified_at: d.verified_at || ""
+        };
+      });
+      saveState(state);
+      render();
+      alert("Imported backup.");
+    };
+    document.getElementById("btnLoadSug").onclick = () => {
+      let n = 0;
+      ITEMS.forEach(it => {
+        if (!it.suggested_doi) return;
+        state[it.id] = state[it.id] || defaultEntry(it);
+        if (!state[it.id].new_doi) {
+          state[it.id].new_doi = it.suggested_doi;
+          n++;
+        }
+      });
+      saveState(state);
+      render();
+      alert(`Filled ${n} empty new_doi fields from suggestions (decisions unchanged).`);
+    };
+    document.getElementById("btnClear").onclick = () => {
+      if (!confirm("Clear all saved DOI checklist progress in this browser?")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    };
+
+    render();
+  </script>
+</body>
+</html>
