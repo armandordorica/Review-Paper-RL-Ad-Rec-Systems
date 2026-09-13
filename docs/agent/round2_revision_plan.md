@@ -37,7 +37,7 @@ Work AE not-so-minor and R1 Accept-blocker first, then AE minor reference polish
 |---:|---|---|---|---|---|
 | 1 | R2-AI1 | Not-so-minor / AE | Methodology | PENDING APPROVAL | Draft AI-use disclosure paragraph |
 | 2 | R2-DOI1 | Not-so-minor / AE | Bibliography | DONE | Fixed wrong DOIs via checklist |
-| 3 | R2-CITE1 | Not-so-minor / AE | Introduction | LOCATED | Revise Chen et al. 2022 / "supervised prediction" claim |
+| 3 | R2-CITE1 | Not-so-minor / AE | Introduction | DONE | Revise Chen et al. 2022 / "supervised prediction" claim |
 | 4 | R2-CITE2 | Not-so-minor / AE | Introduction | LOCATED | Soften off-policy estimator generalization |
 | 5 | R2-CITE3 | Not-so-minor / AE | Introduction | LOCATED | Soften "SL ignores policy-induced distribution shifts" |
 | 6 | R2-TAB1 | Not-so-minor / AE | Table utility / Zhao 2020 | INVESTIGATED | Correct Zhao et al. 2020 blended utility formula |
@@ -111,15 +111,11 @@ Checklist UI: `docs/agent/doi_checklist.html`.
 
 **Location:** Introduction ~line 105; citation key `chen2022off` = "Off-policy actor-critic for recommender systems" (RecSys 2022).
 
-**Plan:**
-1. Re-read Chen et al. 2022 for what it actually supports (off-policy actor-critic / offline RL for recommenders).
-2. Rewrite the sentence so the claim matches the paper, **or** drop/replace the citation.
-3. Avoid "supervised prediction" phrasing as AE suggested.
-4. Double-check any technical definition nearby.
+**Status:** DONE (13-Sep-2026), following author approval. Replaced the two closing sentences of the RL Introduction paragraph with the agreed statement on the complementary roles of SL and deep neural networks. Removed the Chen citation from this general claim and cited `levine2020offline` and `Sutton1998` instead.
 
-**Draft rewrite direction (not final wording):** RL can complement SL by using learned value estimates or rewards from predictive models inside a sequential decision objective, citing Chen for the actor-critic / off-policy recommender setting rather than for a general "embedding SL" claim.
+**Source rationale:** Levine et al. (2020), Section 5, explicitly discusses supervised dynamics-model fitting within model-based RL; Section 2.1 discusses parameterized policies and neural critics. Sutton and Barto (2018), Chapter 8, covers reward/transition models and their role in planning; Chapters 9 and 13 cover value and policy approximation. User dynamics is the recommendation-specific interpretation of environment dynamics. The sentence does not define RL as SL or claim that every RL system requires supervised models. Source locations are retained here for traceability; the manuscript uses ordinary numbered citations.
 
-**Approval needed before prose edit.**
+**Scope:** R2-CITE1 resolved. The separate SL distribution-shift and off-policy-evaluation comments (R2-CITE3 and R2-CITE2) remain open.
 
 ---
 
@@ -459,8 +455,29 @@ Associate Editor — not-so-minor points
    manually confirmed to resolve to the intended papers.
    [Planned:] Methods-section AI disclosure not yet applied.
 
-7–11. Claim–citation alignment, off-policy / SL wording, Section 3
-   historical framing, and Table utility (Zhao 2020; LinkedIn / Yan 2020)
+7. Introduction: relationship between SL, deep learning, and RL
+   Done. Thank you for identifying the imprecise wording and citation
+   mismatch. We removed the statement that RL embeds “supervised
+   prediction,” together with its citation to Chen et al. (2022),
+   and revised the adjacent sentence to clarify the distinct roles
+   of SL and deep neural networks within RL. The passage now reads:
+
+   “Within this framework, SL remains useful for learning models of
+   rewards and user dynamics, while deep neural networks provide
+   representations and function approximators used for value
+   estimation and policy learning [49, 77].”
+
+   The revision preserves the intended complementarity without
+   defining RL as an extension of SL or implying that all RL methods
+   require supervised models. We cite Levine et al. (2020) and Sutton
+   and Barto (2018), whose discussions of supervised model learning,
+   model-based planning, and value and policy approximation support
+   these specific roles. Chen et al. remains cited elsewhere for its
+   off-policy actor–critic recommender contribution. We also removed
+   the overlapping sentence to keep the Introduction concise.
+
+8–11. Off-policy / SL wording, Section 3 historical framing, and
+   Table utility (Zhao 2020; LinkedIn / Yan 2020)
    [Planned:] …
 
 ----------------------------------------------------------------

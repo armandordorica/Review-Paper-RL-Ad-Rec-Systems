@@ -1,5 +1,8 @@
 # Introduction: Revision And Reviewer-Risk Audit
 
+Round-2 update (13-Sep-2026): **R2-CITE1 DONE.** Applied the author-approved SL/deep-learning complementarity sentence in the Introduction, replacing the “embedding supervised prediction” claim and its adjacent sentence. Citations now use Levine et al. (2020) and Sutton and Barto (2018). Rationale and reviewer-letter response recorded in `round2_revision_plan.md`. Separate R2-CITE2 and R2-CITE3 wording remains pending.
+
+
 Scope: `paper.tex`, `\section{Introduction}` (currently lines 91-121).
 
 Latest refresh: 12-Sep-2026 — R2-ABBR1: expanded SL and RL at first Introduction use (MDP already defined). Round-1 May 17 pass (I1–I6) remains the baseline for other Intro items.
